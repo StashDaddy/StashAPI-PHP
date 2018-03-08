@@ -16,7 +16,7 @@ class STASHAPI {
 	const API_PW_LENGTH = 32;		// API_PW string length (minimum)
 	const API_SIG_LENGTH = 32;		// API_SIGNATURE string length (minimum)
 
-	const BASE_API_URL = "https://www.stage.stashbusiness.com/";
+	const BASE_API_URL = "https://www.stashbusiness.com/";
 
 	const ENC_ALG = 'aes-256-cbc';		// Encryption algorithm for use in encryptString & decryptString()
 
