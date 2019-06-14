@@ -1,6 +1,6 @@
 {
-  "name": "stash/stashapiv1",
-  "description": "API (v1) for accessing STASH Vault services",
+  "name": "stash/stashapi",
+  "description": "API for accessing STASH Vault services",
   "minimum-stability": "stable",
   "license": "MIT",
   "authors": [
