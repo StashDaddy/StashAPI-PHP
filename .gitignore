@@ -1,3 +1,8 @@
 tests/_output
 test.php
 tests/_data/creds.ini
+vendor/
+composer.lock
+codeception.yml
+codeception-Windows.yml
+autoload.php
