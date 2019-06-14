@@ -1,0 +1,32 @@
+{
+  "name": "stash/stashapiv1",
+  "description": "API (v1) for accessing STASH Vault services",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "STASH Global",
+      "email": "help@stash.global"
+    }
+  ],
+  "keywords": ["stash", "data security", "datacentric", "vault"],
+  "support": {
+    "email": "help@stash.global",
+    "docs": "https://www.stashbusiness.com/helpcenter"
+  },
+  "autoload": {
+    "psr-4": {
+      "" : "src/"
+    },
+    "classmap": ["src/"]
+  },
+  "require":{
+    "ext-json": "*",
+    "ext-openssl": "*",
+    "ext-curl": "*"
+  },
+  "require-dev": {
+    "theseer/phpdox": "0.12.0",
+    "phploc/phploc": "5.0.0"
+  }
+}

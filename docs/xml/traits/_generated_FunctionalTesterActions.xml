@@ -1,0 +1,1454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trait xmlns="http://xml.phpdox.net/src" full="_generated\FunctionalTesterActions" namespace="_generated" name="FunctionalTesterActions" abstract="false" final="false" start="8" end="1747">
+  <file path="L:/Projects/Stash/StashApi-php/docs/../tests/_support/_generated" file="FunctionalTesterActions.php" realpath="L:/Projects/Stash/StashApi-php/tests/_support/_generated/FunctionalTesterActions.php" size="62849" time="2019-06-13T21:47:23+00:00" unixtime="1560462443" sha1="bef523ee83f2eeeb09fcc747a48a041ef8be7657" relative="tests/_support/_generated/FunctionalTesterActions.php"/>
+  <method name="getScenario" start="13" end="13" abstract="true" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="\Codeception\Scenario" namespace="\Codeception" name="Scenario"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="haveHttpHeader" start="34" end="36" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Sets HTTP header valid for all next requests. Use `deleteHeader` to unset it
+
+```php
+&lt;?php
+$I-&gt;haveHttpHeader('Content-Type', 'application/json');
+// all next requests will contain this header
+?&gt;
+```</description>
+      <param variable="$name"/>
+      <param variable="$value"/>
+      <part value="json"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::haveHttpHeader()"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="deleteHeader" start="61" end="63" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Deletes the header with the passed name.  Subsequent requests
+will not have the deleted header in its request.
+
+Example:
+```php
+&lt;?php
+$I-&gt;haveHttpHeader('X-Requested-With', 'Codeception');
+$I-&gt;sendGET('test-headers.php');
+// ...
+$I-&gt;deleteHeader('X-Requested-With');
+$I-&gt;sendPOST('some-other-page.php');
+?&gt;
+```</description>
+      <param description="the name of the header to delete." type="string" variable="$name"/>
+      <part value="json"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::deleteHeader()"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="canSeeHttpHeader" start="79" end="81" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks over the given HTTP header and (optionally)
+its value, asserting that are there</description>
+      <param variable="$name"/>
+      <param variable="$value"/>
+      <part value="json"/>
+      <part value="xml Conditional Assertion: Test won't be stopped on fail"/>
+      <see value="\Codeception\Module\REST::seeHttpHeader()"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="seeHttpHeader" start="94" end="96" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks over the given HTTP header and (optionally)
+its value, asserting that are there</description>
+      <param variable="$name"/>
+      <param variable="$value"/>
+      <part value="json"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::seeHttpHeader()"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="cantSeeHttpHeader" start="112" end="114" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks over the given HTTP header and (optionally)
+its value, asserting that are not there</description>
+      <param variable="$name"/>
+      <param variable="$value"/>
+      <part value="json"/>
+      <part value="xml Conditional Assertion: Test won't be stopped on fail"/>
+      <see value="\Codeception\Module\REST::dontSeeHttpHeader()"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="dontSeeHttpHeader" start="127" end="129" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks over the given HTTP header and (optionally)
+its value, asserting that are not there</description>
+      <param variable="$name"/>
+      <param variable="$value"/>
+      <part value="json"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::dontSeeHttpHeader()"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="canSeeHttpHeaderOnce" start="151" end="153" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that http response header is received only once.
+HTTP RFC2616 allows multiple response headers with the same name.
+You can check that you didn't accidentally sent the same header twice.
+
+``` php
+&lt;?php
+$I-&gt;seeHttpHeaderOnce('Cache-Control');
+?&gt;&gt;
+```</description>
+      <param variable="$name"/>
+      <part value="json"/>
+      <part value="xml Conditional Assertion: Test won't be stopped on fail"/>
+      <see value="\Codeception\Module\REST::seeHttpHeaderOnce()"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="seeHttpHeaderOnce" start="172" end="174" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that http response header is received only once.
+HTTP RFC2616 allows multiple response headers with the same name.
+You can check that you didn't accidentally sent the same header twice.
+
+``` php
+&lt;?php
+$I-&gt;seeHttpHeaderOnce('Cache-Control');
+?&gt;&gt;
+```</description>
+      <param variable="$name"/>
+      <part value="json"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::seeHttpHeaderOnce()"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="grabHttpHeader" start="190" end="192" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Returns the value of the specified header name</description>
+      <param variable="$name"/>
+      <param description="Whether to return the first value or all header values" type="object" variable="$first">
+        <type full="_generated\Boolean" namespace="_generated" name="Boolean"/>
+      </param>
+      <return description="The first header value if $first is true, an array of values otherwise" type="object">
+        <type full="_generated\string|array" namespace="_generated" name="string|array"/>
+      </return>
+      <part value="json"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::grabHttpHeader()"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="first" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="amHttpAuthenticated" start="206" end="208" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Adds HTTP authentication via username/password.</description>
+      <param variable="$username"/>
+      <param variable="$password"/>
+      <part value="json"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::amHttpAuthenticated()"/>
+    </docblock>
+    <parameter name="username" byreference="false" type="{unknown}"/>
+    <parameter name="password" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="amDigestAuthenticated" start="222" end="224" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Adds Digest authentication via username/password.</description>
+      <param variable="$username"/>
+      <param variable="$password"/>
+      <part value="json"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::amDigestAuthenticated()"/>
+    </docblock>
+    <parameter name="username" byreference="false" type="{unknown}"/>
+    <parameter name="password" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="amBearerAuthenticated" start="237" end="239" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Adds Bearer authentication via access token.</description>
+      <param variable="$accessToken"/>
+      <part value="json"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::amBearerAuthenticated()"/>
+    </docblock>
+    <parameter name="accessToken" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="amNTLMAuthenticated" start="263" end="265" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Adds NTLM authentication via username/password.
+Requires client to be Guzzle &gt;=6.3.0
+Out of scope for functional modules.
+
+Example:
+```php
+&lt;?php
+$I-&gt;amNTLMAuthenticated('jon_snow', 'targaryen');
+?&gt;
+```</description>
+      <param variable="$username"/>
+      <param variable="$password"/>
+      <throws type="object">
+        <type full="_generated\ModuleException" namespace="_generated" name="ModuleException"/>
+      </throws>
+      <part value="json"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::amNTLMAuthenticated()"/>
+    </docblock>
+    <parameter name="username" byreference="false" type="{unknown}"/>
+    <parameter name="password" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="amAWSAuthenticated" start="294" end="296" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Allows to send REST request using AWS Authorization
+Only works with PhpBrowser
+Example
+Config -
+
+modules:
+     enabled:
+         - REST:
+             aws:
+                 key: accessKey
+                 secret: accessSecret
+                 service: awsService
+                 region: awsRegion
+
+```php
+&lt;?php
+$I-&gt;amAWSAuthenticated();
+?&gt;
+```</description>
+      <param type="array" variable="$additionalAWSConfig"/>
+      <throws type="object">
+        <type full="_generated\ModuleException" namespace="_generated" name="ModuleException"/>
+      </throws>
+      <see value="\Codeception\Module\REST::amAWSAuthenticated()"/>
+    </docblock>
+    <parameter name="additionalAWSConfig" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="sendPOST" start="335" end="337" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Sends a POST request to given uri. Parameters and files can be provided separately.
+
+Example:
+```php
+&lt;?php
+//simple POST call
+$I-&gt;sendPOST('/message', ['subject' =&gt; 'Read this!', 'to' =&gt; 'johndoe@example.com']);
+//simple upload method
+$I-&gt;sendPOST('/message/24', ['inline' =&gt; 0], ['attachmentFile' =&gt; codecept_data_dir('sample_file.pdf')]);
+//uploading a file with a custom name and mime-type. This is also useful to simulate upload errors.
+$I-&gt;sendPOST('/message/24', ['inline' =&gt; 0], [
+    'attachmentFile' =&gt; [
+         'name' =&gt; 'document.pdf',
+         'type' =&gt; 'application/pdf',
+         'error' =&gt; UPLOAD_ERR_OK,
+         'size' =&gt; filesize(codecept_data_dir('sample_file.pdf')),
+         'tmp_name' =&gt; codecept_data_dir('sample_file.pdf')
+    ]
+]);
+```</description>
+      <param variable="$url"/>
+      <param type="object" variable="$params">
+        <type full="_generated\array|\JsonSerializable" namespace="_generated\array|" name="JsonSerializable"/>
+      </param>
+      <param description="A list of filenames or &quot;mocks&quot; of $_FILES (each entry being an array with the following" type="array" variable="$files">keys: name, type, error, size, tmp_name (pointing to the real file path). Each key works
+                    as the "name" attribute of a file input field.</param>
+      <see value="http://php.net/manual/en/features.file-upload.post-method.php"/>
+      <see value="codecept_data_dir()"/>
+      <see value="\Codeception\Module\REST::sendPOST()"/>
+      <part value="json"/>
+      <part value="xml"/>
+    </docblock>
+    <parameter name="url" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="files" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="sendHEAD" start="351" end="353" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Sends a HEAD request to given uri.</description>
+      <param variable="$url"/>
+      <param type="array" variable="$params"/>
+      <part value="json"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::sendHEAD()"/>
+    </docblock>
+    <parameter name="url" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="sendOPTIONS" start="367" end="369" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Sends an OPTIONS request to given uri.</description>
+      <param variable="$url"/>
+      <param type="array" variable="$params"/>
+      <part value="json"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::sendOPTIONS()"/>
+    </docblock>
+    <parameter name="url" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="sendGET" start="383" end="385" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Sends a GET request to given uri.</description>
+      <param variable="$url"/>
+      <param type="array" variable="$params"/>
+      <part value="json"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::sendGET()"/>
+    </docblock>
+    <parameter name="url" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="sendPUT" start="400" end="402" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Sends PUT request to given uri.</description>
+      <param variable="$url"/>
+      <param type="array" variable="$params"/>
+      <param type="array" variable="$files"/>
+      <part value="json"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::sendPUT()"/>
+    </docblock>
+    <parameter name="url" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="files" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="sendPATCH" start="417" end="419" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Sends PATCH request to given uri.</description>
+      <param variable="$url"/>
+      <param type="array" variable="$params"/>
+      <param type="array" variable="$files"/>
+      <part value="json"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::sendPATCH()"/>
+    </docblock>
+    <parameter name="url" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="files" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="sendDELETE" start="434" end="436" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Sends DELETE request to given uri.</description>
+      <param variable="$url"/>
+      <param type="array" variable="$params"/>
+      <param type="array" variable="$files"/>
+      <part value="json"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::sendDELETE()"/>
+    </docblock>
+    <parameter name="url" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="files" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="sendLINK" start="454" end="456" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Sends LINK request to given uri.</description>
+      <param variable="$url"/>
+      <param description="(entry is array with keys &quot;uri&quot; and &quot;link-param&quot;)" type="array" variable="$linkEntries"/>
+      <link value="http://tools.ietf.org/html/rfc2068#section-19.6.2.4"/>
+      <author value="samva.ua@gmail.com"/>
+      <part value="json"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::sendLINK()"/>
+    </docblock>
+    <parameter name="url" byreference="false" type="{unknown}"/>
+    <parameter name="linkEntries" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="sendUNLINK" start="472" end="474" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Sends UNLINK request to given uri.</description>
+      <param variable="$url"/>
+      <param description="(entry is array with keys &quot;uri&quot; and &quot;link-param&quot;)" type="array" variable="$linkEntries"/>
+      <link value="http://tools.ietf.org/html/rfc2068#section-19.6.2.4"/>
+      <author value="samva.ua@gmail.com"/>
+      <part value="json"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::sendUNLINK()"/>
+    </docblock>
+    <parameter name="url" byreference="false" type="{unknown}"/>
+    <parameter name="linkEntries" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="canSeeResponseIsJson" start="487" end="489" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks whether last response was valid JSON.
+This is done with json_last_error function.</description>
+      <part value="json Conditional Assertion: Test won't be stopped on fail"/>
+      <see value="\Codeception\Module\REST::seeResponseIsJson()"/>
+    </docblock>
+  </method>
+  <method name="seeResponseIsJson" start="499" end="501" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks whether last response was valid JSON.
+This is done with json_last_error function.</description>
+      <part value="json"/>
+      <see value="\Codeception\Module\REST::seeResponseIsJson()"/>
+    </docblock>
+  </method>
+  <method name="canSeeResponseContains" start="515" end="517" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks whether the last response contains text.</description>
+      <param variable="$text"/>
+      <part value="json"/>
+      <part value="xml Conditional Assertion: Test won't be stopped on fail"/>
+      <see value="\Codeception\Module\REST::seeResponseContains()"/>
+    </docblock>
+    <parameter name="text" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="seeResponseContains" start="528" end="530" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks whether the last response contains text.</description>
+      <param variable="$text"/>
+      <part value="json"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::seeResponseContains()"/>
+    </docblock>
+    <parameter name="text" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="cantSeeResponseContains" start="544" end="546" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks whether last response do not contain text.</description>
+      <param variable="$text"/>
+      <part value="json"/>
+      <part value="xml Conditional Assertion: Test won't be stopped on fail"/>
+      <see value="\Codeception\Module\REST::dontSeeResponseContains()"/>
+    </docblock>
+    <parameter name="text" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="dontSeeResponseContains" start="557" end="559" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks whether last response do not contain text.</description>
+      <param variable="$text"/>
+      <part value="json"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::dontSeeResponseContains()"/>
+    </docblock>
+    <parameter name="text" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="canSeeResponseContainsJson" start="590" end="592" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks whether the last JSON response contains provided array.
+The response is converted to array with json_decode($response, true)
+Thus, JSON is represented by associative array.
+This method matches that response array contains provided array.
+
+Examples:
+
+``` php
+&lt;?php
+// response: {name: john, email: john@gmail.com}
+$I-&gt;seeResponseContainsJson(array('name' =&gt; 'john'));
+
+// response {user: john, profile: { email: john@gmail.com }}
+$I-&gt;seeResponseContainsJson(array('email' =&gt; 'john@gmail.com'));
+
+?&gt;
+```
+
+This method recursively checks if one array can be found inside of another.</description>
+      <param type="array" variable="$json"/>
+      <part value="json Conditional Assertion: Test won't be stopped on fail"/>
+      <see value="\Codeception\Module\REST::seeResponseContainsJson()"/>
+    </docblock>
+    <parameter name="json" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="seeResponseContainsJson" start="620" end="622" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks whether the last JSON response contains provided array.
+The response is converted to array with json_decode($response, true)
+Thus, JSON is represented by associative array.
+This method matches that response array contains provided array.
+
+Examples:
+
+``` php
+&lt;?php
+// response: {name: john, email: john@gmail.com}
+$I-&gt;seeResponseContainsJson(array('name' =&gt; 'john'));
+
+// response {user: john, profile: { email: john@gmail.com }}
+$I-&gt;seeResponseContainsJson(array('email' =&gt; 'john@gmail.com'));
+
+?&gt;
+```
+
+This method recursively checks if one array can be found inside of another.</description>
+      <param type="array" variable="$json"/>
+      <part value="json"/>
+      <see value="\Codeception\Module\REST::seeResponseContainsJson()"/>
+    </docblock>
+    <parameter name="json" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="grabResponse" start="645" end="647" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Returns current response so that it can be used in next scenario steps.
+
+Example:
+
+``` php
+&lt;?php
+$user_id = $I-&gt;grabResponse();
+$I-&gt;sendPUT('/user', array('id' =&gt; $user_id, 'name' =&gt; 'davert'));
+?&gt;
+```</description>
+      <version value="1.1"/>
+      <return type="string"/>
+      <part value="json"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::grabResponse()"/>
+    </docblock>
+  </method>
+  <method name="grabDataFromResponseByJsonPath" start="677" end="679" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Returns data from the current JSON response using [JSONPath](http://goessner.net/articles/JsonPath/) as selector.
+JsonPath is XPath equivalent for querying Json structures.
+Try your JsonPath expressions [online](http://jsonpath.curiousconcept.com/).
+Even for a single value an array is returned.
+
+This method **require [`flow/jsonpath` &gt; 0.2](https://github.com/FlowCommunications/JSONPath/) library to be installed**.
+
+Example:
+
+``` php
+&lt;?php
+// match the first `user.id` in json
+$firstUserId = $I-&gt;grabDataFromResponseByJsonPath('$..users[0].id');
+$I-&gt;sendPUT('/user', array('id' =&gt; $firstUserId[0], 'name' =&gt; 'davert'));
+?&gt;
+```</description>
+      <param type="string" variable="$jsonPath"/>
+      <return description="Array of matching items" type="array"/>
+      <version value="2.0.9"/>
+      <throws type="object">
+        <type full="\Exception" namespace="" name="Exception"/>
+      </throws>
+      <part value="json"/>
+      <see value="\Codeception\Module\REST::grabDataFromResponseByJsonPath()"/>
+    </docblock>
+    <parameter name="jsonPath" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="canSeeResponseJsonMatchesXpath" start="727" end="729" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks if json structure in response matches the xpath provided.
+JSON is not supposed to be checked against XPath, yet it can be converted to xml and used with XPath.
+This assertion allows you to check the structure of response json.
+
+```json
+  { "store": {
+      "book": [
+        { "category": "reference",
+          "author": "Nigel Rees",
+          "title": "Sayings of the Century",
+          "price": 8.95
+        },
+        { "category": "fiction",
+          "author": "Evelyn Waugh",
+          "title": "Sword of Honour",
+          "price": 12.99
+        }
+   ],
+      "bicycle": {
+        "color": "red",
+        "price": 19.95
+      }
+    }
+  }
+```
+
+```php
+&lt;?php
+// at least one book in store has author
+$I-&gt;seeResponseJsonMatchesXpath('//store/book/author');
+// first book in store has author
+$I-&gt;seeResponseJsonMatchesXpath('//store/book[1]/author');
+// at least one item in store has price
+$I-&gt;seeResponseJsonMatchesXpath('/store//price');
+?&gt;
+```</description>
+      <param type="string" variable="$xpath"/>
+      <part value="json"/>
+      <version value="2.0.9 Conditional Assertion: Test won't be stopped on fail"/>
+      <see value="\Codeception\Module\REST::seeResponseJsonMatchesXpath()"/>
+    </docblock>
+    <parameter name="xpath" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="seeResponseJsonMatchesXpath" start="774" end="776" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks if json structure in response matches the xpath provided.
+JSON is not supposed to be checked against XPath, yet it can be converted to xml and used with XPath.
+This assertion allows you to check the structure of response json.
+
+```json
+  { "store": {
+      "book": [
+        { "category": "reference",
+          "author": "Nigel Rees",
+          "title": "Sayings of the Century",
+          "price": 8.95
+        },
+        { "category": "fiction",
+          "author": "Evelyn Waugh",
+          "title": "Sword of Honour",
+          "price": 12.99
+        }
+   ],
+      "bicycle": {
+        "color": "red",
+        "price": 19.95
+      }
+    }
+  }
+```
+
+```php
+&lt;?php
+// at least one book in store has author
+$I-&gt;seeResponseJsonMatchesXpath('//store/book/author');
+// first book in store has author
+$I-&gt;seeResponseJsonMatchesXpath('//store/book[1]/author');
+// at least one item in store has price
+$I-&gt;seeResponseJsonMatchesXpath('/store//price');
+?&gt;
+```</description>
+      <param type="string" variable="$xpath"/>
+      <part value="json"/>
+      <version value="2.0.9"/>
+      <see value="\Codeception\Module\REST::seeResponseJsonMatchesXpath()"/>
+    </docblock>
+    <parameter name="xpath" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="cantSeeResponseJsonMatchesXpath" start="789" end="791" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Opposite to seeResponseJsonMatchesXpath</description>
+      <param type="string" variable="$xpath"/>
+      <part value="json Conditional Assertion: Test won't be stopped on fail"/>
+      <see value="\Codeception\Module\REST::dontSeeResponseJsonMatchesXpath()"/>
+    </docblock>
+    <parameter name="xpath" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="dontSeeResponseJsonMatchesXpath" start="801" end="803" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Opposite to seeResponseJsonMatchesXpath</description>
+      <param type="string" variable="$xpath"/>
+      <part value="json"/>
+      <see value="\Codeception\Module\REST::dontSeeResponseJsonMatchesXpath()"/>
+    </docblock>
+    <parameter name="xpath" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="canSeeResponseJsonMatchesJsonPath" start="855" end="857" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks if json structure in response matches [JsonPath](http://goessner.net/articles/JsonPath/).
+JsonPath is XPath equivalent for querying Json structures.
+Try your JsonPath expressions [online](http://jsonpath.curiousconcept.com/).
+This assertion allows you to check the structure of response json.
+
+This method **require [`flow/jsonpath` &gt; 0.2](https://github.com/FlowCommunications/JSONPath/) library to be installed**.
+
+```json
+  { "store": {
+      "book": [
+        { "category": "reference",
+          "author": "Nigel Rees",
+          "title": "Sayings of the Century",
+          "price": 8.95
+        },
+        { "category": "fiction",
+          "author": "Evelyn Waugh",
+          "title": "Sword of Honour",
+          "price": 12.99
+        }
+   ],
+      "bicycle": {
+        "color": "red",
+        "price": 19.95
+      }
+    }
+  }
+```
+
+```php
+&lt;?php
+// at least one book in store has author
+$I-&gt;seeResponseJsonMatchesJsonPath('$.store.book[*].author');
+// first book in store has author
+$I-&gt;seeResponseJsonMatchesJsonPath('$.store.book[0].author');
+// at least one item in store has price
+$I-&gt;seeResponseJsonMatchesJsonPath('$.store..price');
+?&gt;
+```</description>
+      <param type="string" variable="$jsonPath"/>
+      <part value="json"/>
+      <version value="2.0.9 Conditional Assertion: Test won't be stopped on fail"/>
+      <see value="\Codeception\Module\REST::seeResponseJsonMatchesJsonPath()"/>
+    </docblock>
+    <parameter name="jsonPath" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="seeResponseJsonMatchesJsonPath" start="906" end="908" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks if json structure in response matches [JsonPath](http://goessner.net/articles/JsonPath/).
+JsonPath is XPath equivalent for querying Json structures.
+Try your JsonPath expressions [online](http://jsonpath.curiousconcept.com/).
+This assertion allows you to check the structure of response json.
+
+This method **require [`flow/jsonpath` &gt; 0.2](https://github.com/FlowCommunications/JSONPath/) library to be installed**.
+
+```json
+  { "store": {
+      "book": [
+        { "category": "reference",
+          "author": "Nigel Rees",
+          "title": "Sayings of the Century",
+          "price": 8.95
+        },
+        { "category": "fiction",
+          "author": "Evelyn Waugh",
+          "title": "Sword of Honour",
+          "price": 12.99
+        }
+   ],
+      "bicycle": {
+        "color": "red",
+        "price": 19.95
+      }
+    }
+  }
+```
+
+```php
+&lt;?php
+// at least one book in store has author
+$I-&gt;seeResponseJsonMatchesJsonPath('$.store.book[*].author');
+// first book in store has author
+$I-&gt;seeResponseJsonMatchesJsonPath('$.store.book[0].author');
+// at least one item in store has price
+$I-&gt;seeResponseJsonMatchesJsonPath('$.store..price');
+?&gt;
+```</description>
+      <param type="string" variable="$jsonPath"/>
+      <part value="json"/>
+      <version value="2.0.9"/>
+      <see value="\Codeception\Module\REST::seeResponseJsonMatchesJsonPath()"/>
+    </docblock>
+    <parameter name="jsonPath" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="cantSeeResponseJsonMatchesJsonPath" start="921" end="923" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Opposite to seeResponseJsonMatchesJsonPath</description>
+      <param type="string" variable="$jsonPath"/>
+      <part value="json Conditional Assertion: Test won't be stopped on fail"/>
+      <see value="\Codeception\Module\REST::dontSeeResponseJsonMatchesJsonPath()"/>
+    </docblock>
+    <parameter name="jsonPath" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="dontSeeResponseJsonMatchesJsonPath" start="933" end="935" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Opposite to seeResponseJsonMatchesJsonPath</description>
+      <param type="string" variable="$jsonPath"/>
+      <part value="json"/>
+      <see value="\Codeception\Module\REST::dontSeeResponseJsonMatchesJsonPath()"/>
+    </docblock>
+    <parameter name="jsonPath" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="cantSeeResponseContainsJson" start="948" end="950" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Opposite to seeResponseContainsJson</description>
+      <part value="json"/>
+      <param type="array" variable="$json">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Module\REST::dontSeeResponseContainsJson()"/>
+    </docblock>
+    <parameter name="json" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="dontSeeResponseContainsJson" start="960" end="962" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Opposite to seeResponseContainsJson</description>
+      <part value="json"/>
+      <param type="array" variable="$json"/>
+      <see value="\Codeception\Module\REST::dontSeeResponseContainsJson()"/>
+    </docblock>
+    <parameter name="json" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="canSeeResponseMatchesJsonType" start="1049" end="1051" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that Json matches provided types.
+In case you don't know the actual values of JSON data returned you can match them by type.
+Starts check with a root element. If JSON data is array it will check the first element of an array.
+You can specify the path in the json which should be checked with JsonPath
+
+Basic example:
+
+```php
+&lt;?php
+// {'user_id': 1, 'name': 'davert', 'is_active': false}
+$I-&gt;seeResponseMatchesJsonType([
+     'user_id' =&gt; 'integer',
+     'name' =&gt; 'string|null',
+     'is_active' =&gt; 'boolean'
+]);
+
+// narrow down matching with JsonPath:
+// {"users": [{ "name": "davert"}, {"id": 1}]}
+$I-&gt;seeResponseMatchesJsonType(['name' =&gt; 'string'], '$.users[0]');
+?&gt;
+```
+
+In this case you can match that record contains fields with data types you expected.
+The list of possible data types:
+
+* string
+* integer
+* float
+* array (json object is array as well)
+* boolean
+
+You can also use nested data type structures:
+
+```php
+&lt;?php
+// {'user_id': 1, 'name': 'davert', 'company': {'name': 'Codegyre'}}
+$I-&gt;seeResponseMatchesJsonType([
+     'user_id' =&gt; 'integer|string', // multiple types
+     'company' =&gt; ['name' =&gt; 'string']
+]);
+?&gt;
+```
+
+You can also apply filters to check values. Filter can be applied with `:` char after the type declaration.
+
+Here is the list of possible filters:
+
+* `integer:&gt;{val}` - checks that integer is greater than {val} (works with float and string types too).
+* `integer:&lt;{val}` - checks that integer is lower than {val} (works with float and string types too).
+* `string:url` - checks that value is valid url.
+* `string:date` - checks that value is date in JavaScript format: https://weblog.west-wind.com/posts/2014/Jan/06/JavaScript-JSON-Date-Parsing-and-real-Dates
+* `string:email` - checks that value is a valid email according to http://emailregex.com/
+* `string:regex({val})` - checks that string matches a regex provided with {val}
+
+This is how filters can be used:
+
+```php
+&lt;?php
+// {'user_id': 1, 'email' =&gt; 'davert@codeception.com'}
+$I-&gt;seeResponseMatchesJsonType([
+     'user_id' =&gt; 'string:&gt;0:&lt;1000', // multiple filters can be used
+     'email' =&gt; 'string:regex(~\@~)' // we just check that @ char is included
+]);
+
+// {'user_id': '1'}
+$I-&gt;seeResponseMatchesJsonType([
+     'user_id' =&gt; 'string:&gt;0', // works with strings as well
+}
+?&gt;
+```
+
+You can also add custom filters y accessing `JsonType::addCustomFilter` method.
+See [JsonType reference](http://codeception.com/docs/reference/JsonType).</description>
+      <part value="json"/>
+      <version value="2.1.3"/>
+      <param type="array" variable="$jsonType"/>
+      <param type="string" variable="$jsonPath">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Module\REST::seeResponseMatchesJsonType()"/>
+    </docblock>
+    <parameter name="jsonType" byreference="false" type="{unknown}"/>
+    <parameter name="jsonPath" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="seeResponseMatchesJsonType" start="1135" end="1137" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that Json matches provided types.
+In case you don't know the actual values of JSON data returned you can match them by type.
+Starts check with a root element. If JSON data is array it will check the first element of an array.
+You can specify the path in the json which should be checked with JsonPath
+
+Basic example:
+
+```php
+&lt;?php
+// {'user_id': 1, 'name': 'davert', 'is_active': false}
+$I-&gt;seeResponseMatchesJsonType([
+     'user_id' =&gt; 'integer',
+     'name' =&gt; 'string|null',
+     'is_active' =&gt; 'boolean'
+]);
+
+// narrow down matching with JsonPath:
+// {"users": [{ "name": "davert"}, {"id": 1}]}
+$I-&gt;seeResponseMatchesJsonType(['name' =&gt; 'string'], '$.users[0]');
+?&gt;
+```
+
+In this case you can match that record contains fields with data types you expected.
+The list of possible data types:
+
+* string
+* integer
+* float
+* array (json object is array as well)
+* boolean
+
+You can also use nested data type structures:
+
+```php
+&lt;?php
+// {'user_id': 1, 'name': 'davert', 'company': {'name': 'Codegyre'}}
+$I-&gt;seeResponseMatchesJsonType([
+     'user_id' =&gt; 'integer|string', // multiple types
+     'company' =&gt; ['name' =&gt; 'string']
+]);
+?&gt;
+```
+
+You can also apply filters to check values. Filter can be applied with `:` char after the type declaration.
+
+Here is the list of possible filters:
+
+* `integer:&gt;{val}` - checks that integer is greater than {val} (works with float and string types too).
+* `integer:&lt;{val}` - checks that integer is lower than {val} (works with float and string types too).
+* `string:url` - checks that value is valid url.
+* `string:date` - checks that value is date in JavaScript format: https://weblog.west-wind.com/posts/2014/Jan/06/JavaScript-JSON-Date-Parsing-and-real-Dates
+* `string:email` - checks that value is a valid email according to http://emailregex.com/
+* `string:regex({val})` - checks that string matches a regex provided with {val}
+
+This is how filters can be used:
+
+```php
+&lt;?php
+// {'user_id': 1, 'email' =&gt; 'davert@codeception.com'}
+$I-&gt;seeResponseMatchesJsonType([
+     'user_id' =&gt; 'string:&gt;0:&lt;1000', // multiple filters can be used
+     'email' =&gt; 'string:regex(~\@~)' // we just check that @ char is included
+]);
+
+// {'user_id': '1'}
+$I-&gt;seeResponseMatchesJsonType([
+     'user_id' =&gt; 'string:&gt;0', // works with strings as well
+}
+?&gt;
+```
+
+You can also add custom filters y accessing `JsonType::addCustomFilter` method.
+See [JsonType reference](http://codeception.com/docs/reference/JsonType).</description>
+      <part value="json"/>
+      <version value="2.1.3"/>
+      <param type="array" variable="$jsonType"/>
+      <param type="string" variable="$jsonPath"/>
+      <see value="\Codeception\Module\REST::seeResponseMatchesJsonType()"/>
+    </docblock>
+    <parameter name="jsonType" byreference="false" type="{unknown}"/>
+    <parameter name="jsonPath" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="cantSeeResponseMatchesJsonType" start="1153" end="1155" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Opposite to `seeResponseMatchesJsonType`.</description>
+      <part value="json"/>
+      <see value="seeResponseMatchesJsonType"/>
+      <see value="\Codeception\Module\REST::dontSeeResponseMatchesJsonType()"/>
+      <param description="structure" variable="$jsonType" type="object">
+        <type full="_generated\jsonType" namespace="_generated" name="jsonType"/>
+      </param>
+      <param description="optionally set specific path to structure with JsonPath" type="null" variable="$jsonPath"/>
+      <version value="2.1.3 Conditional Assertion: Test won't be stopped on fail"/>
+    </docblock>
+    <parameter name="jsonType" byreference="false" type="{unknown}"/>
+    <parameter name="jsonPath" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="dontSeeResponseMatchesJsonType" start="1168" end="1170" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Opposite to `seeResponseMatchesJsonType`.</description>
+      <part value="json"/>
+      <see value="seeResponseMatchesJsonType"/>
+      <see value="\Codeception\Module\REST::dontSeeResponseMatchesJsonType()"/>
+      <param description="structure" variable="$jsonType" type="object">
+        <type full="_generated\jsonType" namespace="_generated" name="jsonType"/>
+      </param>
+      <param description="optionally set specific path to structure with JsonPath" type="null" variable="$jsonPath"/>
+      <version value="2.1.3"/>
+    </docblock>
+    <parameter name="jsonType" byreference="false" type="{unknown}"/>
+    <parameter name="jsonPath" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="canSeeResponseEquals" start="1184" end="1186" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks if response is exactly the same as provided.</description>
+      <part value="json"/>
+      <part value="xml"/>
+      <param variable="$response">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Module\REST::seeResponseEquals()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="seeResponseEquals" start="1197" end="1199" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks if response is exactly the same as provided.</description>
+      <part value="json"/>
+      <part value="xml"/>
+      <param variable="$response"/>
+      <see value="\Codeception\Module\REST::seeResponseEquals()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="canSeeResponseCodeIs" start="1221" end="1223" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks response code equals to provided value.
+
+```php
+&lt;?php
+$I-&gt;seeResponseCodeIs(200);
+
+// preferred to use \Codeception\Util\HttpCode
+$I-&gt;seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
+```</description>
+      <part value="json"/>
+      <part value="xml"/>
+      <param variable="$code">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Module\REST::seeResponseCodeIs()"/>
+    </docblock>
+    <parameter name="code" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="seeResponseCodeIs" start="1242" end="1244" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks response code equals to provided value.
+
+```php
+&lt;?php
+$I-&gt;seeResponseCodeIs(200);
+
+// preferred to use \Codeception\Util\HttpCode
+$I-&gt;seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
+```</description>
+      <part value="json"/>
+      <part value="xml"/>
+      <param variable="$code"/>
+      <see value="\Codeception\Module\REST::seeResponseCodeIs()"/>
+    </docblock>
+    <parameter name="code" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="cantSeeResponseCodeIs" start="1266" end="1268" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that response code is not equal to provided value.
+
+```php
+&lt;?php
+$I-&gt;dontSeeResponseCodeIs(200);
+
+// preferred to use \Codeception\Util\HttpCode
+$I-&gt;dontSeeResponseCodeIs(\Codeception\Util\HttpCode::OK);
+```</description>
+      <part value="json"/>
+      <part value="xml"/>
+      <param variable="$code">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Module\REST::dontSeeResponseCodeIs()"/>
+    </docblock>
+    <parameter name="code" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="dontSeeResponseCodeIs" start="1287" end="1289" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that response code is not equal to provided value.
+
+```php
+&lt;?php
+$I-&gt;dontSeeResponseCodeIs(200);
+
+// preferred to use \Codeception\Util\HttpCode
+$I-&gt;dontSeeResponseCodeIs(\Codeception\Util\HttpCode::OK);
+```</description>
+      <part value="json"/>
+      <part value="xml"/>
+      <param variable="$code"/>
+      <see value="\Codeception\Module\REST::dontSeeResponseCodeIs()"/>
+    </docblock>
+    <parameter name="code" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="canSeeResponseIsXml" start="1302" end="1304" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks whether last response was valid XML.
+This is done with libxml_get_last_error function.</description>
+      <part value="xml Conditional Assertion: Test won't be stopped on fail"/>
+      <see value="\Codeception\Module\REST::seeResponseIsXml()"/>
+    </docblock>
+  </method>
+  <method name="seeResponseIsXml" start="1314" end="1316" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks whether last response was valid XML.
+This is done with libxml_get_last_error function.</description>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::seeResponseIsXml()"/>
+    </docblock>
+  </method>
+  <method name="canSeeXmlResponseMatchesXpath" start="1333" end="1335" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks whether XML response matches XPath
+
+```php
+&lt;?php
+$I-&gt;seeXmlResponseMatchesXpath('//root/user[@id=1]');
+```</description>
+      <part value="xml"/>
+      <param variable="$xpath">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Module\REST::seeXmlResponseMatchesXpath()"/>
+    </docblock>
+    <parameter name="xpath" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="seeXmlResponseMatchesXpath" start="1349" end="1351" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks whether XML response matches XPath
+
+```php
+&lt;?php
+$I-&gt;seeXmlResponseMatchesXpath('//root/user[@id=1]');
+```</description>
+      <part value="xml"/>
+      <param variable="$xpath"/>
+      <see value="\Codeception\Module\REST::seeXmlResponseMatchesXpath()"/>
+    </docblock>
+    <parameter name="xpath" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="cantSeeXmlResponseMatchesXpath" start="1368" end="1370" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks whether XML response does not match XPath
+
+```php
+&lt;?php
+$I-&gt;dontSeeXmlResponseMatchesXpath('//root/user[@id=1]');
+```</description>
+      <part value="xml"/>
+      <param variable="$xpath">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Module\REST::dontSeeXmlResponseMatchesXpath()"/>
+    </docblock>
+    <parameter name="xpath" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="dontSeeXmlResponseMatchesXpath" start="1384" end="1386" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks whether XML response does not match XPath
+
+```php
+&lt;?php
+$I-&gt;dontSeeXmlResponseMatchesXpath('//root/user[@id=1]');
+```</description>
+      <part value="xml"/>
+      <param variable="$xpath"/>
+      <see value="\Codeception\Module\REST::dontSeeXmlResponseMatchesXpath()"/>
+    </docblock>
+    <parameter name="xpath" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="grabTextContentFromXmlElement" start="1400" end="1402" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Finds and returns text contents of element.
+Element is matched by either CSS or XPath</description>
+      <param variable="$cssOrXPath"/>
+      <return type="string"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::grabTextContentFromXmlElement()"/>
+    </docblock>
+    <parameter name="cssOrXPath" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="grabAttributeFromXmlElement" start="1417" end="1419" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Finds and returns attribute of element.
+Element is matched by either CSS or XPath</description>
+      <param variable="$cssOrXPath"/>
+      <param variable="$attribute"/>
+      <return type="string"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::grabAttributeFromXmlElement()"/>
+    </docblock>
+    <parameter name="cssOrXPath" byreference="false" type="{unknown}"/>
+    <parameter name="attribute" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="canSeeXmlResponseEquals" start="1435" end="1437" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks XML response equals provided XML.
+Comparison is done by canonicalizing both xml`s.
+
+Parameters can be passed either as DOMDocument, DOMNode, XML string, or array (if no attributes).</description>
+      <param variable="$xml"/>
+      <part value="xml Conditional Assertion: Test won't be stopped on fail"/>
+      <see value="\Codeception\Module\REST::seeXmlResponseEquals()"/>
+    </docblock>
+    <parameter name="xml" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="seeXmlResponseEquals" start="1450" end="1452" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks XML response equals provided XML.
+Comparison is done by canonicalizing both xml`s.
+
+Parameters can be passed either as DOMDocument, DOMNode, XML string, or array (if no attributes).</description>
+      <param variable="$xml"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::seeXmlResponseEquals()"/>
+    </docblock>
+    <parameter name="xml" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="cantSeeXmlResponseEquals" start="1468" end="1470" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks XML response does not equal to provided XML.
+Comparison is done by canonicalizing both xml`s.
+
+Parameter can be passed either as XmlBuilder, DOMDocument, DOMNode, XML string, or array (if no attributes).</description>
+      <param variable="$xml"/>
+      <part value="xml Conditional Assertion: Test won't be stopped on fail"/>
+      <see value="\Codeception\Module\REST::dontSeeXmlResponseEquals()"/>
+    </docblock>
+    <parameter name="xml" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="dontSeeXmlResponseEquals" start="1483" end="1485" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks XML response does not equal to provided XML.
+Comparison is done by canonicalizing both xml`s.
+
+Parameter can be passed either as XmlBuilder, DOMDocument, DOMNode, XML string, or array (if no attributes).</description>
+      <param variable="$xml"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::dontSeeXmlResponseEquals()"/>
+    </docblock>
+    <parameter name="xml" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="canSeeXmlResponseIncludes" start="1508" end="1510" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks XML response includes provided XML.
+Comparison is done by canonicalizing both xml`s.
+Parameter can be passed either as XmlBuilder, DOMDocument, DOMNode, XML string, or array (if no attributes).
+
+Example:
+
+``` php
+&lt;?php
+$I-&gt;seeXmlResponseIncludes("&lt;result&gt;1&lt;/result&gt;");
+?&gt;
+```</description>
+      <param variable="$xml"/>
+      <part value="xml Conditional Assertion: Test won't be stopped on fail"/>
+      <see value="\Codeception\Module\REST::seeXmlResponseIncludes()"/>
+    </docblock>
+    <parameter name="xml" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="seeXmlResponseIncludes" start="1530" end="1532" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks XML response includes provided XML.
+Comparison is done by canonicalizing both xml`s.
+Parameter can be passed either as XmlBuilder, DOMDocument, DOMNode, XML string, or array (if no attributes).
+
+Example:
+
+``` php
+&lt;?php
+$I-&gt;seeXmlResponseIncludes("&lt;result&gt;1&lt;/result&gt;");
+?&gt;
+```</description>
+      <param variable="$xml"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::seeXmlResponseIncludes()"/>
+    </docblock>
+    <parameter name="xml" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="cantSeeXmlResponseIncludes" start="1547" end="1549" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks XML response does not include provided XML.
+Comparison is done by canonicalizing both xml`s.
+Parameter can be passed either as XmlBuilder, DOMDocument, DOMNode, XML string, or array (if no attributes).</description>
+      <param variable="$xml"/>
+      <part value="xml Conditional Assertion: Test won't be stopped on fail"/>
+      <see value="\Codeception\Module\REST::dontSeeXmlResponseIncludes()"/>
+    </docblock>
+    <parameter name="xml" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="dontSeeXmlResponseIncludes" start="1561" end="1563" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks XML response does not include provided XML.
+Comparison is done by canonicalizing both xml`s.
+Parameter can be passed either as XmlBuilder, DOMDocument, DOMNode, XML string, or array (if no attributes).</description>
+      <param variable="$xml"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::dontSeeXmlResponseIncludes()"/>
+    </docblock>
+    <parameter name="xml" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="canSeeBinaryResponseEquals" start="1605" end="1607" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks if the hash of a binary response is exactly the same as provided.
+Parameter can be passed as any hash string supported by hash(), with an
+optional second parameter to specify the hash type, which defaults to md5.
+
+Example: Using md5 hash key
+
+```php
+&lt;?php
+$I-&gt;seeBinaryResponseEquals("8c90748342f19b195b9c6b4eff742ded");
+?&gt;
+```
+
+Example: Using md5 for a file contents
+
+```php
+&lt;?php
+$fileData = file_get_contents("test_file.jpg");
+$I-&gt;seeBinaryResponseEquals(md5($fileData));
+?&gt;
+```
+Example: Using sha256 hash
+
+```php
+&lt;?php
+$fileData = '/9j/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/yQALCAABAAEBAREA/8wABgAQEAX/2gAIAQEAAD8A0s8g/9k='; // very small jpeg
+$I-&gt;seeBinaryResponseEquals(hash("sha256", base64_decode($fileData)), 'sha256');
+?&gt;
+```</description>
+      <param description="hashed data response expected" variable="$hash" type="object">
+        <type full="_generated\the" namespace="_generated" name="the"/>
+      </param>
+      <param description="hash algorithm to use. Default md5." variable="$algo" type="object">
+        <type full="_generated\the" namespace="_generated" name="the"/>
+      </param>
+      <part value="json"/>
+      <part value="xml Conditional Assertion: Test won't be stopped on fail"/>
+      <see value="\Codeception\Module\REST::seeBinaryResponseEquals()"/>
+    </docblock>
+    <parameter name="hash" byreference="false" type="{unknown}"/>
+    <parameter name="algo" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="seeBinaryResponseEquals" start="1646" end="1648" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks if the hash of a binary response is exactly the same as provided.
+Parameter can be passed as any hash string supported by hash(), with an
+optional second parameter to specify the hash type, which defaults to md5.
+
+Example: Using md5 hash key
+
+```php
+&lt;?php
+$I-&gt;seeBinaryResponseEquals("8c90748342f19b195b9c6b4eff742ded");
+?&gt;
+```
+
+Example: Using md5 for a file contents
+
+```php
+&lt;?php
+$fileData = file_get_contents("test_file.jpg");
+$I-&gt;seeBinaryResponseEquals(md5($fileData));
+?&gt;
+```
+Example: Using sha256 hash
+
+```php
+&lt;?php
+$fileData = '/9j/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/yQALCAABAAEBAREA/8wABgAQEAX/2gAIAQEAAD8A0s8g/9k='; // very small jpeg
+$I-&gt;seeBinaryResponseEquals(hash("sha256", base64_decode($fileData)), 'sha256');
+?&gt;
+```</description>
+      <param description="hashed data response expected" variable="$hash" type="object">
+        <type full="_generated\the" namespace="_generated" name="the"/>
+      </param>
+      <param description="hash algorithm to use. Default md5." variable="$algo" type="object">
+        <type full="_generated\the" namespace="_generated" name="the"/>
+      </param>
+      <part value="json"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::seeBinaryResponseEquals()"/>
+    </docblock>
+    <parameter name="hash" byreference="false" type="{unknown}"/>
+    <parameter name="algo" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="cantSeeBinaryResponseEquals" start="1670" end="1672" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks if the hash of a binary response is not the same as provided.
+
+```php
+&lt;?php
+$I-&gt;dontSeeBinaryResponseEquals("8c90748342f19b195b9c6b4eff742ded");
+?&gt;
+```
+Opposite to `seeBinaryResponseEquals`</description>
+      <param description="hashed data response expected" variable="$hash" type="object">
+        <type full="_generated\the" namespace="_generated" name="the"/>
+      </param>
+      <param description="hash algorithm to use. Default md5." variable="$algo" type="object">
+        <type full="_generated\the" namespace="_generated" name="the"/>
+      </param>
+      <part value="json"/>
+      <part value="xml Conditional Assertion: Test won't be stopped on fail"/>
+      <see value="\Codeception\Module\REST::dontSeeBinaryResponseEquals()"/>
+    </docblock>
+    <parameter name="hash" byreference="false" type="{unknown}"/>
+    <parameter name="algo" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="dontSeeBinaryResponseEquals" start="1691" end="1693" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks if the hash of a binary response is not the same as provided.
+
+```php
+&lt;?php
+$I-&gt;dontSeeBinaryResponseEquals("8c90748342f19b195b9c6b4eff742ded");
+?&gt;
+```
+Opposite to `seeBinaryResponseEquals`</description>
+      <param description="hashed data response expected" variable="$hash" type="object">
+        <type full="_generated\the" namespace="_generated" name="the"/>
+      </param>
+      <param description="hash algorithm to use. Default md5." variable="$algo" type="object">
+        <type full="_generated\the" namespace="_generated" name="the"/>
+      </param>
+      <part value="json"/>
+      <part value="xml"/>
+      <see value="\Codeception\Module\REST::dontSeeBinaryResponseEquals()"/>
+    </docblock>
+    <parameter name="hash" byreference="false" type="{unknown}"/>
+    <parameter name="algo" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="grabDataFromJsonResponse" start="1706" end="1708" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Deprecated since 2.0.9 and removed since 2.1.0</description>
+      <param variable="$path"/>
+      <throws type="object">
+        <type full="_generated\ModuleException" namespace="_generated" name="ModuleException"/>
+      </throws>
+      <deprecated/>
+      <see value="\Codeception\Module\REST::grabDataFromJsonResponse()"/>
+    </docblock>
+    <parameter name="path" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="stopFollowingRedirects" start="1725" end="1727" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Prevents automatic redirects to be followed by the client
+
+```php
+&lt;?php
+$I-&gt;stopFollowingRedirects();
+```</description>
+      <part value="xml"/>
+      <part value="json"/>
+      <see value="\Codeception\Module\REST::stopFollowingRedirects()"/>
+    </docblock>
+  </method>
+  <method name="startFollowingRedirects" start="1744" end="1746" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Enables automatic redirects to be followed by the client
+
+```php
+&lt;?php
+$I-&gt;startFollowingRedirects();
+```</description>
+      <part value="xml"/>
+      <part value="json"/>
+      <see value="\Codeception\Module\REST::startFollowingRedirects()"/>
+    </docblock>
+  </method>
+  <users>
+    <class full="FunctionalTester" namespace="" name="FunctionalTester"/>
+  </users>
+</trait>

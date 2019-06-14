@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - _generated\AcceptanceTesterActions::seeInFormFields</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml#_generated">_generated</a>
+          </li>
+          <li class="separator">
+            <a title="_generated\AcceptanceTesterActions" href="../../traits/_generated_AcceptanceTesterActions.xhtml">AcceptanceTesterActions</a>
+          </li>
+          <li class="separator">seeInFormFields</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#parameter">Parameter</a>
+          </li>
+          <li>
+            <a href="../../source/tests/_support/_generated/AcceptanceTesterActions.php.xhtml#line1124">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1><small>_generated\AcceptanceTesterActions::</small>seeInFormFields</h1>
+        <h4>[!] Method is generated. Documentation taken from corresponding module.</h4>
+        <p>Checks if the array of form parameters (name =&gt; value) are set on the form matched with the
+passed selector.
+
+``` php
+&lt;?php
+$I-&gt;seeInFormFields('form[name=myform]', [
+     'input1' =&gt; 'value',
+     'input2' =&gt; 'other value',
+]);
+?&gt;
+```
+
+For multi-select elements, or to check values of multiple elements with the same name, an
+array may be passed:
+
+``` php
+&lt;?php
+$I-&gt;seeInFormFields('.form-class', [
+     'multiselect' =&gt; [
+         'value1',
+         'value2',
+     ],
+     'checkbox[]' =&gt; [
+         'a checked value',
+         'another checked value',
+     ],
+]);
+?&gt;
+```
+
+Additionally, checkbox values can be checked with a boolean.
+
+``` php
+&lt;?php
+$I-&gt;seeInFormFields('#form-id', [
+     'checkbox1' =&gt; true,        // passes if checked
+     'checkbox2' =&gt; false,       // passes if unchecked
+]);
+?&gt;
+```
+
+Pair this with submitForm for quick testing magic.
+
+``` php
+&lt;?php
+$form = [
+     'field1' =&gt; 'value',
+     'field2' =&gt; 'another value',
+     'checkbox1' =&gt; true,
+     // ...
+];
+$I-&gt;submitForm('//form[@id=my-form]', $form, 'submitButton');
+// $I-&gt;amOnPage('/path/to/form-page') may be needed
+$I-&gt;seeInFormFields('//form[@id=my-form]', $form);
+?&gt;
+```</p>
+        <ul/>
+        <h2 id="signature">Signature</h2>
+        <div class="styled synopsis">
+          <code>public function seeInFormFields(
+        $formSelector,
+            
+        $params )
+            </code>
+        </div>
+        <h2 id="parameterlist">Parameters</h2>
+        <dl class="styled">
+          <dt><code>$formSelector</code>
+                —
+                </dt>
+          <dd/>
+          <dt><code>$params</code>
+                —
+                </dt>
+          <dd/>
+        </dl>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2019 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - _generated\AcceptanceTesterActions::dontSee</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml#_generated">_generated</a>
+          </li>
+          <li class="separator">
+            <a title="_generated\AcceptanceTesterActions" href="../../traits/_generated_AcceptanceTesterActions.xhtml">AcceptanceTesterActions</a>
+          </li>
+          <li class="separator">dontSee</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#parameter">Parameter</a>
+          </li>
+          <li>
+            <a href="../../source/tests/_support/_generated/AcceptanceTesterActions.php.xhtml#line382">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1><small>_generated\AcceptanceTesterActions::</small>dontSee</h1>
+        <h4>[!] Method is generated. Documentation taken from corresponding module.</h4>
+        <p>Checks that the current page doesn't contain the text specified (case insensitive).
+Give a locator as the second parameter to match a specific region.
+
+```php
+&lt;?php
+$I-&gt;dontSee('Login');                         // I can suppose user is already logged in
+$I-&gt;dontSee('Sign Up','h1');                  // I can suppose it's not a signup page
+$I-&gt;dontSee('Sign Up','//body/h1');           // with XPath
+$I-&gt;dontSee('Sign Up', ['css' =&gt; 'body h1']); // with strict CSS locator
+```
+
+Note that the search is done after stripping all HTML tags from the body,
+so `$I-&gt;dontSee('strong')` will fail on strings like:
+
+  - `&lt;p&gt;I am Stronger than thou&lt;/p&gt;`
+  - `&lt;script&gt;document.createElement('strong');&lt;/script&gt;`
+
+But will ignore strings like:
+
+  - `&lt;strong&gt;Home&lt;/strong&gt;`
+  - `&lt;div class="strong"&gt;Home&lt;/strong&gt;`
+  - `&lt;!-- strong --&gt;`
+
+For checking the raw source code, use `seeInSource()`.</p>
+        <ul/>
+        <h2 id="signature">Signature</h2>
+        <div class="styled synopsis">
+          <code>public function dontSee(string
+        $text,
+            [string
+        $selector = NULL] )
+            </code>
+        </div>
+        <h2 id="parameterlist">Parameters</h2>
+        <dl class="styled">
+          <dt><code>$text</code>
+                —
+                string</dt>
+          <dd/>
+          <dt><code>$selector</code>
+                —
+                string</dt>
+          <dd>optional</dd>
+        </dl>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2019 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

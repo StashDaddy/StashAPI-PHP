@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - _generated\FunctionalTesterActions::seeBinaryResponseEquals</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml#_generated">_generated</a>
+          </li>
+          <li class="separator">
+            <a title="_generated\FunctionalTesterActions" href="../../traits/_generated_FunctionalTesterActions.xhtml">FunctionalTesterActions</a>
+          </li>
+          <li class="separator">seeBinaryResponseEquals</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#parameter">Parameter</a>
+          </li>
+          <li>
+            <a href="../../source/tests/_support/_generated/FunctionalTesterActions.php.xhtml#line1646">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1><small>_generated\FunctionalTesterActions::</small>seeBinaryResponseEquals</h1>
+        <h4>[!] Method is generated. Documentation taken from corresponding module.</h4>
+        <p>Checks if the hash of a binary response is exactly the same as provided.
+Parameter can be passed as any hash string supported by hash(), with an
+optional second parameter to specify the hash type, which defaults to md5.
+
+Example: Using md5 hash key
+
+```php
+&lt;?php
+$I-&gt;seeBinaryResponseEquals("8c90748342f19b195b9c6b4eff742ded");
+?&gt;
+```
+
+Example: Using md5 for a file contents
+
+```php
+&lt;?php
+$fileData = file_get_contents("test_file.jpg");
+$I-&gt;seeBinaryResponseEquals(md5($fileData));
+?&gt;
+```
+Example: Using sha256 hash
+
+```php
+&lt;?php
+$fileData = '/9j/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/yQALCAABAAEBAREA/8wABgAQEAX/2gAIAQEAAD8A0s8g/9k='; // very small jpeg
+$I-&gt;seeBinaryResponseEquals(hash("sha256", base64_decode($fileData)), 'sha256');
+?&gt;
+```</p>
+        <ul/>
+        <h2 id="signature">Signature</h2>
+        <div class="styled synopsis">
+          <code>public function seeBinaryResponseEquals(<a title="_generated\the" href="../../traits/_generated_the.xhtml">the</a>
+        $hash,
+            [<a title="_generated\the" href="../../traits/_generated_the.xhtml">the</a>
+        $algo = NULL] )
+            </code>
+        </div>
+        <h2 id="parameterlist">Parameters</h2>
+        <dl class="styled">
+          <dt><code>$hash</code>
+                —
+                object</dt>
+          <dd>hashed data response expected<br/><br/><br/>      </dd>
+          <dt><code>$algo</code>
+                —
+                object</dt>
+          <dd>hash algorithm to use. Default md5.<br/><br/><br/>      </dd>
+        </dl>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2019 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

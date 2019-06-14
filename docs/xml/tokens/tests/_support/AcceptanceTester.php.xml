@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="L:/Projects/Stash/StashApi-php/docs/../tests/_support" file="AcceptanceTester.php" realpath="L:/Projects/Stash/StashApi-php/tests/_support/AcceptanceTester.php" size="636" time="2019-06-13T21:47:23+00:00" unixtime="1560462443" sha1="36eb431952e0e8c1d435d0deed24a2f79784e00a" relative="tests/_support/AcceptanceTester.php"/>
+  <line no="1">
+    <token name="T_OPEN_TAG">&lt;?php</token>
+  </line>
+  <line no="2"/>
+  <line no="3"/>
+  <line no="4">
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="5">
+    <token name="T_DOC_COMMENT"> * Inherited Methods</token>
+  </line>
+  <line no="6">
+    <token name="T_DOC_COMMENT"> * @method void wantToTest($text)</token>
+  </line>
+  <line no="7">
+    <token name="T_DOC_COMMENT"> * @method void wantTo($text)</token>
+  </line>
+  <line no="8">
+    <token name="T_DOC_COMMENT"> * @method void execute($callable)</token>
+  </line>
+  <line no="9">
+    <token name="T_DOC_COMMENT"> * @method void expectTo($prediction)</token>
+  </line>
+  <line no="10">
+    <token name="T_DOC_COMMENT"> * @method void expect($prediction)</token>
+  </line>
+  <line no="11">
+    <token name="T_DOC_COMMENT"> * @method void amGoingTo($argumentation)</token>
+  </line>
+  <line no="12">
+    <token name="T_DOC_COMMENT"> * @method void am($role)</token>
+  </line>
+  <line no="13">
+    <token name="T_DOC_COMMENT"> * @method void lookForwardTo($achieveValue)</token>
+  </line>
+  <line no="14">
+    <token name="T_DOC_COMMENT"> * @method void comment($description)</token>
+  </line>
+  <line no="15">
+    <token name="T_DOC_COMMENT"> * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = NULL)</token>
+  </line>
+  <line no="16">
+    <token name="T_DOC_COMMENT"> *</token>
+  </line>
+  <line no="17">
+    <token name="T_DOC_COMMENT"> * @SuppressWarnings(PHPMD)</token>
+  </line>
+  <line no="18">
+    <token name="T_DOC_COMMENT">*/</token>
+  </line>
+  <line no="19">
+    <token name="T_CLASS">class</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">AcceptanceTester</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_EXTENDS">extends</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">Codeception</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">Actor</token>
+  </line>
+  <line no="20">
+    <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="21">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_USE">use</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">_generated</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">AcceptanceTesterActions</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="22"/>
+  <line no="23">
+    <token name="T_WHITESPACE">   </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="24">
+    <token name="T_DOC_COMMENT">    * Define custom actions here</token>
+  </line>
+  <line no="25">
+    <token name="T_DOC_COMMENT">    */</token>
+  </line>
+  <line no="26">
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
+  </line>
+  <line no="27"/>
+</source>

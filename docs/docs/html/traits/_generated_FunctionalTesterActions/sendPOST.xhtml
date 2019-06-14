@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - _generated\FunctionalTesterActions::sendPOST</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml#_generated">_generated</a>
+          </li>
+          <li class="separator">
+            <a title="_generated\FunctionalTesterActions" href="../../traits/_generated_FunctionalTesterActions.xhtml">FunctionalTesterActions</a>
+          </li>
+          <li class="separator">sendPOST</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#parameter">Parameter</a>
+          </li>
+          <li>
+            <a href="../../source/tests/_support/_generated/FunctionalTesterActions.php.xhtml#line335">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1><small>_generated\FunctionalTesterActions::</small>sendPOST</h1>
+        <h4>[!] Method is generated. Documentation taken from corresponding module.</h4>
+        <p>Sends a POST request to given uri. Parameters and files can be provided separately.
+
+Example:
+```php
+&lt;?php
+//simple POST call
+$I-&gt;sendPOST('/message', ['subject' =&gt; 'Read this!', 'to' =&gt; 'johndoe@example.com']);
+//simple upload method
+$I-&gt;sendPOST('/message/24', ['inline' =&gt; 0], ['attachmentFile' =&gt; codecept_data_dir('sample_file.pdf')]);
+//uploading a file with a custom name and mime-type. This is also useful to simulate upload errors.
+$I-&gt;sendPOST('/message/24', ['inline' =&gt; 0], [
+    'attachmentFile' =&gt; [
+         'name' =&gt; 'document.pdf',
+         'type' =&gt; 'application/pdf',
+         'error' =&gt; UPLOAD_ERR_OK,
+         'size' =&gt; filesize(codecept_data_dir('sample_file.pdf')),
+         'tmp_name' =&gt; codecept_data_dir('sample_file.pdf')
+    ]
+]);
+```</p>
+        <ul/>
+        <h2 id="signature">Signature</h2>
+        <div class="styled synopsis">
+          <code>public function sendPOST(
+        $url,
+            [<a title="_generated\array|\JsonSerializable" href="../../traits/_generated_array|_JsonSerializable.xhtml">JsonSerializable</a>
+        $params = NULL,
+            [array
+        $files = NULL]] )
+            </code>
+        </div>
+        <h2 id="parameterlist">Parameters</h2>
+        <dl class="styled">
+          <dt><code>$url</code>
+                —
+                </dt>
+          <dd/>
+          <dt><code>$params</code>
+                —
+                object</dt>
+          <dd><br/><br/><br/>      </dd>
+          <dt><code>$files</code>
+                —
+                array</dt>
+          <dd>A list of filenames or "mocks" of $_FILES (each entry being an array with the following<br/>keys: name, type, error, size, tmp_name (pointing to the real file path). Each key works<br/>                    as the "name" attribute of a file input field.</dd>
+        </dl>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2019 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

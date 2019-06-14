@@ -1,0 +1,14 @@
+; Contains the API credentials for conducting unit and functional tests
+; Set these values to those used with your vault account and save this file to creds.ini
+;
+; Important: when filled in, this file will contain sensitive information and is NOT recommended for inclusion in
+; a version control system like Git. Be sure to include the creds.ini file in .gitignore or similar.
+;
+[config]
+apiid = "123abc"                                ; Set this to your API ID value
+apipw = "abc123"                                ; Set this to your API PW value
+username = "username"                           ; Set this to your Vault username
+filekey = "password"                            ; Set this to your Vault account password - this value will be encrypted before being included in any API requests
+folderpath = "["My Home"]"                      ; Set this to your Vault's root folder
+folderid = 0                                    ; Set this to your Vault's root folder unique ID
+baseurl = "https://www.stashbusiness.com/"      ; Set this to your Vault's API Endpoint, must include trailing "/"

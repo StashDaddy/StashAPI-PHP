@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - _generated\AcceptanceTesterActions::submitForm</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml#_generated">_generated</a>
+          </li>
+          <li class="separator">
+            <a title="_generated\AcceptanceTesterActions" href="../../traits/_generated_AcceptanceTesterActions.xhtml">AcceptanceTesterActions</a>
+          </li>
+          <li class="separator">submitForm</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#parameter">Parameter</a>
+          </li>
+          <li>
+            <a href="../../source/tests/_support/_generated/AcceptanceTesterActions.php.xhtml#line1400">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1><small>_generated\AcceptanceTesterActions::</small>submitForm</h1>
+        <h4>[!] Method is generated. Documentation taken from corresponding module.</h4>
+        <p>Submits the given form on the page, with the given form
+values.  Pass the form field's values as an array in the second
+parameter.
+
+Although this function can be used as a short-hand version of
+`fillField()`, `selectOption()`, `click()` etc. it has some important
+differences:
+
+ * Only field *names* may be used, not CSS/XPath selectors nor field labels
+ * If a field is sent to this function that does *not* exist on the page,
+   it will silently be added to the HTTP request.  This is helpful for testing
+   some types of forms, but be aware that you will *not* get an exception
+   like you would if you called `fillField()` or `selectOption()` with
+   a missing field.
+
+Fields that are not provided will be filled by their values from the page,
+or from any previous calls to `fillField()`, `selectOption()` etc.
+You don't need to click the 'Submit' button afterwards.
+This command itself triggers the request to form's action.
+
+You can optionally specify which button's value to include
+in the request with the last parameter (as an alternative to
+explicitly setting its value in the second parameter), as
+button values are not otherwise included in the request.
+
+Examples:
+
+``` php
+&lt;?php
+$I-&gt;submitForm('#login', [
+    'login' =&gt; 'davert',
+    'password' =&gt; '123456'
+]);
+// or
+$I-&gt;submitForm('#login', [
+    'login' =&gt; 'davert',
+    'password' =&gt; '123456'
+], 'submitButtonName');
+
+```
+
+For example, given this sample "Sign Up" form:
+
+``` html
+&lt;form action="/sign_up"&gt;
+    Login:
+    &lt;input type="text" name="user[login]" /&gt;&lt;br/&gt;
+    Password:
+    &lt;input type="password" name="user[password]" /&gt;&lt;br/&gt;
+    Do you agree to our terms?
+    &lt;input type="checkbox" name="user[agree]" /&gt;&lt;br/&gt;
+    Select pricing plan:
+    &lt;select name="plan"&gt;
+        &lt;option value="1"&gt;Free&lt;/option&gt;
+        &lt;option value="2" selected="selected"&gt;Paid&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;input type="submit" name="submitButton" value="Submit" /&gt;
+&lt;/form&gt;
+```
+
+You could write the following to submit it:
+
+``` php
+&lt;?php
+$I-&gt;submitForm(
+    '#userForm',
+    [
+        'user' =&gt; [
+            'login' =&gt; 'Davert',
+            'password' =&gt; '123456',
+            'agree' =&gt; true
+        ]
+    ],
+    'submitButton'
+);
+```
+Note that "2" will be the submitted value for the "plan" field, as it is
+the selected option.
+
+You can also emulate a JavaScript submission by not specifying any
+buttons in the third parameter to submitForm.
+
+```php
+&lt;?php
+$I-&gt;submitForm(
+    '#userForm',
+    [
+        'user' =&gt; [
+            'login' =&gt; 'Davert',
+            'password' =&gt; '123456',
+            'agree' =&gt; true
+        ]
+    ]
+);
+```
+
+This function works well when paired with `seeInFormFields()`
+for quickly testing CRUD interfaces and form validation logic.
+
+``` php
+&lt;?php
+$form = [
+     'field1' =&gt; 'value',
+     'field2' =&gt; 'another value',
+     'checkbox1' =&gt; true,
+     // ...
+];
+$I-&gt;submitForm('#my-form', $form, 'submitButton');
+// $I-&gt;amOnPage('/path/to/form-page') may be needed
+$I-&gt;seeInFormFields('#my-form', $form);
+```
+
+Parameter values can be set to arrays for multiple input fields
+of the same name, or multi-select combo boxes.  For checkboxes,
+you can use either the string value or boolean `true`/`false` which will
+be replaced by the checkbox's value in the DOM.
+
+``` php
+&lt;?php
+$I-&gt;submitForm('#my-form', [
+     'field1' =&gt; 'value',
+     'checkbox' =&gt; [
+         'value of first checkbox',
+         'value of second checkbox',
+     ],
+     'otherCheckboxes' =&gt; [
+         true,
+         false,
+         false
+     ],
+     'multiselect' =&gt; [
+         'first option value',
+         'second option value'
+     ]
+]);
+```
+
+Mixing string and boolean values for a checkbox's value is not supported
+and may produce unexpected results.
+
+Field names ending in `[]` must be passed without the trailing square
+bracket characters, and must contain an array for its value.  This allows
+submitting multiple values with the same name, consider:
+
+```php
+&lt;?php
+// This will NOT work correctly
+$I-&gt;submitForm('#my-form', [
+    'field[]' =&gt; 'value',
+    'field[]' =&gt; 'another value',  // 'field[]' is already a defined key
+]);
+```
+
+The solution is to pass an array value:
+
+```php
+&lt;?php
+// This way both values are submitted
+$I-&gt;submitForm('#my-form', [
+    'field' =&gt; [
+        'value',
+        'another value',
+    ]
+]);
+```</p>
+        <ul/>
+        <h2 id="signature">Signature</h2>
+        <div class="styled synopsis">
+          <code>public function submitForm(
+        $selector,
+            
+        $params,
+            [
+        $button = NULL] )
+            </code>
+        </div>
+        <h2 id="parameterlist">Parameters</h2>
+        <dl class="styled">
+          <dt><code>$selector</code>
+                —
+                </dt>
+          <dd/>
+          <dt><code>$params</code>
+                —
+                </dt>
+          <dd/>
+          <dt><code>$button</code>
+                —
+                </dt>
+          <dd/>
+        </dl>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2019 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

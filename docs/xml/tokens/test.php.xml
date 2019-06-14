@@ -1,0 +1,629 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="L:/Projects/Stash/StashApi-php/docs/.." file="test.php" realpath="L:/Projects/Stash/StashApi-php/test.php" size="8441" time="2019-06-13T14:34:06+00:00" unixtime="1560436446" sha1="a2ec9d53084b540c803a96bc47f39884b99be5f4" relative="test.php"/>
+  <line no="1">
+    <token name="T_OPEN_TAG">&lt;?php</token>
+  </line>
+  <line no="2">
+    <token name="T_REQUIRE_ONCE">require_once</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'/etc/stash/stashapi/autoload.php'</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="3"/>
+  <line no="4">
+    <token name="T_WHITESPACE">	</token>
+    <token name="T_TRY">try</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="5">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">// For User = 774, personal account</token>
+  </line>
+  <line no="6">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">// $id = "12345678901234567890123456789012";</token>
+  </line>
+  <line no="7">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">// $pw = "abcdef12345678901234567890123456";</token>
+  </line>
+  <line no="8"/>
+  <line no="9">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">// For User = 886, pro account, company admin</token>
+  </line>
+  <line no="10">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_VARIABLE">$id</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"927556ad05ef9eae90b71b78aa788261"</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="11">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_VARIABLE">$pw</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"6mrMvrPFB5b0FWrzsDcvhAKqXeDTIef3"</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="12">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_VARIABLE">$userApiId</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_LNUMBER">886</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="13">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_VARIABLE">$api</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_NEW">new</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">STASHAPI</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">v1</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">STASHAPI</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$id</token>
+    <token name="T_PHPDOX_COMMA">,</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$pw</token>
+    <token name="T_PHPDOX_COMMA">,</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">""</token>
+    <token name="T_PHPDOX_COMMA">,</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">false</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="14"/>
+  <line no="15">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">// Write</token>
+  </line>
+  <line no="16">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//$src = array('fileKey'=&gt;$api-&gt;encryptString('Password1234!!',true), 'destFolderNames'=&gt;array("My Home", "Documents"));</token>
+  </line>
+  <line no="17">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//echo "Write File: " . print_r($api-&gt;putFile("/tmp/test(1).txt", $src),true);</token>
+  </line>
+  <line no="18"/>
+  <line no="19">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">// Get File Info</token>
+  </line>
+  <line no="20">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//$src = array('fileId'=&gt;0, 'folderId'=&gt;0, 'fileName'=&gt;'test(1).txt', 'folderNames'=&gt;array("My Home", "Documents"));</token>
+  </line>
+  <line no="21">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_VARIABLE">$src</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_ARRAY">array</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'fileId'</token>
+    <token name="T_DOUBLE_ARROW">=&gt;</token>
+    <token name="T_LNUMBER">0</token>
+    <token name="T_PHPDOX_COMMA">,</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'folderId'</token>
+    <token name="T_DOUBLE_ARROW">=&gt;</token>
+    <token name="T_LNUMBER">0</token>
+    <token name="T_PHPDOX_COMMA">,</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'fileName'</token>
+    <token name="T_DOUBLE_ARROW">=&gt;</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'test.txt'</token>
+    <token name="T_PHPDOX_COMMA">,</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'folderNames'</token>
+    <token name="T_DOUBLE_ARROW">=&gt;</token>
+    <token name="T_ARRAY">array</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"My Home"</token>
+    <token name="T_PHPDOX_COMMA">,</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"Documents"</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="22">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_ECHO">echo</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"FileInfo: "</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_DOT">.</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">print_r</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$api</token>
+    <token name="T_OBJECT_OPERATOR">-&gt;</token>
+    <token name="T_STRING">getFileInfo</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$src</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_COMMA">,</token>
+    <token name="T_STRING">true</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="23"/>
+  <line no="24">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">// Set permissions</token>
+  </line>
+  <line no="25">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//$retCode = 0; $permIds = array();</token>
+  </line>
+  <line no="26">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">// Add R permissions to folder 67481 (My Home) for user 887</token>
+  </line>
+  <line no="27">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//$tArray = array('folderId'=&gt;67481,'requestorId'=&gt;886,'perms'=&gt;array(array('userGroupId'=&gt;887,'userGroupIdType'=&gt;1,'permVal'=&gt;2)));</token>
+  </line>
+  <line no="28">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//$src = array('userId'=&gt;$userApiId,'permJson'=&gt;json_encode($tArray));</token>
+  </line>
+  <line no="29">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//echo "Set Perms: " . print_r($api-&gt;setPermissions($src, $retCode, $permIds), true);</token>
+  </line>
+  <line no="30">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//echo "RetCode: " . $retCode . " PermIds: " . print_r($permIds, true) . PHP_EOL;</token>
+  </line>
+  <line no="31"/>
+  <line no="32">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">// Check permissions</token>
+  </line>
+  <line no="33">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//$retCode = 0; $result = array();</token>
+  </line>
+  <line no="34">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//$src = array('userId'=&gt;$userApiId, 'objectUserId'=&gt;887, 'objectId'=&gt;67481,'objectIdType'=&gt;2,'requestedAccess'=&gt;1);</token>
+  </line>
+  <line no="35">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//echo "Check Perms: " . print_r($api-&gt;checkPermissions($src, $retCode, $result), true);</token>
+  </line>
+  <line no="36">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//echo "RetCode: " . $retCode . " Result: " . ($result ? 'true' : 'false') . PHP_EOL;</token>
+  </line>
+  <line no="37"/>
+  <line no="38">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">// Check credentials</token>
+  </line>
+  <line no="39">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//$src = array('fileKey'=&gt;$api-&gt;encryptString('CodeTest!1',true), 'accountUsername'=&gt;'CodeTester');</token>
+  </line>
+  <line no="40">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//echo "Check Creds: " . print_r($api-&gt;checkCreds($src), true);</token>
+  </line>
+  <line no="41"/>
+  <line no="42">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">// Check username</token>
+  </line>
+  <line no="43">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//$src = array('accountUsername'=&gt;'CodeTester1');</token>
+  </line>
+  <line no="44">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//echo "Check Username: " . print_r($api-&gt;isValidUser($src), true);</token>
+  </line>
+  <line no="45"/>
+  <line no="46">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//$errCode = 0; $fileNames = array();</token>
+  </line>
+  <line no="47">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//$src = array('fileId'=&gt;0, 'folderId'=&gt;0, 'fileName'=&gt;'', 'folderNames'=&gt;array("My Home"), 'parentFolderId'=&gt;66846);</token>
+  </line>
+  <line no="48">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//$src = array('outputType'=&gt;0, 'userId'=&gt;'774', 'fileId'=&gt;0, 'folderId'=&gt;0, 'fileName'=&gt;'', 'folderNames'=&gt;array(""), 'parentFolderId'=&gt;0);</token>
+  </line>
+  <line no="49">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//$src = array('outputType'=&gt;4, 'folderId'=&gt;'-1', 'userId'=&gt;'774');</token>
+  </line>
+  <line no="50">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//echo "Folders: " . print_r($api-&gt;listFolders($src,$retCode,$folderNames),true);</token>
+  </line>
+  <line no="51">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//$src = array('outputType'=&gt;4, 'sfId'=&gt;'2', 'userId'=&gt;'774');</token>
+  </line>
+  <line no="52">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//echo "Files: " . print_r($api-&gt;listSFFiles($src,$retCode,$fileNames),true);</token>
+  </line>
+  <line no="53"/>
+  <line no="54"/>
+  <line no="55">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//$src = array('fileId'=&gt;'7402');</token>
+  </line>
+  <line no="56">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//$dst = array('destFileName'=&gt;'testmove1.txt');</token>
+  </line>
+  <line no="57">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//echo "Rename File: " . print_r($api-&gt;renameFile($src, $dst),true);</token>
+  </line>
+  <line no="58"/>
+  <line no="59">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">// Create Directory</token>
+  </line>
+  <line no="60">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//$src = array('fileId'=&gt;0, 'folderId'=&gt;0, 'fileName'=&gt;'', 'folderNames'=&gt;array("NewFolder"), 'parentFolderId'=&gt;66846);</token>
+  </line>
+  <line no="61">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//echo "New FolderId: " . print_r($api-&gt;createDirectory($src),true);</token>
+  </line>
+  <line no="62"/>
+  <line no="63"/>
+  <line no="64">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//$src = array('outputType' =&gt; 1, 'folderId' =&gt; '66844', 'userId' =&gt; '774');</token>
+  </line>
+  <line no="65">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//$src = array('outputType' =&gt; 1, 'folderNames' =&gt; array("My Home", "Users"));</token>
+  </line>
+  <line no="66">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_COMMENT">//echo "Files: " . print_r($api-&gt;listFiles($src, $errCode, $fileNames),true);</token>
+  </line>
+  <line no="67">
+    <token name="T_COMMENT">//		$src = array('outputType' =&gt; 0, 'folderNames'=&gt;array("My Home"));</token>
+  </line>
+  <line no="68">
+    <token name="T_COMMENT">//		echo "Files: " . print_r($api-&gt;listFiles($src, $errCode, $fileNames),true);</token>
+  </line>
+  <line no="69"/>
+  <line no="70">
+    <token name="T_COMMENT">/*		$src = array('outputType' =&gt; 1, 'folderNames'=&gt;array("My Home"));</token>
+  </line>
+  <line no="71">
+    <token name="T_COMMENT">		echo "Files: " . print_r($api-&gt;listFiles($src, $errCode, $fileNames),true);</token>
+  </line>
+  <line no="72"/>
+  <line no="73">
+    <token name="T_COMMENT">		$src = array('outputType' =&gt; 2, 'folderNames'=&gt;array("My Home"));</token>
+  </line>
+  <line no="74">
+    <token name="T_COMMENT">		echo "Files: " . print_r($api-&gt;listFiles($src, $errCode, $fileNames),true);</token>
+  </line>
+  <line no="75"/>
+  <line no="76">
+    <token name="T_COMMENT">		$src = array('outputType' =&gt; 3, 'folderNames'=&gt;array("My Home"));</token>
+  </line>
+  <line no="77">
+    <token name="T_COMMENT">		echo "Files: " . print_r($api-&gt;listFiles($src, $errCode, $fileNames),true);</token>
+  </line>
+  <line no="78"/>
+  <line no="79">
+    <token name="T_COMMENT">		$src = array('outputType' =&gt; 4, 'folderNames'=&gt;array("My Home"));</token>
+  </line>
+  <line no="80">
+    <token name="T_COMMENT">		echo "Files: " . print_r($api-&gt;listFiles($src, $errCode, $fileNames),true);</token>
+  </line>
+  <line no="81">
+    <token name="T_COMMENT">*/</token>
+  </line>
+  <line no="82"/>
+  <line no="83">
+    <token name="T_COMMENT">/*</token>
+  </line>
+  <line no="84">
+    <token name="T_COMMENT">		// Write</token>
+  </line>
+  <line no="85">
+    <token name="T_COMMENT">		$src = array('fileKey'=&gt;$api-&gt;encryptString('CodeTest!1',true), 'destFolderNames'=&gt;array("My Home", "Documents"));</token>
+  </line>
+  <line no="86">
+    <token name="T_COMMENT">		echo "Write File: " . print_r($api-&gt;putFile("/tmp/test.pdf", $src),true);</token>
+  </line>
+  <line no="87"/>
+  <line no="88">
+    <token name="T_COMMENT">		// Read</token>
+  </line>
+  <line no="89">
+    <token name="T_COMMENT">		$src = array('fileKey'=&gt;$api-&gt;encryptString('CodeTest!1',true), 'fileName'=&gt;'test.pdf', 'folderNames'=&gt;array("My Home", "Documents"));</token>
+  </line>
+  <line no="90">
+    <token name="T_COMMENT">		echo "Read File: " . print_r($api-&gt;getFile($src, "/tmp/testout.pdf"),true);</token>
+  </line>
+  <line no="91"/>
+  <line no="92">
+    <token name="T_COMMENT">		// Files &amp; Paths</token>
+  </line>
+  <line no="93">
+    <token name="T_COMMENT">		echo "After READ: " . print_r($api-&gt;listFilesPaths(),true);</token>
+  </line>
+  <line no="94"/>
+  <line no="95">
+    <token name="T_COMMENT">		// Copy</token>
+  </line>
+  <line no="96">
+    <token name="T_COMMENT">		$src = array('fileName'=&gt;'test.pdf','folderNames'=&gt;array("My Home","Documents"));</token>
+  </line>
+  <line no="97">
+    <token name="T_COMMENT">		$dst = array('destFileName'=&gt;'testcopy.pdf','destFolderNames'=&gt;array("My Home","Pictures"));</token>
+  </line>
+  <line no="98">
+    <token name="T_COMMENT">		echo "Copy File: " . print_r($api-&gt;copyFile($src, $dst),true);</token>
+  </line>
+  <line no="99"/>
+  <line no="100">
+    <token name="T_COMMENT">		// Files &amp; Paths</token>
+  </line>
+  <line no="101">
+    <token name="T_COMMENT">		echo "After Copy: " . print_r($api-&gt;listFilesPaths(),true);</token>
+  </line>
+  <line no="102"/>
+  <line no="103">
+    <token name="T_COMMENT">		// Move</token>
+  </line>
+  <line no="104">
+    <token name="T_COMMENT">		$src = array('fileName'=&gt;'testcopy.pdf','folderNames'=&gt;array("My Home","Pictures"));</token>
+  </line>
+  <line no="105">
+    <token name="T_COMMENT">		$dst = array('destFileName'=&gt;'testcopy2.pdf', 'destFolderNames'=&gt;array("My Home"));</token>
+  </line>
+  <line no="106">
+    <token name="T_COMMENT">		echo "Move File: " . print_r($api-&gt;moveFile($src, $dst),true);</token>
+  </line>
+  <line no="107"/>
+  <line no="108">
+    <token name="T_COMMENT">		// Files &amp; Paths</token>
+  </line>
+  <line no="109">
+    <token name="T_COMMENT">		echo "After Move: " . print_r($api-&gt;listFilesPaths(),true);</token>
+  </line>
+  <line no="110"/>
+  <line no="111">
+    <token name="T_COMMENT">		// Rename</token>
+  </line>
+  <line no="112">
+    <token name="T_COMMENT">		$src = array('fileName'=&gt;'testcopy2.pdf', 'folderNames'=&gt;array("My Home"));</token>
+  </line>
+  <line no="113">
+    <token name="T_COMMENT">		$dst = array('destFileName'=&gt;'testcopy3.pdf');</token>
+  </line>
+  <line no="114">
+    <token name="T_COMMENT">		echo "Rename File: " . print_r($api-&gt;renameFile($src, $dst),true);</token>
+  </line>
+  <line no="115"/>
+  <line no="116">
+    <token name="T_COMMENT">		// Files &amp; Paths</token>
+  </line>
+  <line no="117">
+    <token name="T_COMMENT">		echo "After Rename: " . print_r($api-&gt;listFilesPaths(),true);</token>
+  </line>
+  <line no="118"/>
+  <line no="119">
+    <token name="T_COMMENT">		// Files In Dir</token>
+  </line>
+  <line no="120">
+    <token name="T_COMMENT">		$src = array('fileId'=&gt;0, 'folderId'=&gt;66844, 'fileName'=&gt;'', 'folderNames'=&gt;array());</token>
+  </line>
+  <line no="121">
+    <token name="T_COMMENT">		echo "Files in Dir: " . print_r($api-&gt;listFilesDir($src),true);</token>
+  </line>
+  <line no="122"/>
+  <line no="123">
+    <token name="T_COMMENT">		// Folders</token>
+  </line>
+  <line no="124">
+    <token name="T_COMMENT">		echo "Folders: " . print_r($api-&gt;listFolders(),true);</token>
+  </line>
+  <line no="125"/>
+  <line no="126">
+    <token name="T_COMMENT">		// Files &amp; Paths</token>
+  </line>
+  <line no="127">
+    <token name="T_COMMENT">		echo "Files &amp; Paths: " . print_r($api-&gt;listFilesPaths(),true);</token>
+  </line>
+  <line no="128"/>
+  <line no="129">
+    <token name="T_COMMENT">		// All Files</token>
+  </line>
+  <line no="130">
+    <token name="T_COMMENT">		echo "Files: " . print_r($api-&gt;listFiles(),true);</token>
+  </line>
+  <line no="131"/>
+  <line no="132">
+    <token name="T_COMMENT">		// Delete #1</token>
+  </line>
+  <line no="133">
+    <token name="T_COMMENT">		$src = array('fileId'=&gt;0, 'folderId'=&gt;0, 'fileName'=&gt;'test.pdf', 'folderNames'=&gt;array("My Home","Documents"));</token>
+  </line>
+  <line no="134">
+    <token name="T_COMMENT">		echo "Delete File: " . print_r($api-&gt;deleteFile($src),true);</token>
+  </line>
+  <line no="135"/>
+  <line no="136">
+    <token name="T_COMMENT">		// Delete #2</token>
+  </line>
+  <line no="137">
+    <token name="T_COMMENT">		$src = array('fileName'=&gt;'testcopy3.pdf', 'folderNames'=&gt;array("My Home"));</token>
+  </line>
+  <line no="138">
+    <token name="T_COMMENT">		echo "Delete File: " . print_r($api-&gt;deleteFile($src),true);</token>
+  </line>
+  <line no="139"/>
+  <line no="140">
+    <token name="T_COMMENT">		// Get FolderId</token>
+  </line>
+  <line no="141">
+    <token name="T_COMMENT">		$src = array('fileId'=&gt;0, 'folderId'=&gt;0, 'fileName'=&gt;'', 'folderNames'=&gt;array("My Home", "Documents"));</token>
+  </line>
+  <line no="142">
+    <token name="T_COMMENT">		echo "FolderId: " . print_r($api-&gt;getFolderId($src),true);</token>
+  </line>
+  <line no="143"/>
+  <line no="144">
+    <token name="T_COMMENT">		// Create Directory</token>
+  </line>
+  <line no="145">
+    <token name="T_COMMENT">		$src = array('fileId'=&gt;0, 'folderId'=&gt;0, 'fileName'=&gt;'', 'folderNames'=&gt;array("My Home", "Users", "admin", "Desktop", "files"));</token>
+  </line>
+  <line no="146">
+    <token name="T_COMMENT">		echo "FolderId: " . print_r($api-&gt;createDirectory($src),true);</token>
+  </line>
+  <line no="147"/>
+  <line no="148">
+    <token name="T_COMMENT">		// Delete Directory</token>
+  </line>
+  <line no="149">
+    <token name="T_COMMENT">		$src = array('fileId'=&gt;0, 'folderId'=&gt;0, 'fileName'=&gt;'', 'folderNames'=&gt;array("My Home", "Users", "admin", "Desktop"));</token>
+  </line>
+  <line no="150">
+    <token name="T_COMMENT">		echo "Result: " . print_r($api-&gt;deleteDirectory($src),true);</token>
+  </line>
+  <line no="151"/>
+  <line no="152">
+    <token name="T_COMMENT">		// Get File Info</token>
+  </line>
+  <line no="153">
+    <token name="T_COMMENT">		$src = array('fileId'=&gt;0, 'folderId'=&gt;0, 'fileName'=&gt;'test.txt', 'folderNames'=&gt;array("My Home", "Users", "admin"));</token>
+  </line>
+  <line no="154">
+    <token name="T_COMMENT">		echo "FileInfo: " . print_r($api-&gt;getFileInfo($src),true);</token>
+  </line>
+  <line no="155"/>
+  <line no="156">
+    <token name="T_COMMENT">		// Rename Directory</token>
+  </line>
+  <line no="157">
+    <token name="T_COMMENT">		$src = array('fileId'=&gt;0, 'folderId'=&gt;0, 'fileName'=&gt;'', 'folderNames'=&gt;array("My Home", "Users", "admin", "Desktop"));</token>
+  </line>
+  <line no="158">
+    <token name="T_COMMENT">		$dst = array('destFolderNames'=&gt;array("My Home", "Users", "admin"));</token>
+  </line>
+  <line no="159">
+    <token name="T_COMMENT">		echo "Rename Dir: " . print_r($api-&gt;renameDirectory($src, $dst), true);</token>
+  </line>
+  <line no="160"/>
+  <line no="161">
+    <token name="T_COMMENT">		// Move Directory</token>
+  </line>
+  <line no="162">
+    <token name="T_COMMENT">		$src = array('fileId'=&gt;0, 'folderId'=&gt;0, 'fileName'=&gt;'', 'folderNames'=&gt;array("My Home", "Users", "adming", "Desktop2"));</token>
+  </line>
+  <line no="163">
+    <token name="T_COMMENT">		$dst = array('destFolderNames'=&gt;array("My Home", "Users", "admin", "Desktop"));</token>
+  </line>
+  <line no="164">
+    <token name="T_COMMENT">		echo "Move Dir: " . print_r($api-&gt;moveDirectory($src, $dst), true);</token>
+  </line>
+  <line no="165"/>
+  <line no="166">
+    <token name="T_COMMENT">		// Get Folder Info</token>
+  </line>
+  <line no="167">
+    <token name="T_COMMENT">		$src = array('fileId'=&gt;0, 'folderId'=&gt;0, 'fileName'=&gt;'', 'folderNames'=&gt;array("My Home", "Users", "admin", "Desktop"));</token>
+  </line>
+  <line no="168">
+    <token name="T_COMMENT">		echo "Folder Info: " . print_r($api-&gt;getFolderInfo($src), true);</token>
+  </line>
+  <line no="169"/>
+  <line no="170">
+    <token name="T_COMMENT">		// Get Sync Info</token>
+  </line>
+  <line no="171">
+    <token name="T_COMMENT">		$src = array('fileId'=&gt;0, 'folderId'=&gt;0, 'fileName'=&gt;'', 'folderNames'=&gt;array("My Home", "Users", "admin", "Desktop"));</token>
+  </line>
+  <line no="172">
+    <token name="T_COMMENT">		echo "Sync Info: " . print_r($api-&gt;getSyncInfo($src), true);</token>
+  </line>
+  <line no="173"/>
+  <line no="174">
+    <token name="T_COMMENT">		@unlink("/tmp/testout.pdf");</token>
+  </line>
+  <line no="175">
+    <token name="T_COMMENT">*/</token>
+  </line>
+  <line no="176">
+    <token name="T_WHITESPACE">	</token>
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CATCH">catch</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_STRING">Exception</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$e</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="177">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_ECHO">echo</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"Error Occurred: "</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_DOT">.</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$e</token>
+    <token name="T_OBJECT_OPERATOR">-&gt;</token>
+    <token name="T_STRING">getMessage</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_DOT">.</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">PHP_EOL</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="178">
+    <token name="T_WHITESPACE">	</token>
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
+  </line>
+  <line no="179"/>
+  <line no="180">
+    <token name="T_CLOSE_TAG">?&gt;</token>
+  </line>
+  <line no="181"/>
+</source>

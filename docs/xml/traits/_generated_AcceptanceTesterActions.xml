@@ -1,0 +1,1900 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trait xmlns="http://xml.phpdox.net/src" full="_generated\AcceptanceTesterActions" namespace="_generated" name="AcceptanceTesterActions" abstract="false" final="false" start="8" end="2271">
+  <file path="L:/Projects/Stash/StashApi-php/docs/../tests/_support/_generated" file="AcceptanceTesterActions.php" realpath="L:/Projects/Stash/StashApi-php/tests/_support/_generated/AcceptanceTesterActions.php" size="77794" time="2019-06-13T21:47:23+00:00" unixtime="1560462443" sha1="5244a196f10e6af670366d267e98aa9956052b92" relative="tests/_support/_generated/AcceptanceTesterActions.php"/>
+  <method name="getScenario" start="13" end="13" abstract="true" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="\Codeception\Scenario" namespace="\Codeception" name="Scenario"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="setHeader" start="25" end="27" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Alias to `haveHttpHeader`</description>
+      <param variable="$name"/>
+      <param variable="$value"/>
+      <see value="\Codeception\Module\PhpBrowser::setHeader()"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="amHttpAuthenticated" start="39" end="41" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Authenticates user for HTTP_AUTH</description>
+      <param variable="$username"/>
+      <param variable="$password"/>
+      <see value="\Codeception\Module\PhpBrowser::amHttpAuthenticated()"/>
+    </docblock>
+    <parameter name="username" byreference="false" type="{unknown}"/>
+    <parameter name="password" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="amOnUrl" start="57" end="59" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Open web page at the given absolute URL and sets its hostname as the base host.
+
+``` php
+&lt;?php
+$I-&gt;amOnUrl('http://codeception.com');
+$I-&gt;amOnPage('/quickstart'); // moves to http://codeception.com/quickstart
+?&gt;
+```</description>
+      <see value="\Codeception\Module\PhpBrowser::amOnUrl()"/>
+    </docblock>
+    <parameter name="url" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="amOnSubdomain" start="85" end="87" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Changes the subdomain for the 'url' configuration parameter.
+Does not open a page; use `amOnPage` for that.
+
+``` php
+&lt;?php
+// If config is: 'http://mysite.com'
+// or config is: 'http://www.mysite.com'
+// or config is: 'http://company.mysite.com'
+
+$I-&gt;amOnSubdomain('user');
+$I-&gt;amOnPage('/');
+// moves to http://user.mysite.com/
+?&gt;
+```</description>
+      <param variable="$subdomain"/>
+      <return type="mixed"/>
+      <see value="\Codeception\Module\PhpBrowser::amOnSubdomain()"/>
+    </docblock>
+    <parameter name="subdomain" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="executeInGuzzle" start="112" end="114" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Low-level API method.
+If Codeception commands are not enough, use [Guzzle HTTP Client](http://guzzlephp.org/) methods directly
+
+Example:
+
+``` php
+&lt;?php
+$I-&gt;executeInGuzzle(function (\GuzzleHttp\Client $client) {
+     $client-&gt;get('/get', ['query' =&gt; ['foo' =&gt; 'bar']]);
+});
+?&gt;
+```
+
+It is not recommended to use this command on a regular basis.
+If Codeception lacks important Guzzle Client methods, implement them and submit patches.</description>
+      <param type="object" variable="$function">
+        <type full="_generated\callable" namespace="_generated" name="callable"/>
+      </param>
+      <see value="\Codeception\Module\PhpBrowser::executeInGuzzle()"/>
+    </docblock>
+    <parameter name="function" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="haveHttpHeader" start="147" end="149" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Sets the HTTP header to the passed value - which is used on
+subsequent HTTP requests through PhpBrowser.
+
+Example:
+```php
+&lt;?php
+$I-&gt;haveHttpHeader('X-Requested-With', 'Codeception');
+$I-&gt;amOnPage('test-headers.php');
+?&gt;
+```
+
+To use special chars in Header Key use HTML Character Entities:
+Example:
+Header with underscore - 'Client_Id'
+should be represented as - 'Client&amp;#x0005F;Id' or 'Client&amp;#95;Id'
+
+```php
+&lt;?php
+$I-&gt;haveHttpHeader('Client&amp;#95;Id', 'Codeception');
+?&gt;
+```</description>
+      <param description="the name of the request header" type="string" variable="$name"/>
+      <param description="the value to set it to for subsequent" type="string" variable="$value">requests</param>
+      <see value="\Codeception\Lib\InnerBrowser::haveHttpHeader()"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="deleteHeader" start="172" end="174" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Deletes the header with the passed name.  Subsequent requests
+will not have the deleted header in its request.
+
+Example:
+```php
+&lt;?php
+$I-&gt;haveHttpHeader('X-Requested-With', 'Codeception');
+$I-&gt;amOnPage('test-headers.php');
+// ...
+$I-&gt;deleteHeader('X-Requested-With');
+$I-&gt;amOnPage('some-other-page.php');
+?&gt;
+```</description>
+      <param description="the name of the header to delete." type="string" variable="$name"/>
+      <see value="\Codeception\Lib\InnerBrowser::deleteHeader()"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="amOnPage" start="193" end="195" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Opens the page for the given relative URI.
+
+``` php
+&lt;?php
+// opens front page
+$I-&gt;amOnPage('/');
+// opens /register page
+$I-&gt;amOnPage('/register');
+```</description>
+      <param type="string" variable="$page"/>
+      <see value="\Codeception\Lib\InnerBrowser::amOnPage()"/>
+    </docblock>
+    <parameter name="page" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="click" start="232" end="234" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Perform a click on a link or a button, given by a locator.
+If a fuzzy locator is given, the page will be searched for a button, link, or image matching the locator string.
+For buttons, the "value" attribute, "name" attribute, and inner text are searched.
+For links, the link text is searched.
+For images, the "alt" attribute and inner text of any parent links are searched.
+
+The second parameter is a context (CSS or XPath locator) to narrow the search.
+
+Note that if the locator matches a button of type `submit`, the form will be submitted.
+
+``` php
+&lt;?php
+// simple link
+$I-&gt;click('Logout');
+// button of form
+$I-&gt;click('Submit');
+// CSS button
+$I-&gt;click('#form input[type=submit]');
+// XPath
+$I-&gt;click('//form/*[@type=submit]');
+// link in context
+$I-&gt;click('Logout', '#nav');
+// using strict locator
+$I-&gt;click(['link' =&gt; 'Login']);
+?&gt;
+```</description>
+      <param variable="$link"/>
+      <param variable="$context"/>
+      <see value="\Codeception\Lib\InnerBrowser::click()"/>
+    </docblock>
+    <parameter name="link" byreference="false" type="{unknown}"/>
+    <parameter name="context" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="canSee" start="272" end="274" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the current page contains the given string (case insensitive).
+
+You can specify a specific HTML element (via CSS or XPath) as the second
+parameter to only search within that element.
+
+``` php
+&lt;?php
+$I-&gt;see('Logout');                        // I can suppose user is logged in
+$I-&gt;see('Sign Up', 'h1');                 // I can suppose it's a signup page
+$I-&gt;see('Sign Up', '//body/h1');          // with XPath
+$I-&gt;see('Sign Up', ['css' =&gt; 'body h1']); // with strict CSS locator
+```
+
+Note that the search is done after stripping all HTML tags from the body,
+so `$I-&gt;see('strong')` will return true for strings like:
+
+  - `&lt;p&gt;I am Stronger than thou&lt;/p&gt;`
+  - `&lt;script&gt;document.createElement('strong');&lt;/script&gt;`
+
+But will *not* be true for strings like:
+
+  - `&lt;strong&gt;Home&lt;/strong&gt;`
+  - `&lt;div class="strong"&gt;Home&lt;/strong&gt;`
+  - `&lt;!-- strong --&gt;`
+
+For checking the raw source code, use `seeInSource()`.</description>
+      <param type="string" variable="$text"/>
+      <param description="optional" type="string" variable="$selector">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Lib\InnerBrowser::see()"/>
+    </docblock>
+    <parameter name="text" byreference="false" type="{unknown}"/>
+    <parameter name="selector" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="see" start="309" end="311" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the current page contains the given string (case insensitive).
+
+You can specify a specific HTML element (via CSS or XPath) as the second
+parameter to only search within that element.
+
+``` php
+&lt;?php
+$I-&gt;see('Logout');                        // I can suppose user is logged in
+$I-&gt;see('Sign Up', 'h1');                 // I can suppose it's a signup page
+$I-&gt;see('Sign Up', '//body/h1');          // with XPath
+$I-&gt;see('Sign Up', ['css' =&gt; 'body h1']); // with strict CSS locator
+```
+
+Note that the search is done after stripping all HTML tags from the body,
+so `$I-&gt;see('strong')` will return true for strings like:
+
+  - `&lt;p&gt;I am Stronger than thou&lt;/p&gt;`
+  - `&lt;script&gt;document.createElement('strong');&lt;/script&gt;`
+
+But will *not* be true for strings like:
+
+  - `&lt;strong&gt;Home&lt;/strong&gt;`
+  - `&lt;div class="strong"&gt;Home&lt;/strong&gt;`
+  - `&lt;!-- strong --&gt;`
+
+For checking the raw source code, use `seeInSource()`.</description>
+      <param type="string" variable="$text"/>
+      <param description="optional" type="string" variable="$selector"/>
+      <see value="\Codeception\Lib\InnerBrowser::see()"/>
+    </docblock>
+    <parameter name="text" byreference="false" type="{unknown}"/>
+    <parameter name="selector" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="cantSee" start="347" end="349" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the current page doesn't contain the text specified (case insensitive).
+Give a locator as the second parameter to match a specific region.
+
+```php
+&lt;?php
+$I-&gt;dontSee('Login');                         // I can suppose user is already logged in
+$I-&gt;dontSee('Sign Up','h1');                  // I can suppose it's not a signup page
+$I-&gt;dontSee('Sign Up','//body/h1');           // with XPath
+$I-&gt;dontSee('Sign Up', ['css' =&gt; 'body h1']); // with strict CSS locator
+```
+
+Note that the search is done after stripping all HTML tags from the body,
+so `$I-&gt;dontSee('strong')` will fail on strings like:
+
+  - `&lt;p&gt;I am Stronger than thou&lt;/p&gt;`
+  - `&lt;script&gt;document.createElement('strong');&lt;/script&gt;`
+
+But will ignore strings like:
+
+  - `&lt;strong&gt;Home&lt;/strong&gt;`
+  - `&lt;div class="strong"&gt;Home&lt;/strong&gt;`
+  - `&lt;!-- strong --&gt;`
+
+For checking the raw source code, use `seeInSource()`.</description>
+      <param type="string" variable="$text"/>
+      <param description="optional" type="string" variable="$selector">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Lib\InnerBrowser::dontSee()"/>
+    </docblock>
+    <parameter name="text" byreference="false" type="{unknown}"/>
+    <parameter name="selector" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="dontSee" start="382" end="384" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the current page doesn't contain the text specified (case insensitive).
+Give a locator as the second parameter to match a specific region.
+
+```php
+&lt;?php
+$I-&gt;dontSee('Login');                         // I can suppose user is already logged in
+$I-&gt;dontSee('Sign Up','h1');                  // I can suppose it's not a signup page
+$I-&gt;dontSee('Sign Up','//body/h1');           // with XPath
+$I-&gt;dontSee('Sign Up', ['css' =&gt; 'body h1']); // with strict CSS locator
+```
+
+Note that the search is done after stripping all HTML tags from the body,
+so `$I-&gt;dontSee('strong')` will fail on strings like:
+
+  - `&lt;p&gt;I am Stronger than thou&lt;/p&gt;`
+  - `&lt;script&gt;document.createElement('strong');&lt;/script&gt;`
+
+But will ignore strings like:
+
+  - `&lt;strong&gt;Home&lt;/strong&gt;`
+  - `&lt;div class="strong"&gt;Home&lt;/strong&gt;`
+  - `&lt;!-- strong --&gt;`
+
+For checking the raw source code, use `seeInSource()`.</description>
+      <param type="string" variable="$text"/>
+      <param description="optional" type="string" variable="$selector"/>
+      <see value="\Codeception\Lib\InnerBrowser::dontSee()"/>
+    </docblock>
+    <parameter name="text" byreference="false" type="{unknown}"/>
+    <parameter name="selector" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="canSeeInSource" start="402" end="404" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the current page contains the given string in its
+raw source code.
+
+``` php
+&lt;?php
+$I-&gt;seeInSource('&lt;h1&gt;Green eggs &amp;amp; ham&lt;/h1&gt;');
+```</description>
+      <param variable="$raw">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Lib\InnerBrowser::seeInSource()"/>
+    </docblock>
+    <parameter name="raw" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="seeInSource" start="419" end="421" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the current page contains the given string in its
+raw source code.
+
+``` php
+&lt;?php
+$I-&gt;seeInSource('&lt;h1&gt;Green eggs &amp;amp; ham&lt;/h1&gt;');
+```</description>
+      <param variable="$raw"/>
+      <see value="\Codeception\Lib\InnerBrowser::seeInSource()"/>
+    </docblock>
+    <parameter name="raw" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="cantSeeInSource" start="439" end="441" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the current page contains the given string in its
+raw source code.
+
+```php
+&lt;?php
+$I-&gt;dontSeeInSource('&lt;h1&gt;Green eggs &amp;amp; ham&lt;/h1&gt;');
+```</description>
+      <param variable="$raw">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeInSource()"/>
+    </docblock>
+    <parameter name="raw" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="dontSeeInSource" start="456" end="458" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the current page contains the given string in its
+raw source code.
+
+```php
+&lt;?php
+$I-&gt;dontSeeInSource('&lt;h1&gt;Green eggs &amp;amp; ham&lt;/h1&gt;');
+```</description>
+      <param variable="$raw"/>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeInSource()"/>
+    </docblock>
+    <parameter name="raw" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="canSeeLink" start="479" end="481" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that there's a link with the specified text.
+Give a full URL as the second parameter to match links with that exact URL.
+
+``` php
+&lt;?php
+$I-&gt;seeLink('Logout'); // matches &lt;a href="#"&gt;Logout&lt;/a&gt;
+$I-&gt;seeLink('Logout','/logout'); // matches &lt;a href="/logout"&gt;Logout&lt;/a&gt;
+?&gt;
+```</description>
+      <param type="string" variable="$text"/>
+      <param description="optional" type="string" variable="$url">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Lib\InnerBrowser::seeLink()"/>
+    </docblock>
+    <parameter name="text" byreference="false" type="{unknown}"/>
+    <parameter name="url" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="seeLink" start="499" end="501" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that there's a link with the specified text.
+Give a full URL as the second parameter to match links with that exact URL.
+
+``` php
+&lt;?php
+$I-&gt;seeLink('Logout'); // matches &lt;a href="#"&gt;Logout&lt;/a&gt;
+$I-&gt;seeLink('Logout','/logout'); // matches &lt;a href="/logout"&gt;Logout&lt;/a&gt;
+?&gt;
+```</description>
+      <param type="string" variable="$text"/>
+      <param description="optional" type="string" variable="$url"/>
+      <see value="\Codeception\Lib\InnerBrowser::seeLink()"/>
+    </docblock>
+    <parameter name="text" byreference="false" type="{unknown}"/>
+    <parameter name="url" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="cantSeeLink" start="522" end="524" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the page doesn't contain a link with the given string.
+If the second parameter is given, only links with a matching "href" attribute will be checked.
+
+``` php
+&lt;?php
+$I-&gt;dontSeeLink('Logout'); // I suppose user is not logged in
+$I-&gt;dontSeeLink('Checkout now', '/store/cart.php');
+?&gt;
+```</description>
+      <param type="string" variable="$text"/>
+      <param description="optional" type="string" variable="$url">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeLink()"/>
+    </docblock>
+    <parameter name="text" byreference="false" type="{unknown}"/>
+    <parameter name="url" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="dontSeeLink" start="542" end="544" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the page doesn't contain a link with the given string.
+If the second parameter is given, only links with a matching "href" attribute will be checked.
+
+``` php
+&lt;?php
+$I-&gt;dontSeeLink('Logout'); // I suppose user is not logged in
+$I-&gt;dontSeeLink('Checkout now', '/store/cart.php');
+?&gt;
+```</description>
+      <param type="string" variable="$text"/>
+      <param description="optional" type="string" variable="$url"/>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeLink()"/>
+    </docblock>
+    <parameter name="text" byreference="false" type="{unknown}"/>
+    <parameter name="url" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="canSeeInCurrentUrl" start="565" end="567" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that current URI contains the given string.
+
+``` php
+&lt;?php
+// to match: /home/dashboard
+$I-&gt;seeInCurrentUrl('home');
+// to match: /users/1
+$I-&gt;seeInCurrentUrl('/users/');
+?&gt;
+```</description>
+      <param type="string" variable="$uri">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Lib\InnerBrowser::seeInCurrentUrl()"/>
+    </docblock>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="seeInCurrentUrl" start="585" end="587" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that current URI contains the given string.
+
+``` php
+&lt;?php
+// to match: /home/dashboard
+$I-&gt;seeInCurrentUrl('home');
+// to match: /users/1
+$I-&gt;seeInCurrentUrl('/users/');
+?&gt;
+```</description>
+      <param type="string" variable="$uri"/>
+      <see value="\Codeception\Lib\InnerBrowser::seeInCurrentUrl()"/>
+    </docblock>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="cantSeeInCurrentUrl" start="605" end="607" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the current URI doesn't contain the given string.
+
+``` php
+&lt;?php
+$I-&gt;dontSeeInCurrentUrl('/users/');
+?&gt;
+```</description>
+      <param type="string" variable="$uri">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeInCurrentUrl()"/>
+    </docblock>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="dontSeeInCurrentUrl" start="622" end="624" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the current URI doesn't contain the given string.
+
+``` php
+&lt;?php
+$I-&gt;dontSeeInCurrentUrl('/users/');
+?&gt;
+```</description>
+      <param type="string" variable="$uri"/>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeInCurrentUrl()"/>
+    </docblock>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="canSeeCurrentUrlEquals" start="644" end="646" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the current URL is equal to the given string.
+Unlike `seeInCurrentUrl`, this only matches the full URL.
+
+``` php
+&lt;?php
+// to match root url
+$I-&gt;seeCurrentUrlEquals('/');
+?&gt;
+```</description>
+      <param type="string" variable="$uri">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Lib\InnerBrowser::seeCurrentUrlEquals()"/>
+    </docblock>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="seeCurrentUrlEquals" start="663" end="665" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the current URL is equal to the given string.
+Unlike `seeInCurrentUrl`, this only matches the full URL.
+
+``` php
+&lt;?php
+// to match root url
+$I-&gt;seeCurrentUrlEquals('/');
+?&gt;
+```</description>
+      <param type="string" variable="$uri"/>
+      <see value="\Codeception\Lib\InnerBrowser::seeCurrentUrlEquals()"/>
+    </docblock>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="cantSeeCurrentUrlEquals" start="685" end="687" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the current URL doesn't equal the given string.
+Unlike `dontSeeInCurrentUrl`, this only matches the full URL.
+
+``` php
+&lt;?php
+// current url is not root
+$I-&gt;dontSeeCurrentUrlEquals('/');
+?&gt;
+```</description>
+      <param type="string" variable="$uri">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeCurrentUrlEquals()"/>
+    </docblock>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="dontSeeCurrentUrlEquals" start="704" end="706" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the current URL doesn't equal the given string.
+Unlike `dontSeeInCurrentUrl`, this only matches the full URL.
+
+``` php
+&lt;?php
+// current url is not root
+$I-&gt;dontSeeCurrentUrlEquals('/');
+?&gt;
+```</description>
+      <param type="string" variable="$uri"/>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeCurrentUrlEquals()"/>
+    </docblock>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="canSeeCurrentUrlMatches" start="725" end="727" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the current URL matches the given regular expression.
+
+``` php
+&lt;?php
+// to match root url
+$I-&gt;seeCurrentUrlMatches('~$/users/(\d+)~');
+?&gt;
+```</description>
+      <param type="string" variable="$uri">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Lib\InnerBrowser::seeCurrentUrlMatches()"/>
+    </docblock>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="seeCurrentUrlMatches" start="743" end="745" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the current URL matches the given regular expression.
+
+``` php
+&lt;?php
+// to match root url
+$I-&gt;seeCurrentUrlMatches('~$/users/(\d+)~');
+?&gt;
+```</description>
+      <param type="string" variable="$uri"/>
+      <see value="\Codeception\Lib\InnerBrowser::seeCurrentUrlMatches()"/>
+    </docblock>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="cantSeeCurrentUrlMatches" start="764" end="766" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that current url doesn't match the given regular expression.
+
+``` php
+&lt;?php
+// to match root url
+$I-&gt;dontSeeCurrentUrlMatches('~$/users/(\d+)~');
+?&gt;
+```</description>
+      <param type="string" variable="$uri">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeCurrentUrlMatches()"/>
+    </docblock>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="dontSeeCurrentUrlMatches" start="782" end="784" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that current url doesn't match the given regular expression.
+
+``` php
+&lt;?php
+// to match root url
+$I-&gt;dontSeeCurrentUrlMatches('~$/users/(\d+)~');
+?&gt;
+```</description>
+      <param type="string" variable="$uri"/>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeCurrentUrlMatches()"/>
+    </docblock>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="grabFromCurrentUrl" start="805" end="807" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Executes the given regular expression against the current URI and returns the first capturing group.
+If no parameters are provided, the full URI is returned.
+
+``` php
+&lt;?php
+$user_id = $I-&gt;grabFromCurrentUrl('~$/user/(\d+)/~');
+$uri = $I-&gt;grabFromCurrentUrl();
+?&gt;
+```</description>
+      <param description="optional" type="string" variable="$uri"/>
+      <return type="mixed"/>
+      <see value="\Codeception\Lib\InnerBrowser::grabFromCurrentUrl()"/>
+    </docblock>
+    <parameter name="uri" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="canSeeCheckboxIsChecked" start="827" end="829" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the specified checkbox is checked.
+
+``` php
+&lt;?php
+$I-&gt;seeCheckboxIsChecked('#agree'); // I suppose user agreed to terms
+$I-&gt;seeCheckboxIsChecked('#signup_form input[type=checkbox]'); // I suppose user agreed to terms, If there is only one checkbox in form.
+$I-&gt;seeCheckboxIsChecked('//form/input[@type=checkbox and @name=agree]');
+?&gt;
+```</description>
+      <param variable="$checkbox">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Lib\InnerBrowser::seeCheckboxIsChecked()"/>
+    </docblock>
+    <parameter name="checkbox" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="seeCheckboxIsChecked" start="846" end="848" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the specified checkbox is checked.
+
+``` php
+&lt;?php
+$I-&gt;seeCheckboxIsChecked('#agree'); // I suppose user agreed to terms
+$I-&gt;seeCheckboxIsChecked('#signup_form input[type=checkbox]'); // I suppose user agreed to terms, If there is only one checkbox in form.
+$I-&gt;seeCheckboxIsChecked('//form/input[@type=checkbox and @name=agree]');
+?&gt;
+```</description>
+      <param variable="$checkbox"/>
+      <see value="\Codeception\Lib\InnerBrowser::seeCheckboxIsChecked()"/>
+    </docblock>
+    <parameter name="checkbox" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="cantSeeCheckboxIsChecked" start="867" end="869" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Check that the specified checkbox is unchecked.
+
+``` php
+&lt;?php
+$I-&gt;dontSeeCheckboxIsChecked('#agree'); // I suppose user didn't agree to terms
+$I-&gt;seeCheckboxIsChecked('#signup_form input[type=checkbox]'); // I suppose user didn't check the first checkbox in form.
+?&gt;
+```</description>
+      <param variable="$checkbox">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeCheckboxIsChecked()"/>
+    </docblock>
+    <parameter name="checkbox" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="dontSeeCheckboxIsChecked" start="885" end="887" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Check that the specified checkbox is unchecked.
+
+``` php
+&lt;?php
+$I-&gt;dontSeeCheckboxIsChecked('#agree'); // I suppose user didn't agree to terms
+$I-&gt;seeCheckboxIsChecked('#signup_form input[type=checkbox]'); // I suppose user didn't check the first checkbox in form.
+?&gt;
+```</description>
+      <param variable="$checkbox"/>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeCheckboxIsChecked()"/>
+    </docblock>
+    <parameter name="checkbox" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="canSeeInField" start="912" end="914" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the given input field or textarea *equals* (i.e. not just contains) the given value.
+Fields are matched by label text, the "name" attribute, CSS, or XPath.
+
+``` php
+&lt;?php
+$I-&gt;seeInField('Body','Type your comment here');
+$I-&gt;seeInField('form textarea[name=body]','Type your comment here');
+$I-&gt;seeInField('form input[type=hidden]','hidden_value');
+$I-&gt;seeInField('#searchform input','Search');
+$I-&gt;seeInField('//form/*[@name=search]','Search');
+$I-&gt;seeInField(['name' =&gt; 'search'], 'Search');
+?&gt;
+```</description>
+      <param variable="$field"/>
+      <param variable="$value">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Lib\InnerBrowser::seeInField()"/>
+    </docblock>
+    <parameter name="field" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="seeInField" start="936" end="938" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the given input field or textarea *equals* (i.e. not just contains) the given value.
+Fields are matched by label text, the "name" attribute, CSS, or XPath.
+
+``` php
+&lt;?php
+$I-&gt;seeInField('Body','Type your comment here');
+$I-&gt;seeInField('form textarea[name=body]','Type your comment here');
+$I-&gt;seeInField('form input[type=hidden]','hidden_value');
+$I-&gt;seeInField('#searchform input','Search');
+$I-&gt;seeInField('//form/*[@name=search]','Search');
+$I-&gt;seeInField(['name' =&gt; 'search'], 'Search');
+?&gt;
+```</description>
+      <param variable="$field"/>
+      <param variable="$value"/>
+      <see value="\Codeception\Lib\InnerBrowser::seeInField()"/>
+    </docblock>
+    <parameter name="field" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="cantSeeInField" start="963" end="965" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that an input field or textarea doesn't contain the given value.
+For fuzzy locators, the field is matched by label text, CSS and XPath.
+
+``` php
+&lt;?php
+$I-&gt;dontSeeInField('Body','Type your comment here');
+$I-&gt;dontSeeInField('form textarea[name=body]','Type your comment here');
+$I-&gt;dontSeeInField('form input[type=hidden]','hidden_value');
+$I-&gt;dontSeeInField('#searchform input','Search');
+$I-&gt;dontSeeInField('//form/*[@name=search]','Search');
+$I-&gt;dontSeeInField(['name' =&gt; 'search'], 'Search');
+?&gt;
+```</description>
+      <param variable="$field"/>
+      <param variable="$value">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeInField()"/>
+    </docblock>
+    <parameter name="field" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="dontSeeInField" start="987" end="989" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that an input field or textarea doesn't contain the given value.
+For fuzzy locators, the field is matched by label text, CSS and XPath.
+
+``` php
+&lt;?php
+$I-&gt;dontSeeInField('Body','Type your comment here');
+$I-&gt;dontSeeInField('form textarea[name=body]','Type your comment here');
+$I-&gt;dontSeeInField('form input[type=hidden]','hidden_value');
+$I-&gt;dontSeeInField('#searchform input','Search');
+$I-&gt;dontSeeInField('//form/*[@name=search]','Search');
+$I-&gt;dontSeeInField(['name' =&gt; 'search'], 'Search');
+?&gt;
+```</description>
+      <param variable="$field"/>
+      <param variable="$value"/>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeInField()"/>
+    </docblock>
+    <parameter name="field" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="canSeeInFormFields" start="1057" end="1059" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks if the array of form parameters (name =&gt; value) are set on the form matched with the
+passed selector.
+
+``` php
+&lt;?php
+$I-&gt;seeInFormFields('form[name=myform]', [
+     'input1' =&gt; 'value',
+     'input2' =&gt; 'other value',
+]);
+?&gt;
+```
+
+For multi-select elements, or to check values of multiple elements with the same name, an
+array may be passed:
+
+``` php
+&lt;?php
+$I-&gt;seeInFormFields('.form-class', [
+     'multiselect' =&gt; [
+         'value1',
+         'value2',
+     ],
+     'checkbox[]' =&gt; [
+         'a checked value',
+         'another checked value',
+     ],
+]);
+?&gt;
+```
+
+Additionally, checkbox values can be checked with a boolean.
+
+``` php
+&lt;?php
+$I-&gt;seeInFormFields('#form-id', [
+     'checkbox1' =&gt; true,        // passes if checked
+     'checkbox2' =&gt; false,       // passes if unchecked
+]);
+?&gt;
+```
+
+Pair this with submitForm for quick testing magic.
+
+``` php
+&lt;?php
+$form = [
+     'field1' =&gt; 'value',
+     'field2' =&gt; 'another value',
+     'checkbox1' =&gt; true,
+     // ...
+];
+$I-&gt;submitForm('//form[@id=my-form]', $form, 'submitButton');
+// $I-&gt;amOnPage('/path/to/form-page') may be needed
+$I-&gt;seeInFormFields('//form[@id=my-form]', $form);
+?&gt;
+```</description>
+      <param variable="$formSelector"/>
+      <param variable="$params">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Lib\InnerBrowser::seeInFormFields()"/>
+    </docblock>
+    <parameter name="formSelector" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="seeInFormFields" start="1124" end="1126" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks if the array of form parameters (name =&gt; value) are set on the form matched with the
+passed selector.
+
+``` php
+&lt;?php
+$I-&gt;seeInFormFields('form[name=myform]', [
+     'input1' =&gt; 'value',
+     'input2' =&gt; 'other value',
+]);
+?&gt;
+```
+
+For multi-select elements, or to check values of multiple elements with the same name, an
+array may be passed:
+
+``` php
+&lt;?php
+$I-&gt;seeInFormFields('.form-class', [
+     'multiselect' =&gt; [
+         'value1',
+         'value2',
+     ],
+     'checkbox[]' =&gt; [
+         'a checked value',
+         'another checked value',
+     ],
+]);
+?&gt;
+```
+
+Additionally, checkbox values can be checked with a boolean.
+
+``` php
+&lt;?php
+$I-&gt;seeInFormFields('#form-id', [
+     'checkbox1' =&gt; true,        // passes if checked
+     'checkbox2' =&gt; false,       // passes if unchecked
+]);
+?&gt;
+```
+
+Pair this with submitForm for quick testing magic.
+
+``` php
+&lt;?php
+$form = [
+     'field1' =&gt; 'value',
+     'field2' =&gt; 'another value',
+     'checkbox1' =&gt; true,
+     // ...
+];
+$I-&gt;submitForm('//form[@id=my-form]', $form, 'submitButton');
+// $I-&gt;amOnPage('/path/to/form-page') may be needed
+$I-&gt;seeInFormFields('//form[@id=my-form]', $form);
+?&gt;
+```</description>
+      <param variable="$formSelector"/>
+      <param variable="$params"/>
+      <see value="\Codeception\Lib\InnerBrowser::seeInFormFields()"/>
+    </docblock>
+    <parameter name="formSelector" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="cantSeeInFormFields" start="1174" end="1176" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks if the array of form parameters (name =&gt; value) are not set on the form matched with
+the passed selector.
+
+``` php
+&lt;?php
+$I-&gt;dontSeeInFormFields('form[name=myform]', [
+     'input1' =&gt; 'non-existent value',
+     'input2' =&gt; 'other non-existent value',
+]);
+?&gt;
+```
+
+To check that an element hasn't been assigned any one of many values, an array can be passed
+as the value:
+
+``` php
+&lt;?php
+$I-&gt;dontSeeInFormFields('.form-class', [
+     'fieldName' =&gt; [
+         'This value shouldn\'t be set',
+         'And this value shouldn\'t be set',
+     ],
+]);
+?&gt;
+```
+
+Additionally, checkbox values can be checked with a boolean.
+
+``` php
+&lt;?php
+$I-&gt;dontSeeInFormFields('#form-id', [
+     'checkbox1' =&gt; true,        // fails if checked
+     'checkbox2' =&gt; false,       // fails if unchecked
+]);
+?&gt;
+```</description>
+      <param variable="$formSelector"/>
+      <param variable="$params">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeInFormFields()"/>
+    </docblock>
+    <parameter name="formSelector" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="dontSeeInFormFields" start="1221" end="1223" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks if the array of form parameters (name =&gt; value) are not set on the form matched with
+the passed selector.
+
+``` php
+&lt;?php
+$I-&gt;dontSeeInFormFields('form[name=myform]', [
+     'input1' =&gt; 'non-existent value',
+     'input2' =&gt; 'other non-existent value',
+]);
+?&gt;
+```
+
+To check that an element hasn't been assigned any one of many values, an array can be passed
+as the value:
+
+``` php
+&lt;?php
+$I-&gt;dontSeeInFormFields('.form-class', [
+     'fieldName' =&gt; [
+         'This value shouldn\'t be set',
+         'And this value shouldn\'t be set',
+     ],
+]);
+?&gt;
+```
+
+Additionally, checkbox values can be checked with a boolean.
+
+``` php
+&lt;?php
+$I-&gt;dontSeeInFormFields('#form-id', [
+     'checkbox1' =&gt; true,        // fails if checked
+     'checkbox2' =&gt; false,       // fails if unchecked
+]);
+?&gt;
+```</description>
+      <param variable="$formSelector"/>
+      <param variable="$params"/>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeInFormFields()"/>
+    </docblock>
+    <parameter name="formSelector" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="submitForm" start="1400" end="1402" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Submits the given form on the page, with the given form
+values.  Pass the form field's values as an array in the second
+parameter.
+
+Although this function can be used as a short-hand version of
+`fillField()`, `selectOption()`, `click()` etc. it has some important
+differences:
+
+ * Only field *names* may be used, not CSS/XPath selectors nor field labels
+ * If a field is sent to this function that does *not* exist on the page,
+   it will silently be added to the HTTP request.  This is helpful for testing
+   some types of forms, but be aware that you will *not* get an exception
+   like you would if you called `fillField()` or `selectOption()` with
+   a missing field.
+
+Fields that are not provided will be filled by their values from the page,
+or from any previous calls to `fillField()`, `selectOption()` etc.
+You don't need to click the 'Submit' button afterwards.
+This command itself triggers the request to form's action.
+
+You can optionally specify which button's value to include
+in the request with the last parameter (as an alternative to
+explicitly setting its value in the second parameter), as
+button values are not otherwise included in the request.
+
+Examples:
+
+``` php
+&lt;?php
+$I-&gt;submitForm('#login', [
+    'login' =&gt; 'davert',
+    'password' =&gt; '123456'
+]);
+// or
+$I-&gt;submitForm('#login', [
+    'login' =&gt; 'davert',
+    'password' =&gt; '123456'
+], 'submitButtonName');
+
+```
+
+For example, given this sample "Sign Up" form:
+
+``` html
+&lt;form action="/sign_up"&gt;
+    Login:
+    &lt;input type="text" name="user[login]" /&gt;&lt;br/&gt;
+    Password:
+    &lt;input type="password" name="user[password]" /&gt;&lt;br/&gt;
+    Do you agree to our terms?
+    &lt;input type="checkbox" name="user[agree]" /&gt;&lt;br/&gt;
+    Select pricing plan:
+    &lt;select name="plan"&gt;
+        &lt;option value="1"&gt;Free&lt;/option&gt;
+        &lt;option value="2" selected="selected"&gt;Paid&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;input type="submit" name="submitButton" value="Submit" /&gt;
+&lt;/form&gt;
+```
+
+You could write the following to submit it:
+
+``` php
+&lt;?php
+$I-&gt;submitForm(
+    '#userForm',
+    [
+        'user' =&gt; [
+            'login' =&gt; 'Davert',
+            'password' =&gt; '123456',
+            'agree' =&gt; true
+        ]
+    ],
+    'submitButton'
+);
+```
+Note that "2" will be the submitted value for the "plan" field, as it is
+the selected option.
+
+You can also emulate a JavaScript submission by not specifying any
+buttons in the third parameter to submitForm.
+
+```php
+&lt;?php
+$I-&gt;submitForm(
+    '#userForm',
+    [
+        'user' =&gt; [
+            'login' =&gt; 'Davert',
+            'password' =&gt; '123456',
+            'agree' =&gt; true
+        ]
+    ]
+);
+```
+
+This function works well when paired with `seeInFormFields()`
+for quickly testing CRUD interfaces and form validation logic.
+
+``` php
+&lt;?php
+$form = [
+     'field1' =&gt; 'value',
+     'field2' =&gt; 'another value',
+     'checkbox1' =&gt; true,
+     // ...
+];
+$I-&gt;submitForm('#my-form', $form, 'submitButton');
+// $I-&gt;amOnPage('/path/to/form-page') may be needed
+$I-&gt;seeInFormFields('#my-form', $form);
+```
+
+Parameter values can be set to arrays for multiple input fields
+of the same name, or multi-select combo boxes.  For checkboxes,
+you can use either the string value or boolean `true`/`false` which will
+be replaced by the checkbox's value in the DOM.
+
+``` php
+&lt;?php
+$I-&gt;submitForm('#my-form', [
+     'field1' =&gt; 'value',
+     'checkbox' =&gt; [
+         'value of first checkbox',
+         'value of second checkbox',
+     ],
+     'otherCheckboxes' =&gt; [
+         true,
+         false,
+         false
+     ],
+     'multiselect' =&gt; [
+         'first option value',
+         'second option value'
+     ]
+]);
+```
+
+Mixing string and boolean values for a checkbox's value is not supported
+and may produce unexpected results.
+
+Field names ending in `[]` must be passed without the trailing square
+bracket characters, and must contain an array for its value.  This allows
+submitting multiple values with the same name, consider:
+
+```php
+&lt;?php
+// This will NOT work correctly
+$I-&gt;submitForm('#my-form', [
+    'field[]' =&gt; 'value',
+    'field[]' =&gt; 'another value',  // 'field[]' is already a defined key
+]);
+```
+
+The solution is to pass an array value:
+
+```php
+&lt;?php
+// This way both values are submitted
+$I-&gt;submitForm('#my-form', [
+    'field' =&gt; [
+        'value',
+        'another value',
+    ]
+]);
+```</description>
+      <param variable="$selector"/>
+      <param variable="$params"/>
+      <param variable="$button"/>
+      <see value="\Codeception\Lib\InnerBrowser::submitForm()"/>
+    </docblock>
+    <parameter name="selector" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}"/>
+    <parameter name="button" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="fillField" start="1421" end="1423" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Fills a text field or textarea with the given string.
+
+``` php
+&lt;?php
+$I-&gt;fillField("//input[@type='text']", "Hello World!");
+$I-&gt;fillField(['name' =&gt; 'email'], 'jon@mail.com');
+?&gt;
+```</description>
+      <param variable="$field"/>
+      <param variable="$value"/>
+      <see value="\Codeception\Lib\InnerBrowser::fillField()"/>
+    </docblock>
+    <parameter name="field" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="selectOption" start="1460" end="1462" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Selects an option in a select tag or in radio button group.
+
+``` php
+&lt;?php
+$I-&gt;selectOption('form select[name=account]', 'Premium');
+$I-&gt;selectOption('form input[name=payment]', 'Monthly');
+$I-&gt;selectOption('//form/select[@name=account]', 'Monthly');
+?&gt;
+```
+
+Provide an array for the second argument to select multiple options:
+
+``` php
+&lt;?php
+$I-&gt;selectOption('Which OS do you use?', array('Windows','Linux'));
+?&gt;
+```
+
+Or provide an associative array for the second argument to specifically define which selection method should be used:
+
+``` php
+&lt;?php
+$I-&gt;selectOption('Which OS do you use?', array('text' =&gt; 'Windows')); // Only search by text 'Windows'
+$I-&gt;selectOption('Which OS do you use?', array('value' =&gt; 'windows')); // Only search by value 'windows'
+?&gt;
+```</description>
+      <param variable="$select"/>
+      <param variable="$option"/>
+      <see value="\Codeception\Lib\InnerBrowser::selectOption()"/>
+    </docblock>
+    <parameter name="select" byreference="false" type="{unknown}"/>
+    <parameter name="option" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="checkOption" start="1479" end="1481" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Ticks a checkbox. For radio buttons, use the `selectOption` method instead.
+
+``` php
+&lt;?php
+$I-&gt;checkOption('#agree');
+?&gt;
+```</description>
+      <param variable="$option"/>
+      <see value="\Codeception\Lib\InnerBrowser::checkOption()"/>
+    </docblock>
+    <parameter name="option" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="uncheckOption" start="1498" end="1500" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Unticks a checkbox.
+
+``` php
+&lt;?php
+$I-&gt;uncheckOption('#notify');
+?&gt;
+```</description>
+      <param variable="$option"/>
+      <see value="\Codeception\Lib\InnerBrowser::uncheckOption()"/>
+    </docblock>
+    <parameter name="option" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="attachFile" start="1519" end="1521" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Attaches a file relative to the Codeception `_data` directory to the given file upload field.
+
+``` php
+&lt;?php
+// file is stored in 'tests/_data/prices.xls'
+$I-&gt;attachFile('input[@type="file"]', 'prices.xls');
+?&gt;
+```</description>
+      <param variable="$field"/>
+      <param variable="$filename"/>
+      <see value="\Codeception\Lib\InnerBrowser::attachFile()"/>
+    </docblock>
+    <parameter name="field" byreference="false" type="{unknown}"/>
+    <parameter name="filename" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="sendAjaxGetRequest" start="1536" end="1538" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">If your page triggers an ajax request, you can perform it manually.
+This action sends a GET ajax request with specified params.
+
+See -&gt;sendAjaxPostRequest for examples.</description>
+      <param variable="$uri"/>
+      <param variable="$params"/>
+      <see value="\Codeception\Lib\InnerBrowser::sendAjaxGetRequest()"/>
+    </docblock>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="sendAjaxPostRequest" start="1564" end="1566" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">If your page triggers an ajax request, you can perform it manually.
+This action sends a POST ajax request with specified params.
+Additional params can be passed as array.
+
+Example:
+
+Imagine that by clicking checkbox you trigger ajax request which updates user settings.
+We emulate that click by running this ajax request manually.
+
+``` php
+&lt;?php
+$I-&gt;sendAjaxPostRequest('/updateSettings', array('notifications' =&gt; true)); // POST
+$I-&gt;sendAjaxGetRequest('/updateSettings', array('notifications' =&gt; true)); // GET
+
+```</description>
+      <param variable="$uri"/>
+      <param variable="$params"/>
+      <see value="\Codeception\Lib\InnerBrowser::sendAjaxPostRequest()"/>
+    </docblock>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="sendAjaxRequest" start="1590" end="1592" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">If your page triggers an ajax request, you can perform it manually.
+This action sends an ajax request with specified method and params.
+
+Example:
+
+You need to perform an ajax request specifying the HTTP method.
+
+``` php
+&lt;?php
+$I-&gt;sendAjaxRequest('PUT', '/posts/7', array('title' =&gt; 'new title'));
+
+```</description>
+      <param variable="$method"/>
+      <param variable="$uri"/>
+      <param variable="$params"/>
+      <see value="\Codeception\Lib\InnerBrowser::sendAjaxRequest()"/>
+    </docblock>
+    <parameter name="method" byreference="false" type="{unknown}"/>
+    <parameter name="uri" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="grabTextFrom" start="1615" end="1617" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Finds and returns the text contents of the given element.
+If a fuzzy locator is used, the element is found using CSS, XPath,
+and by matching the full page source by regular expression.
+
+``` php
+&lt;?php
+$heading = $I-&gt;grabTextFrom('h1');
+$heading = $I-&gt;grabTextFrom('descendant-or-self::h1');
+$value = $I-&gt;grabTextFrom('~&lt;input value=(.*?)]~sgi'); // match with a regex
+?&gt;
+```</description>
+      <param variable="$cssOrXPathOrRegex"/>
+      <return type="mixed"/>
+      <see value="\Codeception\Lib\InnerBrowser::grabTextFrom()"/>
+    </docblock>
+    <parameter name="cssOrXPathOrRegex" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="grabAttributeFrom" start="1639" end="1641" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Grabs the value of the given attribute value from the given element.
+Fails if element is not found.
+
+``` php
+&lt;?php
+$I-&gt;grabAttributeFrom('#tooltip', 'title');
+?&gt;
+```</description>
+      <param variable="$cssOrXpath"/>
+      <param variable="$attribute"/>
+      <return type="mixed"/>
+      <see value="\Codeception\Lib\InnerBrowser::grabAttributeFrom()"/>
+    </docblock>
+    <parameter name="cssOrXpath" byreference="false" type="{unknown}"/>
+    <parameter name="attribute" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="grabMultiple" start="1671" end="1673" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Grabs either the text content, or attribute values, of nodes
+matched by $cssOrXpath and returns them as an array.
+
+```html
+&lt;a href="#first"&gt;First&lt;/a&gt;
+&lt;a href="#second"&gt;Second&lt;/a&gt;
+&lt;a href="#third"&gt;Third&lt;/a&gt;
+```
+
+```php
+&lt;?php
+// would return ['First', 'Second', 'Third']
+$aLinkText = $I-&gt;grabMultiple('a');
+
+// would return ['#first', '#second', '#third']
+$aLinks = $I-&gt;grabMultiple('a', 'href');
+?&gt;
+```</description>
+      <param variable="$cssOrXpath"/>
+      <param variable="$attribute"/>
+      <return type="array" of="object">
+        <type full="_generated\string" namespace="_generated" name="string"/>
+      </return>
+      <see value="\Codeception\Lib\InnerBrowser::grabMultiple()"/>
+    </docblock>
+    <parameter name="cssOrXpath" byreference="false" type="{unknown}"/>
+    <parameter name="attribute" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="grabValueFrom" start="1684" end="1686" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
+      <param variable="$field"/>
+      <return type="object">
+        <type full="_generated\array|mixed|null|string" namespace="_generated" name="array|mixed|null|string"/>
+      </return>
+      <see value="\Codeception\Lib\InnerBrowser::grabValueFrom()"/>
+    </docblock>
+    <parameter name="field" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setCookie" start="1708" end="1710" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Sets a cookie with the given name and value.
+You can set additional cookie params like `domain`, `path`, `expires`, `secure` in array passed as last argument.
+
+``` php
+&lt;?php
+$I-&gt;setCookie('PHPSESSID', 'el4ukv0kqbvoirg7nkp4dncpk3');
+?&gt;
+```</description>
+      <param variable="$name"/>
+      <param variable="$val"/>
+      <param type="array" variable="$params"/>
+      <return type="mixed"/>
+      <see value="\Codeception\Lib\InnerBrowser::setCookie()"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="val" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="grabCookie" start="1725" end="1727" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Grabs a cookie value.
+You can set additional cookie params like `domain`, `path` in array passed as last argument.</description>
+      <param variable="$cookie"/>
+      <param type="array" variable="$params"/>
+      <return type="mixed"/>
+      <see value="\Codeception\Lib\InnerBrowser::grabCookie()"/>
+    </docblock>
+    <parameter name="cookie" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="grabPageSource" start="1740" end="1742" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Grabs current page source code.</description>
+      <throws description="if no page was opened." type="object">
+        <type full="_generated\ModuleException" namespace="_generated" name="ModuleException"/>
+      </throws>
+      <return description="Current page source code." type="string"/>
+      <see value="\Codeception\Lib\InnerBrowser::grabPageSource()"/>
+    </docblock>
+  </method>
+  <method name="canSeeCookie" start="1763" end="1765" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that a cookie with the given name is set.
+You can set additional cookie params like `domain`, `path` as array passed in last argument.
+
+``` php
+&lt;?php
+$I-&gt;seeCookie('PHPSESSID');
+?&gt;
+```</description>
+      <param variable="$cookie"/>
+      <param type="array" variable="$params"/>
+      <return type="mixed">Conditional Assertion: Test won't be stopped on fail</return>
+      <see value="\Codeception\Lib\InnerBrowser::seeCookie()"/>
+    </docblock>
+    <parameter name="cookie" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="seeCookie" start="1783" end="1785" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that a cookie with the given name is set.
+You can set additional cookie params like `domain`, `path` as array passed in last argument.
+
+``` php
+&lt;?php
+$I-&gt;seeCookie('PHPSESSID');
+?&gt;
+```</description>
+      <param variable="$cookie"/>
+      <param type="array" variable="$params"/>
+      <return type="mixed"/>
+      <see value="\Codeception\Lib\InnerBrowser::seeCookie()"/>
+    </docblock>
+    <parameter name="cookie" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="cantSeeCookie" start="1801" end="1803" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that there isn't a cookie with the given name.
+You can set additional cookie params like `domain`, `path` as array passed in last argument.</description>
+      <param variable="$cookie"/>
+      <param type="array" variable="$params"/>
+      <return type="mixed">Conditional Assertion: Test won't be stopped on fail</return>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeCookie()"/>
+    </docblock>
+    <parameter name="cookie" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="dontSeeCookie" start="1816" end="1818" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that there isn't a cookie with the given name.
+You can set additional cookie params like `domain`, `path` as array passed in last argument.</description>
+      <param variable="$cookie"/>
+      <param type="array" variable="$params"/>
+      <return type="mixed"/>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeCookie()"/>
+    </docblock>
+    <parameter name="cookie" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="resetCookie" start="1833" end="1835" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Unsets cookie with the given name.
+You can set additional cookie params like `domain`, `path` in array passed as last argument.</description>
+      <param variable="$cookie"/>
+      <param type="array" variable="$params"/>
+      <return type="mixed"/>
+      <see value="\Codeception\Lib\InnerBrowser::resetCookie()"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="canSeeElement" start="1862" end="1864" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the given element exists on the page and is visible.
+You can also specify expected attributes of this element.
+
+``` php
+&lt;?php
+$I-&gt;seeElement('.error');
+$I-&gt;seeElement('//form/input[1]');
+$I-&gt;seeElement('input', ['name' =&gt; 'login']);
+$I-&gt;seeElement('input', ['value' =&gt; '123456']);
+
+// strict locator in first arg, attributes in second
+$I-&gt;seeElement(['css' =&gt; 'form input'], ['name' =&gt; 'login']);
+?&gt;
+```</description>
+      <param variable="$selector"/>
+      <param type="array" variable="$attributes"/>
+      <return>Conditional Assertion: Test won't be stopped on fail</return>
+      <see value="\Codeception\Lib\InnerBrowser::seeElement()"/>
+    </docblock>
+    <parameter name="selector" byreference="false" type="{unknown}"/>
+    <parameter name="attributes" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="seeElement" start="1888" end="1890" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the given element exists on the page and is visible.
+You can also specify expected attributes of this element.
+
+``` php
+&lt;?php
+$I-&gt;seeElement('.error');
+$I-&gt;seeElement('//form/input[1]');
+$I-&gt;seeElement('input', ['name' =&gt; 'login']);
+$I-&gt;seeElement('input', ['value' =&gt; '123456']);
+
+// strict locator in first arg, attributes in second
+$I-&gt;seeElement(['css' =&gt; 'form input'], ['name' =&gt; 'login']);
+?&gt;
+```</description>
+      <param variable="$selector"/>
+      <param type="array" variable="$attributes"/>
+      <return/>
+      <see value="\Codeception\Lib\InnerBrowser::seeElement()"/>
+    </docblock>
+    <parameter name="selector" byreference="false" type="{unknown}"/>
+    <parameter name="attributes" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="cantSeeElement" start="1913" end="1915" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the given element is invisible or not present on the page.
+You can also specify expected attributes of this element.
+
+``` php
+&lt;?php
+$I-&gt;dontSeeElement('.error');
+$I-&gt;dontSeeElement('//form/input[1]');
+$I-&gt;dontSeeElement('input', ['name' =&gt; 'login']);
+$I-&gt;dontSeeElement('input', ['value' =&gt; '123456']);
+?&gt;
+```</description>
+      <param variable="$selector"/>
+      <param type="array" variable="$attributes">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeElement()"/>
+    </docblock>
+    <parameter name="selector" byreference="false" type="{unknown}"/>
+    <parameter name="attributes" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="dontSeeElement" start="1935" end="1937" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the given element is invisible or not present on the page.
+You can also specify expected attributes of this element.
+
+``` php
+&lt;?php
+$I-&gt;dontSeeElement('.error');
+$I-&gt;dontSeeElement('//form/input[1]');
+$I-&gt;dontSeeElement('input', ['name' =&gt; 'login']);
+$I-&gt;dontSeeElement('input', ['value' =&gt; '123456']);
+?&gt;
+```</description>
+      <param variable="$selector"/>
+      <param type="array" variable="$attributes"/>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeElement()"/>
+    </docblock>
+    <parameter name="selector" byreference="false" type="{unknown}"/>
+    <parameter name="attributes" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="canSeeNumberOfElements" start="1956" end="1958" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that there are a certain number of elements matched by the given locator on the page.
+
+``` php
+&lt;?php
+$I-&gt;seeNumberOfElements('tr', 10);
+$I-&gt;seeNumberOfElements('tr', [0,10]); // between 0 and 10 elements
+?&gt;
+```</description>
+      <param variable="$selector"/>
+      <param description="int or int[]" type="mixed" variable="$expected">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Lib\InnerBrowser::seeNumberOfElements()"/>
+    </docblock>
+    <parameter name="selector" byreference="false" type="{unknown}"/>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="seeNumberOfElements" start="1974" end="1976" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that there are a certain number of elements matched by the given locator on the page.
+
+``` php
+&lt;?php
+$I-&gt;seeNumberOfElements('tr', 10);
+$I-&gt;seeNumberOfElements('tr', [0,10]); // between 0 and 10 elements
+?&gt;
+```</description>
+      <param variable="$selector"/>
+      <param description="int or int[]" type="mixed" variable="$expected"/>
+      <see value="\Codeception\Lib\InnerBrowser::seeNumberOfElements()"/>
+    </docblock>
+    <parameter name="selector" byreference="false" type="{unknown}"/>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="canSeeOptionIsSelected" start="1997" end="1999" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the given option is selected.
+
+``` php
+&lt;?php
+$I-&gt;seeOptionIsSelected('#form input[name=payment]', 'Visa');
+?&gt;
+```</description>
+      <param variable="$selector"/>
+      <param variable="$optionText"/>
+      <return type="mixed">Conditional Assertion: Test won't be stopped on fail</return>
+      <see value="\Codeception\Lib\InnerBrowser::seeOptionIsSelected()"/>
+    </docblock>
+    <parameter name="selector" byreference="false" type="{unknown}"/>
+    <parameter name="optionText" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="seeOptionIsSelected" start="2017" end="2019" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the given option is selected.
+
+``` php
+&lt;?php
+$I-&gt;seeOptionIsSelected('#form input[name=payment]', 'Visa');
+?&gt;
+```</description>
+      <param variable="$selector"/>
+      <param variable="$optionText"/>
+      <return type="mixed"/>
+      <see value="\Codeception\Lib\InnerBrowser::seeOptionIsSelected()"/>
+    </docblock>
+    <parameter name="selector" byreference="false" type="{unknown}"/>
+    <parameter name="optionText" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="cantSeeOptionIsSelected" start="2040" end="2042" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the given option is not selected.
+
+``` php
+&lt;?php
+$I-&gt;dontSeeOptionIsSelected('#form input[name=payment]', 'Visa');
+?&gt;
+```</description>
+      <param variable="$selector"/>
+      <param variable="$optionText"/>
+      <return type="mixed">Conditional Assertion: Test won't be stopped on fail</return>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeOptionIsSelected()"/>
+    </docblock>
+    <parameter name="selector" byreference="false" type="{unknown}"/>
+    <parameter name="optionText" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="dontSeeOptionIsSelected" start="2060" end="2062" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the given option is not selected.
+
+``` php
+&lt;?php
+$I-&gt;dontSeeOptionIsSelected('#form input[name=payment]', 'Visa');
+?&gt;
+```</description>
+      <param variable="$selector"/>
+      <param variable="$optionText"/>
+      <return type="mixed"/>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeOptionIsSelected()"/>
+    </docblock>
+    <parameter name="selector" byreference="false" type="{unknown}"/>
+    <parameter name="optionText" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="canSeePageNotFound" start="2072" end="2074" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that current page has 404 response status code.
+Conditional Assertion: Test won't be stopped on fail</description>
+      <see value="\Codeception\Lib\InnerBrowser::seePageNotFound()"/>
+    </docblock>
+  </method>
+  <method name="seePageNotFound" start="2081" end="2083" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that current page has 404 response status code.</description>
+      <see value="\Codeception\Lib\InnerBrowser::seePageNotFound()"/>
+    </docblock>
+  </method>
+  <method name="canSeeResponseCodeIs" start="2103" end="2105" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that response code is equal to value provided.
+
+```php
+&lt;?php
+$I-&gt;seeResponseCodeIs(200);
+
+// recommended \Codeception\Util\HttpCode
+$I-&gt;seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
+```</description>
+      <param variable="$code">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Lib\InnerBrowser::seeResponseCodeIs()"/>
+    </docblock>
+    <parameter name="code" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="seeResponseCodeIs" start="2122" end="2124" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that response code is equal to value provided.
+
+```php
+&lt;?php
+$I-&gt;seeResponseCodeIs(200);
+
+// recommended \Codeception\Util\HttpCode
+$I-&gt;seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
+```</description>
+      <param variable="$code"/>
+      <see value="\Codeception\Lib\InnerBrowser::seeResponseCodeIs()"/>
+    </docblock>
+    <parameter name="code" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="cantSeeResponseCodeIs" start="2143" end="2145" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that response code is equal to value provided.
+
+```php
+&lt;?php
+$I-&gt;dontSeeResponseCodeIs(200);
+
+// recommended \Codeception\Util\HttpCode
+$I-&gt;dontSeeResponseCodeIs(\Codeception\Util\HttpCode::OK);
+```</description>
+      <param variable="$code">Conditional Assertion: Test won't be stopped on fail</param>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeResponseCodeIs()"/>
+    </docblock>
+    <parameter name="code" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="dontSeeResponseCodeIs" start="2161" end="2163" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that response code is equal to value provided.
+
+```php
+&lt;?php
+$I-&gt;dontSeeResponseCodeIs(200);
+
+// recommended \Codeception\Util\HttpCode
+$I-&gt;dontSeeResponseCodeIs(\Codeception\Util\HttpCode::OK);
+```</description>
+      <param variable="$code"/>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeResponseCodeIs()"/>
+    </docblock>
+    <parameter name="code" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="canSeeInTitle" start="2183" end="2185" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the page title contains the given string.
+
+``` php
+&lt;?php
+$I-&gt;seeInTitle('Blog - Post #1');
+?&gt;
+```</description>
+      <param variable="$title"/>
+      <return type="mixed">Conditional Assertion: Test won't be stopped on fail</return>
+      <see value="\Codeception\Lib\InnerBrowser::seeInTitle()"/>
+    </docblock>
+    <parameter name="title" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="seeInTitle" start="2202" end="2204" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the page title contains the given string.
+
+``` php
+&lt;?php
+$I-&gt;seeInTitle('Blog - Post #1');
+?&gt;
+```</description>
+      <param variable="$title"/>
+      <return type="mixed"/>
+      <see value="\Codeception\Lib\InnerBrowser::seeInTitle()"/>
+    </docblock>
+    <parameter name="title" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="cantSeeInTitle" start="2218" end="2220" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the page title does not contain the given string.</description>
+      <param variable="$title"/>
+      <return type="mixed">Conditional Assertion: Test won't be stopped on fail</return>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeInTitle()"/>
+    </docblock>
+    <parameter name="title" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="dontSeeInTitle" start="2231" end="2233" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the page title does not contain the given string.</description>
+      <param variable="$title"/>
+      <return type="mixed"/>
+      <see value="\Codeception\Lib\InnerBrowser::dontSeeInTitle()"/>
+    </docblock>
+    <parameter name="title" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="switchToIframe" start="2255" end="2257" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Switch to iframe or frame on the page.
+
+Example:
+``` html
+&lt;iframe name="another_frame" src="http://example.com"&gt;
+```
+
+``` php
+&lt;?php
+# switch to iframe
+$I-&gt;switchToIframe("another_frame");
+```</description>
+      <param type="string" variable="$name"/>
+      <see value="\Codeception\Lib\InnerBrowser::switchToIframe()"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="moveBack" start="2268" end="2270" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Moves back in history.</description>
+      <param description="(default value 1)" type="int" variable="$numberOfSteps"/>
+      <see value="\Codeception\Lib\InnerBrowser::moveBack()"/>
+    </docblock>
+    <parameter name="numberOfSteps" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <users>
+    <class full="AcceptanceTester" namespace="" name="AcceptanceTester"/>
+  </users>
+</trait>

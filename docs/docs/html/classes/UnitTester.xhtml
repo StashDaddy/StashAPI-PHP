@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - UnitTester</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">UnitTester</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/tests/_support/UnitTester.php.xhtml#line19">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>UnitTester</h1>
+        <h4>Inherited Methods</h4>
+        <p/>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class UnitTester
+                extends Actor
+            {<br/><ul class="none"><li>// Inherited methods from <span title="_generated\UnitTesterActions">UnitTesterActions</span></li><li>protected abstract Scenario <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/getScenario.xhtml">getScenario</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/expectException.xhtml">expectException</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/expectThrowable.xhtml">expectThrowable</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertEquals.xhtml">assertEquals</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertNotEquals.xhtml">assertNotEquals</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertSame.xhtml">assertSame</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertNotSame.xhtml">assertNotSame</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertGreaterThan.xhtml">assertGreaterThan</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertGreaterThanOrEqual.xhtml">assertGreaterThanOrEqual</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertLessThan.xhtml">assertLessThan</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertLessThanOrEqual.xhtml">assertLessThanOrEqual</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertContains.xhtml">assertContains</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertNotContains.xhtml">assertNotContains</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertRegExp.xhtml">assertRegExp</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertNotRegExp.xhtml">assertNotRegExp</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertStringStartsWith.xhtml">assertStringStartsWith</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertStringStartsNotWith.xhtml">assertStringStartsNotWith</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertEmpty.xhtml">assertEmpty</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertNotEmpty.xhtml">assertNotEmpty</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertNull.xhtml">assertNull</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertNotNull.xhtml">assertNotNull</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertTrue.xhtml">assertTrue</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertNotTrue.xhtml">assertNotTrue</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertFalse.xhtml">assertFalse</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertNotFalse.xhtml">assertNotFalse</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertFileExists.xhtml">assertFileExists</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertFileNotExists.xhtml">assertFileNotExists</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertGreaterOrEquals.xhtml">assertGreaterOrEquals</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertLessOrEquals.xhtml">assertLessOrEquals</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsEmpty.xhtml">assertIsEmpty</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertArrayHasKey.xhtml">assertArrayHasKey</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertArrayNotHasKey.xhtml">assertArrayNotHasKey</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertCount.xhtml">assertCount</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertInstanceOf.xhtml">assertInstanceOf</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertNotInstanceOf.xhtml">assertNotInstanceOf</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertInternalType.xhtml">assertInternalType</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/fail.xhtml">fail</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertStringContainsString.xhtml">assertStringContainsString</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertStringNotContainsString.xhtml">assertStringNotContainsString</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertStringContainsStringIgnoringCase.xhtml">assertStringContainsStringIgnoringCase</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertStringNotContainsStringIgnoringCase.xhtml">assertStringNotContainsStringIgnoringCase</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsArray.xhtml">assertIsArray</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsBool.xhtml">assertIsBool</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsFloat.xhtml">assertIsFloat</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsInt.xhtml">assertIsInt</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsNumeric.xhtml">assertIsNumeric</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsObject.xhtml">assertIsObject</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsResource.xhtml">assertIsResource</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsString.xhtml">assertIsString</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsScalar.xhtml">assertIsScalar</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsCallable.xhtml">assertIsCallable</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsNotArray.xhtml">assertIsNotArray</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsNotBool.xhtml">assertIsNotBool</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsNotFloat.xhtml">assertIsNotFloat</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsNotInt.xhtml">assertIsNotInt</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsNotNumeric.xhtml">assertIsNotNumeric</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsNotObject.xhtml">assertIsNotObject</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsNotResource.xhtml">assertIsNotResource</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsNotString.xhtml">assertIsNotString</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsNotScalar.xhtml">assertIsNotScalar</a>()
+                        </li><li>public void <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsNotCallable.xhtml">assertIsNotCallable</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>Codeception\Actor</li>
+          </ul>
+          <h4>Uses</h4>
+          <ul>
+            <li>
+              <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions.xhtml">_generated\UnitTesterActions</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h3>Inherited from <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions.xhtml">_generated\UnitTesterActions</a></h3>
+          <h4>protected</h4>
+          <ul>
+            <li id="getScenario">
+              <a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/getScenario.xhtml">getScenario()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="assertArrayHasKey"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertArrayHasKey.xhtml">assertArrayHasKey()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertArrayNotHasKey"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertArrayNotHasKey.xhtml">assertArrayNotHasKey()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertContains"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertContains.xhtml">assertContains()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertCount"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertCount.xhtml">assertCount()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertEmpty"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertEmpty.xhtml">assertEmpty()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertEquals"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertEquals.xhtml">assertEquals()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertFalse"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertFalse.xhtml">assertFalse()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertFileExists"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertFileExists.xhtml">assertFileExists()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertFileNotExists"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertFileNotExists.xhtml">assertFileNotExists()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertGreaterOrEquals"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertGreaterOrEquals.xhtml">assertGreaterOrEquals()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertGreaterThan"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertGreaterThan.xhtml">assertGreaterThan()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertGreaterThanOrEqual"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertGreaterThanOrEqual.xhtml">assertGreaterThanOrEqual()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertInstanceOf"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertInstanceOf.xhtml">assertInstanceOf()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertInternalType"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertInternalType.xhtml">assertInternalType()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertIsArray"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsArray.xhtml">assertIsArray()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertIsBool"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsBool.xhtml">assertIsBool()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertIsCallable"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsCallable.xhtml">assertIsCallable()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertIsEmpty"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsEmpty.xhtml">assertIsEmpty()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertIsFloat"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsFloat.xhtml">assertIsFloat()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertIsInt"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsInt.xhtml">assertIsInt()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertIsNotArray"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsNotArray.xhtml">assertIsNotArray()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertIsNotBool"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsNotBool.xhtml">assertIsNotBool()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertIsNotCallable"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsNotCallable.xhtml">assertIsNotCallable()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertIsNotFloat"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsNotFloat.xhtml">assertIsNotFloat()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertIsNotInt"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsNotInt.xhtml">assertIsNotInt()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertIsNotNumeric"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsNotNumeric.xhtml">assertIsNotNumeric()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertIsNotObject"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsNotObject.xhtml">assertIsNotObject()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertIsNotResource"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsNotResource.xhtml">assertIsNotResource()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertIsNotScalar"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsNotScalar.xhtml">assertIsNotScalar()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertIsNotString"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsNotString.xhtml">assertIsNotString()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertIsNumeric"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsNumeric.xhtml">assertIsNumeric()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertIsObject"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsObject.xhtml">assertIsObject()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertIsResource"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsResource.xhtml">assertIsResource()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertIsScalar"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsScalar.xhtml">assertIsScalar()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertIsString"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertIsString.xhtml">assertIsString()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertLessOrEquals"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertLessOrEquals.xhtml">assertLessOrEquals()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertLessThan"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertLessThan.xhtml">assertLessThan()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertLessThanOrEqual"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertLessThanOrEqual.xhtml">assertLessThanOrEqual()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertNotContains"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertNotContains.xhtml">assertNotContains()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertNotEmpty"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertNotEmpty.xhtml">assertNotEmpty()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertNotEquals"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertNotEquals.xhtml">assertNotEquals()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertNotFalse"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertNotFalse.xhtml">assertNotFalse()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertNotInstanceOf"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertNotInstanceOf.xhtml">assertNotInstanceOf()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertNotNull"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertNotNull.xhtml">assertNotNull()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertNotRegExp"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertNotRegExp.xhtml">assertNotRegExp()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertNotSame"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertNotSame.xhtml">assertNotSame()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertNotTrue"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertNotTrue.xhtml">assertNotTrue()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertNull"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertNull.xhtml">assertNull()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertRegExp"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertRegExp.xhtml">assertRegExp()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertSame"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertSame.xhtml">assertSame()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertStringContainsString"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertStringContainsString.xhtml">assertStringContainsString()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertStringContainsStringIgnoringCase"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertStringContainsStringIgnoringCase.xhtml">assertStringContainsStringIgnoringCase()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertStringNotContainsString"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertStringNotContainsString.xhtml">assertStringNotContainsString()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertStringNotContainsStringIgnoringCase"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertStringNotContainsStringIgnoringCase.xhtml">assertStringNotContainsStringIgnoringCase()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertStringStartsNotWith"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertStringStartsNotWith.xhtml">assertStringStartsNotWith()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertStringStartsWith"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertStringStartsWith.xhtml">assertStringStartsWith()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="assertTrue"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/assertTrue.xhtml">assertTrue()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="expectException"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/expectException.xhtml">expectException()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="expectThrowable"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/expectThrowable.xhtml">expectThrowable()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+            <li id="fail"><a title="_generated\UnitTesterActions" href="../traits/_generated_UnitTesterActions/fail.xhtml">fail()</a>
+                — [!] Method is generated. Documentation taken from corresponding module.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2019 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

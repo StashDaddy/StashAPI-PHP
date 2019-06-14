@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<index xmlns="http://xml.phpdox.net/src" basedir="L:/Projects/Stash/StashApi-php">
+  <namespace name="Stash">
+    <class name="StashAPI" src="src/STASHAPI.php" xml="classes/Stash_StashAPI.xml"/>
+    <class name="STASHAPIScenarioTest" src="tests/unit/STASHAPIScenarioTest.php" xml="classes/Stash_STASHAPIScenarioTest.xml"/>
+    <class name="STASHAPITest" src="tests/unit/STASHAPITest.php" xml="classes/Stash_STASHAPITest.xml"/>
+  </namespace>
+  <namespace name="">
+    <class name="AcceptanceTester" src="tests/_support/AcceptanceTester.php" description="Inherited Methods" xml="classes/AcceptanceTester.xml"/>
+    <class name="FunctionalTester" src="tests/_support/FunctionalTester.php" description="Inherited Methods" xml="classes/FunctionalTester.xml"/>
+    <class name="UnitTester" src="tests/_support/UnitTester.php" description="Inherited Methods" xml="classes/UnitTester.xml"/>
+  </namespace>
+  <namespace name="Helper">
+    <class name="Acceptance" src="tests/_support/Helper/Acceptance.php" xml="classes/Helper_Acceptance.xml"/>
+    <class name="Functional" src="tests/_support/Helper/Functional.php" xml="classes/Helper_Functional.xml"/>
+    <class name="Unit" src="tests/_support/Helper/Unit.php" xml="classes/Helper_Unit.xml"/>
+  </namespace>
+  <namespace name="_generated">
+    <trait name="AcceptanceTesterActions" src="tests/_support/_generated/AcceptanceTesterActions.php" xml="traits/_generated_AcceptanceTesterActions.xml"/>
+    <trait name="FunctionalTesterActions" src="tests/_support/_generated/FunctionalTesterActions.php" xml="traits/_generated_FunctionalTesterActions.xml"/>
+    <trait name="UnitTesterActions" src="tests/_support/_generated/UnitTesterActions.php" xml="traits/_generated_UnitTesterActions.xml"/>
+  </namespace>
+</index>

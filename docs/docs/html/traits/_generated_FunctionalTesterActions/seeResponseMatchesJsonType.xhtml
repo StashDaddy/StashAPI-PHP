@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - _generated\FunctionalTesterActions::seeResponseMatchesJsonType</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml#_generated">_generated</a>
+          </li>
+          <li class="separator">
+            <a title="_generated\FunctionalTesterActions" href="../../traits/_generated_FunctionalTesterActions.xhtml">FunctionalTesterActions</a>
+          </li>
+          <li class="separator">seeResponseMatchesJsonType</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#parameter">Parameter</a>
+          </li>
+          <li>
+            <a href="../../source/tests/_support/_generated/FunctionalTesterActions.php.xhtml#line1135">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1><small>_generated\FunctionalTesterActions::</small>seeResponseMatchesJsonType</h1>
+        <h4>[!] Method is generated. Documentation taken from corresponding module.</h4>
+        <p>Checks that Json matches provided types.
+In case you don't know the actual values of JSON data returned you can match them by type.
+Starts check with a root element. If JSON data is array it will check the first element of an array.
+You can specify the path in the json which should be checked with JsonPath
+
+Basic example:
+
+```php
+&lt;?php
+// {'user_id': 1, 'name': 'davert', 'is_active': false}
+$I-&gt;seeResponseMatchesJsonType([
+     'user_id' =&gt; 'integer',
+     'name' =&gt; 'string|null',
+     'is_active' =&gt; 'boolean'
+]);
+
+// narrow down matching with JsonPath:
+// {"users": [{ "name": "davert"}, {"id": 1}]}
+$I-&gt;seeResponseMatchesJsonType(['name' =&gt; 'string'], '$.users[0]');
+?&gt;
+```
+
+In this case you can match that record contains fields with data types you expected.
+The list of possible data types:
+
+* string
+* integer
+* float
+* array (json object is array as well)
+* boolean
+
+You can also use nested data type structures:
+
+```php
+&lt;?php
+// {'user_id': 1, 'name': 'davert', 'company': {'name': 'Codegyre'}}
+$I-&gt;seeResponseMatchesJsonType([
+     'user_id' =&gt; 'integer|string', // multiple types
+     'company' =&gt; ['name' =&gt; 'string']
+]);
+?&gt;
+```
+
+You can also apply filters to check values. Filter can be applied with `:` char after the type declaration.
+
+Here is the list of possible filters:
+
+* `integer:&gt;{val}` - checks that integer is greater than {val} (works with float and string types too).
+* `integer:&lt;{val}` - checks that integer is lower than {val} (works with float and string types too).
+* `string:url` - checks that value is valid url.
+* `string:date` - checks that value is date in JavaScript format: https://weblog.west-wind.com/posts/2014/Jan/06/JavaScript-JSON-Date-Parsing-and-real-Dates
+* `string:email` - checks that value is a valid email according to http://emailregex.com/
+* `string:regex({val})` - checks that string matches a regex provided with {val}
+
+This is how filters can be used:
+
+```php
+&lt;?php
+// {'user_id': 1, 'email' =&gt; 'davert@codeception.com'}
+$I-&gt;seeResponseMatchesJsonType([
+     'user_id' =&gt; 'string:&gt;0:&lt;1000', // multiple filters can be used
+     'email' =&gt; 'string:regex(~\@~)' // we just check that @ char is included
+]);
+
+// {'user_id': '1'}
+$I-&gt;seeResponseMatchesJsonType([
+     'user_id' =&gt; 'string:&gt;0', // works with strings as well
+}
+?&gt;
+```
+
+You can also add custom filters y accessing `JsonType::addCustomFilter` method.
+See [JsonType reference](http://codeception.com/docs/reference/JsonType).</p>
+        <ul/>
+        <h2 id="signature">Signature</h2>
+        <div class="styled synopsis">
+          <code>public function seeResponseMatchesJsonType(array
+        $jsonType,
+            [string
+        $jsonPath = NULL] )
+            </code>
+        </div>
+        <h2 id="parameterlist">Parameters</h2>
+        <dl class="styled">
+          <dt><code>$jsonType</code>
+                —
+                array</dt>
+          <dd/>
+          <dt><code>$jsonPath</code>
+                —
+                string</dt>
+          <dd/>
+        </dl>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2019 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>
