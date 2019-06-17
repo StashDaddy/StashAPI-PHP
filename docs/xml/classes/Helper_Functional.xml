@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class xmlns="http://xml.phpdox.net/src" full="Helper\Functional" namespace="Helper" name="Functional" abstract="false" final="false" start="7" end="10">
-  <file path="L:/Projects/Stash/StashApi-php/docs/../tests/_support/Helper" file="Functional.php" realpath="L:/Projects/Stash/StashApi-php/tests/_support/Helper/Functional.php" size="195" time="2019-06-13T21:47:23+00:00" unixtime="1560462443" sha1="b60fc5e0f83a6ba56c3ed39e4479bc8a588c8602" relative="tests/_support/Helper/Functional.php"/>
+  <file path="L:/Projects/Stash/StashApi-php-Release/docs/../tests/_support/Helper" file="Functional.php" realpath="L:/Projects/Stash/StashApi-php-Release/tests/_support/Helper/Functional.php" size="195" time="2019-06-13T21:47:23+00:00" unixtime="1560462443" sha1="b60fc5e0f83a6ba56c3ed39e4479bc8a588c8602" relative="tests/_support/Helper/Functional.php"/>
   <extends full="Codeception\Module" namespace="Codeception" name="Module" unresolved="true"/>
 </class>

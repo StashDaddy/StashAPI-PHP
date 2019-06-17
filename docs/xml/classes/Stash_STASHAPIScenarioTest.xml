@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="Stash\STASHAPIScenarioTest" namespace="Stash" name="STASHAPIScenarioTest" abstract="false" final="false" start="8" end="212">
-  <file path="L:/Projects/Stash/StashApi-php/docs/../tests/unit" file="STASHAPIScenarioTest.php" realpath="L:/Projects/Stash/StashApi-php/tests/unit/STASHAPIScenarioTest.php" size="7772" time="2019-06-14T14:34:37+00:00" unixtime="1560522877" sha1="bf5a1e9839033b69c243d9141f9d4f0240bd6bfc" relative="tests/unit/STASHAPIScenarioTest.php"/>
+<class xmlns="http://xml.phpdox.net/src" full="Stash\STASHAPIScenarioTest" namespace="Stash" name="STASHAPIScenarioTest" abstract="false" final="false" start="13" end="1290">
+  <file path="L:/Projects/Stash/StashApi-php-Release/docs/../tests/unit" file="STASHAPIScenarioTest.php" realpath="L:/Projects/Stash/StashApi-php-Release/tests/unit/STASHAPIScenarioTest.php" size="54834" time="2019-06-17T23:13:08+00:00" unixtime="1560813188" sha1="561a72e82520f85024fb667b35878bb026be9dc1" relative="tests/unit/STASHAPIScenarioTest.php"/>
+  <docblock>
+    <description compact="Class STASHAPIScenarioTest Runs scenario based testing for each of the API functions"/>
+    <package value="Stash"/>
+  </docblock>
   <extends full="Codeception\Test\Unit" namespace="Codeception\Test" name="Unit" unresolved="true"/>
-  <member name="tester" visibility="protected" static="false" line="14">
+  <member name="tester" visibility="protected" static="false" line="18">
     <docblock>
       <description/>
       <var type="object">
@@ -10,40 +14,40 @@
       </var>
     </docblock>
   </member>
-  <constant type="string" name="api_id" value="&quot;12345678901234567890123456789012&quot;"/>
-  <constant type="string" name="api_pw" value="&quot;abcdef12345678901234567890123456&quot;"/>
   <constant type="string" name="testFile" value="&quot;tmpfile_stashapitest.txt&quot;"/>
-  <constant type="string" name="baseUrl" value="&quot;https://www.stage2.stashbusiness.com/&quot;"/>
-  <constant type="string" name="accountPw" value="&quot;CodeTest!1&quot;"/>
-  <constant type="string" name="folderPath" value="'[&quot;My Home&quot;]'"/>
-  <constant type="integer" name="folderId" value="66844"/>
-  <method name="_before" start="26" end="28" abstract="false" final="false" static="false" visibility="protected">
+  <constant type="string" name="outFile" value="&quot;tmpfile_stashapitest.out.txt&quot;"/>
+  <member name="apiid" visibility="private" static="false" line="21"/>
+  <member name="apipw" visibility="private" static="false" line="22"/>
+  <member name="baseUrl" visibility="private" static="false" line="23"/>
+  <member name="accountId" visibility="private" static="false" line="24"/>
+  <member name="accountUsername" visibility="private" static="false" line="25"/>
+  <member name="accountPw" visibility="private" static="false" line="26"/>
+  <member name="folderPath" visibility="private" static="false" line="27"/>
+  <member name="folderId" visibility="private" static="false" line="28"/>
+  <method name="_before" start="33" end="45" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
       <description compact="This function is run before each individual test"/>
     </docblock>
   </method>
-  <method name="_after" start="33" end="35" abstract="false" final="false" static="false" visibility="protected">
+  <method name="_after" start="50" end="53" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
       <description compact="This function is run after each individual test"/>
     </docblock>
   </method>
-  <method name="setUpBeforeClass" start="40" end="43" abstract="false" final="false" static="true" visibility="public">
+  <method name="setUpBeforeClass" start="59" end="66" abstract="false" final="false" static="true" visibility="public">
     <docblock>
       <description compact="The function is run once, before all tests in the suite are run"/>
+      <throws type="object">
+        <type full="\Exception" namespace="" name="Exception"/>
+      </throws>
     </docblock>
-    <inline>
-      <comment value="Run these things ONCE, before testing begins" line="41"/>
-    </inline>
   </method>
-  <method name="tearDownAfterClass" start="48" end="54" abstract="false" final="false" static="true" visibility="public">
+  <method name="tearDownAfterClass" start="71" end="80" abstract="false" final="false" static="true" visibility="public">
     <docblock>
       <description compact="This function is run once, after all tests in the suite are run"/>
     </docblock>
-    <inline>
-      <comment value="Run these things ONCE, at end of all tests" line="49"/>
-    </inline>
   </method>
-  <method name="testAPIValidConstructor" start="61" end="72" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPIValidConstructor" start="87" end="98" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests if the StashAPI constructor produces a valid constructor with given inputs"/>
       <return type="object">
@@ -54,10 +58,10 @@
       </throws>
     </docblock>
     <inline>
-      <comment value="API_ID not set" line="67"/>
+      <comment value="API_ID not set" line="93"/>
     </inline>
   </method>
-  <method name="testAPIListFiles" start="79" end="84" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPIListAll" start="105" end="111" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <depends value="testAPIValidConstructor"/>
@@ -70,9 +74,9 @@
     </docblock>
     <parameter name="apiIn" byreference="false" type="{unknown}"/>
   </method>
-  <method name="testAPIListFilesPaths" start="91" end="96" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPIListFoldersRoot" start="119" end="125" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description/>
+      <description compact="Tests getting folder list containing root folder"/>
       <depends value="testAPIValidConstructor"/>
       <param type="object" variable="$apiIn">
         <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
@@ -83,9 +87,9 @@
     </docblock>
     <parameter name="apiIn" byreference="false" type="{unknown}"/>
   </method>
-  <method name="testAPIListFolders" start="103" end="108" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPIListFoldersAll" start="133" end="140" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description/>
+      <description compact="Tests getting folder list containing all folders"/>
       <depends value="testAPIValidConstructor"/>
       <param type="object" variable="$apiIn">
         <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
@@ -96,9 +100,9 @@
     </docblock>
     <parameter name="apiIn" byreference="false" type="{unknown}"/>
   </method>
-  <method name="testAPIListFilesDir" start="115" end="121" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPIListFoldersSub" start="148" end="155" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description/>
+      <description compact="Tests getting folder list containing sub folders"/>
       <depends value="testAPIValidConstructor"/>
       <param type="object" variable="$apiIn">
         <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
@@ -109,7 +113,7 @@
     </docblock>
     <parameter name="apiIn" byreference="false" type="{unknown}"/>
   </method>
-  <method name="testAPIFileReadByFileFolderNames" start="127" end="136" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPIFileReadByFileFolderNames" start="161" end="170" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the read() / getFile() function"/>
       <throws type="object">
@@ -117,7 +121,7 @@
       </throws>
     </docblock>
   </method>
-  <method name="testAPIFileSendByFolderId" start="141" end="173" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPIFileSendByFolderId" start="175" end="206" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <throws type="object">
@@ -125,10 +129,10 @@
       </throws>
     </docblock>
     <inline>
-      <comment value="Create temp file to test upload/write" line="150"/>
+      <comment value="Create temp file to test upload/write" line="184"/>
     </inline>
   </method>
-  <method name="testAPIFileSendByFolderNames" start="179" end="211" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPIFileSendByFolderNames" start="212" end="243" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the API sendRequest with folder names"/>
       <throws type="object">
@@ -136,7 +140,286 @@
       </throws>
     </docblock>
     <inline>
-      <comment value="Create temp file to test upload/write" line="188"/>
+      <comment value="Create temp file to test upload/write" line="221"/>
+    </inline>
+  </method>
+  <method name="testPutFile" start="250" end="283" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the putFile() function"/>
+      <param description="if T, will run the cleanup commands to remove the file uploaded to the vault and source file in the file system" type="boolean" variable="$cleanup"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <parameter name="cleanup" byreference="false" type="boolean" default="true"/>
+    <inline>
+      <comment value="Delete the test file if it exists" line="253"/>
+      <comment value="Cleanup" line="273"/>
+    </inline>
+  </method>
+  <method name="testGetFile" start="289" end="311" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the getFile() function"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <inline>
+      <comment value="Cleanup" line="302"/>
+    </inline>
+  </method>
+  <method name="testCopyFile" start="317" end="366" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the copyFile() function"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <inline>
+      <comment value="Delete destination file" line="322"/>
+      <comment value="Copy File" line="328"/>
+      <comment value="$src = array('fileKey'=&gt;$api-&gt;encryptString($this-&gt;accountPw,true), 'folderNames'=&gt;array(&quot;My Home&quot;, &quot;Documents&quot;), 'fileName' =&gt; &quot;copyOfFile.txt&quot;);" line="341"/>
+      <comment value="Cleanup" line="351"/>
+    </inline>
+  </method>
+  <method name="testRenameFile" start="372" end="412" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the renameFile() function"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <inline>
+      <comment value="Delete destination file" line="377"/>
+      <comment value="Rename File" line="381"/>
+      <comment value="Cleanup" line="403"/>
+    </inline>
+  </method>
+  <method name="testMoveFile" start="418" end="458" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the moveFile() function"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <inline>
+      <comment value="Delete destination file" line="423"/>
+      <comment value="Move File" line="427"/>
+      <comment value="Cleanup" line="449"/>
+    </inline>
+  </method>
+  <method name="testDeleteFile" start="464" end="467" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the delete file function (overlaps with testPutFile)"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <inline>
+      <comment value="Overlap with testPutFile()" line="465"/>
+    </inline>
+  </method>
+  <method name="testListAll" start="473" end="539" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the listAll() function"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <inline>
+      <comment value="Check directory data properties" line="490"/>
+      <comment value="Check directory state properties" line="504"/>
+      <comment value="Check file data properties" line="523"/>
+      <comment value="Check file state properties" line="535"/>
+    </inline>
+  </method>
+  <method name="testListFiles" start="545" end="694" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the listFiles() function"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <inline>
+      <comment value="Check outputType = 0 (no output)" line="552"/>
+      <comment value="Check outputType = 1 (file names only)" line="565"/>
+      <comment value="Check outputType = 2 (file and path as arrays)" line="580"/>
+      <comment value="Check outputType = 3 (file and path as string)" line="610"/>
+      <comment value="Check outputType = 4 (model JSON)" line="625"/>
+      <comment value="Check outputType = 5 (GhostFiles format)" line="659"/>
+      <comment value="Cleanup" line="685"/>
+    </inline>
+  </method>
+  <method name="testListSFFiles" start="699" end="701" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the listSFFiles() function"/>
+    </docblock>
+    <inline>
+      <todo value="need to create a smart folder first, then run listSFFiles" line="700"/>
+    </inline>
+  </method>
+  <method name="testListFolders" start="707" end="875" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the listFolders() function"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <inline>
+      <comment value="Check outputType = 0 (no output)" line="712"/>
+      <comment value="Check outputType = 1 (folder names only)" line="725"/>
+      <comment value="Check outputType = 2 (folder and path as arrays)" line="742"/>
+      <comment value="Check outputType = 3 (file and path as string)" line="772"/>
+      <comment value="Check outputType = 4 (model JSON)" line="789"/>
+      <comment value="Check outputType = 5 (GhostFiles format)" line="824"/>
+      <comment value="Check outputType = 6 (NodeNameId format)" line="850"/>
+    </inline>
+  </method>
+  <method name="testCreateDirectory" start="882" end="909" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the createDirectory() function"/>
+      <param description="T to remove the directory that was created, F to leave it" type="object" variable="$cleanup">
+        <type full="Stash\bool" namespace="Stash" name="bool"/>
+      </param>
+      <throws type="object">
+        <type full="\Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <parameter name="cleanup" byreference="false" type="boolean" default="true"/>
+  </method>
+  <method name="testRenameDirectory" start="915" end="938" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the renameDirectory() function"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <inline>
+      <comment value="Cleanup" line="934"/>
+    </inline>
+  </method>
+  <method name="testMoveDirectory" start="944" end="975" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the moveDirectory() function"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <inline>
+      <comment value="Cleanup" line="970"/>
+    </inline>
+  </method>
+  <method name="testCopyDirectory" start="981" end="1022" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the copyDirectory() function"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <inline>
+      <comment value="Cleanup" line="1017"/>
+    </inline>
+  </method>
+  <method name="testDeleteDirectory" start="1029" end="1032" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the deleteDirectory() function Overlaps with testCreateDirectory, @see testCreateDirectory"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <inline>
+      <comment value="Overlaps with testCreateDirectory()" line="1030"/>
+    </inline>
+  </method>
+  <method name="testGetFolderId" start="1038" end="1049" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the getFolderId() function"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+  </method>
+  <method name="testGetFileInfo" start="1055" end="1085" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the getFileInfo() function"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <inline>
+      <comment value="Cleanup" line="1077"/>
+    </inline>
+  </method>
+  <method name="testGetFolderInfo" start="1091" end="1117" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the getFolderInfo() function"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+  </method>
+  <method name="testGetSyncInfo" start="1123" end="1143" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests getSyncInfo() function"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+  </method>
+  <method name="testGetVaultInfo" start="1149" end="1173" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the getVaultInfo() function"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+  </method>
+  <method name="testCheckCreds" start="1179" end="1195" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the checkCreds() function"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+  </method>
+  <method name="testCheckVaultConnection" start="1201" end="1208" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the checkVaultConnection() function"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+  </method>
+  <method name="testIsValidUser" start="1214" end="1230" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the isValidUser() function"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+  </method>
+  <method name="testSetPermissions" start="1236" end="1260" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the setPermissions() function"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <inline>
+      <comment value="Get Folder ID for Documents Directory" line="1239"/>
+      <comment value="Build permission array for user 92 (which doesn't exist)" line="1247"/>
+      <comment value="Extend function to test with Pro account here" line="1258"/>
+    </inline>
+  </method>
+  <method name="testCheckPermissions" start="1266" end="1289" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests the checkPermissions() function"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <inline>
+      <comment value="Get Folder ID for Documents Directory" line="1269"/>
     </inline>
   </method>
 </class>

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <source xmlns="http://xml.phpdox.net/token">
-  <file xmlns="http://xml.phpdox.net/src" path="L:/Projects/Stash/StashApi-php/docs/../tests/_support/_generated" file="FunctionalTesterActions.php" realpath="L:/Projects/Stash/StashApi-php/tests/_support/_generated/FunctionalTesterActions.php" size="62849" time="2019-06-13T21:47:23+00:00" unixtime="1560462443" sha1="bef523ee83f2eeeb09fcc747a48a041ef8be7657" relative="tests/_support/_generated/FunctionalTesterActions.php"/>
+  <file xmlns="http://xml.phpdox.net/src" path="L:/Projects/Stash/StashApi-php-Release/docs/../tests/_support/_generated" file="FunctionalTesterActions.php" realpath="L:/Projects/Stash/StashApi-php-Release/tests/_support/_generated/FunctionalTesterActions.php" size="62849" time="2019-06-13T21:47:23+00:00" unixtime="1560462443" sha1="bef523ee83f2eeeb09fcc747a48a041ef8be7657" relative="tests/_support/_generated/FunctionalTesterActions.php"/>
   <line no="1">
     <token name="T_OPEN_TAG">&lt;?php </token>
     <token name="T_WHITESPACE"> </token>

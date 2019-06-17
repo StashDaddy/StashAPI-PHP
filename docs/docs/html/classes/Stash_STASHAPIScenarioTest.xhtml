@@ -56,6 +56,9 @@
             <a href="#hierarchy">Hierarchy</a>
           </li>
           <li>
+            <a href="#tasks">Tasks</a>
+          </li>
+          <li>
             <a href="#constants">Constants</a>
           </li>
           <li>
@@ -65,30 +68,64 @@
             <a href="#methods">Methods</a>
           </li>
           <li>
-            <a href="../source/tests/unit/STASHAPIScenarioTest.php.xhtml#line8">Source</a>
+            <a href="../source/tests/unit/STASHAPIScenarioTest.php.xhtml#line13">Source</a>
           </li>
         </ul>
       </nav>
       <section>
         <h1 id="introduction"><small>Stash\</small>STASHAPIScenarioTest</h1>
-        <h4/>
+        <h4>Class STASHAPIScenarioTest Runs scenario based testing for each of the API functions</h4>
         <p/>
+        <ul/>
         <h2 id="synopsis">Synopsis</h2>
         <div class="synopsis">class STASHAPIScenarioTest
                 extends Unit
-            {<br/><ul class="none"><li>// constants</li><li>const api_id = "12345678901234567890123456789012";</li><li>const api_pw = "abcdef12345678901234567890123456";</li><li>const testFile = "tmpfile_stashapitest.txt";</li><li>const baseUrl = "https://www.stage2.stashbusiness.com/";</li><li>const accountPw = "CodeTest!1";</li><li>const folderPath = '["My Home"]';</li><li>const folderId = 66844;</li></ul><ul class="none"><li>// members</li><li>protected <span title="\UnitTester">UnitTester</span> <a href="#members">$tester</a>;
+            {<br/><ul class="none"><li>// constants</li><li>const testFile = "tmpfile_stashapitest.txt";</li><li>const outFile = "tmpfile_stashapitest.out.txt";</li></ul><ul class="none"><li>// members</li><li>protected <span title="\UnitTester">UnitTester</span> <a href="#members">$tester</a>;
+                    </li><li>private  <a href="#members">$apiid</a>;
+                    </li><li>private  <a href="#members">$apipw</a>;
+                    </li><li>private  <a href="#members">$baseUrl</a>;
+                    </li><li>private  <a href="#members">$accountId</a>;
+                    </li><li>private  <a href="#members">$accountUsername</a>;
+                    </li><li>private  <a href="#members">$accountPw</a>;
+                    </li><li>private  <a href="#members">$folderPath</a>;
+                    </li><li>private  <a href="#members">$folderId</a>;
                     </li></ul><ul class="none"><li>// methods</li><li>protected void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/_before.xhtml">_before</a>()
                     </li><li>protected void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/_after.xhtml">_after</a>()
                     </li><li>public static void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/setUpBeforeClass.xhtml">setUpBeforeClass</a>()
                     </li><li>public static void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/tearDownAfterClass.xhtml">tearDownAfterClass</a>()
                     </li><li>public StashAPI <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testAPIValidConstructor.xhtml">testAPIValidConstructor</a>()
-                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testAPIListFiles.xhtml">testAPIListFiles</a>()
-                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testAPIListFilesPaths.xhtml">testAPIListFilesPaths</a>()
-                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testAPIListFolders.xhtml">testAPIListFolders</a>()
-                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testAPIListFilesDir.xhtml">testAPIListFilesDir</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testAPIListAll.xhtml">testAPIListAll</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testAPIListFoldersRoot.xhtml">testAPIListFoldersRoot</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testAPIListFoldersAll.xhtml">testAPIListFoldersAll</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testAPIListFoldersSub.xhtml">testAPIListFoldersSub</a>()
                     </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testAPIFileReadByFileFolderNames.xhtml">testAPIFileReadByFileFolderNames</a>()
                     </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testAPIFileSendByFolderId.xhtml">testAPIFileSendByFolderId</a>()
                     </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testAPIFileSendByFolderNames.xhtml">testAPIFileSendByFolderNames</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testPutFile.xhtml">testPutFile</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testGetFile.xhtml">testGetFile</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testCopyFile.xhtml">testCopyFile</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testRenameFile.xhtml">testRenameFile</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testMoveFile.xhtml">testMoveFile</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testDeleteFile.xhtml">testDeleteFile</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testListAll.xhtml">testListAll</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testListFiles.xhtml">testListFiles</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testListSFFiles.xhtml">testListSFFiles</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testListFolders.xhtml">testListFolders</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testCreateDirectory.xhtml">testCreateDirectory</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testRenameDirectory.xhtml">testRenameDirectory</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testMoveDirectory.xhtml">testMoveDirectory</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testCopyDirectory.xhtml">testCopyDirectory</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testDeleteDirectory.xhtml">testDeleteDirectory</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testGetFolderId.xhtml">testGetFolderId</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testGetFileInfo.xhtml">testGetFileInfo</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testGetFolderInfo.xhtml">testGetFolderInfo</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testGetSyncInfo.xhtml">testGetSyncInfo</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testGetVaultInfo.xhtml">testGetVaultInfo</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testCheckCreds.xhtml">testCheckCreds</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testCheckVaultConnection.xhtml">testCheckVaultConnection</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testIsValidUser.xhtml">testIsValidUser</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testSetPermissions.xhtml">testSetPermissions</a>()
+                    </li><li>public void <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testCheckPermissions.xhtml">testCheckPermissions</a>()
                     </li></ul>
 
             }<br/></div>
@@ -99,6 +136,19 @@
             <li>Codeception\Test\Unit</li>
           </ul>
         </div>
+        <h2 id="tasks">Tasks</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th style="width:3em;">Line</th>
+              <th>Task</th>
+            </tr>
+          </thead>
+          <tr>
+            <td class="nummeric">700</td>
+            <td>need to create a smart folder first, then run listSFFiles</td>
+          </tr>
+        </table>
         <h2 id="constants">Constants</h2>
         <table class="styled">
           <thead>
@@ -109,37 +159,44 @@
           </thead>
           <tbody>
             <tr>
-              <td id="api_id">api_id</td>
-              <td>"12345678901234567890123456789012"</td>
-            </tr>
-            <tr>
-              <td id="api_pw">api_pw</td>
-              <td>"abcdef12345678901234567890123456"</td>
-            </tr>
-            <tr>
               <td id="testFile">testFile</td>
               <td>"tmpfile_stashapitest.txt"</td>
             </tr>
             <tr>
-              <td id="baseUrl">baseUrl</td>
-              <td>"https://www.stage2.stashbusiness.com/"</td>
-            </tr>
-            <tr>
-              <td id="accountPw">accountPw</td>
-              <td>"CodeTest!1"</td>
-            </tr>
-            <tr>
-              <td id="folderPath">folderPath</td>
-              <td>'["My Home"]'</td>
-            </tr>
-            <tr>
-              <td id="folderId">folderId</td>
-              <td>66844</td>
+              <td id="outFile">outFile</td>
+              <td>"tmpfile_stashapitest.out.txt"</td>
             </tr>
           </tbody>
         </table>
         <h2 id="members">Members</h2>
         <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="accountId">
+              <strong>$accountId</strong>
+            </li>
+            <li id="accountPw">
+              <strong>$accountPw</strong>
+            </li>
+            <li id="accountUsername">
+              <strong>$accountUsername</strong>
+            </li>
+            <li id="apiid">
+              <strong>$apiid</strong>
+            </li>
+            <li id="apipw">
+              <strong>$apipw</strong>
+            </li>
+            <li id="baseUrl">
+              <strong>$baseUrl</strong>
+            </li>
+            <li id="folderId">
+              <strong>$folderId</strong>
+            </li>
+            <li id="folderPath">
+              <strong>$folderPath</strong>
+            </li>
+          </ul>
           <h4>protected</h4>
           <ul class="members">
             <li id="tester"><strong>$tester</strong>
@@ -169,20 +226,67 @@
             </li>
             <li id="testAPIFileSendByFolderNames"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testAPIFileSendByFolderNames.xhtml">testAPIFileSendByFolderNames()</a>
                 — Tests the API sendRequest with folder names</li>
-            <li id="testAPIListFiles">
-              <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testAPIListFiles.xhtml">testAPIListFiles()</a>
+            <li id="testAPIListAll">
+              <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testAPIListAll.xhtml">testAPIListAll()</a>
             </li>
-            <li id="testAPIListFilesDir">
-              <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testAPIListFilesDir.xhtml">testAPIListFilesDir()</a>
-            </li>
-            <li id="testAPIListFilesPaths">
-              <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testAPIListFilesPaths.xhtml">testAPIListFilesPaths()</a>
-            </li>
-            <li id="testAPIListFolders">
-              <a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testAPIListFolders.xhtml">testAPIListFolders()</a>
-            </li>
+            <li id="testAPIListFoldersAll"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testAPIListFoldersAll.xhtml">testAPIListFoldersAll()</a>
+                — Tests getting folder list containing all folders</li>
+            <li id="testAPIListFoldersRoot"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testAPIListFoldersRoot.xhtml">testAPIListFoldersRoot()</a>
+                — Tests getting folder list containing root folder</li>
+            <li id="testAPIListFoldersSub"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testAPIListFoldersSub.xhtml">testAPIListFoldersSub()</a>
+                — Tests getting folder list containing sub folders</li>
             <li id="testAPIValidConstructor"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testAPIValidConstructor.xhtml">testAPIValidConstructor()</a>
                 — Tests if the StashAPI constructor produces a valid constructor with given inputs</li>
+            <li id="testCheckCreds"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testCheckCreds.xhtml">testCheckCreds()</a>
+                — Tests the checkCreds() function</li>
+            <li id="testCheckPermissions"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testCheckPermissions.xhtml">testCheckPermissions()</a>
+                — Tests the checkPermissions() function</li>
+            <li id="testCheckVaultConnection"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testCheckVaultConnection.xhtml">testCheckVaultConnection()</a>
+                — Tests the checkVaultConnection() function</li>
+            <li id="testCopyDirectory"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testCopyDirectory.xhtml">testCopyDirectory()</a>
+                — Tests the copyDirectory() function</li>
+            <li id="testCopyFile"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testCopyFile.xhtml">testCopyFile()</a>
+                — Tests the copyFile() function</li>
+            <li id="testCreateDirectory"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testCreateDirectory.xhtml">testCreateDirectory()</a>
+                — Tests the createDirectory() function</li>
+            <li id="testDeleteDirectory"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testDeleteDirectory.xhtml">testDeleteDirectory()</a>
+                — Tests the deleteDirectory() function Overlaps with testCreateDirectory, @see testCreateDirectory</li>
+            <li id="testDeleteFile"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testDeleteFile.xhtml">testDeleteFile()</a>
+                — Tests the delete file function (overlaps with testPutFile)</li>
+            <li id="testGetFile"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testGetFile.xhtml">testGetFile()</a>
+                — Tests the getFile() function</li>
+            <li id="testGetFileInfo"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testGetFileInfo.xhtml">testGetFileInfo()</a>
+                — Tests the getFileInfo() function</li>
+            <li id="testGetFolderId"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testGetFolderId.xhtml">testGetFolderId()</a>
+                — Tests the getFolderId() function</li>
+            <li id="testGetFolderInfo"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testGetFolderInfo.xhtml">testGetFolderInfo()</a>
+                — Tests the getFolderInfo() function</li>
+            <li id="testGetSyncInfo"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testGetSyncInfo.xhtml">testGetSyncInfo()</a>
+                — Tests getSyncInfo() function</li>
+            <li id="testGetVaultInfo"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testGetVaultInfo.xhtml">testGetVaultInfo()</a>
+                — Tests the getVaultInfo() function</li>
+            <li id="testIsValidUser"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testIsValidUser.xhtml">testIsValidUser()</a>
+                — Tests the isValidUser() function</li>
+            <li id="testListAll"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testListAll.xhtml">testListAll()</a>
+                — Tests the listAll() function</li>
+            <li id="testListFiles"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testListFiles.xhtml">testListFiles()</a>
+                — Tests the listFiles() function</li>
+            <li id="testListFolders"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testListFolders.xhtml">testListFolders()</a>
+                — Tests the listFolders() function</li>
+            <li id="testListSFFiles"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testListSFFiles.xhtml">testListSFFiles()</a>
+                — Tests the listSFFiles() function</li>
+            <li id="testMoveDirectory"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testMoveDirectory.xhtml">testMoveDirectory()</a>
+                — Tests the moveDirectory() function</li>
+            <li id="testMoveFile"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testMoveFile.xhtml">testMoveFile()</a>
+                — Tests the moveFile() function</li>
+            <li id="testPutFile"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testPutFile.xhtml">testPutFile()</a>
+                — Tests the putFile() function</li>
+            <li id="testRenameDirectory"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testRenameDirectory.xhtml">testRenameDirectory()</a>
+                — Tests the renameDirectory() function</li>
+            <li id="testRenameFile"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testRenameFile.xhtml">testRenameFile()</a>
+                — Tests the renameFile() function</li>
+            <li id="testSetPermissions"><a title="Stash\STASHAPIScenarioTest" href="../classes/Stash_STASHAPIScenarioTest/testSetPermissions.xhtml">testSetPermissions()</a>
+                — Tests the setPermissions() function</li>
           </ul>
         </div>
       </section>

@@ -65,18 +65,25 @@
             <a href="#methods">Methods</a>
           </li>
           <li>
-            <a href="../source/tests/unit/STASHAPITest.php.xhtml#line8">Source</a>
+            <a href="../source/tests/unit/STASHAPITest.php.xhtml#line14">Source</a>
           </li>
         </ul>
       </nav>
       <section>
         <h1 id="introduction"><small>Stash\</small>STASHAPITest</h1>
-        <h4/>
+        <h4>Class STASHAPITest Runs unit testing on the functions in the API</h4>
         <p/>
+        <ul/>
         <h2 id="synopsis">Synopsis</h2>
         <div class="synopsis">class STASHAPITest
                 extends Unit
-            {<br/><ul class="none"><li>// constants</li><li>const api_id = "12345678901234567890123456789012";</li><li>const api_pw = "abcdef12345678901234567890123456";</li><li>const testFile = "tmpfile_stashapitest.txt";</li><li>const baseUrl = "https://www.stage2.stashbusiness.com/";</li><li>const accountPw = "CodeTest!1";</li><li>const folderPath = '["My Home"]';</li><li>const folderId = 66844;</li></ul><ul class="none"><li>// members</li><li>protected <span title="\UnitTester">UnitTester</span> <a href="#members">$tester</a>;
+            {<br/><ul class="none"><li>// constants</li><li>const testFile = "tmpfile_stashapitest.txt";</li></ul><ul class="none"><li>// members</li><li>protected <span title="\UnitTester">UnitTester</span> <a href="#members">$tester</a>;
+                    </li><li>private  <a href="#members">$apiid</a>;
+                    </li><li>private  <a href="#members">$apipw</a>;
+                    </li><li>private  <a href="#members">$baseUrl</a>;
+                    </li><li>private  <a href="#members">$accountPw</a>;
+                    </li><li>private  <a href="#members">$folderPath</a>;
+                    </li><li>private  <a href="#members">$folderId</a>;
                     </li></ul><ul class="none"><li>// methods</li><li>protected void <a title="Stash\STASHAPITest" href="../classes/Stash_STASHAPITest/_before.xhtml">_before</a>()
                     </li><li>protected void <a title="Stash\STASHAPITest" href="../classes/Stash_STASHAPITest/_after.xhtml">_after</a>()
                     </li><li>public static void <a title="Stash\STASHAPITest" href="../classes/Stash_STASHAPITest/setUpBeforeClass.xhtml">setUpBeforeClass</a>()
@@ -117,37 +124,34 @@
           </thead>
           <tbody>
             <tr>
-              <td id="api_id">api_id</td>
-              <td>"12345678901234567890123456789012"</td>
-            </tr>
-            <tr>
-              <td id="api_pw">api_pw</td>
-              <td>"abcdef12345678901234567890123456"</td>
-            </tr>
-            <tr>
               <td id="testFile">testFile</td>
               <td>"tmpfile_stashapitest.txt"</td>
-            </tr>
-            <tr>
-              <td id="baseUrl">baseUrl</td>
-              <td>"https://www.stage2.stashbusiness.com/"</td>
-            </tr>
-            <tr>
-              <td id="accountPw">accountPw</td>
-              <td>"CodeTest!1"</td>
-            </tr>
-            <tr>
-              <td id="folderPath">folderPath</td>
-              <td>'["My Home"]'</td>
-            </tr>
-            <tr>
-              <td id="folderId">folderId</td>
-              <td>66844</td>
             </tr>
           </tbody>
         </table>
         <h2 id="members">Members</h2>
         <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="accountPw">
+              <strong>$accountPw</strong>
+            </li>
+            <li id="apiid">
+              <strong>$apiid</strong>
+            </li>
+            <li id="apipw">
+              <strong>$apipw</strong>
+            </li>
+            <li id="baseUrl">
+              <strong>$baseUrl</strong>
+            </li>
+            <li id="folderId">
+              <strong>$folderId</strong>
+            </li>
+            <li id="folderPath">
+              <strong>$folderPath</strong>
+            </li>
+          </ul>
           <h4>protected</h4>
           <ul class="members">
             <li id="tester"><strong>$tester</strong>
@@ -188,9 +192,8 @@
             <li id="testAPISend">
               <a title="Stash\STASHAPITest" href="../classes/Stash_STASHAPITest/testAPISend.xhtml">testAPISend()</a>
             </li>
-            <li id="testAPISignature">
-              <a title="Stash\STASHAPITest" href="../classes/Stash_STASHAPITest/testAPISignature.xhtml">testAPISignature()</a>
-            </li>
+            <li id="testAPISignature"><a title="Stash\STASHAPITest" href="../classes/Stash_STASHAPITest/testAPISignature.xhtml">testAPISignature()</a>
+                — Tests calculating and setting a valid signature for the request</li>
             <li id="testAPIValidConstructor"><a title="Stash\STASHAPITest" href="../classes/Stash_STASHAPITest/testAPIValidConstructor.xhtml">testAPIValidConstructor()</a>
                 — Checks the main constructor</li>
             <li id="testDecryptEmptyKey"><a title="Stash\STASHAPITest" href="../classes/Stash_STASHAPITest/testDecryptEmptyKey.xhtml">testDecryptEmptyKey()</a>

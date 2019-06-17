@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="Stash\StashAPI" namespace="Stash" name="StashAPI" abstract="false" final="false" start="23" end="1553">
-  <file path="L:/Projects/Stash/StashApi-php/docs/../src" file="STASHAPI.php" realpath="L:/Projects/Stash/StashApi-php/src/STASHAPI.php" size="68405" time="2019-06-14T14:13:18+00:00" unixtime="1560521598" sha1="a5b485a2c008b645884a773a74683910c1d5006e" relative="src/STASHAPI.php"/>
+<class xmlns="http://xml.phpdox.net/src" full="Stash\StashAPI" namespace="Stash" name="StashAPI" abstract="false" final="false" start="23" end="1564">
+  <file path="L:/Projects/Stash/StashApi-php-Release/docs/../src/Stash" file="STASHAPI.php" realpath="L:/Projects/Stash/StashApi-php-Release/src/Stash/STASHAPI.php" size="69057" time="2019-06-17T23:20:59+00:00" unixtime="1560813659" sha1="a9a543d63ba3d1bf755d7d3cb9c92c7bb24fe7ec" relative="src/Stash/STASHAPI.php"/>
   <constant type="string" name="STASHAPI_VERSION" value="&quot;1.0&quot;"/>
   <constant type="integer" name="STASHAPI_ID_LENGTH" value="32"/>
   <constant type="integer" name="STASHAPI_PW_LENGTH" value="32"/>
@@ -183,7 +183,7 @@
     <parameter name="strIn" byreference="false" type="{unknown}"/>
     <parameter name="inHexBits" byreference="false" type="{unknown}"/>
   </method>
-  <method name="sendRequest" start="329" end="370" abstract="false" final="false" static="false" visibility="public">
+  <method name="sendRequest" start="329" end="372" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function builds and sends an API request"/>
       <throws description="for invalid URLs" type="object">
@@ -195,13 +195,12 @@
     </docblock>
     <inline>
       <comment value="Sign request" line="342"/>
-      <comment value="Enable the following line if you want to skip SSL verification (not recommended)" line="359"/>
-      <comment value="curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);        // Skip verifying peer certificate" line="360"/>
-      <comment value="Return response instead of printing." line="362"/>
-      <comment value="Send request." line="364"/>
+      <comment value="Define the CURL_IGNORE_SSL_ERRORS constant if you want to skip SSL verification (not recommended)" line="359"/>
+      <comment value="Return response instead of printing." line="364"/>
+      <comment value="Send request." line="366"/>
     </inline>
   </method>
-  <method name="sendDownloadRequest" start="380" end="448" abstract="false" final="false" static="false" visibility="public">
+  <method name="sendDownloadRequest" start="382" end="459" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function builds and sends an API download request The result will be stored in a file, specified by $fileNameIn"/>
       <param description="the filename to save the downloaded data to" type="object">
@@ -216,7 +215,7 @@
     </docblock>
     <parameter name="fileNameIn" byreference="false" type="{unknown}"/>
   </method>
-  <method name="sendFileRequest" start="461" end="500" abstract="false" final="false" static="false" visibility="public">
+  <method name="sendFileRequest" start="472" end="513" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function builds and sends an API request to upload a file">The input parameters for this function must include a FILE</description>
       <param description="the full path and name of the file to upload" type="object">
@@ -237,14 +236,13 @@
     </docblock>
     <parameter name="fileNameIn" byreference="false" type="{unknown}"/>
     <inline>
-      <comment value="Sign request" line="473"/>
-      <comment value="Enable the following line if you want to skip SSL verification (not recommended)" line="483"/>
-      <comment value="curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);        // Ignore SSL verification errors" line="484"/>
-      <comment value="$fields['file'] = '@' . $fileNameIn;" line="486"/>
-      <comment value="Send request." line="493"/>
+      <comment value="Sign request" line="484"/>
+      <comment value="Define the CURL_IGNORE_SSL_ERRORS constant if you want to skip SSL verification (not recommended)" line="494"/>
+      <comment value="$fields['file'] = '@' . $fileNameIn;" line="499"/>
+      <comment value="Send request." line="506"/>
     </inline>
   </method>
-  <method name="validateSourceParams" start="513" end="535" abstract="false" final="false" static="false" visibility="private">
+  <method name="validateSourceParams" start="526" end="548" abstract="false" final="false" static="false" visibility="private">
     <docblock>
       <description compact="Function validates the source identifier parameters">Source identifier can contain fileId, fileName, folderNames, folderId
 To be valid, a fileId OR (fileName AND (folderId OR folderNames)) must be given
@@ -258,7 +256,7 @@ If folderOnly is T, then fileId and fileName need not be specified</description>
     <parameter name="folderOnly" byreference="false" type="{unknown}"/>
     <parameter name="allowZeroIds" byreference="false" type="boolean" default="false"/>
   </method>
-  <method name="validateDestParams" start="548" end="566" abstract="false" final="false" static="false" visibility="private">
+  <method name="validateDestParams" start="561" end="579" abstract="false" final="false" static="false" visibility="private">
     <docblock>
       <description compact="Function validates the destination identifier parameters">To be valid, destFileName AND (destFolderId OR destFolderNames) must be given
 If folderOnly is T, then destFileName need not be given
@@ -276,7 +274,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="folderOnly" byreference="false" type="{unknown}"/>
     <parameter name="nameOnly" byreference="false" type="{unknown}"/>
   </method>
-  <method name="validateOutputParams" start="574" end="578" abstract="false" final="false" static="false" visibility="private">
+  <method name="validateOutputParams" start="587" end="591" abstract="false" final="false" static="false" visibility="private">
     <docblock>
       <description compact="Function validates the output type parameters">Source identifier must contain outputType equal to one of the APIRequest::API_OUTPUT_TYPE_X constants</description>
       <return description="T if the parameters are valid" type="object">
@@ -284,7 +282,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
       </return>
     </docblock>
   </method>
-  <method name="validateSearchParams" start="587" end="595" abstract="false" final="false" static="false" visibility="private">
+  <method name="validateSearchParams" start="600" end="608" abstract="false" final="false" static="false" visibility="private">
     <docblock>
       <description compact="Function validates the search parameters">Source identifier may contain search and searchPartialMatch values unless $requireTerms is T, then search MUST be specified</description>
       <param description="- T if the check should error if terms are not specified" type="boolean" variable="$requireTerms"/>
@@ -292,7 +290,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     </docblock>
     <parameter name="requireTerms" byreference="false" type="{unknown}"/>
   </method>
-  <method name="validateSmartFolderId" start="604" end="610" abstract="false" final="false" static="false" visibility="private">
+  <method name="validateSmartFolderId" start="617" end="623" abstract="false" final="false" static="false" visibility="private">
     <docblock>
       <description compact="Function validates the smart folder ID parameter">Source identifier must contain sfId</description>
       <return description="T if the parameters are valid" type="boolean"/>
@@ -301,7 +299,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
       </throws>
     </docblock>
   </method>
-  <method name="validateOverwriteParams" start="617" end="631" abstract="false" final="false" static="false" visibility="public">
+  <method name="validateOverwriteParams" start="630" end="644" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function validates the overwriteFile parameter and corresponding overwriteFileId parameter, which is required if overwriteFile is specified"/>
       <return description="T if the parameters are valid" type="boolean"/>
@@ -310,7 +308,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
       </throws>
     </docblock>
   </method>
-  <method name="validateCredParams" start="644" end="671" abstract="false" final="false" static="false" visibility="private">
+  <method name="validateCredParams" start="657" end="684" abstract="false" final="false" static="false" visibility="private">
     <docblock>
       <description compact="Function validates the check cred parameters">Source identifier can contain fileKey, accountUsername, apiid, apipw</description>
       <param description="T if the validation should check fileKey" type="object" variable="$checkFileKey">
@@ -334,19 +332,19 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="checkApiId" byreference="false" type="{unknown}"/>
     <parameter name="checkApiPw" byreference="false" type="{unknown}"/>
   </method>
-  <method name="validateSetPermParams" start="679" end="685" abstract="false" final="false" static="false" visibility="private">
+  <method name="validateSetPermParams" start="692" end="698" abstract="false" final="false" static="false" visibility="private">
     <docblock>
       <description compact="Function validates the set permissions parameters">Source identifier must contain permJson</description>
       <return description="T if the parameters are valid" type="boolean"/>
     </docblock>
   </method>
-  <method name="validateCheckPermParams" start="693" end="709" abstract="false" final="false" static="false" visibility="private">
+  <method name="validateCheckPermParams" start="706" end="722" abstract="false" final="false" static="false" visibility="private">
     <docblock>
       <description compact="Function validates the check permissions parameters">Source identifier must contain objectUserId, objectId, objectIdType, requestedAccess</description>
       <return description="T if the parameters are valid" type="boolean"/>
     </docblock>
   </method>
-  <method name="validateParams" start="718" end="796" abstract="false" final="false" static="false" visibility="public">
+  <method name="validateParams" start="731" end="809" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function validates the input parameters before they are passed to the API endpoint"/>
       <param description="the operation to check the parameters for" type="object">
@@ -361,7 +359,16 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     </docblock>
     <parameter name="opIn" byreference="false" type="{unknown}"/>
   </method>
-  <method name="getFile" start="810" end="839" abstract="false" final="false" static="false" visibility="public">
+  <method name="mb_basename" start="817" end="824" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns the file name for a given path (multi-byte string aware)"/>
+      <param variable="$path"/>
+      <return type="string"/>
+      <see value="https://www.php.net/manual/en/function.basename.php#121405"/>
+    </docblock>
+    <parameter name="path" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getFile" start="837" end="866" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function reads a file from the STASH Vault"/>
       <param description="an Associative Array containing the source identifier, values which describe the file to read in the Vault" type="array"/>
@@ -377,10 +384,10 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="fileName" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <inline>
-      <comment value="Read" line="811"/>
+      <comment value="Read" line="838"/>
     </inline>
   </method>
-  <method name="putFile" start="853" end="909" abstract="false" final="false" static="false" visibility="public">
+  <method name="putFile" start="880" end="935" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function writes a file to a STASH Vault"/>
       <param description="- the file name and path to upload to STASH vault" type="string" variable="$fileNameIn"/>
@@ -402,16 +409,16 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="fileId" byreference="true" type="{unknown}"/>
     <parameter name="fileAliasId" byreference="true" type="{unknown}"/>
     <inline>
-      <comment value="Check if file exists on the server before uploading it and error if it does (files can't be overwritten)" line="872"/>
+      <comment value="Check if file exists on the server before uploading it and error if it does (files can't be overwritten)" line="899"/>
     </inline>
   </method>
-  <method name="copyFile" start="922" end="935" abstract="false" final="false" static="false" visibility="public">
+  <method name="copyFile" start="948" end="961" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function copies a file in the Vault, creating an entirely new copy, including new files in the storage location(s)"/>
       <param description="- an associative array containing the source identifier, the values of where to read the file in the Vault" type="array" variable="$srcIdentifier"/>
       <param description="- an associative array containing the destination identifier, the values of where to write the file in the Vault" type="array" variable="$dstIdentifier"/>
       <param description="- an integer containing the return code from the request" type="integer" variable="$retCode"/>
-      <param description="- an integer containing the unique identifier for the file" type="integer" variable="$fileId"/>
+      <param description="- an integer containing the unique identifier (UserFileAlias) for the file" type="integer" variable="$fileAliasId"/>
       <return description="the result / output of the operation" type="array"/>
       <throws description="if the input parameters are not valid" type="object">
         <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
@@ -423,12 +430,9 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="dstIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
-    <parameter name="fileId" byreference="true" type="{unknown}"/>
-    <inline>
-      <comment value="Copy" line="923"/>
-    </inline>
+    <parameter name="fileAliasId" byreference="true" type="{unknown}"/>
   </method>
-  <method name="renameFile" start="947" end="960" abstract="false" final="false" static="false" visibility="public">
+  <method name="renameFile" start="973" end="986" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function renames a file in the Vault"/>
       <param description="- an associative array containing the source identifier, the values of where to read the file in the Vault" type="array" variable="$srcIdentifier"/>
@@ -445,11 +449,8 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="dstIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
-    <inline>
-      <comment value="Rename" line="948"/>
-    </inline>
   </method>
-  <method name="moveFile" start="972" end="986" abstract="false" final="false" static="false" visibility="public">
+  <method name="moveFile" start="998" end="1012" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function moves a file in the Vault, it does not change the files in the storage location(s)"/>
       <param description="- an associative array containing the source identifier, the values of where to read the file in the Vault" type="array" variable="$srcIdentifier"/>
@@ -467,10 +468,10 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="dstIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <inline>
-      <comment value="Move" line="973"/>
+      <comment value="Move" line="999"/>
     </inline>
   </method>
-  <method name="deleteFile" start="997" end="1011" abstract="false" final="false" static="false" visibility="public">
+  <method name="deleteFile" start="1023" end="1037" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function deletes a file in the Vault"/>
       <param description="- an associative array containing the source identifier, the values of which file to delete in the Vault" type="array" variable="$srcIdentifier"/>
@@ -486,10 +487,10 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <inline>
-      <comment value="Delete" line="998"/>
+      <comment value="Delete" line="1024"/>
     </inline>
   </method>
-  <method name="listAll" start="1021" end="1035" abstract="false" final="false" static="false" visibility="public">
+  <method name="listAll" start="1047" end="1061" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function lists all files in the user's vault, or in a specified folder in the vault"/>
       <param description="- an associative array containing the source identifier, the values of which folder to list" type="array" variable="$srcIdentifier"/>
@@ -505,7 +506,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
   </method>
-  <method name="listFiles" start="1047" end="1081" abstract="false" final="false" static="false" visibility="public">
+  <method name="listFiles" start="1073" end="1107" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function lists all the files in the Vault or in a specified folder in the vault"/>
       <param description="- an associative array containing the source identifier, the values of which folder to list the files for in the Vault" type="array" variable="$srcIdentifier"/>
@@ -523,12 +524,12 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="fileNames" byreference="true" type="{unknown}"/>
     <inline>
-      <comment value="List Files" line="1048"/>
-      <comment value="$tVal = json_decode($res,true);" line="1063"/>
-      <comment value="return json_decode($res,true);" line="1079"/>
+      <comment value="List Files" line="1074"/>
+      <comment value="$tVal = json_decode($res,true);" line="1089"/>
+      <comment value="return json_decode($res,true);" line="1105"/>
     </inline>
   </method>
-  <method name="listSFFiles" start="1093" end="1109" abstract="false" final="false" static="false" visibility="public">
+  <method name="listSFFiles" start="1119" end="1135" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function lists all the files in a specified SmartFolder"/>
       <param description="- an associative array containing the source identifier, the values of which folder to list the files for in the Vault" type="array" variable="$srcIdentifier"/>
@@ -548,10 +549,10 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="fileNames" byreference="true" type="{unknown}"/>
     <inline>
-      <comment value="List Files" line="1094"/>
+      <comment value="List Files" line="1120"/>
     </inline>
   </method>
-  <method name="listFolders" start="1120" end="1153" abstract="false" final="false" static="false" visibility="public">
+  <method name="listFolders" start="1146" end="1179" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function lists all the folders in the Vault or for the specified folder"/>
       <param description="- an associative array containing the source identifier, the values of which folder to list in the Vault" type="array" variable="$srcIdentifier"/>
@@ -569,10 +570,10 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="folderNames" byreference="true" type="{unknown}"/>
     <inline>
-      <comment value="List all folders" line="1121"/>
+      <comment value="List all folders" line="1147"/>
     </inline>
   </method>
-  <method name="getFolderId" start="1162" end="1178" abstract="false" final="false" static="false" visibility="public">
+  <method name="getFolderId" start="1188" end="1201" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function returns the Folder ID of the specified directory, or 0 if not found"/>
       <param description="an associative array containing the source identifier, the values of which folder to find the ID for" type="array"/>
@@ -586,10 +587,10 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     </docblock>
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
     <inline>
-      <comment value="Get the Internal Folder ID for the specified directory" line="1163"/>
+      <comment value="Get the Internal Folder ID for the specified directory" line="1189"/>
     </inline>
   </method>
-  <method name="createDirectory" start="1189" end="1209" abstract="false" final="false" static="false" visibility="public">
+  <method name="createDirectory" start="1212" end="1233" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function recursively creates a folder in the vault"/>
       <param description="an associative array containing the source identifier, the values of which folder to create" type="array"/>
@@ -607,7 +608,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="dirId" byreference="true" type="{unknown}"/>
   </method>
-  <method name="renameDirectory" start="1221" end="1240" abstract="false" final="false" static="false" visibility="public">
+  <method name="renameDirectory" start="1245" end="1260" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function renames a folder in the vault"/>
       <param description="- an associative array containing the source identifier, the values of which folder to rename" type="array" variable="$srcIdentifier"/>
@@ -625,7 +626,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="dstIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
   </method>
-  <method name="moveDirectory" start="1251" end="1270" abstract="false" final="false" static="false" visibility="public">
+  <method name="moveDirectory" start="1271" end="1286" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function moves a folder in the vault"/>
       <param description="- an associative array containing the source identifier, the values of which folder to move" type="array" variable="$srcIdentifier"/>
@@ -643,12 +644,13 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="dstIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
   </method>
-  <method name="copyDirectory" start="1281" end="1300" abstract="false" final="false" static="false" visibility="public">
+  <method name="copyDirectory" start="1298" end="1319" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function copies a folder in the vault"/>
       <param description="- an associative array containing the source identifier, the values of which folder to copy" type="array" variable="$srcIdentifier"/>
       <param description="- an associative array containing the destination identifier, the values of the folder to copy" type="array" variable="$dstIdentifier"/>
       <param description="- the return code from the request" type="string" variable="$retCode"/>
+      <param description="- the unique identifier for the newly created folder" type="integer" variable="$dirId"/>
       <throws description="if the input parameters are invalid" type="object">
         <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
       </throws>
@@ -660,8 +662,9 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="dstIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
+    <parameter name="dirId" byreference="true" type="{unknown}"/>
   </method>
-  <method name="deleteDirectory" start="1310" end="1323" abstract="false" final="false" static="false" visibility="public">
+  <method name="deleteDirectory" start="1329" end="1342" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function recursively deletes a folder in the vault"/>
       <param description="- an associative array containing the source identifier, the values of which folder to delete" type="array" variable="$srcIdentifier"/>
@@ -677,7 +680,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
   </method>
-  <method name="getFileInfo" start="1333" end="1352" abstract="false" final="false" static="false" visibility="public">
+  <method name="getFileInfo" start="1352" end="1366" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function gets the file information for the specified file in the Vault"/>
       <param description="- an associative array containing the source identifier, the values of which file to get the information for" type="array" variable="$srcIdentifier"/>
@@ -693,10 +696,11 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
   </method>
-  <method name="getFolderInfo" start="1361" end="1377" abstract="false" final="false" static="false" visibility="public">
+  <method name="getFolderInfo" start="1376" end="1390" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function gets the folder information for the specified folder in the Vault"/>
       <param description="- an associative array containing the source identifier, the values of which file to get the information for" type="array" variable="$srcIdentifier"/>
+      <param description="OUTPUT, the return code from the function" type="integer" variable="$retCode"/>
       <throws description="if the input parameters are invalid" type="object">
         <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
       </throws>
@@ -706,8 +710,9 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
       <return description="the result / output of the operation" type="array"/>
     </docblock>
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
+    <parameter name="retCode" byreference="true" type="{unknown}"/>
   </method>
-  <method name="getSyncInfo" start="1386" end="1402" abstract="false" final="false" static="false" visibility="public">
+  <method name="getSyncInfo" start="1399" end="1415" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function gets sync info (path, type, hash, timestamp) for all sub-elements in specified folder"/>
       <param description="- an associative array containing the source identifier, the values of which file to get the information for" type="array" variable="$srcIdentifier"/>
@@ -721,10 +726,9 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     </docblock>
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
   </method>
-  <method name="getVaultInfo" start="1412" end="1426" abstract="false" final="false" static="false" visibility="public">
+  <method name="getVaultInfo" start="1424" end="1437" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function gets information on the user's vault"/>
-      <param description="- an associative array containing the source identifier" type="array" variable="$srcIdentifier"/>
       <param description="- an integer containing the return code from the request" type="integer" variable="$retCode"/>
       <throws description="if the input parameters are invalid" type="object">
         <type full="\InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
@@ -734,13 +738,12 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
       </throws>
       <return description="the result / output of the operation" type="array"/>
     </docblock>
-    <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <inline>
-      <comment value="No parameter validation necessary" line="1417"/>
+      <comment value="No parameter validation necessary" line="1428"/>
     </inline>
   </method>
-  <method name="checkCreds" start="1437" end="1449" abstract="false" final="false" static="false" visibility="public">
+  <method name="checkCreds" start="1448" end="1460" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function checks the provided credentials to make sure the API ID, API PW, username, and account password match a valid account This function generates a failed login if the credentials are not valid for the given user account."/>
       <param description="- an associative array containing the source identifier, the values of which credentials to check" type="array" variable="$srcIdentifier"/>
@@ -754,7 +757,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     </docblock>
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
   </method>
-  <method name="checkVaultConnection" start="1458" end="1475" abstract="false" final="false" static="false" visibility="public">
+  <method name="checkVaultConnection" start="1469" end="1486" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function checks the connection to the Vault with the current API settings"/>
       <param description="the return code from the operation" type="integer" variable="$retCode"/>
@@ -767,7 +770,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="errMsg" byreference="true" type="{unknown}"/>
   </method>
-  <method name="isValidUser" start="1485" end="1497" abstract="false" final="false" static="false" visibility="public">
+  <method name="isValidUser" start="1496" end="1508" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function checks the provided username and reports if its taken or not"/>
       <param description="- an associative array containing the source identifier, the values of which user account to check" type="array" variable="$srcIdentifier"/>
@@ -781,7 +784,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     </docblock>
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
   </method>
-  <method name="setPermissions" start="1509" end="1524" abstract="false" final="false" static="false" visibility="public">
+  <method name="setPermissions" start="1520" end="1535" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function sets the access permissions for a specified folder"/>
       <param description="- an associative array containing the permission values to set" type="array" variable="$srcIdentifier"/>
@@ -799,7 +802,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="permIds" byreference="true" type="{unknown}"/>
   </method>
-  <method name="checkPermissions" start="1536" end="1551" abstract="false" final="false" static="false" visibility="public">
+  <method name="checkPermissions" start="1547" end="1562" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function checks the access permissions for a specified folder and requested access level"/>
       <param description="- an associative array containing the objectId, objectIdType, and requestedAccess parameters" type="array" variable="$srcIdentifier"/>

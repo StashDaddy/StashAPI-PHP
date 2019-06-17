@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<index xmlns="http://xml.phpdox.net/src" basedir="L:/Projects/Stash/StashApi-php">
+<index xmlns="http://xml.phpdox.net/src" basedir="L:/Projects/Stash/StashApi-php-Release">
   <namespace name="Stash">
-    <class name="StashAPI" src="src/STASHAPI.php" xml="classes/Stash_StashAPI.xml"/>
-    <class name="STASHAPIScenarioTest" src="tests/unit/STASHAPIScenarioTest.php" xml="classes/Stash_STASHAPIScenarioTest.xml"/>
-    <class name="STASHAPITest" src="tests/unit/STASHAPITest.php" xml="classes/Stash_STASHAPITest.xml"/>
+    <class name="StashAPI" src="src/Stash/STASHAPI.php" xml="classes/Stash_StashAPI.xml"/>
+    <class name="STASHAPIScenarioTest" src="tests/unit/STASHAPIScenarioTest.php" description="Class STASHAPIScenarioTest Runs scenario based testing for each of the API functions" xml="classes/Stash_STASHAPIScenarioTest.xml"/>
+    <class name="STASHAPITest" src="tests/unit/STASHAPITest.php" description="Class STASHAPITest Runs unit testing on the functions in the API" xml="classes/Stash_STASHAPITest.xml"/>
   </namespace>
   <namespace name="">
     <class name="AcceptanceTester" src="tests/_support/AcceptanceTester.php" description="Inherited Methods" xml="classes/AcceptanceTester.xml"/>
