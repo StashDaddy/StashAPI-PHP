@@ -7,6 +7,7 @@
 [config]
 apiid = "123abc"                                ; Set this to your API ID value
 apipw = "abc123"                                ; Set this to your API PW value
+userid = 123                                    ; Set this to your user account identifier
 username = "username"                           ; Set this to your Vault username
 filekey = "password"                            ; Set this to your Vault account password - this value will be encrypted before being included in any API requests
 folderpath = "["My Home"]"                      ; Set this to your Vault's root folder

@@ -356,8 +356,10 @@ class StashAPI
         curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        // Enable the following line if you want to skip SSL verification (not recommended)
-        //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);        // Skip verifying peer certificate
+        // Define the CURL_IGNORE_SSL_ERRORS constant if you want to skip SSL verification (not recommended)
+        if (defined("CURL_IGNORE_SSL_ERRORS") && CURL_IGNORE_SSL_ERRORS) {
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);        // Skip verifying peer certificate
+        }
 
         # Return response instead of printing.
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -383,6 +385,7 @@ class StashAPI
         if ($this->url == "") throw new \UnexpectedValueException("Invalid URL");
         $result = null;
         $ch = null;
+        $fOut = null;
 
         try {
             set_time_limit(0);
@@ -413,13 +416,16 @@ class StashAPI
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
             curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
             curl_setopt($ch, CURLOPT_FILE, $fOut);
-            // Enable the following line if you want to skip SSL verification (not recommended)
-            //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);        // Skip verifying peer certificate
+            // Define the CURL_IGNORE_SSL_ERRORS constant if you want to skip SSL verification (not recommended)
+            if (defined("CURL_IGNORE_SSL_ERRORS") && CURL_IGNORE_SSL_ERRORS) {
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);        // Skip verifying peer certificate
+            }
 
             // Send request.
             $result = curl_exec($ch);
             $err = curl_error($ch);
             curl_close($ch);
+            fclose($fOut);
             if ($this->verbosity) echo "- sendDownloadRequest Complete - Result: " . $result . " Error: " . $err . "\n\r";
 
             // Examine output file for error JSON and if found, delete the download and return error
@@ -443,7 +449,10 @@ class StashAPI
         } catch (Exception $e) {
             return $e->getMessage();
         } finally {
-            if ($ch != null) {
+            if (is_resource($fOut)) {
+                fclose($fOut);
+            }
+            if (is_resource($ch)) {
                 curl_close($ch);
             }
         }
@@ -482,8 +491,10 @@ class StashAPI
         curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POST, 1);
-        // Enable the following line if you want to skip SSL verification (not recommended)
-        //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);        // Ignore SSL verification errors
+        // Define the CURL_IGNORE_SSL_ERRORS constant if you want to skip SSL verification (not recommended)
+        if (defined("CURL_IGNORE_SSL_ERRORS") && CURL_IGNORE_SSL_ERRORS) {
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);        // Skip verifying peer certificate
+        }
 
         //$fields['file'] = '@' . $fileNameIn;
         $mergedArrays = array_merge($apiParams, $this->params);
@@ -797,6 +808,20 @@ class StashAPI
         return $retVal;
     }
 
+    /**
+     * Returns the file name for a given path (multi-byte string aware)
+     * @param $path
+     * @return string
+     * @see https://www.php.net/manual/en/function.basename.php#121405
+     */
+    function mb_basename($path) {
+        if (preg_match('@^.*[\\\\/]([^\\\\/]+)$@s', $path, $matches)) {
+            return $matches[1];
+        } else if (preg_match('@^([^\\\\/]+)$@s', $path, $matches)) {
+            return $matches[1];
+        }
+        return '';
+    }
 /////////////////////////////////////////
 // STASH API HELPER FUNCTIONS
 /////////////////////////////////////////
@@ -872,11 +897,10 @@ class StashAPI
         }
 
         // Check if file exists on the server before uploading it and error if it does (files can't be overwritten)
-        $fileInfoIdentifier = array("fileName" => $fileNameIn);
+        $fileInfoIdentifier = array("fileName" => self::mb_basename($fileNameIn));
         if ($overwriteFile) {
             $fileInfoIdentifier['fileId'] = $owFileId;
         } else {
-            $fileInfoIdentifier['fileName'] = $fileNameIn;
             if (!empty($srcIdentifier['destFolderNames'])) {
                 $fileInfoIdentifier['folderNames'] = $srcIdentifier['destFolderNames'];
             }
@@ -916,13 +940,13 @@ class StashAPI
      * @param array $srcIdentifier - an associative array containing the source identifier, the values of where to read the file in the Vault
      * @param array $dstIdentifier - an associative array containing the destination identifier, the values of where to write the file in the Vault
      * @param integer $retCode - an integer containing the return code from the request
-     * @param integer $fileId - an integer containing the unique identifier for the file
+     * @param integer $fileAliasId - an integer containing the unique identifier (UserFileAlias) for the file
      * @return array, the result / output of the operation
      * @throws \InvalidArgumentException if the input parameters are not valid
      * @throws \Exception if sendRequest() fails
      */
-    public function copyFile($srcIdentifier, $dstIdentifier, &$retCode, &$fileId)
-    {    // Copy
+    public function copyFile($srcIdentifier, $dstIdentifier, &$retCode, &$fileAliasId)
+    {
         $this->params = array_merge($srcIdentifier, $dstIdentifier);
         $this->url = $this->BASE_API_URL . "api2/file/copy";
         if (!$this->validateParams('copy')) {
@@ -932,7 +956,7 @@ class StashAPI
         $this->params = array();
         $tVal = json_decode($res, true);
         $retCode = (empty($tVal['code']) ? -1 : $tVal['code']);
-        $fileId = (isset($tVal['fileId']) ? $tVal['fileId'] : 0);
+        $fileAliasId = (isset($tVal['fileAliasId']) ? $tVal['fileAliasId'] : 0);
         return $tVal;
     }
 
@@ -947,7 +971,7 @@ class StashAPI
      * @throws \Exception if sendRequest() fails
      */
     public function renameFile($srcIdentifier, $dstIdentifier, &$retCode)
-    {    // Rename
+    {
         $this->params = array_merge($srcIdentifier, $dstIdentifier);
         $this->url = $this->BASE_API_URL . "api2/file/rename";
         if (!$this->validateParams('rename')) {
@@ -1128,7 +1152,7 @@ class StashAPI
             throw new \InvalidArgumentException("Invalid Input Parameters");
         }
 
-        $modelOutput = ($this->params['outputType'] == "4" || $this->params['outputType'] == "5");
+        $modelOutput = ($this->params['outputType'] >= "4" && $this->params['outputType'] <= "6");
 
         $res = $this->sendRequest();
         $this->params = array();
@@ -1136,18 +1160,18 @@ class StashAPI
         $tVal = json_decode($res, true);
         $retCode = (empty($tVal['code']) ? -1 : $tVal['code']);
 
-        if (! empty($tVal['files'])) {
+        if (! empty($tVal['folders'])) {
             if ($modelOutput) {
-                $tArray = $tVal['files'];
-                foreach ($tArray as $file) {
-                    if (isset($file['name'])) {
-                        $folderNames[] = $file['name'];
+                $tArray = $tVal['folders'];
+                foreach ($tArray as $folder) {
+                    if (isset($folder['text'])) {
+                        $folderNames[] = $folder['text'];
                     } else {
                         $folderNames[] = "";
                     }
                 }
             } else {
-                $folderNames = $tVal['files'];
+                $folderNames = $tVal['folders'];
             }
         }
 
@@ -1171,12 +1195,9 @@ class StashAPI
         $res = $this->sendRequest();
         $this->params = array();
 
-        $results = json_decode($res, true);
-        if (isset($results['folderId'])) {
-            return $results['folderId'];
-        } else {
-            return $results;
-        }
+        $tVal = json_decode($res, true);
+
+        return $tVal;
     }
 
     /**
@@ -1204,10 +1225,11 @@ class StashAPI
 
         if (isset($results['folderId'])) {
             $dirId = (int)$results['folderId'];
-            return $results['folderId'];
         } else {
-            return $results;
+            $dirId = 0;
         }
+
+        return $results;
     }
 
     /**
@@ -1234,11 +1256,7 @@ class StashAPI
 
         $retCode = (empty($results['code']) ? -1 : $results['code']);
 
-        if (isset($results['folderId'])) {
-            return $results['folderId'];
-        } else {
-            return $results;
-        }
+        return $results;
     }
 
     /**
@@ -1264,11 +1282,7 @@ class StashAPI
 
         $retCode = (empty($results['code']) ? -1 : $results['code']);
 
-        if (isset($results['folderId'])) {
-            return $results['folderId'];
-        } else {
-            return $results;
-        }
+        return $results;
     }
 
     /**
@@ -1276,11 +1290,12 @@ class StashAPI
      * @param array $srcIdentifier - an associative array containing the source identifier, the values of which folder to copy
      * @param array $dstIdentifier - an associative array containing the destination identifier, the values of the folder to copy
      * @param string $retCode - the return code from the request
+     * @param integer $dirId - the unique identifier for the newly created folder
      * @throws \InvalidArgumentException if the input parameters are invalid
      * @throws \Exception if sendRequest() fails
      * @return array, the result / output of the operation
      */
-    public function copyDirectory($srcIdentifier, $dstIdentifier, &$retCode)
+    public function copyDirectory($srcIdentifier, $dstIdentifier, &$retCode, &$dirId)
     {
         $this->params = array_merge($srcIdentifier, $dstIdentifier);
         $this->url = $this->BASE_API_URL . "api2/file/copydirectory";
@@ -1295,10 +1310,12 @@ class StashAPI
         $retCode = (empty($results['code']) ? -1 : $results['code']);
 
         if (isset($results['folderId'])) {
-            return $results['folderId'];
+            $dirId = $results['folderId'];
         } else {
-            return $results;
+            $dirId = 0;
         }
+
+        return $results;
     }
 
     /**
@@ -1343,24 +1360,20 @@ class StashAPI
         $this->params = array();
 
         $results = json_decode($res, true);
-
         $retCode = (empty($results['code']) ? -1 : $results['code']);
 
-        if (isset($results['fileInfo'])) {
-            return $results['fileInfo'];
-        } else {
-            return $results;
-        }
+        return $results;
     }
 
     /**
      * Function gets the folder information for the specified folder in the Vault
      * @param array $srcIdentifier - an associative array containing the source identifier, the values of which file to get the information for
+     * @param integer $retCode OUTPUT, the return code from the function
      * @throws \InvalidArgumentException if the input parameters are invalid
      * @throws \Exception if sendRequest() fails
      * @return array, the result / output of the operation
      */
-    public function getFolderInfo($srcIdentifier)
+    public function getFolderInfo($srcIdentifier, &$retCode)
     {
         $this->params = $srcIdentifier;
         $this->url = $this->BASE_API_URL . "api2/file/getfolderinfo";
@@ -1371,11 +1384,9 @@ class StashAPI
         $this->params = array();
 
         $results = json_decode($res, true);
-        if (isset($results['folderInfo'])) {
-            return $results['folderInfo'];
-        } else {
-            return $results;
-        }
+        $retCode = (empty($results['code']) ? -1 : $results['code']);
+
+        return $results;
     }
 
     /**
@@ -1405,15 +1416,13 @@ class StashAPI
 
     /**
      * Function gets information on the user's vault
-     * @param array $srcIdentifier - an associative array containing the source identifier
      * @param integer $retCode - an integer containing the return code from the request
      * @throws \InvalidArgumentException if the input parameters are invalid
      * @throws \Exception if sendRequest() fails
      * @return array, the result / output of the operation
      */
-    public function getVaultInfo($srcIdentifier, &$retCode)
+    public function getVaultInfo(&$retCode)
     {
-        $this->params = $srcIdentifier;
         $this->url = $this->BASE_API_URL . "api2/file/getvaultinfo";
 
         // No parameter validation necessary
