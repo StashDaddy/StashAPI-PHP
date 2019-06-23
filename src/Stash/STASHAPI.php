@@ -901,6 +901,7 @@ class StashAPI
         if ($overwriteFile) {
             $fileInfoIdentifier['fileId'] = $owFileId;
         } else {
+            //$fileInfoIdentifier['fileName'] = $fileNameIn;
             if (!empty($srcIdentifier['destFolderNames'])) {
                 $fileInfoIdentifier['folderNames'] = $srcIdentifier['destFolderNames'];
             }
@@ -1079,7 +1080,7 @@ class StashAPI
             throw new \InvalidArgumentException("Invalid Input Parameters");
         }
 
-        $modelOutput = ($this->params['outputType'] == "4" || $this->params['outputType'] == "5");
+        $modelOutput = ($this->params['outputType'] >= "4" && $this->params['outputType'] <= "6");
 
         $res = $this->sendRequest();
         $this->params = array();
@@ -1093,6 +1094,8 @@ class StashAPI
                 foreach ($tArray as $file) {
                     if (isset($file['name'])) {
                         $fileNames[] = $file['name'];
+                    } else if (isset($file['text'])) {
+                        $fileNames[] = $file['text'];
                     } else {
                         $fileNames[] = "";
                     }
@@ -1164,7 +1167,7 @@ class StashAPI
             if ($modelOutput) {
                 $tArray = $tVal['folders'];
                 foreach ($tArray as $folder) {
-                    if (isset($folder['text'])) {
+                if (isset($folder['text'])) {
                         $folderNames[] = $folder['text'];
                     } else {
                         $folderNames[] = "";

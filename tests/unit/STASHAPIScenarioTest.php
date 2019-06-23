@@ -323,7 +323,6 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
         $src = array('folderNames' => array("My Home", "Documents"), 'fileName' => 'copyOfFile.txt');
         $retCode = 0;
         $api->deleteFile($src, $retCode);
-        $this->assertEquals("200", $retCode);
 
         // Copy File
         $src = array('folderNames'=>array("My Home", "Documents"), 'fileName' => self::testFile);
@@ -336,6 +335,7 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
         $this->assertTrue(isset($res['code']));
         $this->assertTrue(isset($res['message']));
         $this->assertTrue(isset($res['fileAliasId']));
+        $this->assertTrue(isset($res['fileSize']));
         $this->assertEquals($fileAliasId, $res['fileAliasId']);
 
         //$src = array('fileKey'=>$api->encryptString($this->accountPw,true), 'folderNames'=>array("My Home", "Documents"), 'fileName' => "copyOfFile.txt");
@@ -484,58 +484,69 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
         $this->assertTrue(isset($res['all']));
         $this->assertTrue(is_array($res['all']));
         $this->assertTrue(count($res['all']) > 0);
-        $this->assertTrue(isset($res['all']['text']));
-        $this->assertTrue(isset($res['all']['data']));
+        $this->assertTrue(isset($res['all'][0]['text']));
+        $this->assertTrue(isset($res['all'][0]['data']));
 
-        // Check directory data properties
-        $this->assertTrue(count($res['all']['data']) > 0);
-        $this->assertTrue(isset($res['all']['data']['bytes']));
-        $this->assertEquals("0", $res['all']['data']['bytes']);
-        $this->assertTrue(isset($res['all']['data']['size']));
-        $this->assertEquals("0B", $res['all']['data']['size']);
-        $this->assertTrue(isset($res['all']['data']['type']));
-        $this->assertTrue(isset($res['all']['data']['date']));
-        $this->assertTrue(isset($res['all']['data']['by']));
-        $this->assertTrue(isset($res['all']['data']['parent_id']));
-        $this->assertTrue(isset($res['all']['data']['numChildren']));
-        $this->assertTrue(isset($res['all']['id']));
-        $this->assertTrue(isset($res['all']['state']));
+        // Check directory properties
+        $this->assertTrue(isset($res['all'][0]['text']));
+        $this->assertTrue($res['all'][0]['text'] != "");
+        $this->assertTrue(count($res['all'][0]['data']) > 0);
+        $this->assertTrue(isset($res['all'][0]['data']['bytes']));
+        $this->assertEquals("0", $res['all'][0]['data']['bytes']);
+        $this->assertTrue(isset($res['all'][0]['data']['size']));
+        $this->assertEquals("0B", $res['all'][0]['data']['size']);
+        $this->assertTrue(isset($res['all'][0]['data']['type']));
+        $this->assertEquals("folder", $res['all'][0]['data']['type']);
+        $this->assertTrue(isset($res['all'][0]['data']['date']));
+        $this->assertTrue(isset($res['all'][0]['data']['by']));
+        $this->assertTrue(isset($res['all'][0]['data']['parent_id']));
+        $this->assertTrue($res['all'][0]['data']['parent_id'] > 0);
+        $this->assertTrue(isset($res['all'][0]['data']['numChildren']));
+        $this->assertTrue($res['all'][0]['data']['numChildren'] > 0);
+        $this->assertTrue(isset($res['all'][0]['id']));
+        $this->assertTrue($res['all'][0]['id'] > 0);
+        $this->assertTrue(isset($res['all'][0]['state']));
+        $this->assertTrue(is_array($res['all'][0]['state']));
+        $this->assertTrue(count($res['all'][0]['state']) > 0);
+        $this->assertTrue(isset($res['all'][0]['state']['opened']));
+        $this->assertTrue(isset($res['all'][0]['icon']));
+        $this->assertTrue($res['all'][0]['icon'] != "");
 
-        // Check directory state properties
-        $this->assertTrue(is_array($res['all']['state']));
-        $this->assertTrue(count($res['all']['state']) > 0);
-        $this->assertTrue(isset($res['all']['state']['opened']));
+        // Check file properties
+        $this->assertTrue(isset($res['all'][1]['text']));
+        $this->assertTrue($res['all'][1]['text'] != "");
+        $this->assertTrue(count($res['all'][1]['data']) > 0);
+        $this->assertTrue(isset($res['all'][1]['data']['bytes']));
+        $this->assertEquals(33, $res['all'][1]['data']['bytes']);
+        $this->assertTrue(isset($res['all'][1]['data']['size']));
+        $this->assertEquals("33.00B", $res['all'][1]['data']['size']);
+        $this->assertTrue(isset($res['all'][1]['data']['type']));
+        $this->assertEquals("file", $res['all'][1]['data']['type']);
+        $this->assertTrue(isset($res['all'][1]['data']['date']));
+        $this->assertTrue(isset($res['all'][1]['data']['by']));
+        $this->assertTrue(isset($res['all'][1]['data']['parent_id']));
+        $this->assertEquals($res['all'][0]['id'], $res['all'][1]['data']['parent_id']);
+        $this->assertTrue(isset($res['all'][1]['data']['numChildren']));
+        $this->assertEquals(0, $res['all'][1]['data']['numChildren']);
+        $this->assertTrue(isset($res['all'][1]['data']['filetype']));
+        $this->assertTrue(isset($res['all'][1]['id']));
+        $this->assertTrue($res['all'][1]['id'] > 0);
+        $this->assertTrue(isset($res['all'][1]['parent']));
+        $this->assertEquals($res['all'][1]['data']['parent_id'], $res['all'][1]['parent']);
+        $this->assertTrue(isset($res['all'][1]['state']));
+        $this->assertTrue(is_array($res['all'][1]['state']));
+        $this->assertTrue(count($res['all'][1]['state']) > 0);
+        $this->assertTrue(isset($res['all'][1]['state']['opened']));
+        $this->assertTrue(isset($res['all'][1]['icon']));
+        $this->assertTrue($res['all'][1]['icon'] != "");
 
-        $this->assertTrue(isset($res['all']['icon']));
-        $this->assertTrue(isset($res['all']['children']));
-        $this->assertTrue(is_array($res['all']['children']));
-        $this->assertTrue(count($res['all']['children']) > 0);
-        $this->assertTrue(isset($res['all']['children'][0]));
+        unlink(codecept_data_dir(self::testFile));
+        $retCode = 0;
+        $src = array('fileId' => $res['all'][1]['id']);
+        $res = $api->deleteFile($src, $retCode);
 
-        $model = $res['all']['children'][0];
-        $this->assertTrue(isset($model['text']));
-        $this->assertEquals(self::testFile, ($model['text']));
-        $this->assertTrue(isset($model['data']));
-        $this->assertTrue(isset($model['id']));
-        $this->assertTrue(isset($model['state']));
-        $this->assertTrue(isset($model['icon']));
-
-        // Check file data properties
-        $this->assertTrue(is_array($model['data']));
-        $this->assertTrue(count($model['data']) > 0);
-        $this->assertTrue(isset($model['data']['bytes']));
-        $this->assertTrue(isset($model['data']['size']));
-        $this->assertTrue(isset($model['data']['type']));
-        $this->assertTrue(isset($model['data']['date']));
-        $this->assertTrue(isset($model['data']['by']));
-        $this->assertTrue(isset($model['data']['parent_id']));
-        $this->assertTrue(isset($model['data']['numChildren']));
-        $this->assertTrue(isset($model['data']['filetype']));
-
-        // Check file state properties
-        $this->assertTrue(is_array($model['state']));
-        $this->assertTrue(count($model['state']) > 0);
-        $this->assertTrue(isset($model['state']['opened']));
+        $this->assertEquals("200", $retCode);
+        $this->assertTrue(is_array($res));
     }
 
     /**
@@ -682,6 +693,55 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
         }
         $this->assertTrue($found);
 
+        // Check outputType = 6 (NodeNameId Format)
+        $src = array('folderNames'=>array("My Home", "Documents"),'outputType' => 6);
+        $res = $api->listFiles($src, $retCode, $fileNames);
+        $this->assertEquals("200", $retCode);
+        $this->assertTrue(is_array($fileNames));
+        $this->assertTrue(count($fileNames) > 0);
+        $this->assertTrue(in_array(self::testFile, $fileNames));
+        $this->assertTrue(is_array($res));
+        $this->assertTrue(isset($res['code']));
+        $this->assertTrue(isset($res['message']));
+        $this->assertTrue(isset($res['files']));
+        $this->assertTrue(is_array($res['files']));
+        $this->assertTrue(count($res['files']) > 0);
+        $found = false;
+        foreach ($res['files'] as $model) {
+            $this->assertTrue(isset($model['text']));
+            $this->assertTrue($model['text'] != "");
+            $this->assertTrue(count($model['data']) > 0);
+            $this->assertTrue(isset($model['data']['bytes']));
+            $this->assertTrue(isset($model['data']['size']));
+            $this->assertTrue(isset($model['data']['type']));
+            $this->assertTrue(isset($model['data']['date']));
+            $this->assertTrue(isset($model['data']['by']));
+            $this->assertTrue(isset($model['data']['parent_id']));
+            $this->assertTrue(isset($model['data']['numChildren']));
+            $this->assertTrue(isset($model['id']));
+            $this->assertTrue($model['id'] > 0);
+            $this->assertTrue(isset($model['parent']));
+            $this->assertTrue(isset($model['state']));
+            $this->assertTrue(is_array($model['state']));
+            $this->assertTrue(count($model['state']) > 0);
+            $this->assertTrue(isset($model['state']['opened']));
+            $this->assertTrue(isset($model['icon']));
+            $this->assertTrue($model['icon'] != "");
+            if ($model['text'] == self::testFile) {
+                $found = true;
+                $this->assertEquals(33, $model['data']['bytes']);
+                $this->assertEquals("33.00B", $model['data']['size']);
+                $this->assertEquals("file", $model['data']['type']);
+                $this->assertEquals($model['parent'], $model['data']['parent_id']);
+                $this->assertEquals(0, $model['data']['numChildren']);
+                $this->assertTrue($model['data']['parent_id'] > 0);
+                $this->assertTrue(isset($model['data']['filetype']));
+                $this->assertTrue($model['data']['filetype'] != "");
+                break;
+                }
+        }
+        $this->assertTrue($found);
+
         // Cleanup
         unlink(codecept_data_dir(self::testFile));
         $retCode = 0;
@@ -690,7 +750,6 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
 
         $this->assertEquals("200", $retCode);
         $this->assertTrue(is_array($res));
-
     }
 
     /**
@@ -863,9 +922,29 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
         $this->assertTrue(count($res['folders']) > 0);
         $found = false;
         foreach ($res['folders'] as $model) {
-            $this->assertTrue(isset($model['id']));
-            $this->assertTrue(isset($model['parent']));
             $this->assertTrue(isset($model['text']));
+            $this->assertTrue($model['text'] != "");
+            $this->assertTrue(count($model['data']) > 0);
+            $this->assertTrue(isset($model['data']['bytes']));
+            $this->assertTrue(isset($model['data']['size']));
+            $this->assertTrue(isset($model['data']['type']));
+            $this->assertTrue(isset($model['data']['date']));
+            $this->assertTrue(isset($model['data']['by']));
+            $this->assertTrue(isset($model['data']['parent_id']));
+            $this->assertTrue($model['data']['parent_id'] > 0);
+            $this->assertTrue(isset($model['data']['numChildren']));
+            $this->assertTrue($model['data']['numChildren'] >= 0);
+            $this->assertTrue(isset($model['id']));
+            $this->assertTrue($model['id'] > 0);
+            $this->assertTrue(isset($model['state']));
+            $this->assertTrue(is_array($model['state']));
+            $this->assertTrue(count($model['state']) > 0);
+            $this->assertTrue(isset($model['state']['opened']));
+            $this->assertTrue(isset($model['icon']));
+            $this->assertTrue($model['icon'] != "");
+            $this->assertEquals("0", $model['data']['bytes']);
+            $this->assertEquals("0B", $model['data']['size']);
+            $this->assertEquals("folder", $model['data']['type']);
             if ($model['text'] == "Documents") {
                 $found = true;
                 break;
