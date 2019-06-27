@@ -432,16 +432,16 @@ class StashAPI
             // If any error occurs during this error check, just keep the file output as it is
             try {
                 $fileSize = filesize($fileNameIn);
-                $readLen = ($fileSize > 200 ? 200 : $fileSize);
+                $readLen = ($fileSize > 250 ? 250 : $fileSize);
                 $buffer = file_get_contents($fileNameIn, false, null, 0, $readLen);
-                $idx = strpos($buffer, chr(0));
-                if ($idx > 1) {
-                    $subBuffer = substr($buffer, 0, $idx);
-                    $tArr = json_decode($subBuffer);
-                    if (!is_null($tArr) && is_array($tArr) && isset($tArr['code']) && ($tArr == "400" || $tArr == "403" || $tArr == "500")) {
-                        return $subBuffer;
-                    }
+                //$idx = strpos($buffer, chr(0));
+                //if ($idx > 1) {
+                //    $subBuffer = substr($buffer, 0, $idx);
+                $tArr = json_decode($buffer, true);
+                if (!is_null($tArr) && is_array($tArr) && isset($tArr['code']) && ($tArr['code'] == "400" || $tArr['code'] == "403" || $tArr['code'] == "500")) {
+                    return $buffer;
                 }
+                //}
             } catch (Exception $e) {
                 // Do nothing, assume the error check failed and its a valid file anyway
             }
@@ -851,7 +851,7 @@ class StashAPI
             // Something else went wrong with the request
             // Try to decode the response
             try {
-                $tArr = json_decode($res);
+                $tArr = json_decode($res, true);
                 if ($tArr == null) {
                     throw new Exception("Unable to download file - " . $res);
                 }
