@@ -438,7 +438,7 @@ class StashAPI
                 //if ($idx > 1) {
                 //    $subBuffer = substr($buffer, 0, $idx);
                 $tArr = json_decode($buffer, true);
-                if (!is_null($tArr) && is_array($tArr) && isset($tArr['code']) && ($tArr['code'] == "400" || $tArr['code'] == "403" || $tArr['code'] == "500")) {
+                if (!is_null($tArr) && is_array($tArr) && isset($tArr['code']) && ($tArr['code'] == "400" || $tArr['code'] == "403" || $tArr['code'] == "404" || $tArr['code'] == "500")) {
                     return $buffer;
                 }
                 //}
@@ -855,7 +855,7 @@ class StashAPI
                 if ($tArr == null) {
                     throw new Exception("Unable to download file - " . $res);
                 }
-                $retCode = 0;
+                $retCode = (isset($tArr['code']) ? $tArr['code'] : 0);
                 $retVal = $tArr;
             } catch (Exception $e) {
                 $retCode = -1;
