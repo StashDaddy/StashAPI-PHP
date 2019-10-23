@@ -372,11 +372,15 @@ class StashAPI
         # Send request.
         $result = curl_exec($ch);
         $err = curl_error($ch);
+        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
         if ($this->verbosity) echo "- sendRequest Complete - Result: " . $result . " Error: " . $err . "\n\r";
         if ($result === false) {
             $result = json_encode(['code' => 500, 'message' => $err]);
+        } else if ($code != 200) {
+            $result = json_encode(['code' => $code, 'message' => $result]);
         }
+
         return $result;
     }
 
@@ -517,12 +521,16 @@ class StashAPI
         // Send request.
         $result = curl_exec($ch);
         $err = curl_error($ch);
+        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
 
         if ($this->verbosity) echo "- sendFileRequest Complete - Result: " . $result . " Error: " . $err . "\n\r";
         if ($result === false) {
             $result = json_encode(['code' => 500, 'message' => $err]);
+        } else if ($code != 200) {
+            $result = json_encode(['code' => $code, 'message' => $result]);
         }
+
         return $result;
     }
 
