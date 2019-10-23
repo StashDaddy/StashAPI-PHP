@@ -374,6 +374,9 @@ class StashAPI
         $err = curl_error($ch);
         curl_close($ch);
         if ($this->verbosity) echo "- sendRequest Complete - Result: " . $result . " Error: " . $err . "\n\r";
+        if ($result === false) {
+            $result = json_encode(['code' => 500, 'message' => $err]);
+        }
         return $result;
     }
 
@@ -517,6 +520,9 @@ class StashAPI
         curl_close($ch);
 
         if ($this->verbosity) echo "- sendFileRequest Complete - Result: " . $result . " Error: " . $err . "\n\r";
+        if ($result === false) {
+            $result = json_encode(['code' => 500, 'message' => $err]);
+        }
         return $result;
     }
 
