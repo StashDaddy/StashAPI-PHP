@@ -2,8 +2,12 @@
 
 namespace Stash;
 
+use Codeception\Test\Unit;
+use InvalidArgumentException;
 use Stash\StashAPI as STASHAPI;
 use \Exception as Exception;
+use UnexpectedValueException;
+use UnitTester;
 
 /**
  * Class STASHAPITest
@@ -11,11 +15,11 @@ use \Exception as Exception;
  * @package Stash
  */
 
-class STASHAPITest extends \Codeception\Test\Unit
+class STASHAPITest extends Unit
 {
 
     /**
-     * @var \UnitTester
+     * @var UnitTester
      */
     protected $tester;
     const testFile = "tmpfile_stashapitest.txt";        // Test file to use for uploads/write - will be deleted upon completion of all tests (see tearDownAfterClass())
@@ -311,7 +315,7 @@ class STASHAPITest extends \Codeception\Test\Unit
     /**
      * @param STASHAPI $apiIn the API object to test
      * @depends testAPIValidConstructor
-     * @expectedException \InvalidArgumentException
+     * @expectedException InvalidArgumentException
      */
     public function testEncryptInvalidKey($apiIn)
     {
@@ -325,7 +329,7 @@ class STASHAPITest extends \Codeception\Test\Unit
      * @param STASHAPI $apiIn
      * @throws Exception
      * @depends testAPIValidConstructor
-     * @expectedException \InvalidArgumentException
+     * @expectedException InvalidArgumentException
      */
     public function testDecryptInvalidKey($apiIn)
     {
@@ -341,7 +345,7 @@ class STASHAPITest extends \Codeception\Test\Unit
      * @param STASHAPI $apiIn
      * @throws Exception
      * @depends testAPIValidConstructor
-     * @expectedException \UnexpectedValueException
+     * @expectedException UnexpectedValueException
      */
     public function testDecryptInvalidDataIn($apiIn)
     {
@@ -371,7 +375,7 @@ class STASHAPITest extends \Codeception\Test\Unit
 
     /**
      * @throws Exception
-     * @expectedException \UnexpectedValueException
+     * @expectedException UnexpectedValueException
      */
     public function testAPIFileSendEmptyURL()
     {
@@ -385,7 +389,7 @@ class STASHAPITest extends \Codeception\Test\Unit
 
     /**
      * @throws Exception
-     * @expectedException \InvalidArgumentException
+     * @expectedException InvalidArgumentException
      */
     public function testAPIFileSendEmptyFilename()
     {
@@ -399,7 +403,7 @@ class STASHAPITest extends \Codeception\Test\Unit
 
     /**
      * @throws Exception
-     * @expectedException \InvalidArgumentException
+     * @expectedException InvalidArgumentException
      */
     public function testAPIFileSendFileNotExist()
     {

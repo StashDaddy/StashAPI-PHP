@@ -744,6 +744,23 @@ class StashAPI
     }
 
     /**
+     * Function validates the tag(s) parameters
+     * @param boolean $singleTag if True, will only for presence of 'tag' parameters, otherwise checks for presence of 'tags' parameter
+     */
+    public function validateSourceTags($singleTag)
+    {
+        if ($singleTag) {
+            if (empty($this->params['tag']))  {
+                throw new InvalidArgumentException("Invalid objectUserId parameter");
+            }
+        } else {
+            if (empty($this->params['tags']))  {
+                throw new InvalidArgumentException("Invalid objectUserId parameter");
+            }
+        }
+    }
+
+    /**
      * Function validates the input parameters before they are passed to the API endpoint
      *
      * @param String, the operation to check the parameters for
@@ -807,6 +824,23 @@ class StashAPI
                 $this->validateSourceParams(false, false);
             } elseif ($opIn === 'getfolderinfo') {
                 $this->validateSourceParams(true, false);
+            } elseif ($opIn === 'setfilelock') {
+                $this->validateSourceParams(false, false);
+            } elseif ($opIn === 'getfilelock') {
+                $this->validateSourceParams(false, false);
+            } elseif ($opIn === 'clearfilelock') {
+                $this->validateSourceParams(false, false);
+            } elseif ($opIn === 'settags') {
+                $this->validateSourceParams(false, false);
+                $this->validateSourceTags(false);
+            } elseif ($opIn === 'gettags') {
+                $this->validateSourceParams(false, false);
+            } elseif ($opIn === 'addtag') {
+                $this->validateSourceParams(false, false);
+                $this->validateSourceTags(true);
+            } elseif ($opIn === 'deletetag') {
+                $this->validateSourceParams(false, false);
+                $this->validateSourceTags(true);
             } elseif ($opIn === 'getsyncinfo') {
                 $this->validateSourceParams(true, false);
             } elseif ($opIn === 'checkcreds') {
@@ -1222,6 +1256,230 @@ class StashAPI
         $tVal = json_decode($res, true);
 
         return $tVal;
+    }
+
+    /**
+     * Function sets a lock on a file in the vault
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which file to set the lock on
+     * @param integer $retCode OUTPUT, the return code from the API call
+     * @param integer $fileAliasId OUTPUT, the UserFileAlias id of the file the lock was set on
+     * @return array the result / output of the operation
+     * @throws Exception if sendRequest() fails
+     * @throws InvalidArgumentException if the input parameters are invalid
+     */
+    public function setFileLock($srcIdentifier, &$retCode, &$fileAliasId)
+    {
+        $this->params = $srcIdentifier;
+        $this->url = $this->BASE_API_URL . "api2/file/setfilelock";
+        if (!$this->validateParams('setfilelock')) {
+            throw new InvalidArgumentException("Invalid Input Parameters");
+        }
+        $res = $this->sendRequest();
+        $this->params = array();
+
+        $results = json_decode($res, true);
+
+        $retCode = (empty($results['code']) ? -1 : $results['code']);
+
+        if (isset($results['fileAliasId'])) {
+            $fileAliasId = (int)$results['fileAliasId'];
+        } else {
+            $fileAliasId = 0;
+        }
+
+        return $results;
+    }
+
+    /**
+     * Function gets the lock status on a file in the vault
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which file to get the lock status of
+     * @param integer $retCode OUTPUT, the return code from the API call
+     * @param integer $fileLock OUTPUT, the file lock status (0 = unlocked, 1 = locked)
+     * @return array the result / output of the operation
+     * @throws Exception if sendRequest() fails
+     * @throws InvalidArgumentException if the input parameters are invalid
+     */
+    public function getFileLock($srcIdentifier, &$retCode, &$fileLock)
+    {
+        $this->params = $srcIdentifier;
+        $this->url = $this->BASE_API_URL . "api2/file/getfilelock";
+        if (!$this->validateParams('getfilelock')) {
+            throw new InvalidArgumentException("Invalid Input Parameters");
+        }
+        $res = $this->sendRequest();
+        $this->params = array();
+
+        $results = json_decode($res, true);
+
+        $retCode = (empty($results['code']) ? -1 : $results['code']);
+
+        if (isset($results['fileLock'])) {
+            $fileLock = (int)$results['fileLock'];
+        } else {
+            $fileLock = 0;
+        }
+
+        return $results;
+    }
+
+    /**
+     * Function clears the lock on a file in the vault
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which file to clear the lock on
+     * @param integer $retCode OUTPUT, the return code from the API call
+     * @param integer $fileAliasId OUTPUT, the UserFileAlias id of the file the lock was set on
+     * @return array the result / output of the operation
+     * @throws Exception if sendRequest() fails
+     * @throws InvalidArgumentException if the input parameters are invalid
+     */
+    public function clearFileLock($srcIdentifier, &$retCode, &$fileAliasId)
+    {
+        $this->params = $srcIdentifier;
+        $this->url = $this->BASE_API_URL . "api2/file/clearfilelock";
+        if (!$this->validateParams('clearfilelock')) {
+            throw new InvalidArgumentException("Invalid Input Parameters");
+        }
+        $res = $this->sendRequest();
+        $this->params = array();
+
+        $results = json_decode($res, true);
+
+        $retCode = (empty($results['code']) ? -1 : $results['code']);
+
+        if (isset($results['fileAliasId'])) {
+            $fileAliasId = (int)$results['fileAliasId'];
+        } else {
+            $fileAliasId = 0;
+        }
+
+        return $results;
+    }
+
+    /**
+     * Function gets the Tags for a file in the vault
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which file to get the Tags on
+     * @param integer $retCode OUTPUT, the return code from the API call
+     * @param string $fileTags OUTPUT, the tags, as a comma separated string for the file
+     * @return array the result / output of the operation
+     * @throws Exception if sendRequest() fails
+     * @throws InvalidArgumentException if the input parameters are invalid
+     */
+    public function getTags($srcIdentifier, &$retCode, &$fileTags)
+    {
+        $this->params = $srcIdentifier;
+        $this->url = $this->BASE_API_URL . "api2/file/gettags";
+        if (!$this->validateParams('gettags')) {
+            throw new InvalidArgumentException("Invalid Input Parameters");
+        }
+        $res = $this->sendRequest();
+        $this->params = array();
+
+        $results = json_decode($res, true);
+
+        $retCode = (empty($results['code']) ? -1 : $results['code']);
+
+        if (isset($results['fileTags'])) {
+            $fileTags = (int)$results['fileTags'];
+        } else {
+            $fileTags = 0;
+        }
+
+        return $results;
+    }
+
+    /**
+     * Function sets the Tags for a file in the vault
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which file to set the Tags on
+     * @param integer $retCode OUTPUT, the return code from the API call
+     * @param integer $fileAliasId OUTPUT, the UserFileAlias ID for the file the tags were retrieved for
+     * @return array the result / output of the operation
+     * @throws Exception if sendRequest() fails
+     * @throws InvalidArgumentException if the input parameters are invalid
+     */
+    public function setTags($srcIdentifier, &$retCode, &$fileAliasId)
+    {
+        $this->params = $srcIdentifier;
+        $this->url = $this->BASE_API_URL . "api2/file/settags";
+        if (!$this->validateParams('settags')) {
+            throw new InvalidArgumentException("Invalid Input Parameters");
+        }
+        $res = $this->sendRequest();
+        $this->params = array();
+
+        $results = json_decode($res, true);
+
+        $retCode = (empty($results['code']) ? -1 : $results['code']);
+
+        if (isset($results['fileAliasId'])) {
+            $fileAliasId = (int)$results['fileAliasId'];
+        } else {
+            $fileAliasId = 0;
+        }
+
+        return $results;
+    }
+
+    /**
+     * Function adds the specified Tag to a file in the vault
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which file to set the Tag on
+     * @param integer $retCode OUTPUT, the return code from the API call
+     * @param integer $fileAliasId OUTPUT, the UserFileAlias ID for the file the tags were retrieved for
+     * @return array the result / output of the operation
+     * @throws Exception if sendRequest() fails
+     * @throws InvalidArgumentException if the input parameters are invalid
+     */
+    public function addTag($srcIdentifier, &$retCode, &$fileAliasId)
+    {
+        $this->params = $srcIdentifier;
+        $this->url = $this->BASE_API_URL . "api2/file/addtag";
+        if (!$this->validateParams('addtag')) {
+            throw new InvalidArgumentException("Invalid Input Parameters");
+        }
+        $res = $this->sendRequest();
+        $this->params = array();
+
+        $results = json_decode($res, true);
+
+        $retCode = (empty($results['code']) ? -1 : $results['code']);
+
+        if (isset($results['fileAliasId'])) {
+            $fileAliasId = (int)$results['fileAliasId'];
+        } else {
+            $fileAliasId = 0;
+        }
+
+        return $results;
+    }
+
+    /**
+     * Function deletes the specified Tag from a file in the vault
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which file to delete the Tag from
+     * @param integer $retCode OUTPUT, the return code from the API call
+     * @param integer $fileAliasId OUTPUT, the UserFileAlias ID for the file the tags were retrieved for
+     * @return array the result / output of the operation
+     * @throws Exception if sendRequest() fails
+     * @throws InvalidArgumentException if the input parameters are invalid
+     */
+    public function deleteTag($srcIdentifier, &$retCode, &$fileAliasId)
+    {
+        $this->params = $srcIdentifier;
+        $this->url = $this->BASE_API_URL . "api2/file/deletetag";
+        if (!$this->validateParams('deletetag')) {
+            throw new InvalidArgumentException("Invalid Input Parameters");
+        }
+        $res = $this->sendRequest();
+        $this->params = array();
+
+        $results = json_decode($res, true);
+
+        $retCode = (empty($results['code']) ? -1 : $results['code']);
+
+        if (isset($results['fileAliasId'])) {
+            $fileAliasId = (int)$results['fileAliasId'];
+        } else {
+            $fileAliasId = 0;
+        }
+
+        return $results;
     }
 
     /**
