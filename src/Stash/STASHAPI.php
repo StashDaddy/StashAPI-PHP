@@ -27,7 +27,6 @@ use UnexpectedValueException;
 
 class StashAPI
 {
-
     const STASHAPI_VERSION = "1.0";        // API Version
     const STASHAPI_ID_LENGTH = 32;        // API_ID string length
     const STASHAPI_PW_LENGTH = 32;        // API_PW string length (minimum)
@@ -105,6 +104,24 @@ class StashAPI
     }
 
     /**
+     * Gets the verbosity setting for the STASHAPI instance
+     * @return bool T if verbosity enabled and set in constructor, otherwise F
+     */
+    public function getVerbosity()
+    {
+        return $this->verbosity;
+    }
+
+    /**
+     * Gets the API ID for the STASHAPI instance
+     * @return string the API ID
+     */
+    public function getApiId()
+    {
+        return $this->api_id;
+    }
+
+    /**
      * Checks the parameter and value for sanity and compliance with rules
      *
      * @param array, the parameter name => value
@@ -115,7 +132,7 @@ class StashAPI
         try {
             foreach ($dataIn as $idx => $val) {
                 if ($idx === "api_id") {                    // API_ID is 32 chars, a-f,0-9 (hex chars only)
-                    if (mb_strlen($val) != self::STASHAPI_ID_LENGTH)
+                    if (mb_strlen($val) != self::STASHAPI_ID_LENGTH && strpos($val, "@") === false)
                         throw new Exception($idx . " Must Be " . self::STASHAPI_ID_LENGTH . " Characters in Length");
                     if (preg_match('/[^abcdef0-9]/i', $val))
                         throw new Exception($idx . " Has Invalid Characters, only a-f and 0-9 are allowed");
@@ -744,6 +761,20 @@ class StashAPI
     }
 
     /**
+     * Function validates the WebErase parameters
+     * Source identifier must contain api_id only
+     * @return boolean, T if the parameters are valid
+     */
+    private function ValidateWebEraseParams()
+    {
+        if (empty($this->params['token_key'])) {
+            throw new InvalidArgumentException("Invalid token parameter");
+        }
+
+        return true;
+    }
+
+    /**
      * Function validates the tag(s) parameters
      * @param boolean $singleTag if True, will only for presence of 'tag' parameters, otherwise checks for presence of 'tags' parameter
      */
@@ -851,6 +882,28 @@ class StashAPI
                 $this->validateSetPermParams();
             } elseif ($opIn == 'checkperms') {
                 $this->ValidateCheckPermParams();
+            } elseif ($opIn == 'weberasestore') {
+                // Validate the 'write' function parameters
+                //$this->validateDestParams(true, false);
+                //$this->validateOverwriteParams();
+                if (empty($this->params['fileKey'])) throw new InvalidArgumentException("Invalid fileKey Parameter");
+                $this->ValidateWebEraseParams();
+            } elseif ($opIn == 'weberaseretrieve') {
+                // Validate the 'read' function parameters
+                //$this->validateSourceParams(false, false);
+                if (empty($this->params['fileKey'])) throw new InvalidArgumentException("Invalid fileKey Parameter");
+                $this->ValidateWebEraseParams();
+            } elseif ($opIn == 'weberaseupdate') {
+                //$this->validateDestParams(true, false);
+                //$this->validateOverwriteParams();
+                if (empty($this->params['fileKey'])) throw new InvalidArgumentException("Invalid fileKey Parameter");
+                $this->ValidateWebEraseParams();
+            } elseif ($opIn == 'weberasedelete') {
+                $this->ValidateWebEraseParams();
+            } elseif ($opIn == 'weberaseotc') {
+                $this->ValidateWebEraseParams();
+            } elseif ($opIn == 'weberasepolling') {
+                $this->ValidateWebEraseParams();
             } elseif ($opIn === 'none') {
                 return true;        // Doesn't matter what the source and dest identifiers are
             } else {
@@ -953,7 +1006,7 @@ class StashAPI
             }
         }
 
-        // Check if file exists on the server before uploading it and error if it does (files can't be overwritten)
+        // Check if file exists on the server before uploading it and error if it does (unless overwrite specified)
         $fileInfoIdentifier = array("fileName" => self::mb_basename($fileNameIn));
         if ($overwriteFile) {
             $fileInfoIdentifier['fileId'] = $owFileId;
@@ -1099,7 +1152,7 @@ class StashAPI
      * @param array $srcIdentifier - an associative array containing the source identifier, the values of which folder to list
      * @param integer $retCode - an integer containing the return code from the request
      * @return array, the result / output of the operation
-     *@throws Exception if sendRequest() fails
+     * @throws Exception if sendRequest() fails
      * @throws InvalidArgumentException if the input parameters are invalid
      */
     public function listAll($srcIdentifier, &$retCode)
@@ -1840,6 +1893,230 @@ class StashAPI
         $retCode = (empty($tVal['code']) ? -1 : $tVal['code']);
         $result = (empty($tVal['result']) ? false : $tVal['result']);
 
+        return $tVal;
+    }
+
+    /**
+     * Function stores a file using WebErase credentials and WebErase Rules
+     * @param string $fileNameIn the full path and name of the local file to store
+     * @param array $srcIdentifier an associative array containing the token_key, fileKey, folderId parameters
+     * @param integer $retCode OUTPUT, contains the return code from the operation
+     * @param integer $fileId OUTPUT, contains the UserFile object ID of the newly stored file
+     * @param integer $fileAliasId OUTPUT, contains the UserFileAlias object ID of the newly stored file
+     * @return array the result / output of the operation
+     * @throws Exception for errors in SendFileRequest()
+     * @note requires srcIdentifier to have token, folderId, fileName, and fileKey parameters defined
+     */
+    public function webEraseStore($fileNameIn, $srcIdentifier, &$retCode, &$fileId, &$fileAliasId) {
+        // Requires token_key, destFolderId, fileKey, projectId, overwriteFile, overwriteFileId
+        if (!file_exists($fileNameIn)) {
+            throw new InvalidArgumentException("Incorrect Input File Path or File Does Not Exist");
+        }
+
+        $this->params = $srcIdentifier;
+        $this->url = $this->BASE_API_URL . "api2/weberase/store";
+        if (!$this->validateParams('weberasestore')) {
+            throw new InvalidArgumentException("Invalid Input Parameters");
+        }
+
+        $res = $this->sendFileRequest($fileNameIn);
+        $this->params = array();
+
+        $retVal = json_decode($res, true);
+        $retCode = (isset($retVal['code']) ? $retVal['code'] : 0);
+        if ($retCode == 200) {
+            $fileId = (isset($retVal['fileId']) ? $retVal['fileId'] : 0);
+            $fileAliasId = (isset($retVal['fileAliasId']) ? $retVal['fileAliasId'] : 0);
+        }
+
+        return $retVal;
+    }
+
+    /**
+     * Function retrieves a file using WebErase credentials and WebErase Rules
+     * @param array $srcIdentifier an associative array containing the parameters needed for the API call
+     * @param string $localFileName the full path and name to save the downloaded file to
+     * @param boolean $polling T if the function should poll for a transaction validation retrieval
+     * @param integer $retCode OUTPUT, contains the return code from the operation
+     * @return array the result / output of the operation
+     * @throws Exception for errors in sendRequest()
+     * @note this function only requires the token_key, fileKey, api_id for retrieving a file
+     */
+    private function webEraseDownload($srcIdentifier, $localFileName, $polling, &$retCode) {
+        // Requires token, api_id, fileKey
+        $this->params = $srcIdentifier;
+        if ($polling) {
+            $this->url = $this->BASE_API_URL . "api2/weberase/polling";
+        } else {
+            $this->url = $this->BASE_API_URL . "api2/weberase/retrieve";
+        }
+        // Params are validated the same for retrieve and polling
+        if (!$this->validateParams('weberaseretrieve')) {
+            throw new InvalidArgumentException("Invalid Input Parameters");
+        }
+        $res = $this->sendDownloadRequest($localFileName);
+        $this->params = array();
+
+        $tVal = json_decode($res, true);
+        $retCode = (empty($tVal['code']) ? -1 : $tVal['code']);
+        return $tVal;
+    }
+
+    /**
+     * Function retrieves a file using WebErase credentials and WebErase Rules
+     * @param array $srcIdentifier an associative array containing the parameters needed for the API call
+     * @param string $localFileName the full path and name to save the downloaded file to
+     * @param integer $retCode OUTPUT, contains the return code from the operation
+     * @return array the result / output of the operation
+     * @throws Exception for errors in sendRequest()
+     * @note this function only requires the token_key, fileKey, api_id for retrieving a file
+     */
+    public function webEraseRetrieve($srcIdentifier, $localFileName, &$retCode) {
+        $retCode = 0;
+        return $this->webEraseDownload($srcIdentifier, $localFileName, false, $retCode);
+    }
+
+    /**
+     * Function retrieves a file that's waiting for transaction validation approval
+     * @param array $srcIdentifier an associative array containing the parameters needed for the API call
+     * @param string $localFileName the full path and name to save the downloaded file to
+     * @param integer $retCode OUTPUT, contains the return code from the operation
+     * @return array the result / output of the operation
+     * @throws Exception for errors in sendRequest()
+     * @note this function only requires the token_key, fileKey, api_id for retrieving a file
+     * @note calling polling API does not trigger a transaction validation notification - it only check for approval or deny; calling webEraseRetrieve() will trigger a new set of notifications
+     */
+    public function webErasePolling($srcIdentifier, $localFileName, &$retCode) {
+        $retCode = 0;
+        return $this->webEraseDownload($srcIdentifier, $localFileName, true, $retCode);
+    }
+
+    /**
+     * Function updates an existing file using WebErase credentials and WebErase Rules
+     * @param string $fileNameIn the full path and name of the local file to update
+     * @param array $srcIdentifier an associative array containing the token_key, fileKey, folderId parameters
+     * @param integer $retCode OUTPUT, contains the return code from the operation
+     * @param integer $fileId OUTPUT, contains the UserFile object ID of the newly stored file
+     * @param integer $fileAliasId OUTPUT, contains the UserFileAlias object ID of the newly stored file
+     * @return array the result / output of the operation
+     * @throws Exception for errors in SendFileRequest()
+     * @note requires srcIdentifier to have token, folderId, fileName, and fileKey parameters defined
+     */
+    public function webEraseUpdate($fileNameIn, $srcIdentifier, &$retCode, &$fileId, &$fileAliasId) {
+        // Requires token_key, destFolderId, fileKey, projectId, overwriteFile, overwriteFileId
+        if (!file_exists($fileNameIn)) {
+            throw new InvalidArgumentException("Incorrect Input File Path or File Does Not Exist");
+        }
+
+        $this->params = $srcIdentifier;
+        $this->url = $this->BASE_API_URL . "api2/weberase/update";
+        if (!$this->validateParams('weberaseupdate')) {
+            throw new InvalidArgumentException("Invalid Input Parameters");
+        }
+
+        $res = $this->sendFileRequest($fileNameIn);
+        $this->params = array();
+
+        $retVal = json_decode($res, true);
+        $retCode = (isset($retVal['code']) ? $retVal['code'] : 0);
+        if ($retCode == 200) {
+            $fileId = (isset($retVal['fileId']) ? $retVal['fileId'] : 0);
+            $fileAliasId = (isset($retVal['fileAliasId']) ? $retVal['fileAliasId'] : 0);
+        }
+
+        return $retVal;
+    }
+
+    /**
+     * Function gets a new token to use with WebErase credentials
+     * @param array $srcIdentifier an associative array containing the parameters needed for the API call
+     * @param integer $retCode OUTPUT, contains the return code from the operation
+     * @param string $token OUTPUT, contains a valid token to use in future web erase store operations
+     * @return array the result / output of the operation
+     * @throws Exception for errors in sendRequest()
+     * @note Only the api_id parameter is needed for this request
+     */
+    public function webEraseToken($srcIdentifier, &$retCode, &$token) {
+        // Parameters needed: api_id
+        $this->params = $srcIdentifier;
+        $this->url = $this->BASE_API_URL . "api2/weberase/token";
+        if (!$this->validateParams('none')) {
+            throw new InvalidArgumentException("Invalid Input Parameters");
+        }
+        $res = $this->sendRequest();
+        $this->params = array();
+
+        $tVal = json_decode($res, true);
+        $retCode = (empty($tVal['code']) ? -1 : $tVal['code']);
+        $token = (empty($tVal['token']) ? "" : $tVal['token']);
+        return $tVal;
+    }
+
+    /**
+     * Function gets the one time code for a given token
+     * @param array $srcIdentifier an associative array containing the parameters needed for the API call
+     * @param integer $retCode OUTPUT, contains the return code from the operation
+     * @param integer $otc OUTPUT, contains the one time code for this token
+     * @return array the result / output of the operation
+     * @throws Exception for errors in sendRequest()
+     * @note the one time code is sent with the result of a store() or only once with this function regardless of number of times called
+     */
+    public function webEraseOneTimeCode($srcIdentifier, &$retCode, &$otc) {
+        $this->params = $srcIdentifier;
+        $this->url = $this->BASE_API_URL . "api2/weberase/onetimecode";
+        if (!$this->validateParams('weberaseotc')) {
+            throw new InvalidArgumentException("Invalid Input Parameters");
+        }
+        $res = $this->sendRequest();
+        $this->params = array();
+
+        $tVal = json_decode($res, true);
+        $retCode = (empty($tVal['code']) ? -1 : $tVal['code']);
+        $otc = (empty($tVal['otc_code']) ? "" : $tVal['otc_code']);
+        return $tVal;
+    }
+
+    /**
+     * Function deletes a file using WebErase credentials and WebErase Rules
+     * @param array $srcIdentifier an associative array containing the parameters needed for the API call
+     * @param integer $retCode OUTPUT, contains the return code from the operation
+     * @return array the result / output of the operation
+     * @note this function requires an api_id and token key to delete the file
+     * @throws Exception for errors in sendRequest()
+     */
+    public function webEraseDelete($srcIdentifier, &$retCode) {
+        $this->params = $srcIdentifier;
+        $this->url = $this->BASE_API_URL . "api2/weberase/delete";
+        if (!$this->validateParams('weberasedelete')) {
+            throw new InvalidArgumentException("Invalid Input Parameters");
+        }
+        $res = $this->sendRequest();
+        $this->params = array();
+
+        $tVal = json_decode($res, true);
+        $retCode = (empty($tVal['code']) ? -1 : $tVal['code']);
+        return $tVal;
+    }
+
+    /**
+     * Function gets a new token to use with WebErase credentials
+     * @param array $srcIdentifier an associative array containing the parameters needed for the API call
+     * @param integer $retCode OUTPUT, contains the return code from the operation
+     * @return array the result / output of the operation
+     * @throws Exception for errors in sendRequest()
+     * @note Only the api_id parameter is needed for this request
+     */
+    public function webEraseProjectList($srcIdentifier, &$retCode) {
+        $this->params = $srcIdentifier;
+        $this->url = $this->BASE_API_URL . "api2/weberase/projectlist";
+        if (!$this->validateParams('none')) {
+            throw new InvalidArgumentException("Invalid Input Parameters");
+        }
+        $res = $this->sendRequest();
+        $this->params = array();
+
+        $tVal = json_decode($res, true);
+        $retCode = (empty($tVal['code']) ? -1 : $tVal['code']);
         return $tVal;
     }
 

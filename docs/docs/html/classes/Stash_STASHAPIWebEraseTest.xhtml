@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Stash\STASHAPIWebEraseTest</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml#Stash">Stash</a>
+          </li>
+          <li class="separator">STASHAPIWebEraseTest</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/tests/unit/STASHAPIWebEraseTest.php.xhtml#line16">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>Stash\</small>STASHAPIWebEraseTest</h1>
+        <h4>Class STASHAPIWebEraseTest Runs scenario based testing for the WebErase functionality</h4>
+        <p/>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class STASHAPIWebEraseTest
+                extends Unit
+            {<br/><ul class="none"><li>// constants</li><li>const testFile = "tmpfile_stashapiweberasetest.txt";</li><li>const outFile = "tmpfile_stashapiweberasetest.out.txt";</li><li>const outFile2 = "tmpfile_stashapiweberasetest.out2.txt";</li><li>const API_CONTEXT_WEBERASE = 1;</li><li>const API_CONTEXT_VAULTUSER = 2;</li><li>const API_CONTEXT_NOPERMUSER = 3;</li><li>const API_CONTEXT_INVALIDUSER = 4;</li></ul><ul class="none"><li>// members</li><li>protected <span title="UnitTester">UnitTester</span> <a href="#members">$tester</a>;
+                    </li><li>private  <a href="#members">$apiid</a>;
+                    </li><li>private  <a href="#members">$apipw</a>;
+                    </li><li>private  <a href="#members">$baseUrl</a>;
+                    </li><li>private  <a href="#members">$accountId</a>;
+                    </li><li>private  <a href="#members">$accountUsername</a>;
+                    </li><li>private  <a href="#members">$accountPw</a>;
+                    </li><li>private  <a href="#members">$rootFolderPath</a>;
+                    </li><li>private  <a href="#members">$rootFolderId</a>;
+                    </li><li>private  <a href="#members">$weProjectId</a>;
+                    </li><li>private  <a href="#members">$weFolderId</a>;
+                    </li><li>private  <a href="#members">$vaultApiId</a>;
+                    </li><li>private  <a href="#members">$vaultApiPw</a>;
+                    </li><li>private  <a href="#members">$vaultUsername</a>;
+                    </li><li>private  <a href="#members">$vaultPassword</a>;
+                    </li><li>private  <a href="#members">$vaultUserId</a>;
+                    </li><li>private  <a href="#members">$noPermApiId</a>;
+                    </li><li>private  <a href="#members">$noPermApiPw</a>;
+                    </li><li>private  <a href="#members">$noPermUsername</a>;
+                    </li><li>private  <a href="#members">$noPermPassword</a>;
+                    </li><li>private  <a href="#members">$noPermUserId</a>;
+                    </li><li>private  <a href="#members">$invalidApiId</a>;
+                    </li><li>private  <a href="#members">$invalidApiPw</a>;
+                    </li><li>private  <a href="#members">$invalidUsername</a>;
+                    </li><li>private  <a href="#members">$invalidPassword</a>;
+                    </li><li>private  <a href="#members">$invalidUserId</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>protected void <a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/_before.xhtml">_before</a>()
+                    </li><li>protected void <a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/_after.xhtml">_after</a>()
+                    </li><li>public static void <a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/setUpBeforeClass.xhtml">setUpBeforeClass</a>()
+                    </li><li>public static void <a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/tearDownAfterClass.xhtml">tearDownAfterClass</a>()
+                    </li><li>public void <a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/_setAPIContext.xhtml">_setAPIContext</a>()
+                    </li><li>public String <a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/_sendRequest.xhtml">_sendRequest</a>()
+                    </li><li>public StashAPI <a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/testAPIValidConstructor.xhtml">testAPIValidConstructor</a>()
+                    </li><li>public string <a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/testWEToken.xhtml">testWEToken</a>()
+                    </li><li>public string <a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/testWETokenVaultUser.xhtml">testWETokenVaultUser</a>()
+                    </li><li>public void <a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/testWETokenNoPermUser.xhtml">testWETokenNoPermUser</a>()
+                    </li><li>public void <a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/testWETokenInvalidUser.xhtml">testWETokenInvalidUser</a>()
+                    </li><li>public void <a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/testWETokenInvalidSignature.xhtml">testWETokenInvalidSignature</a>()
+                    </li><li>public void <a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/testWETokenInvalidTimestamp.xhtml">testWETokenInvalidTimestamp</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>Codeception\Test\Unit</li>
+          </ul>
+        </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="testFile">testFile</td>
+              <td>"tmpfile_stashapiweberasetest.txt"</td>
+            </tr>
+            <tr>
+              <td id="outFile">outFile</td>
+              <td>"tmpfile_stashapiweberasetest.out.txt"</td>
+            </tr>
+            <tr>
+              <td id="outFile2">outFile2</td>
+              <td>"tmpfile_stashapiweberasetest.out2.txt"</td>
+            </tr>
+            <tr>
+              <td id="API_CONTEXT_WEBERASE">API_CONTEXT_WEBERASE</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td id="API_CONTEXT_VAULTUSER">API_CONTEXT_VAULTUSER</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td id="API_CONTEXT_NOPERMUSER">API_CONTEXT_NOPERMUSER</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td id="API_CONTEXT_INVALIDUSER">API_CONTEXT_INVALIDUSER</td>
+              <td>4</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="accountId">
+              <strong>$accountId</strong>
+            </li>
+            <li id="accountPw">
+              <strong>$accountPw</strong>
+            </li>
+            <li id="accountUsername">
+              <strong>$accountUsername</strong>
+            </li>
+            <li id="apiid">
+              <strong>$apiid</strong>
+            </li>
+            <li id="apipw">
+              <strong>$apipw</strong>
+            </li>
+            <li id="baseUrl">
+              <strong>$baseUrl</strong>
+            </li>
+            <li id="invalidApiId">
+              <strong>$invalidApiId</strong>
+            </li>
+            <li id="invalidApiPw">
+              <strong>$invalidApiPw</strong>
+            </li>
+            <li id="invalidPassword">
+              <strong>$invalidPassword</strong>
+            </li>
+            <li id="invalidUserId">
+              <strong>$invalidUserId</strong>
+            </li>
+            <li id="invalidUsername">
+              <strong>$invalidUsername</strong>
+            </li>
+            <li id="noPermApiId">
+              <strong>$noPermApiId</strong>
+            </li>
+            <li id="noPermApiPw">
+              <strong>$noPermApiPw</strong>
+            </li>
+            <li id="noPermPassword">
+              <strong>$noPermPassword</strong>
+            </li>
+            <li id="noPermUserId">
+              <strong>$noPermUserId</strong>
+            </li>
+            <li id="noPermUsername">
+              <strong>$noPermUsername</strong>
+            </li>
+            <li id="rootFolderId">
+              <strong>$rootFolderId</strong>
+            </li>
+            <li id="rootFolderPath">
+              <strong>$rootFolderPath</strong>
+            </li>
+            <li id="vaultApiId">
+              <strong>$vaultApiId</strong>
+            </li>
+            <li id="vaultApiPw">
+              <strong>$vaultApiPw</strong>
+            </li>
+            <li id="vaultPassword">
+              <strong>$vaultPassword</strong>
+            </li>
+            <li id="vaultUserId">
+              <strong>$vaultUserId</strong>
+            </li>
+            <li id="vaultUsername">
+              <strong>$vaultUsername</strong>
+            </li>
+            <li id="weFolderId">
+              <strong>$weFolderId</strong>
+            </li>
+            <li id="weProjectId">
+              <strong>$weProjectId</strong>
+            </li>
+          </ul>
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="tester"><strong>$tester</strong>
+                —
+                <a title="UnitTester" href="../classes/UnitTester.xhtml">UnitTester</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>protected</h4>
+          <ul>
+            <li id="_after"><a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/_after.xhtml">_after()</a>
+                — This function is run after each individual test</li>
+            <li id="_before"><a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/_before.xhtml">_before()</a>
+                — This function is run before each individual test</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="_sendRequest"><a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/_sendRequest.xhtml">_sendRequest()</a>
+                — Function builds and sends an API request with changeable timestamp and signatures</li>
+            <li id="_setAPIContext"><a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/_setAPIContext.xhtml">_setAPIContext()</a>
+                — Helper function to set the API context prior to an API call</li>
+            <li id="setUpBeforeClass"><a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/setUpBeforeClass.xhtml">setUpBeforeClass()</a>
+                — The function is run once, before all tests in the suite are run</li>
+            <li id="tearDownAfterClass"><a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/tearDownAfterClass.xhtml">tearDownAfterClass()</a>
+                — This function is run once, after all tests in the suite are run</li>
+            <li id="testAPIValidConstructor"><a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/testAPIValidConstructor.xhtml">testAPIValidConstructor()</a>
+                — Tests if the StashAPI constructor produces a valid constructor with given inputs</li>
+            <li id="testWEToken"><a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/testWEToken.xhtml">testWEToken()</a>
+                — Tests if a token can successfully be requested by a tokenuser</li>
+            <li id="testWETokenInvalidSignature"><a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/testWETokenInvalidSignature.xhtml">testWETokenInvalidSignature()</a>
+                — Tests if a token requested by an Invalid set of User API Credentials</li>
+            <li id="testWETokenInvalidTimestamp"><a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/testWETokenInvalidTimestamp.xhtml">testWETokenInvalidTimestamp()</a>
+                — Tests if a token requested by an Invalid set of User API Credentials</li>
+            <li id="testWETokenInvalidUser"><a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/testWETokenInvalidUser.xhtml">testWETokenInvalidUser()</a>
+                — Tests if a token requested by an Invalid set of User API Credentials</li>
+            <li id="testWETokenNoPermUser"><a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/testWETokenNoPermUser.xhtml">testWETokenNoPermUser()</a>
+                — Tests if a token requested by User without Permissions fails</li>
+            <li id="testWETokenVaultUser"><a title="Stash\STASHAPIWebEraseTest" href="../classes/Stash_STASHAPIWebEraseTest/testWETokenVaultUser.xhtml">testWETokenVaultUser()</a>
+                — Tests if a token can successfully be requested by a Vault user</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

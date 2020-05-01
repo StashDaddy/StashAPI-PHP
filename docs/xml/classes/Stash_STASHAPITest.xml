@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="Stash\STASHAPITest" namespace="Stash" name="STASHAPITest" abstract="false" final="false" start="14" end="423">
-  <file path="L:/Projects/Stash/StashApi-php-Release/docs/../tests/unit" file="STASHAPITest.php" realpath="L:/Projects/Stash/StashApi-php-Release/tests/unit/STASHAPITest.php" size="15470" time="2019-06-14T15:43:06+00:00" unixtime="1560526986" sha1="2654ea497d73e3142e6031f32296fab1adeee0cc" relative="tests/unit/STASHAPITest.php"/>
+<class xmlns="http://xml.phpdox.net/src" full="Stash\STASHAPITest" namespace="Stash" name="STASHAPITest" abstract="false" final="false" start="18" end="427">
+  <file path="L:/Projects/Stash/StashApi-php-Release/docs/../tests/unit" file="STASHAPITest.php" realpath="L:/Projects/Stash/StashApi-php-Release/tests/unit/STASHAPITest.php" size="15552" time="2019-11-18T13:53:50+00:00" unixtime="1574085230" sha1="199c1aee64e9e01c83ef4f83d77921c1697730ff" relative="tests/unit/STASHAPITest.php"/>
   <docblock>
     <description compact="Class STASHAPITest Runs unit testing on the functions in the API"/>
     <package value="Stash"/>
   </docblock>
   <extends full="Codeception\Test\Unit" namespace="Codeception\Test" name="Unit" unresolved="true"/>
-  <member name="tester" visibility="protected" static="false" line="20">
+  <member name="tester" visibility="protected" static="false" line="24">
     <docblock>
       <description/>
       <var type="object">
-        <type full="\UnitTester" namespace="" name="UnitTester"/>
+        <type full="UnitTester" namespace="" name="UnitTester"/>
       </var>
     </docblock>
   </member>
   <constant type="string" name="testFile" value="&quot;tmpfile_stashapitest.txt&quot;"/>
-  <member name="apiid" visibility="private" static="false" line="22"/>
-  <member name="apipw" visibility="private" static="false" line="23"/>
-  <member name="baseUrl" visibility="private" static="false" line="24"/>
-  <member name="accountPw" visibility="private" static="false" line="25"/>
-  <member name="folderPath" visibility="private" static="false" line="26"/>
-  <member name="folderId" visibility="private" static="false" line="27"/>
-  <method name="_before" start="32" end="42" abstract="false" final="false" static="false" visibility="protected">
+  <member name="apiid" visibility="private" static="false" line="26"/>
+  <member name="apipw" visibility="private" static="false" line="27"/>
+  <member name="baseUrl" visibility="private" static="false" line="28"/>
+  <member name="accountPw" visibility="private" static="false" line="29"/>
+  <member name="folderPath" visibility="private" static="false" line="30"/>
+  <member name="folderId" visibility="private" static="false" line="31"/>
+  <method name="_before" start="36" end="46" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
       <description compact="This function is run before each individual test"/>
     </docblock>
   </method>
-  <method name="_after" start="47" end="49" abstract="false" final="false" static="false" visibility="protected">
+  <method name="_after" start="51" end="53" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
       <description compact="This function is run after each individual test"/>
     </docblock>
   </method>
-  <method name="setUpBeforeClass" start="55" end="60" abstract="false" final="false" static="true" visibility="public">
+  <method name="setUpBeforeClass" start="59" end="64" abstract="false" final="false" static="true" visibility="public">
     <docblock>
       <description compact="The function is run once, before all tests in the suite are run"/>
       <throws type="object">
@@ -39,12 +39,12 @@
       </throws>
     </docblock>
   </method>
-  <method name="tearDownAfterClass" start="65" end="71" abstract="false" final="false" static="true" visibility="public">
+  <method name="tearDownAfterClass" start="69" end="75" abstract="false" final="false" static="true" visibility="public">
     <docblock>
       <description compact="This function is run once, after all tests in the suite are run"/>
     </docblock>
   </method>
-  <method name="testAPIValidConstructor" start="78" end="96" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPIValidConstructor" start="82" end="100" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Checks the main constructor"/>
       <return type="object">
@@ -55,7 +55,7 @@
       </throws>
     </docblock>
   </method>
-  <method name="testAPIParamsIsValid" start="102" end="165" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPIParamsIsValid" start="106" end="169" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <param description="the API object to test" type="object" variable="$api">
@@ -65,19 +65,19 @@
     </docblock>
     <parameter name="api" byreference="false" type="{unknown}"/>
     <inline>
-      <comment value="Invalid API id" line="116"/>
-      <comment value="Invalid API PW" line="120"/>
-      <comment value="Invalid Signatures" line="124"/>
-      <comment value="Invalid Timestamps" line="132"/>
-      <comment value="Invalid Versions" line="142"/>
-      <comment value="Invalid verbosity" line="148"/>
-      <comment value="Invalid urls" line="152"/>
-      <comment value="Explicit Invalid URL, no https" line="155"/>
-      <comment value="Explicit Invalid URL, no https://" line="157"/>
-      <comment value="Invalid Params" line="160"/>
+      <comment value="Invalid API id" line="120"/>
+      <comment value="Invalid API PW" line="124"/>
+      <comment value="Invalid Signatures" line="128"/>
+      <comment value="Invalid Timestamps" line="136"/>
+      <comment value="Invalid Versions" line="146"/>
+      <comment value="Invalid verbosity" line="152"/>
+      <comment value="Invalid urls" line="156"/>
+      <comment value="Explicit Invalid URL, no https" line="159"/>
+      <comment value="Explicit Invalid URL, no https://" line="161"/>
+      <comment value="Invalid Params" line="164"/>
     </inline>
   </method>
-  <method name="testAPIParamValidation" start="171" end="224" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPIParamValidation" start="175" end="228" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <param description="the API object to test" type="object" variable="$api">
@@ -87,19 +87,19 @@
     </docblock>
     <parameter name="api" byreference="false" type="{unknown}"/>
     <inline>
-      <comment value="listfilesdir is not a support op" line="184"/>
-      <comment value="Test invalid filekey input" line="186"/>
-      <comment value="Test remaining invalid inputs with move or copy as both operations consider all source and destination parameters" line="191"/>
-      <comment value="Missing All Source parameters" line="192"/>
-      <comment value="Missing All Destination parameters" line="196"/>
-      <comment value="Missing Source File params" line="200"/>
-      <comment value="Missing Source Folder params with FileId" line="205"/>
-      <comment value="Missing Source Folder params without FileId" line="210"/>
-      <comment value="Missing Dest File params" line="215"/>
-      <comment value="Missing Dest Folder params" line="220"/>
+      <comment value="listfilesdir is not a support op" line="188"/>
+      <comment value="Test invalid filekey input" line="190"/>
+      <comment value="Test remaining invalid inputs with move or copy as both operations consider all source and destination parameters" line="195"/>
+      <comment value="Missing All Source parameters" line="196"/>
+      <comment value="Missing All Destination parameters" line="200"/>
+      <comment value="Missing Source File params" line="204"/>
+      <comment value="Missing Source Folder params with FileId" line="209"/>
+      <comment value="Missing Source Folder params without FileId" line="214"/>
+      <comment value="Missing Dest File params" line="219"/>
+      <comment value="Missing Dest Folder params" line="224"/>
     </inline>
   </method>
-  <method name="testAPISignature" start="232" end="242" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPISignature" start="236" end="246" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests calculating and setting a valid signature for the request"/>
       <param description="the API object to test" type="object" variable="$api">
@@ -112,7 +112,7 @@
     </docblock>
     <parameter name="api" byreference="false" type="{unknown}"/>
   </method>
-  <method name="testEncryptDecryptString" start="249" end="255" abstract="false" final="false" static="false" visibility="public">
+  <method name="testEncryptDecryptString" start="253" end="259" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests encrypting / decrypting strings"/>
       <param type="object" variable="$apiIn">
@@ -122,7 +122,7 @@
     </docblock>
     <parameter name="apiIn" byreference="false" type="{unknown}"/>
   </method>
-  <method name="testEncryptEmptyKey" start="261" end="268" abstract="false" final="false" static="false" visibility="public">
+  <method name="testEncryptEmptyKey" start="265" end="272" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests encrypting a string with an empty key"/>
       <throws type="object">
@@ -130,7 +130,7 @@
       </throws>
     </docblock>
   </method>
-  <method name="testEncryptEmptyString" start="274" end="281" abstract="false" final="false" static="false" visibility="public">
+  <method name="testEncryptEmptyString" start="278" end="285" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests encrypting an empty string"/>
       <throws type="object">
@@ -138,7 +138,7 @@
       </throws>
     </docblock>
   </method>
-  <method name="testDecryptEmptyKey" start="287" end="296" abstract="false" final="false" static="false" visibility="public">
+  <method name="testDecryptEmptyKey" start="291" end="300" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Test decrypting with an empty key"/>
       <throws type="object">
@@ -146,7 +146,7 @@
       </throws>
     </docblock>
   </method>
-  <method name="testDecryptEmptyString" start="302" end="309" abstract="false" final="false" static="false" visibility="public">
+  <method name="testDecryptEmptyString" start="306" end="313" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests decrypting an empty string"/>
       <throws type="object">
@@ -154,18 +154,18 @@
       </throws>
     </docblock>
   </method>
-  <method name="testEncryptInvalidKey" start="316" end="322" abstract="false" final="false" static="false" visibility="public">
+  <method name="testEncryptInvalidKey" start="320" end="326" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <param description="the API object to test" type="object" variable="$apiIn">
         <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
       </param>
       <depends value="testAPIValidConstructor"/>
-      <expectedexception value="\InvalidArgumentException"/>
+      <expectedexception value="InvalidArgumentException"/>
     </docblock>
     <parameter name="apiIn" byreference="false" type="{unknown}"/>
   </method>
-  <method name="testDecryptInvalidKey" start="330" end="338" abstract="false" final="false" static="false" visibility="public">
+  <method name="testDecryptInvalidKey" start="334" end="342" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <param type="object" variable="$apiIn">
@@ -175,11 +175,11 @@
         <type full="Exception" namespace="" name="Exception"/>
       </throws>
       <depends value="testAPIValidConstructor"/>
-      <expectedexception value="\InvalidArgumentException"/>
+      <expectedexception value="InvalidArgumentException"/>
     </docblock>
     <parameter name="apiIn" byreference="false" type="{unknown}"/>
   </method>
-  <method name="testDecryptInvalidDataIn" start="346" end="353" abstract="false" final="false" static="false" visibility="public">
+  <method name="testDecryptInvalidDataIn" start="350" end="357" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <param type="object" variable="$apiIn">
@@ -189,14 +189,14 @@
         <type full="Exception" namespace="" name="Exception"/>
       </throws>
       <depends value="testAPIValidConstructor"/>
-      <expectedexception value="\UnexpectedValueException"/>
+      <expectedexception value="UnexpectedValueException"/>
     </docblock>
     <parameter name="apiIn" byreference="false" type="{unknown}"/>
     <inline>
-      <comment value="Only ask to decrypt 10 characters of data to force detection of too little data in input" line="352"/>
+      <comment value="Only ask to decrypt 10 characters of data to force detection of too little data in input" line="356"/>
     </inline>
   </method>
-  <method name="testAPISend" start="358" end="370" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPISend" start="362" end="374" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <throws type="object">
@@ -204,31 +204,31 @@
       </throws>
     </docblock>
   </method>
-  <method name="testAPIFileSendEmptyURL" start="376" end="384" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPIFileSendEmptyURL" start="380" end="388" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <throws type="object">
         <type full="Exception" namespace="" name="Exception"/>
       </throws>
-      <expectedexception value="\UnexpectedValueException"/>
+      <expectedexception value="UnexpectedValueException"/>
     </docblock>
   </method>
-  <method name="testAPIFileSendEmptyFilename" start="390" end="398" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPIFileSendEmptyFilename" start="394" end="402" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <throws type="object">
         <type full="Exception" namespace="" name="Exception"/>
       </throws>
-      <expectedexception value="\InvalidArgumentException"/>
+      <expectedexception value="InvalidArgumentException"/>
     </docblock>
   </method>
-  <method name="testAPIFileSendFileNotExist" start="404" end="412" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPIFileSendFileNotExist" start="408" end="416" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <throws type="object">
         <type full="Exception" namespace="" name="Exception"/>
       </throws>
-      <expectedexception value="\InvalidArgumentException"/>
+      <expectedexception value="InvalidArgumentException"/>
     </docblock>
   </method>
 </class>

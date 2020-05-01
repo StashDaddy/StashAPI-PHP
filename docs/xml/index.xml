@@ -4,6 +4,7 @@
     <class name="StashAPI" src="src/Stash/STASHAPI.php" xml="classes/Stash_StashAPI.xml"/>
     <class name="STASHAPIScenarioTest" src="tests/unit/STASHAPIScenarioTest.php" description="Class STASHAPIScenarioTest Runs scenario based testing for each of the API functions" xml="classes/Stash_STASHAPIScenarioTest.xml"/>
     <class name="STASHAPITest" src="tests/unit/STASHAPITest.php" description="Class STASHAPITest Runs unit testing on the functions in the API" xml="classes/Stash_STASHAPITest.xml"/>
+    <class name="STASHAPIWebEraseTest" src="tests/unit/STASHAPIWebEraseTest.php" description="Class STASHAPIWebEraseTest Runs scenario based testing for the WebErase functionality" xml="classes/Stash_STASHAPIWebEraseTest.xml"/>
   </namespace>
   <namespace name="">
     <class name="AcceptanceTester" src="tests/_support/AcceptanceTester.php" description="Inherited Methods" xml="classes/AcceptanceTester.xml"/>

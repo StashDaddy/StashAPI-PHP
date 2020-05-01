@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Stash\STASHAPIWebEraseTest" namespace="Stash" name="STASHAPIWebEraseTest" abstract="false" final="false" start="16" end="374">
+  <file path="L:/Projects/Stash/StashApi-php-Release/docs/../tests/unit" file="STASHAPIWebEraseTest.php" realpath="L:/Projects/Stash/StashApi-php-Release/tests/unit/STASHAPIWebEraseTest.php" size="15263" time="2020-04-17T22:46:47+00:00" unixtime="1587163607" sha1="1ba5ad59f7a00611977b327ce19abdb40450d22a" relative="tests/unit/STASHAPIWebEraseTest.php"/>
+  <docblock>
+    <description compact="Class STASHAPIWebEraseTest Runs scenario based testing for the WebErase functionality"/>
+    <package value="Stash"/>
+  </docblock>
+  <extends full="Codeception\Test\Unit" namespace="Codeception\Test" name="Unit" unresolved="true"/>
+  <member name="tester" visibility="protected" static="false" line="21">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="UnitTester" namespace="" name="UnitTester"/>
+      </var>
+    </docblock>
+  </member>
+  <constant type="string" name="testFile" value="&quot;tmpfile_stashapiweberasetest.txt&quot;"/>
+  <constant type="string" name="outFile" value="&quot;tmpfile_stashapiweberasetest.out.txt&quot;"/>
+  <constant type="string" name="outFile2" value="&quot;tmpfile_stashapiweberasetest.out2.txt&quot;"/>
+  <constant type="integer" name="API_CONTEXT_WEBERASE" value="1"/>
+  <constant type="integer" name="API_CONTEXT_VAULTUSER" value="2"/>
+  <constant type="integer" name="API_CONTEXT_NOPERMUSER" value="3"/>
+  <constant type="integer" name="API_CONTEXT_INVALIDUSER" value="4"/>
+  <member name="apiid" visibility="private" static="false" line="30"/>
+  <member name="apipw" visibility="private" static="false" line="31"/>
+  <member name="baseUrl" visibility="private" static="false" line="32"/>
+  <member name="accountId" visibility="private" static="false" line="33"/>
+  <member name="accountUsername" visibility="private" static="false" line="34"/>
+  <member name="accountPw" visibility="private" static="false" line="35"/>
+  <member name="rootFolderPath" visibility="private" static="false" line="36"/>
+  <member name="rootFolderId" visibility="private" static="false" line="37"/>
+  <member name="weProjectId" visibility="private" static="false" line="38"/>
+  <member name="weFolderId" visibility="private" static="false" line="39"/>
+  <member name="vaultApiId" visibility="private" static="false" line="40"/>
+  <member name="vaultApiPw" visibility="private" static="false" line="41"/>
+  <member name="vaultUsername" visibility="private" static="false" line="42"/>
+  <member name="vaultPassword" visibility="private" static="false" line="43"/>
+  <member name="vaultUserId" visibility="private" static="false" line="44"/>
+  <member name="noPermApiId" visibility="private" static="false" line="45"/>
+  <member name="noPermApiPw" visibility="private" static="false" line="46"/>
+  <member name="noPermUsername" visibility="private" static="false" line="47"/>
+  <member name="noPermPassword" visibility="private" static="false" line="48"/>
+  <member name="noPermUserId" visibility="private" static="false" line="49"/>
+  <member name="invalidApiId" visibility="private" static="false" line="50"/>
+  <member name="invalidApiPw" visibility="private" static="false" line="51"/>
+  <member name="invalidUsername" visibility="private" static="false" line="52"/>
+  <member name="invalidPassword" visibility="private" static="false" line="53"/>
+  <member name="invalidUserId" visibility="private" static="false" line="54"/>
+  <method name="_before" start="59" end="90" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="This function is run before each individual test"/>
+    </docblock>
+  </method>
+  <method name="_after" start="95" end="98" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="This function is run after each individual test"/>
+    </docblock>
+  </method>
+  <method name="setUpBeforeClass" start="104" end="111" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="The function is run once, before all tests in the suite are run"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+  </method>
+  <method name="tearDownAfterClass" start="116" end="125" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="This function is run once, after all tests in the suite are run"/>
+    </docblock>
+  </method>
+  <method name="_setAPIContext" start="134" end="150" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Helper function to set the API context prior to an API call"/>
+      <param description="the API object to set context for" type="object" variable="$apiIn">
+        <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
+      </param>
+      <param description="one of the API_CONTEXT_X constants" type="integer" variable="$contextIn"/>
+      <throws description="for invalid $contextIn values" type="object">
+        <type full="InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+      <throws description="for invalid settings to $apiIn" type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <parameter name="apiIn" byreference="false" type="{unknown}"/>
+    <parameter name="contextIn" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_sendRequest" start="161" end="224" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Function builds and sends an API request with changeable timestamp and signatures"/>
+      <note value="DO NOT USE outside of unit testing - this is only for testing invalid timestamp and signature handling"/>
+      <param description="the API object for generating valid values/parameters" type="object" variable="$api">
+        <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
+      </param>
+      <param description="the timestamp to use for this request, otherwise 0 to use valid timestamp" type="integer" variable="$timeStampIn"/>
+      <param description="the 32 character signature to use for this request, otherwise empty string" type="string" variable="$signatureIn"/>
+      <throws description="for invalid URLs" type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+      <return description="the result from the curl operation" type="object">
+        <type full="Stash\String" namespace="Stash" name="String"/>
+      </return>
+    </docblock>
+    <parameter name="api" byreference="false" type="{unknown}"/>
+    <parameter name="timeStampIn" byreference="false" type="{unknown}"/>
+    <parameter name="signatureIn" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Sign request" line="178"/>
+      <comment value="Define the CURL_IGNORE_SSL_ERRORS constant if you want to skip SSL verification (not recommended)" line="203"/>
+      <comment value="Return response instead of printing." line="209"/>
+      <comment value="Send request." line="211"/>
+    </inline>
+  </method>
+  <method name="testAPIValidConstructor" start="231" end="241" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests if the StashAPI constructor produces a valid constructor with given inputs"/>
+      <return type="object">
+        <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
+      </return>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <inline>
+      <comment value="API_ID not set" line="236"/>
+    </inline>
+  </method>
+  <method name="testWEToken" start="248" end="263" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests if a token can successfully be requested by a tokenuser"/>
+      <return description="the token for weberase requests" type="string"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <inline>
+      <comment value="Empty source identifier" line="252"/>
+    </inline>
+  </method>
+  <method name="testWETokenVaultUser" start="270" end="286" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests if a token can successfully be requested by a Vault user"/>
+      <return description="the token for weberase requests with Vault User" type="string"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <inline>
+      <comment value="Empty source identifier" line="275"/>
+    </inline>
+  </method>
+  <method name="testWETokenNoPermUser" start="293" end="308" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests if a token requested by User without Permissions fails"/>
+      <return type="object">
+        <type full="Stash\void" namespace="Stash" name="void"/>
+      </return>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <inline>
+      <comment value="Empty source identifier" line="298"/>
+    </inline>
+  </method>
+  <method name="testWETokenInvalidUser" start="315" end="330" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests if a token requested by an Invalid set of User API Credentials"/>
+      <return type="object">
+        <type full="Stash\void" namespace="Stash" name="void"/>
+      </return>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <inline>
+      <comment value="Empty source identifier" line="320"/>
+    </inline>
+  </method>
+  <method name="testWETokenInvalidSignature" start="337" end="351" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests if a token requested by an Invalid set of User API Credentials"/>
+      <return type="object">
+        <type full="Stash\void" namespace="Stash" name="void"/>
+      </return>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <inline>
+      <comment value="Empty source identifier" line="340"/>
+    </inline>
+  </method>
+  <method name="testWETokenInvalidTimestamp" start="358" end="372" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests if a token requested by an Invalid set of User API Credentials"/>
+      <return type="object">
+        <type full="Stash\void" namespace="Stash" name="void"/>
+      </return>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <inline>
+      <comment value="Empty source identifier" line="361"/>
+    </inline>
+  </method>
+</class>

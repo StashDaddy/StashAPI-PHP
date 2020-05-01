@@ -6,3 +6,4 @@ composer.lock
 codeception.yml
 codeception-Windows.yml
 autoload.php
+/tests/_data/webEraseCreds.ini

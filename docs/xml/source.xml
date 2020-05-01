@@ -4,13 +4,14 @@
     <file name="autoload.php" size="992" time="2018-06-26T22:44:19+00:00" unixtime="1530053059" sha1="6d821eca724b9dd5b4504adecbf3e6ecd96622c9" xml="tokens/autoload.php.xml"/>
     <dir name="src">
       <dir name="Stash">
-        <file name="STASHAPI.php" size="69057" time="2019-06-17T23:20:59+00:00" unixtime="1560813659" sha1="a9a543d63ba3d1bf755d7d3cb9c92c7bb24fe7ec" xml="tokens/src/Stash/STASHAPI.php.xml"/>
+        <file name="STASHAPI.php" size="95643" time="2020-05-01T14:45:05+00:00" unixtime="1588344305" sha1="df7bb9ce9cce5d5537ddc286316e2f2007797061" xml="tokens/src/Stash/STASHAPI.php.xml"/>
       </dir>
     </dir>
     <dir name="tests">
       <dir name="unit">
-        <file name="STASHAPIScenarioTest.php" size="54834" time="2019-06-17T23:13:08+00:00" unixtime="1560813188" sha1="561a72e82520f85024fb667b35878bb026be9dc1" xml="tokens/tests/unit/STASHAPIScenarioTest.php.xml"/>
-        <file name="STASHAPITest.php" size="15470" time="2019-06-14T15:43:06+00:00" unixtime="1560526986" sha1="2654ea497d73e3142e6031f32296fab1adeee0cc" xml="tokens/tests/unit/STASHAPITest.php.xml"/>
+        <file name="STASHAPIScenarioTest.php" size="63111" time="2020-02-24T04:14:05+00:00" unixtime="1582517645" sha1="ab452a784228f78c80dbeed58ce99eed2222ef0f" xml="tokens/tests/unit/STASHAPIScenarioTest.php.xml"/>
+        <file name="STASHAPITest.php" size="15552" time="2019-11-18T13:53:50+00:00" unixtime="1574085230" sha1="199c1aee64e9e01c83ef4f83d77921c1697730ff" xml="tokens/tests/unit/STASHAPITest.php.xml"/>
+        <file name="STASHAPIWebEraseTest.php" size="15263" time="2020-04-17T22:46:47+00:00" unixtime="1587163607" sha1="1ba5ad59f7a00611977b327ce19abdb40450d22a" xml="tokens/tests/unit/STASHAPIWebEraseTest.php.xml"/>
         <file name="_bootstrap.php" size="153" time="2019-06-13T22:04:13+00:00" unixtime="1560463453" sha1="c7823bfb4b33beea54600c92251bc3578aa5f3f5" xml="tokens/tests/unit/_bootstrap.php.xml"/>
       </dir>
       <dir name="_support">
