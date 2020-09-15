@@ -62,7 +62,7 @@
             <a href="#throws">Throws</a>
           </li>
           <li>
-            <a href="../../source/tests/unit/STASHAPIScenarioTest.php.xhtml#line250">Source</a>
+            <a href="../../source/tests/unit/STASHAPIScenarioTest.php.xhtml#line278">Source</a>
           </li>
         </ul>
       </nav>
@@ -73,8 +73,10 @@
         <ul/>
         <h2 id="signature">Signature</h2>
         <div class="styled synopsis">
-          <code>public function testPutFile([boolean
-        $cleanup = true] )
+          <code>public function testPutFile(boolean
+        $cleanup,
+            array
+        $destFolderNames )
             </code>
         </div>
         <h2 id="parameterlist">Parameters</h2>
@@ -82,7 +84,11 @@
           <dt><code>$cleanup</code>
                 —
                 boolean</dt>
-          <dd>if T, will run the cleanup commands to remove the file uploaded to the vault and source file in the file system</dd>
+          <dd>if T will run the cleanup commands to remove the file uploaded to the vault and source file in the file system</dd>
+          <dt><code>$destFolderNames</code>
+                —
+                array</dt>
+          <dd>array of strings indicating which folder to upload the file to</dd>
         </dl>
         <h2 id="throws">Errors/Exceptions</h2>
         <dl class="styled">

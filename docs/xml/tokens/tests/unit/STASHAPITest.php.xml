@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <source xmlns="http://xml.phpdox.net/token">
-  <file xmlns="http://xml.phpdox.net/src" path="L:/Projects/Stash/StashApi-php-Release/docs/../tests/unit" file="STASHAPITest.php" realpath="L:/Projects/Stash/StashApi-php-Release/tests/unit/STASHAPITest.php" size="15552" time="2019-11-18T13:53:50+00:00" unixtime="1574085230" sha1="199c1aee64e9e01c83ef4f83d77921c1697730ff" relative="tests/unit/STASHAPITest.php"/>
+  <file xmlns="http://xml.phpdox.net/src" path="L:/Projects/Stash/StashApi-php-Dev/docs/../tests/unit" file="STASHAPITest.php" realpath="L:/Projects/Stash/StashApi-php-Dev/tests/unit/STASHAPITest.php" size="15686" time="2020-09-14T18:34:56+00:00" unixtime="1600108496" sha1="8fb13c6ac4e549fa6004bb0254208b4b5a5997e0" relative="tests/unit/STASHAPITest.php"/>
   <line no="1">
     <token name="T_OPEN_TAG">&lt;?php</token>
   </line>
@@ -355,6 +355,9 @@
     <token name="T_STRING">setUpBeforeClass</token>
     <token name="T_PHPDOX_OPEN_BRACKET">(</token>
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_COLON">:</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">void</token>
   </line>
   <line no="60">
     <token name="T_WHITESPACE">    </token>
@@ -419,6 +422,9 @@
     <token name="T_STRING">tearDownAfterClass</token>
     <token name="T_PHPDOX_OPEN_BRACKET">(</token>
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_COLON">:</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">void</token>
   </line>
   <line no="70">
     <token name="T_WHITESPACE">    </token>
@@ -2930,12 +2936,9 @@
     <token name="T_DOC_COMMENT">     * @depends testAPIValidConstructor</token>
   </line>
   <line no="318">
-    <token name="T_DOC_COMMENT">     * @expectedException InvalidArgumentException</token>
-  </line>
-  <line no="319">
     <token name="T_DOC_COMMENT">     */</token>
   </line>
-  <line no="320">
+  <line no="319">
     <token name="T_WHITESPACE">    </token>
     <token name="T_PUBLIC">public</token>
     <token name="T_WHITESPACE"> </token>
@@ -2946,9 +2949,21 @@
     <token name="T_VARIABLE">$apiIn</token>
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
   </line>
-  <line no="321">
+  <line no="320">
     <token name="T_WHITESPACE">    </token>
     <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="321">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_VARIABLE">$this</token>
+    <token name="T_OBJECT_OPERATOR">-&gt;</token>
+    <token name="T_STRING">expectException</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_STRING">InvalidArgumentException</token>
+    <token name="T_DOUBLE_COLON">::</token>
+    <token name="T_CLASS">class</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
   <line no="322">
     <token name="T_WHITESPACE">        </token>
@@ -3018,12 +3033,9 @@
     <token name="T_DOC_COMMENT">     * @depends testAPIValidConstructor</token>
   </line>
   <line no="332">
-    <token name="T_DOC_COMMENT">     * @expectedException InvalidArgumentException</token>
-  </line>
-  <line no="333">
     <token name="T_DOC_COMMENT">     */</token>
   </line>
-  <line no="334">
+  <line no="333">
     <token name="T_WHITESPACE">    </token>
     <token name="T_PUBLIC">public</token>
     <token name="T_WHITESPACE"> </token>
@@ -3034,9 +3046,21 @@
     <token name="T_VARIABLE">$apiIn</token>
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
   </line>
-  <line no="335">
+  <line no="334">
     <token name="T_WHITESPACE">    </token>
     <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="335">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_VARIABLE">$this</token>
+    <token name="T_OBJECT_OPERATOR">-&gt;</token>
+    <token name="T_STRING">expectException</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_STRING">InvalidArgumentException</token>
+    <token name="T_DOUBLE_COLON">::</token>
+    <token name="T_CLASS">class</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
   <line no="336">
     <token name="T_WHITESPACE">        </token>
@@ -3131,12 +3155,9 @@
     <token name="T_DOC_COMMENT">     * @depends testAPIValidConstructor</token>
   </line>
   <line no="348">
-    <token name="T_DOC_COMMENT">     * @expectedException UnexpectedValueException</token>
-  </line>
-  <line no="349">
     <token name="T_DOC_COMMENT">     */</token>
   </line>
-  <line no="350">
+  <line no="349">
     <token name="T_WHITESPACE">    </token>
     <token name="T_PUBLIC">public</token>
     <token name="T_WHITESPACE"> </token>
@@ -3147,9 +3168,21 @@
     <token name="T_VARIABLE">$apiIn</token>
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
   </line>
-  <line no="351">
+  <line no="350">
     <token name="T_WHITESPACE">    </token>
     <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="351">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_VARIABLE">$this</token>
+    <token name="T_OBJECT_OPERATOR">-&gt;</token>
+    <token name="T_STRING">expectException</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_STRING">UnexpectedValueException</token>
+    <token name="T_DOUBLE_COLON">::</token>
+    <token name="T_CLASS">class</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
   <line no="352">
     <token name="T_WHITESPACE">        </token>
@@ -3242,7 +3275,7 @@
     <token name="T_DOC_COMMENT">/**</token>
   </line>
   <line no="360">
-    <token name="T_DOC_COMMENT">     * @throws Exception</token>
+    <token name="T_DOC_COMMENT">     * @throws Exception for errors in setId</token>
   </line>
   <line no="361">
     <token name="T_DOC_COMMENT">     */</token>
@@ -3369,7 +3402,7 @@
     <token name="T_WHITESPACE">        </token>
     <token name="T_VARIABLE">$this</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
-    <token name="T_STRING">assertContains</token>
+    <token name="T_STRING">assertStringContainsString</token>
     <token name="T_PHPDOX_OPEN_BRACKET">(</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">"testapifunctional.txt"</token>
     <token name="T_PHPDOX_COMMA">,</token>
@@ -3391,12 +3424,9 @@
     <token name="T_DOC_COMMENT">     * @throws Exception</token>
   </line>
   <line no="378">
-    <token name="T_DOC_COMMENT">     * @expectedException UnexpectedValueException</token>
-  </line>
-  <line no="379">
     <token name="T_DOC_COMMENT">     */</token>
   </line>
-  <line no="380">
+  <line no="379">
     <token name="T_WHITESPACE">    </token>
     <token name="T_PUBLIC">public</token>
     <token name="T_WHITESPACE"> </token>
@@ -3406,11 +3436,24 @@
     <token name="T_PHPDOX_OPEN_BRACKET">(</token>
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
   </line>
-  <line no="381">
+  <line no="380">
     <token name="T_WHITESPACE">    </token>
     <token name="T_PHPDOX_OPEN_CURLY">{</token>
   </line>
-  <line no="382">
+  <line no="381">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_VARIABLE">$this</token>
+    <token name="T_OBJECT_OPERATOR">-&gt;</token>
+    <token name="T_STRING">expectException</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_STRING">UnexpectedValueException</token>
+    <token name="T_DOUBLE_COLON">::</token>
+    <token name="T_CLASS">class</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="382"/>
+  <line no="383">
     <token name="T_WHITESPACE">        </token>
     <token name="T_VARIABLE">$api</token>
     <token name="T_WHITESPACE"> </token>
@@ -3424,7 +3467,7 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="383">
+  <line no="384">
     <token name="T_WHITESPACE">        </token>
     <token name="T_VARIABLE">$api</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -3435,7 +3478,7 @@
     <token name="T_CONSTANT_ENCAPSED_STRING">""</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="384">
+  <line no="385">
     <token name="T_WHITESPACE">        </token>
     <token name="T_VARIABLE">$api</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -3447,7 +3490,7 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="385">
+  <line no="386">
     <token name="T_WHITESPACE">        </token>
     <token name="T_VARIABLE">$api</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -3459,7 +3502,7 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="386">
+  <line no="387">
     <token name="T_WHITESPACE">        </token>
     <token name="T_VARIABLE">$api</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -3472,7 +3515,7 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="387">
+  <line no="388">
     <token name="T_WHITESPACE">        </token>
     <token name="T_VARIABLE">$api</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -3482,20 +3525,17 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="388">
+  <line no="389">
     <token name="T_WHITESPACE">    </token>
     <token name="T_PHPDOX_CLOSE_CURLY">}</token>
   </line>
-  <line no="389"/>
-  <line no="390">
+  <line no="390"/>
+  <line no="391">
     <token name="T_WHITESPACE">    </token>
     <token name="T_DOC_COMMENT">/**</token>
   </line>
-  <line no="391">
-    <token name="T_DOC_COMMENT">     * @throws Exception</token>
-  </line>
   <line no="392">
-    <token name="T_DOC_COMMENT">     * @expectedException InvalidArgumentException</token>
+    <token name="T_DOC_COMMENT">     * @throws Exception</token>
   </line>
   <line no="393">
     <token name="T_DOC_COMMENT">     */</token>
@@ -3516,6 +3556,19 @@
   </line>
   <line no="396">
     <token name="T_WHITESPACE">        </token>
+    <token name="T_VARIABLE">$this</token>
+    <token name="T_OBJECT_OPERATOR">-&gt;</token>
+    <token name="T_STRING">expectException</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_STRING">InvalidArgumentException</token>
+    <token name="T_DOUBLE_COLON">::</token>
+    <token name="T_CLASS">class</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="397"/>
+  <line no="398">
+    <token name="T_WHITESPACE">        </token>
     <token name="T_VARIABLE">$api</token>
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_EQUAL">=</token>
@@ -3528,7 +3581,7 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="397">
+  <line no="399">
     <token name="T_WHITESPACE">        </token>
     <token name="T_VARIABLE">$api</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -3545,7 +3598,7 @@
     <token name="T_CONSTANT_ENCAPSED_STRING">"api2/file/write"</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="398">
+  <line no="400">
     <token name="T_WHITESPACE">        </token>
     <token name="T_VARIABLE">$api</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -3557,7 +3610,7 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="399">
+  <line no="401">
     <token name="T_WHITESPACE">        </token>
     <token name="T_VARIABLE">$api</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -3569,7 +3622,7 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="400">
+  <line no="402">
     <token name="T_WHITESPACE">        </token>
     <token name="T_VARIABLE">$api</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -3582,7 +3635,7 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="401">
+  <line no="403">
     <token name="T_WHITESPACE">        </token>
     <token name="T_VARIABLE">$api</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -3592,25 +3645,22 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="402">
+  <line no="404">
     <token name="T_WHITESPACE">    </token>
     <token name="T_PHPDOX_CLOSE_CURLY">}</token>
   </line>
-  <line no="403"/>
-  <line no="404">
+  <line no="405"/>
+  <line no="406">
     <token name="T_WHITESPACE">    </token>
     <token name="T_DOC_COMMENT">/**</token>
   </line>
-  <line no="405">
+  <line no="407">
     <token name="T_DOC_COMMENT">     * @throws Exception</token>
   </line>
-  <line no="406">
-    <token name="T_DOC_COMMENT">     * @expectedException InvalidArgumentException</token>
-  </line>
-  <line no="407">
+  <line no="408">
     <token name="T_DOC_COMMENT">     */</token>
   </line>
-  <line no="408">
+  <line no="409">
     <token name="T_WHITESPACE">    </token>
     <token name="T_PUBLIC">public</token>
     <token name="T_WHITESPACE"> </token>
@@ -3620,11 +3670,24 @@
     <token name="T_PHPDOX_OPEN_BRACKET">(</token>
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
   </line>
-  <line no="409">
+  <line no="410">
     <token name="T_WHITESPACE">    </token>
     <token name="T_PHPDOX_OPEN_CURLY">{</token>
   </line>
-  <line no="410">
+  <line no="411">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_VARIABLE">$this</token>
+    <token name="T_OBJECT_OPERATOR">-&gt;</token>
+    <token name="T_STRING">expectException</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_STRING">InvalidArgumentException</token>
+    <token name="T_DOUBLE_COLON">::</token>
+    <token name="T_CLASS">class</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="412"/>
+  <line no="413">
     <token name="T_WHITESPACE">        </token>
     <token name="T_VARIABLE">$api</token>
     <token name="T_WHITESPACE"> </token>
@@ -3638,7 +3701,7 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="411">
+  <line no="414">
     <token name="T_WHITESPACE">        </token>
     <token name="T_VARIABLE">$api</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -3655,7 +3718,7 @@
     <token name="T_CONSTANT_ENCAPSED_STRING">"api2/file/write"</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="412">
+  <line no="415">
     <token name="T_WHITESPACE">        </token>
     <token name="T_VARIABLE">$api</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -3667,7 +3730,7 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="413">
+  <line no="416">
     <token name="T_WHITESPACE">        </token>
     <token name="T_VARIABLE">$api</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -3679,7 +3742,7 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="414">
+  <line no="417">
     <token name="T_WHITESPACE">        </token>
     <token name="T_VARIABLE">$api</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -3692,7 +3755,7 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="415">
+  <line no="418">
     <token name="T_WHITESPACE">        </token>
     <token name="T_VARIABLE">$api</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -3702,36 +3765,36 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="416">
+  <line no="419">
     <token name="T_WHITESPACE">    </token>
     <token name="T_PHPDOX_CLOSE_CURLY">}</token>
-  </line>
-  <line no="417"/>
-  <line no="418">
-    <token name="T_WHITESPACE">    </token>
-    <token name="T_COMMENT">/*</token>
-  </line>
-  <line no="419">
-    <token name="T_COMMENT">    // ToDo</token>
   </line>
   <line no="420"/>
   <line no="421">
-    <token name="T_COMMENT">        public function testAPIFileSendBadSignature() {</token>
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_COMMENT">/*</token>
   </line>
   <line no="422">
+    <token name="T_COMMENT">    // ToDo</token>
+  </line>
+  <line no="423"/>
+  <line no="424">
+    <token name="T_COMMENT">        public function testAPIFileSendBadSignature() {</token>
+  </line>
+  <line no="425">
     <token name="T_COMMENT">            $this-&gt;assertTrue(false);</token>
   </line>
-  <line no="423">
+  <line no="426">
     <token name="T_COMMENT">        }</token>
   </line>
-  <line no="424"/>
-  <line no="425">
+  <line no="427"/>
+  <line no="428">
     <token name="T_COMMENT">    */</token>
   </line>
-  <line no="426"/>
-  <line no="427">
+  <line no="429"/>
+  <line no="430">
     <token name="T_PHPDOX_CLOSE_CURLY">}</token>
   </line>
-  <line no="428"/>
-  <line no="429"/>
+  <line no="431"/>
+  <line no="432"/>
 </source>

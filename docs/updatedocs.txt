@@ -1,9 +1,0 @@
-# Clear out the old docs
-rm -rf docs\docs\*
-rm -rf docs\xml\*
-
-# Update PHPLoc info
-.\vendor\bin\phploc .\ --exclude=docs --exclude=tests --exclude=vendor --log-xml=docs\stashapi.phploc.xml
-
-# Update PHPDox
-.\vendor\bin\phpdox -f docs\stashapi.phpdox.xml

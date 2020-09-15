@@ -1,0 +1,41 @@
+; Contains the API credentials for conducting unit and functional tests of WebErase
+; Set these values to those used with your vault account and save this file to webEraseCreds.ini
+;
+; Important: when filled in, this file will contain sensitive information and is NOT recommended for inclusion in
+; a version control system like Git. Be sure to include the webEraseCreds.ini file in .gitignore or similar.
+;
+[config]
+folderpath = "["My Home"]"                      ; Set this to your Vault's weberase root folder
+folderid = 0                                ; Set this to your Vault's weberase root folder unique ID
+projectid = 0                                  ; Set this to your Vault's weberase project ID
+projectfolderid = 0                         ; Set this to your Vault's weberase project folder ID
+baseurl = "https://www.stage.stashbusiness.com/"      ; Set this to your Vault's API Endpoint, must include trailing "/"
+
+; Enter the creds for a valid token user with access to the WebErase project given above
+apiid = ""      ; Set this to your API ID value
+apipw = ""      ; Set this to your API PW value
+userid = 0                                    ; Set this to your user account identifier
+username = ""                         ; Set this to your Vault username
+filekey = ""                          ; Set this to your Vault account password - this value will be encrypted before being included in any API requests
+
+; Enter the creds for a valid Vault user with API creds
+vaultapiid = ""             ; Set this to your Vault User's API ID value
+vaultapipw = ""             ; Set this to your Vault User's API PW value
+vaultuserid = ""                 ; Set this to your Vault User's user ID
+vaultusername = ""               ; Set this to your Vault User's username
+vaultfilekey = ""                ; Set this to your Vault User's account password
+
+
+; Vault valid creds, but not weberase authorized
+notauthapiid = ""             ; Set this to an API ID for a user that does not have weberase API access
+notauthapipw = ""             ; Set this to an API PW for a user that does not have weberase API access
+notauthuserid = "0"                                         ; Set this to a user id for a user that does not have weberase API access
+notauthusername = ""                                   ; Set this to a username for a user that does not have weberase API access
+notauthfilekey = ""                             ; Set this to a username for a user that does not have weberase API access
+
+; Invalid Creds
+invalidapiid = ""             ; Set this to a well formed, but invalid API ID
+invalidapipw = ""             ; Set this to a well formed, but invalid API PW
+invaliduserid = "0"                                         ; Set this to a well formed, but invalid user ID
+invalidusername = ""                                   ; Set this to a well formed, but invalid username
+invalidfilekey = ""                             ; Set this to a well formed, but invalid file key

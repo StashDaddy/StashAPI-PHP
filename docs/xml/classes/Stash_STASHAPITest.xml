@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="Stash\STASHAPITest" namespace="Stash" name="STASHAPITest" abstract="false" final="false" start="18" end="427">
-  <file path="L:/Projects/Stash/StashApi-php-Release/docs/../tests/unit" file="STASHAPITest.php" realpath="L:/Projects/Stash/StashApi-php-Release/tests/unit/STASHAPITest.php" size="15552" time="2019-11-18T13:53:50+00:00" unixtime="1574085230" sha1="199c1aee64e9e01c83ef4f83d77921c1697730ff" relative="tests/unit/STASHAPITest.php"/>
+<class xmlns="http://xml.phpdox.net/src" full="Stash\STASHAPITest" namespace="Stash" name="STASHAPITest" abstract="false" final="false" start="18" end="430">
+  <file path="L:/Projects/Stash/StashApi-php-Dev/docs/../tests/unit" file="STASHAPITest.php" realpath="L:/Projects/Stash/StashApi-php-Dev/tests/unit/STASHAPITest.php" size="15686" time="2020-09-14T18:34:56+00:00" unixtime="1600108496" sha1="8fb13c6ac4e549fa6004bb0254208b4b5a5997e0" relative="tests/unit/STASHAPITest.php"/>
   <docblock>
     <description compact="Class STASHAPITest Runs unit testing on the functions in the API"/>
     <package value="Stash"/>
@@ -38,11 +38,13 @@
         <type full="Exception" namespace="" name="Exception"/>
       </throws>
     </docblock>
+    <return type="void" nullable="false"/>
   </method>
   <method name="tearDownAfterClass" start="69" end="75" abstract="false" final="false" static="true" visibility="public">
     <docblock>
       <description compact="This function is run once, after all tests in the suite are run"/>
     </docblock>
+    <return type="void" nullable="false"/>
   </method>
   <method name="testAPIValidConstructor" start="82" end="100" abstract="false" final="false" static="false" visibility="public">
     <docblock>
@@ -154,18 +156,17 @@
       </throws>
     </docblock>
   </method>
-  <method name="testEncryptInvalidKey" start="320" end="326" abstract="false" final="false" static="false" visibility="public">
+  <method name="testEncryptInvalidKey" start="319" end="326" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <param description="the API object to test" type="object" variable="$apiIn">
         <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
       </param>
       <depends value="testAPIValidConstructor"/>
-      <expectedexception value="InvalidArgumentException"/>
     </docblock>
     <parameter name="apiIn" byreference="false" type="{unknown}"/>
   </method>
-  <method name="testDecryptInvalidKey" start="334" end="342" abstract="false" final="false" static="false" visibility="public">
+  <method name="testDecryptInvalidKey" start="333" end="342" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <param type="object" variable="$apiIn">
@@ -175,11 +176,10 @@
         <type full="Exception" namespace="" name="Exception"/>
       </throws>
       <depends value="testAPIValidConstructor"/>
-      <expectedexception value="InvalidArgumentException"/>
     </docblock>
     <parameter name="apiIn" byreference="false" type="{unknown}"/>
   </method>
-  <method name="testDecryptInvalidDataIn" start="350" end="357" abstract="false" final="false" static="false" visibility="public">
+  <method name="testDecryptInvalidDataIn" start="349" end="357" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <param type="object" variable="$apiIn">
@@ -189,7 +189,6 @@
         <type full="Exception" namespace="" name="Exception"/>
       </throws>
       <depends value="testAPIValidConstructor"/>
-      <expectedexception value="UnexpectedValueException"/>
     </docblock>
     <parameter name="apiIn" byreference="false" type="{unknown}"/>
     <inline>
@@ -199,36 +198,33 @@
   <method name="testAPISend" start="362" end="374" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
-      <throws type="object">
+      <throws description="for errors in setId" type="object">
         <type full="Exception" namespace="" name="Exception"/>
       </throws>
     </docblock>
   </method>
-  <method name="testAPIFileSendEmptyURL" start="380" end="388" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPIFileSendEmptyURL" start="379" end="389" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <throws type="object">
         <type full="Exception" namespace="" name="Exception"/>
       </throws>
-      <expectedexception value="UnexpectedValueException"/>
     </docblock>
   </method>
-  <method name="testAPIFileSendEmptyFilename" start="394" end="402" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPIFileSendEmptyFilename" start="394" end="404" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <throws type="object">
         <type full="Exception" namespace="" name="Exception"/>
       </throws>
-      <expectedexception value="InvalidArgumentException"/>
     </docblock>
   </method>
-  <method name="testAPIFileSendFileNotExist" start="408" end="416" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPIFileSendFileNotExist" start="409" end="419" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <throws type="object">
         <type full="Exception" namespace="" name="Exception"/>
       </throws>
-      <expectedexception value="InvalidArgumentException"/>
     </docblock>
   </method>
 </class>

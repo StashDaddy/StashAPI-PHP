@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpUnused - suppress IDE inspection for unused elements */
+
 /**
  * STASH API - PHP Implementation
  *
@@ -51,10 +53,10 @@ class StashAPI
     /**
      * STASHAPI Constructor
      *
-     * @param String $apiId , the API ID
-     * @param String $apiPw , the API PW
-     * @param string $urlIn - the base url (e.g. 127.0.0.1, or https://www.stashbusiness.com) if different from the default
-     * @param Boolean, verbosity, T to generate log messages from STASHAPI functions
+     * @param String $apiId the API ID
+     * @param String $apiPw the API PW
+     * @param string $urlIn the base url (e.g. 127.0.0.1, or https://www.stashbusiness.com) if different from the default
+     * @param boolean $verbosity T to generate log messages from STASHAPI functions
      */
     public function __construct($apiId = "", $apiPw = "", $urlIn = "", $verbosity = false)
     {
@@ -66,7 +68,7 @@ class StashAPI
         if ($apiPw != "") {
             $this->api_pw = $apiPw;
         }
-        $this->BASE_API_URL = (! empty($urlIn) ? $urlIn : self::BASE_URL);
+        $this->BASE_API_URL = (!empty($urlIn) ? $urlIn : self::BASE_URL);
         if (substr_compare($this->BASE_API_URL, "/", -1, 1) !== 0) {
             $this->BASE_API_URL .= "/";
         }
@@ -74,8 +76,8 @@ class StashAPI
 
     /**
      * Returns the constants in the class
-     * @throws ReflectionException if failed to get constants
      * @return array|NULL
+     * @throws ReflectionException if failed to get constants
      */
     public static function getConstants()
     {
@@ -124,18 +126,32 @@ class StashAPI
     /**
      * Checks the parameter and value for sanity and compliance with rules
      *
-     * @param array, the parameter name => value
-     * @return Boolean, T if all the parameters are deemed valid
+     * @param array $dataIn the parameter name => value
+     * @return boolean T if all the parameters are deemed valid
      */
     public static function isValid(array $dataIn)
     {
         try {
             foreach ($dataIn as $idx => $val) {
-                if ($idx === "api_id") {                    // API_ID is 32 chars, a-f,0-9 (hex chars only)
-                    if (mb_strlen($val) != self::STASHAPI_ID_LENGTH && strpos($val, "@") === false)
-                        throw new Exception($idx . " Must Be " . self::STASHAPI_ID_LENGTH . " Characters in Length");
-                    if (preg_match('/[^abcdef0-9]/i', $val))
-                        throw new Exception($idx . " Has Invalid Characters, only a-f and 0-9 are allowed");
+                if ($idx === "api_id") {
+                    if (strpos($val, "@") === false) {
+                        // Must be valid api_id (32 chars, a-f, 0-9 (hex chars only)
+                        if (mb_strlen($val) != self::STASHAPI_ID_LENGTH) {
+                            throw new Exception($idx . " Must Be " . self::STASHAPI_ID_LENGTH . " Characters in Length");
+                        }
+                        if (preg_match('/[^abcdef0-9]/i', $val)) {
+                            throw new Exception($idx . " Has Invalid Characters, only a-f and 0-9 are allowed");
+                        }
+                    } else {
+                        // Must be valid email address
+                        if (! filter_var($val, FILTER_VALIDATE_EMAIL)) {
+                            throw new Exception($idx . " is Not a Valid Email Address");
+                        }
+                    }
+//                    if (mb_strlen($val) != self::STASHAPI_ID_LENGTH && strpos($val, "@") === false)
+//                        throw new Exception($idx . " Must Be " . self::STASHAPI_ID_LENGTH . " Characters in Length");
+//                    if (preg_match('/[^abcdef0-9]/i', $val))
+//                        throw new Exception($idx . " Has Invalid Characters, only a-f and 0-9 are allowed");
                 } elseif ($idx === "api_pw") {                    // A-Z, a-z, and 0-9 characters only
                     if (mb_strlen($val) < self::STASHAPI_PW_LENGTH)
                         throw new Exception($idx . " Must Be at Least " . self::STASHAPI_PW_LENGTH . " Characters in Length");
@@ -169,7 +185,7 @@ class StashAPI
             }
             $retVal = true;
         } catch (Exception $e) {
-            echo "Invalid Parameter - " . $idx . ", Reason: " . $e->getMessage() . "\n\r";
+            echo "Invalid Parameter, Reason: " . $e->getMessage() . "\n\r";
             $retVal = false;
         }
         return $retVal;
@@ -178,15 +194,15 @@ class StashAPI
     /**
      * api_id setter
      *
-     * @param string, your api_id
+     * @param string $idIn your api_id
+     * @return StashAPI
      * @throws Exception if idIn is invalid or does not match syntax requirements
-     * @return Object/STASHAPI
      */
     public function setId($idIn)
     {
         if ($this->verbosity) echo "- setId - " . $idIn . "\n\r";
 
-        if (!STASHAPI::isValid(array("api_id" => $idIn))) {
+        if (!StashAPI::isValid(array("api_id" => $idIn))) {
             throw new Exception("Invalid API ID");
         }
         $this->api_id = $idIn;
@@ -205,8 +221,8 @@ class StashAPI
     /**
      * api_pw setter
      *
-     * @param string, your api_pw
-     * @return Object/STASHAPI
+     * @param string $pwIn your api_pw
+     * @return StashAPI
      */
     public function setPw($pwIn)
     {
@@ -217,7 +233,7 @@ class StashAPI
 
     /**
      * api_pw getter
-     * @return String, the API_PW for this instance
+     * @return string the API_PW for this instance
      */
     public function getPw()
     {
@@ -227,7 +243,7 @@ class StashAPI
     /**
      * api_timestamp setter
      *
-     * @return Object/STASHAPI
+     * @return StashAPI
      */
     public function setTimestamp()
     {
@@ -238,7 +254,7 @@ class StashAPI
 
     /**
      * api_timestamp getter
-     * @return Integer, the API_timestamp for this instance
+     * @return integer the API_timestamp for this instance
      */
     public function getTimestamp()
     {
@@ -255,8 +271,8 @@ class StashAPI
      * - ['api_id'] contains the ID string for the API user
      * - ['api_timestamp'] contains the epoch / integer timestamp for when the request was created
      * @param array $dataIn - an array of key/value pairs containing the data to sign
+     * @return boolean T if the function succeeds
      * @throws Exception for invalid inputs
-     * @return Boolean, T if the function succeeds
      */
     public function setSignature(array $dataIn)
     {
@@ -277,7 +293,7 @@ class StashAPI
 
     /**
      * api_signature getter
-     * @return String, the API_signature for this instance
+     * @return string the API_signature for this instance
      */
     public function getSignature()
     {
@@ -286,9 +302,9 @@ class StashAPI
 
     /**
      * Function encrypts a string with your API_PW
-     * @param String, the string to encrypt
-     * @param Bool, T if the function should return hexbits instead of raw
-     * @return String, the encrypted string
+     * @param string $strIn the string to encrypt
+     * @param boolean $returnHexBits T if the function should return hexbits instead of raw
+     * @return string the encrypted string
      */
     public function encryptString($strIn, $returnHexBits)
     {
@@ -314,9 +330,9 @@ class StashAPI
 
     /**
      * Function decrypts a string with your API_PW
-     * @param String, the string to decrypt
-     * @param Bool, T if the input string is hexbits and should be converted back to binary before decryption
-     * @return String, the decrypted string
+     * @param string $strIn the string to decrypt
+     * @param boolean $inHexBits T if the input string is hexbits and should be converted back to binary before decryption
+     * @return string the decrypted string
      */
     public function decryptString($strIn, $inHexBits)
     {
@@ -345,8 +361,8 @@ class StashAPI
 
     /**
      * Function builds and sends an API request
+     * @return string the result from the curl operation
      * @throws Exception for invalid URLs
-     * @return String, the result from the curl operation
      */
     public function sendRequest()
     {
@@ -405,8 +421,8 @@ class StashAPI
      * Function builds and sends an API download request
      * The result will be stored in a file, specified by $fileNameIn
      *
-     * @param String, the filename to save the downloaded data to
-     * @return String, the result from the curl operation
+     * @param string $fileNameIn the filename to save the downloaded data to
+     * @return string the result from the curl operation
      * @throws UnexpectedValueException if $this->url is invalid
      */
     public function sendDownloadRequest($fileNameIn)
@@ -494,8 +510,8 @@ class StashAPI
      *
      * The input parameters for this function must include a FILE
      *
-     * @param String, the full path and name of the file to upload
-     * @return String, the result from the curl operation
+     * @param string $fileNameIn the full path and name of the file to upload
+     * @return string the result from the curl operation
      * @throws Exception if setSignature fails
      * @throws UnexpectedValueException if $this->url is invalid
      * @throws InvalidArgumentException if the fileNameIn parameter is empty or the file doesn't exist
@@ -552,15 +568,30 @@ class StashAPI
     }
 
     /**
+     * Function builds and sends an API request to upload a file in chunks
+     * @param string $fileNameIn the full path and name of the file to upload
+     * @param object $objIn placeholder, not used, for status updates callback
+     * @param object $cancelIn placeholder, not used, for transfer cancellation
+     * @return string the result from the curl operation
+     * @note This function is not implemented and only exists for compatibility with the .Net version of the API
+     */
+    public function sendFileRequestChunked($fileNameIn, $objIn, $cancelIn)
+    {
+        unset($objIn);
+        unset($cancelIn);
+        return $this->sendDownloadRequest($fileNameIn);
+    }
+
+    /**
      * Function validates the source identifier parameters
      *
      * Source identifier can contain fileId, fileName, folderNames, folderId
      * To be valid, a fileId OR (fileName AND (folderId OR folderNames)) must be given
      * If folderOnly is T, then fileId and fileName need not be specified
      *
-     * @param boolean $folderOnly - T if the validation should be for the source folder only
-     * @param boolean $allowZeroIds - T if the validation should allow for folderId and/or fileId to be zero and/or the folderId to be -1 (all folders)
-     * @return Boolean, T if the parameters are valid
+     * @param boolean $folderOnly T if the validation should be for the source folder only
+     * @param boolean $allowZeroIds T if the validation should allow for folderId and/or fileId to be zero and/or the folderId to be -1 (all folders)
+     * @return boolean T if the parameters are valid
      */
     private function validateSourceParams($folderOnly, $allowZeroIds = false)
     {
@@ -593,9 +624,9 @@ class StashAPI
      * If folderOnly is T, then destFileName need not be given
      * If nameOnly is T, then destFolderId and destFolderNames need not be given (but folderOnly must be false)
      *
-     * @param Boolean, T if the validation should be for the destination folder only
-     * @param Boolean, T if the validate should be for the destination name only, if specified, folderOnly must be false
-     * @return Boolean, T if the parameters are valid
+     * @param boolean $folderOnly T if the validation should be for the destination folder only
+     * @param boolean $nameOnly T if the validate should be for the destination name only, if specified, folderOnly must be false
+     * @return boolean T if the parameters are valid
      */
     private function validateDestParams($folderOnly, $nameOnly)
     {
@@ -621,7 +652,7 @@ class StashAPI
      * Function validates the output type parameters
      *
      * Source identifier must contain outputType equal to one of the APIRequest::API_OUTPUT_TYPE_X constants
-     * @return Boolean, T if the parameters are valid
+     * @return boolean T if the parameters are valid
      */
     private function validateOutputParams()
     {
@@ -633,8 +664,9 @@ class StashAPI
      * Function validates the search parameters
      *
      * Source identifier may contain search and searchPartialMatch values unless $requireTerms is T, then search MUST be specified
-     * @param boolean $requireTerms - T if the check should error if terms are not specified
-     * @return boolean, T if the parameters are valid
+     * @param boolean $requireTerms T if the check should error if terms are not specified
+     * @return boolean T if the parameters are valid, otherwise exception is thrown
+     * @throws InvalidArgumentException if the parameters do not validate
      */
     private function validateSearchParams($requireTerms)
     {
@@ -647,10 +679,23 @@ class StashAPI
     }
 
     /**
+     * Function validates the version parameter
+     * @return boolean T if the parameters are valid
+     * @throws InvalidArgumentException if the parameters do not validate
+     */
+    private function validateVersionParams()
+    {
+        if (empty($this->params['version'])) {
+            throw new InvalidArgumentException("Version Parameter Invalid - version parameter MUST be specified as a number");
+        }
+        return true;
+    }
+
+    /**
      * Function validates the smart folder ID parameter
      *
      * Source identifier must contain sfId
-     * @return boolean, T if the parameters are valid
+     * @return boolean T if the parameters are valid
      * @throws InvalidArgumentException for errors with invalid sfId parameter
      */
     private function validateSmartFolderId()
@@ -668,9 +713,11 @@ class StashAPI
      */
     public function validateOverwriteParams()
     {
-        if (! empty($this->params['overwriteFile'])) {
+        if (!empty($this->params['overwriteFile'])) {
             $overwriteFile = (int)$this->params['overwriteFile'];
-            if ($overwriteFile > 1 || $overwriteFile < 0) { throw new InvalidArgumentException("Invalid overwriteFile value"); }
+            if ($overwriteFile > 1 || $overwriteFile < 0) {
+                throw new InvalidArgumentException("Invalid overwriteFile value");
+            }
             if ($overwriteFile == 1) {      // overwriteFileId MUST be specified
                 if (empty($this->params['overwriteFileId'])) {
                     throw new InvalidArgumentException("overwriteFileId parameter must be specified with overwriteFile");
@@ -687,11 +734,11 @@ class StashAPI
      *
      * Source identifier can contain fileKey, accountUsername, apiid, apipw
      *
-     * @param Boolean $checkFileKey T if the validation should check fileKey
-     * @param Boolean $checkUsername T if the validation should check accountUsername
-     * @param Boolean $checkApiId T if the validation should check apiid
-     * @param Boolean $checkApiPw T if the validation should check apipw
-     * @return Boolean, T if the parameters are valid
+     * @param boolean $checkFileKey T if the validation should check fileKey
+     * @param boolean $checkUsername T if the validation should check accountUsername
+     * @param boolean $checkApiId T if the validation should check apiid
+     * @param boolean $checkApiPw T if the validation should check apipw
+     * @return boolean T if the parameters are valid
      */
     private function validateCredParams($checkFileKey, $checkUsername, $checkApiId, $checkApiPw)
     {
@@ -726,7 +773,7 @@ class StashAPI
      * Function validates the set permissions parameters
      *
      * Source identifier must contain permJson
-     * @return boolean, T if the parameters are valid
+     * @return boolean T if the parameters are valid
      */
     private function validateSetPermParams()
     {
@@ -740,7 +787,7 @@ class StashAPI
      * Function validates the check permissions parameters
      *
      * Source identifier must contain objectUserId, objectId, objectIdType, requestedAccess
-     * @return boolean, T if the parameters are valid
+     * @return boolean T if the parameters are valid
      */
     private function validateCheckPermParams()
     {
@@ -762,13 +809,42 @@ class StashAPI
 
     /**
      * Function validates the WebErase parameters
-     * Source identifier must contain api_id only
-     * @return boolean, T if the parameters are valid
+     * Source identifier must contain token_key and fileKey values
+     * @param boolean $tokenOnly T if the function should validate only the token_key, otherwise, will also look at fileKey
+     * @return boolean T if the parameters are valid
      */
-    private function ValidateWebEraseParams()
+    private function ValidateWebEraseParams($tokenOnly)
     {
         if (empty($this->params['token_key'])) {
             throw new InvalidArgumentException("Invalid token parameter");
+        }
+
+        if (!$tokenOnly) {
+            if (empty($this->params['fileKey'])) {
+                throw new InvalidArgumentException("Invalid fileKey parameter");
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Function validates the WebEraseStore function parameters
+     * Source identifier must contain token_key, fileKey, and destFolderId values
+     * @return boolean T if the parameters are valid
+     */
+    private function ValidateWebEraseStoreParams()
+    {
+        if (empty($this->params['token_key'])) {
+            throw new InvalidArgumentException("Invalid token parameter");
+        }
+
+        if (empty($this->params['fileKey'])) {
+            throw new InvalidArgumentException("Invalid fileKey parameter");
+        }
+
+        if (empty($this->params['destFolderId']) || (int)$this->params['destFolderId'] < 1) {
+            throw new InvalidArgumentException("Invalid destFolderId parameter");
         }
 
         return true;
@@ -781,11 +857,11 @@ class StashAPI
     public function validateSourceTags($singleTag)
     {
         if ($singleTag) {
-            if (empty($this->params['tag']))  {
+            if (empty($this->params['tag'])) {
                 throw new InvalidArgumentException("Invalid objectUserId parameter");
             }
         } else {
-            if (empty($this->params['tags']))  {
+            if (empty($this->params['tags'])) {
                 throw new InvalidArgumentException("Invalid objectUserId parameter");
             }
         }
@@ -794,15 +870,17 @@ class StashAPI
     /**
      * Function validates the input parameters before they are passed to the API endpoint
      *
-     * @param String, the operation to check the parameters for
-     * @return Boolean, T if the params are validated, F otherwise
+     * @param string $opIn the operation to check the parameters for
+     * @return boolean T if the params are validated, F otherwise
      * @throws InvalidArgumentException if the fileKey parameter is not included in the request
      */
     public function validateParams($opIn)
     {
         $opIn = mb_strtolower($opIn);
         try {
-            if ($this->params == null && $opIn != "none") { throw new InvalidArgumentException("Parameters Can't Be Null"); }
+            if ($this->params == null && $opIn != "none") {
+                throw new InvalidArgumentException("Parameters Can't Be Null");
+            }
 
             if ($opIn === 'read') {
                 $this->validateSourceParams(false, false);
@@ -876,34 +954,40 @@ class StashAPI
                 $this->validateSourceParams(true, false);
             } elseif ($opIn === 'checkcreds') {
                 $this->validateCredParams(true, true, false, false);
+            } elseif ($opIn === 'checkcredsad') {
+                $this->validateCredParams(true, true, false, false);
             } elseif ($opIn === 'isvaliduser') {
                 $this->validateCredParams(false, true, false, false);
             } elseif ($opIn == 'setperms') {
                 $this->validateSetPermParams();
             } elseif ($opIn == 'checkperms') {
                 $this->ValidateCheckPermParams();
+            } elseif ($opIn == 'listversions') {
+                $this->validateSourceParams(false, false);
+            } elseif ($opIn == 'readversion') {
+                $this->validateSourceParams(false, false);
+                $this->validateVersionParams();
+            } elseif ($opIn == 'restoreversion') {
+                $this->validateSourceParams(false, false);
+            } elseif ($opIn == 'deleteversion') {
+                $this->validateSourceParams(false, false);
+                $this->validateVersionParams();
+            } elseif ($opIn == 'weberasetoken') {
+                // Intentionally blank
+            } elseif ($opIn == 'weberaseprojectlist') {
+                // Intentionally blank
             } elseif ($opIn == 'weberasestore') {
-                // Validate the 'write' function parameters
-                //$this->validateDestParams(true, false);
-                //$this->validateOverwriteParams();
-                if (empty($this->params['fileKey'])) throw new InvalidArgumentException("Invalid fileKey Parameter");
-                $this->ValidateWebEraseParams();
+                $this->ValidateWebEraseStoreParams();
             } elseif ($opIn == 'weberaseretrieve') {
-                // Validate the 'read' function parameters
-                //$this->validateSourceParams(false, false);
-                if (empty($this->params['fileKey'])) throw new InvalidArgumentException("Invalid fileKey Parameter");
-                $this->ValidateWebEraseParams();
+                $this->ValidateWebEraseParams(false);
             } elseif ($opIn == 'weberaseupdate') {
-                //$this->validateDestParams(true, false);
-                //$this->validateOverwriteParams();
-                if (empty($this->params['fileKey'])) throw new InvalidArgumentException("Invalid fileKey Parameter");
-                $this->ValidateWebEraseParams();
+                $this->ValidateWebEraseParams(false);
             } elseif ($opIn == 'weberasedelete') {
-                $this->ValidateWebEraseParams();
+                $this->ValidateWebEraseParams(true);
             } elseif ($opIn == 'weberaseotc') {
-                $this->ValidateWebEraseParams();
+                $this->ValidateWebEraseParams(true);
             } elseif ($opIn == 'weberasepolling') {
-                $this->ValidateWebEraseParams();
+                $this->ValidateWebEraseParams(true);
             } elseif ($opIn === 'none') {
                 return true;        // Doesn't matter what the source and dest identifiers are
             } else {
@@ -919,11 +1003,12 @@ class StashAPI
 
     /**
      * Returns the file name for a given path (multi-byte string aware)
-     * @param $path
-     * @return string
+     * @param string $path the path and file name
+     * @return string the file name for a given path
      * @see https://www.php.net/manual/en/function.basename.php#121405
      */
-    function mb_basename($path) {
+    function mb_basename($path)
+    {
         if (preg_match('@^.*[\\\\/]([^\\\\/]+)$@s', $path, $matches)) {
             return $matches[1];
         } else if (preg_match('@^([^\\\\/]+)$@s', $path, $matches)) {
@@ -931,6 +1016,7 @@ class StashAPI
         }
         return '';
     }
+
 /////////////////////////////////////////
 // STASH API HELPER FUNCTIONS
 /////////////////////////////////////////
@@ -938,10 +1024,10 @@ class StashAPI
     /**
      * Function reads a file from the STASH Vault
      *
-     * @param array, an Associative Array containing the source identifier, values which describe the file to read in the Vault
-     * @param String, the file path and name to write the file to in the local filesystem
-     * @param Integer, OUTPUT, the return code returned by the server in the response
-     * @return array, an associative array containing the response from the server
+     * @param array $srcIdentifier an Associative Array containing the source identifier, values which describe the file to read in the Vault
+     * @param string $fileName the file path and name to write the file to in the local filesystem
+     * @param integer $retCode OUTPUT, the return code returned by the server in the response
+     * @return array an associative array containing the response from the server
      */
     public function getFile($srcIdentifier, $fileName, &$retCode)
     {    // Read
@@ -978,28 +1064,33 @@ class StashAPI
     /**
      * Function writes a file to a STASH Vault
      *
-     * @param string $fileNameIn - the file name and path to upload to STASH vault
-     * @param array $srcIdentifier - an associative array containing the source identifier, the values of where to write the file in the Vault
-     * @param integer $retCode - the return code in the response
-     * @param integer $fileId - the unique File ID (UserFile) for the newly created file
-     * @param integer $fileAliasId - the unique File ID (UserFileAlias) for the newly created file
+     * @param string $fileNameIn the file name and path to upload to STASH vault
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of where to write the file in the Vault
+     * @param integer $retCode the return code in the response
+     * @param integer $fileId the unique File ID (UserFile) for the newly created file
+     * @param integer $fileAliasId the unique File ID (UserFileAlias) for the newly created file
      * @return array the result / output of the write operation
      * @throws InvalidArgumentException if the input parameters are not valid
      * @throws Exception if sendFileRequest fails
      */
     public function putFile($fileNameIn, $srcIdentifier, &$retCode, &$fileId, &$fileAliasId)
     {
-        $retCode = 0; $fileId = 0; $fileAliasId = 0;
-        $overwriteFile = false; $owFileId = 0;
+        $retCode = 0;
+        $fileId = 0;
+        $fileAliasId = 0;
+        $overwriteFile = false;
+        $owFileId = 0;
 
         if (!file_exists($fileNameIn)) {
             throw new InvalidArgumentException("Incorrect Input File Path or File Does Not Exist");
         }
 
         $this->params = $srcIdentifier;
-        if (! $this->validateParams('write')) { throw new InvalidArgumentException("Invalid Input Parameters"); }
+        if (!$this->validateParams('write')) {
+            throw new InvalidArgumentException("Invalid Input Parameters");
+        }
 
-        if (! empty($srcIdentifier['overwriteFile'])) {
+        if (!empty($srcIdentifier['overwriteFile'])) {
             $overwriteFile = $srcIdentifier['overwriteFile'] == "1";
             if ($overwriteFile) {
                 $owFileId = (int)$srcIdentifier['overwriteFileId'];
@@ -1023,7 +1114,7 @@ class StashAPI
         $this->getFileInfo($fileInfoIdentifier, $retCode);
         if ($overwriteFile && $retCode == 404) {        // File doesn't exist, but overwrite requested
             throw new Exception("Unable to Upload File, Overwrite Requested, but File Does Not Exist");
-        } else if (! $overwriteFile && $retCode != 404) {       // File exists, but overwrite not requested
+        } else if (!$overwriteFile && $retCode != 404) {       // File exists, but overwrite not requested
             // File exists, or some error occurred
             throw new Exception("Unable to Upload File, File with Same Name Already Exists in Destination Folder and Overwrite Not Requested");
         }
@@ -1046,13 +1137,35 @@ class StashAPI
     }
 
     /**
+     * Function writes a file to a STASH Vault in chunks
+     *
+     * @param string $fileNameIn the file name and path to upload to STASH vault
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of where to write the file in the Vault
+     * @param object $objIn placeholder, not used, for status updates callback
+     * @param object $cancelIn placeholder, not used, for transfer cancellation
+     * @param integer $retCode OUTPUT, the return code in the response
+     * @param integer $fileId OUTPUT, the unique File ID (UserFile) for the newly created file
+     * @param integer $fileAliasId OUTPUT, the unique File ID (UserFileAlias) for the newly created file
+     * @return array the result / output of the write operation
+     * @throws InvalidArgumentException if the input parameters are not valid
+     * @throws Exception if sendFileRequest fails
+     * @note This function is not implemented and only exists for compatibility with the .Net version of the API
+     */
+    public function putFileChunked($fileNameIn, $srcIdentifier, $objIn, $cancelIn, &$retCode, &$fileId, &$fileAliasId)
+    {
+        unset($objIn);
+        unset($cancelIn);
+        return $this->putFile($fileNameIn, $srcIdentifier, $retCode, $fileId, $fileAliasId);
+    }
+
+    /**
      * Function copies a file in the Vault, creating an entirely new copy, including new files in the storage location(s)
      *
-     * @param array $srcIdentifier - an associative array containing the source identifier, the values of where to read the file in the Vault
-     * @param array $dstIdentifier - an associative array containing the destination identifier, the values of where to write the file in the Vault
-     * @param integer $retCode - an integer containing the return code from the request
-     * @param integer $fileAliasId - an integer containing the unique identifier (UserFileAlias) for the file
-     * @return array, the result / output of the operation
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of where to read the file in the Vault
+     * @param array $dstIdentifier an associative array containing the destination identifier, the values of where to write the file in the Vault
+     * @param integer $retCode an integer containing the return code from the request
+     * @param integer $fileAliasId an integer containing the unique identifier (UserFileAlias) for the file
+     * @return array the result / output of the operation
      * @throws InvalidArgumentException if the input parameters are not valid
      * @throws Exception if sendRequest() fails
      */
@@ -1074,10 +1187,10 @@ class StashAPI
     /**
      * Function renames a file in the Vault
      *
-     * @param array $srcIdentifier - an associative array containing the source identifier, the values of where to read the file in the Vault
-     * @param array $dstIdentifier - associative array containing the destination identifier, the values of the new filename
-     * @param integer $retCode - an integer containing the return code from the request
-     * @return array, the result / output of the operation
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of where to read the file in the Vault
+     * @param array $dstIdentifier associative array containing the destination identifier, the values of the new filename
+     * @param integer $retCode an integer containing the return code from the request
+     * @return array the result / output of the operation
      * @throws InvalidArgumentException if the input parameters are invalid
      * @throws Exception if sendRequest() fails
      */
@@ -1099,11 +1212,11 @@ class StashAPI
     /**
      * Function moves a file in the Vault, it does not change the files in the storage location(s)
      *
-     * @param array $srcIdentifier - an associative array containing the source identifier, the values of where to read the file in the Vault
-     * @param array $dstIdentifier - an associative array containing the destination identifier, the values of where to write the file in the Vault
-     * @param integer $retCode - an integer containing the return code from the request
-     * @return array, the result / output of the operation
-     *@throws Exception if sendRequest() fails
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of where to read the file in the Vault
+     * @param array $dstIdentifier an associative array containing the destination identifier, the values of where to write the file in the Vault
+     * @param integer $retCode an integer containing the return code from the request
+     * @return array the result / output of the operation
+     * @throws Exception if sendRequest() fails
      * @throws InvalidArgumentException if the input parameters are invalid
      */
     public function moveFile($srcIdentifier, $dstIdentifier, &$retCode)
@@ -1125,10 +1238,10 @@ class StashAPI
     /**
      * Function deletes a file in the Vault
      *
-     * @param array $srcIdentifier - an associative array containing the source identifier, the values of which file to delete in the Vault
-     * @param integer $retCode - an integer containing the return code from the request
-     * @return array, the result / output of the operation
-     *@throws Exception if sendRequest() fails
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which file to delete in the Vault
+     * @param integer $retCode an integer containing the return code from the request
+     * @return array the result / output of the operation
+     * @throws Exception if sendRequest() fails
      * @throws InvalidArgumentException if the input parameters are invalid
      */
     public function deleteFile($srcIdentifier, &$retCode)
@@ -1149,9 +1262,9 @@ class StashAPI
 
     /**
      * Function lists all files in the user's vault, or in a specified folder in the vault
-     * @param array $srcIdentifier - an associative array containing the source identifier, the values of which folder to list
-     * @param integer $retCode - an integer containing the return code from the request
-     * @return array, the result / output of the operation
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which folder to list
+     * @param integer $retCode an integer containing the return code from the request
+     * @return array the result / output of the operation
      * @throws Exception if sendRequest() fails
      * @throws InvalidArgumentException if the input parameters are invalid
      */
@@ -1174,11 +1287,11 @@ class StashAPI
     /**
      * Function lists all the files in the Vault or in a specified folder in the vault
      *
-     * @param array $srcIdentifier - an associative array containing the source identifier, the values of which folder to list the files for in the Vault
-     * @param integer $retCode - contains the return code from the operation
-     * @param array $fileNames - contains the names of the files returned by the request
-     * @return array, the result / output of the operation
-     *@throws Exception if sendRequest() fails
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which folder to list the files for in the Vault
+     * @param integer $retCode contains the return code from the operation
+     * @param array $fileNames contains the names of the files returned by the request
+     * @return array the result / output of the operation
+     * @throws Exception if sendRequest() fails
      * @throws InvalidArgumentException if the input parameters are invalid
      */
     public function listFiles($srcIdentifier, &$retCode, &$fileNames)
@@ -1197,7 +1310,7 @@ class StashAPI
 
         $tVal = json_decode($res, true);
         $retCode = (empty($tVal['code']) ? -1 : $tVal['code']);
-        if (! empty($tVal['files'])) {
+        if (!empty($tVal['files'])) {
             if ($modelOutput) {
                 $tArray = $tVal['files'];
                 foreach ($tArray as $file) {
@@ -1220,11 +1333,11 @@ class StashAPI
     /**
      * Function lists all the files in a specified SmartFolder
      *
-     * @param array $srcIdentifier - an associative array containing the source identifier, the values of which folder to list the files for in the Vault
-     * @param integer $retCode - OUTPUT, contains the return code from the operation
-     * @param array/string $fileNames - OUTPUT, contains the names of the files returned by the request
-     * @return array, the result / output of the operation
-     *@throws Exception if sendRequest() fails
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which folder to list the files for in the Vault
+     * @param integer $retCode OUTPUT, contains the return code from the operation
+     * @param array $fileNames OUTPUT, array of strings, contains the names of the files returned by the request
+     * @return array the result / output of the operation
+     * @throws Exception if sendRequest() fails
      * @throws InvalidArgumentException if the input parameters are invalid
      */
     public function listSFFiles($srcIdentifier, &$retCode, &$fileNames)
@@ -1247,11 +1360,11 @@ class StashAPI
 
     /**
      * Function lists all the folders in the Vault or for the specified folder
-     * @param array $srcIdentifier - an associative array containing the source identifier, the values of which folder to list in the Vault
-     * @param integer $retCode - contains the return code from the operation
-     * @param array $folderNames - contains the names of the folders returned by the request
-     * @return array, the result / output of the operation
-     *@throws Exception if sendRequest() fails
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which folder to list in the Vault
+     * @param integer $retCode contains the return code from the operation
+     * @param array $folderNames contains the names of the folders returned by the request
+     * @return array the result / output of the operation
+     * @throws Exception if sendRequest() fails
      * @throws InvalidArgumentException if the input parameters are invalid
      */
     public function listFolders($srcIdentifier, &$retCode, &$folderNames)
@@ -1271,7 +1384,7 @@ class StashAPI
         $tVal = json_decode($res, true);
         $retCode = (empty($tVal['code']) ? -1 : $tVal['code']);
 
-        if (! empty($tVal['folders'])) {
+        if (!empty($tVal['folders'])) {
             if ($modelOutput) {
                 $tArray = $tVal['folders'];
                 foreach ($tArray as $folder) {
@@ -1291,9 +1404,9 @@ class StashAPI
 
     /**
      * Function returns the Folder ID of the specified directory, or 0 if not found
-     * @param array, an associative array containing the source identifier, the values of which folder to find the ID for
-     * @return array, the result / output of the operation
-     *@throws Exception if sendRequest() fails
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which folder to find the ID for
+     * @return array the result / output of the operation
+     * @throws Exception if sendRequest() fails
      * @throws InvalidArgumentException if the input parameters are invalid
      */
     public function getFolderId($srcIdentifier)
@@ -1537,11 +1650,11 @@ class StashAPI
 
     /**
      * Function recursively creates a folder in the vault
-     * @param array, an associative array containing the source identifier, the values of which folder to create
-     * @param integer $retCode - OUTPUT, the return code from the API call
-     * @param integer $dirId - OUTPUT, the user_folder.id of the newly created directory
-     * @return array, the result / output of the operation
-     *@throws Exception if sendRequest() fails
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which folder to create
+     * @param integer $retCode OUTPUT, the return code from the API call
+     * @param integer $dirId OUTPUT, the user_folder.id of the newly created directory
+     * @return array the result / output of the operation
+     * @throws Exception if sendRequest() fails
      * @throws InvalidArgumentException if the input parameters are invalid
      */
     public function createDirectory($srcIdentifier, &$retCode, &$dirId)
@@ -1570,11 +1683,11 @@ class StashAPI
     /**
      * Function renames a folder in the vault
      *
-     * @param array $srcIdentifier - an associative array containing the source identifier, the values of which folder to rename
-     * @param array $dstIdentifier - an associative array containing the destination identifier, the values to rename the folder
-     * @param integer $retCode - OUTPUT - the return code from the API call
-     * @return array, the result / output of the operation
-     *@throws Exception if sendRequest() fails
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which folder to rename
+     * @param array $dstIdentifier an associative array containing the destination identifier, the values to rename the folder
+     * @param integer $retCode OUTPUT - the return code from the API call
+     * @return array the result / output of the operation
+     * @throws Exception if sendRequest() fails
      * @throws InvalidArgumentException if the input parameters are invalid
      */
     public function renameDirectory($srcIdentifier, $dstIdentifier, &$retCode)
@@ -1596,11 +1709,11 @@ class StashAPI
 
     /**
      * Function moves a folder in the vault
-     * @param array $srcIdentifier - an associative array containing the source identifier, the values of which folder to move
-     * @param array $dstIdentifier - an associative array containing the destination identifier, the values to move the folder
-     * @param string $retCode - the return code from the request
-     * @return array, the result / output of the operation
-     *@throws Exception if sendRequest() fails
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which folder to move
+     * @param array $dstIdentifier an associative array containing the destination identifier, the values to move the folder
+     * @param string $retCode the return code from the request
+     * @return array the result / output of the operation
+     * @throws Exception if sendRequest() fails
      * @throws InvalidArgumentException if the input parameters are invalid
      */
     public function moveDirectory($srcIdentifier, $dstIdentifier, &$retCode)
@@ -1622,12 +1735,12 @@ class StashAPI
 
     /**
      * Function copies a folder in the vault
-     * @param array $srcIdentifier - an associative array containing the source identifier, the values of which folder to copy
-     * @param array $dstIdentifier - an associative array containing the destination identifier, the values of the folder to copy
-     * @param string $retCode - the return code from the request
-     * @param integer $dirId - the unique identifier for the newly created folder
-     * @return array, the result / output of the operation
-     *@throws Exception if sendRequest() fails
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which folder to copy
+     * @param array $dstIdentifier an associative array containing the destination identifier, the values of the folder to copy
+     * @param string $retCode the return code from the request
+     * @param integer $dirId the unique identifier for the newly created folder
+     * @return array the result / output of the operation
+     * @throws Exception if sendRequest() fails
      * @throws InvalidArgumentException if the input parameters are invalid
      */
     public function copyDirectory($srcIdentifier, $dstIdentifier, &$retCode, &$dirId)
@@ -1655,10 +1768,10 @@ class StashAPI
 
     /**
      * Function recursively deletes a folder in the vault
-     * @param array $srcIdentifier - an associative array containing the source identifier, the values of which folder to delete
-     * @param integer $retCode - the return code from the request
-     * @return array, the result / output of the operation
-     *@throws Exception if sendRequest() fails
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which folder to delete
+     * @param integer $retCode the return code from the request
+     * @return array the result / output of the operation
+     * @throws Exception if sendRequest() fails
      * @throws InvalidArgumentException if the input parameters are invalid
      */
     public function deleteDirectory($srcIdentifier, &$retCode)
@@ -1678,10 +1791,10 @@ class StashAPI
 
     /**
      * Function gets the file information for the specified file in the Vault
-     * @param array $srcIdentifier - an associative array containing the source identifier, the values of which file to get the information for
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which file to get the information for
      * @param integer $retCode OUTPUT, the return code from the function
-     * @return array, the result / output of the operation
-     *@throws Exception if sendRequest() fails
+     * @return array the result / output of the operation
+     * @throws Exception if sendRequest() fails
      * @throws InvalidArgumentException if the input parameters are invalid
      */
     public function getFileInfo($srcIdentifier, &$retCode)
@@ -1702,10 +1815,10 @@ class StashAPI
 
     /**
      * Function gets the folder information for the specified folder in the Vault
-     * @param array $srcIdentifier - an associative array containing the source identifier, the values of which file to get the information for
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which file to get the information for
      * @param integer $retCode OUTPUT, the return code from the function
-     * @return array, the result / output of the operation
-     *@throws Exception if sendRequest() fails
+     * @return array the result / output of the operation
+     * @throws Exception if sendRequest() fails
      * @throws InvalidArgumentException if the input parameters are invalid
      */
     public function getFolderInfo($srcIdentifier, &$retCode)
@@ -1726,9 +1839,9 @@ class StashAPI
 
     /**
      * Function gets sync info (path, type, hash, timestamp) for all sub-elements in specified folder
-     * @param array $srcIdentifier - an associative array containing the source identifier, the values of which file to get the information for
-     * @return array, the result / output of the operation
-     *@throws Exception if sendRequest() fails
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which file to get the information for
+     * @return array the result / output of the operation
+     * @throws Exception if sendRequest() fails
      * @throws InvalidArgumentException if the input parameters are invalid
      */
     public function getSyncInfo($srcIdentifier)
@@ -1751,9 +1864,9 @@ class StashAPI
 
     /**
      * Function gets information on the user's vault
-     * @param integer $retCode - an integer containing the return code from the request
-     * @return array, the result / output of the operation
-     *@throws Exception if sendRequest() fails
+     * @param integer $retCode an integer containing the return code from the request
+     * @return array the result / output of the operation
+     * @throws Exception if sendRequest() fails
      * @throws InvalidArgumentException if the input parameters are invalid
      */
     public function getVaultInfo(&$retCode)
@@ -1775,12 +1888,14 @@ class StashAPI
      * Function checks the provided credentials to make sure the API ID, API PW, username, and account password match a valid account
      * This function generates a failed login if the credentials are not valid for the given user account.
      *
-     * @param array $srcIdentifier - an associative array containing the source identifier, the values of which credentials to check
-     * @return array, the result / output of the operation
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which credentials to check
+     * @param integer $retCode OUTPUT, the return code from the operation
+     * @param string $errMsg OUTPUT, the error message, if one occurred
+     * @return array the result / output of the operation
      * @throws InvalidArgumentException if the input parameters are not valid
      * @throws Exception if sendRequest() fails
      */
-    public function checkCreds($srcIdentifier)
+    public function checkCreds($srcIdentifier, &$retCode, &$errMsg)
     {
         $this->params = $srcIdentifier;
         $this->url = $this->BASE_API_URL . "api2/auth/checkcreds";
@@ -1791,6 +1906,41 @@ class StashAPI
         $this->params = array();
 
         $results = json_decode($res, true);
+        $retCode = (empty($tVal['code']) ? -1 : $tVal['code']);
+        $errMsg = "";
+        if ($retCode != 200) {
+            $errMsg = (empty($tVal['error']['extendedErrorMessage']) ? "Unknown Error" : $tVal['error']['extendedErrorMessage']);
+        }
+        return $results;
+    }
+
+    /**
+     * Function checks the provided credentials to make sure the API ID, API PW, username, and account password match a valid account
+     * This function generates a failed login if the credentials are not valid for the given user account.
+     *
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which credentials to check
+     * @param integer $retCode OUTPUT, the return code from the operation
+     * @param string $errMsg OUTPUT, the error message, if one occurred
+     * @return array the result / output of the operation
+     * @throws InvalidArgumentException if the input parameters are not valid
+     * @throws Exception if sendRequest() fails
+     */
+    public function checkCredsAD($srcIdentifier, &$retCode, &$errMsg)
+    {
+        $this->params = $srcIdentifier;
+        $this->url = $this->BASE_API_URL . "api2/auth/adauth";
+        if (!$this->validateParams('checkcredsad')) {
+            throw new InvalidArgumentException("Invalid Input Parameters");
+        }
+        $res = $this->sendRequest();
+        $this->params = array();
+
+        $results = json_decode($res, true);
+        $retCode = (empty($tVal['code']) ? -1 : $tVal['code']);
+        $errMsg = "";
+        if ($retCode != 200) {
+            $errMsg = (empty($tVal['error']['extendedErrorMessage']) ? "Unknown Error" : $tVal['error']['extendedErrorMessage']);
+        }
         return $results;
     }
 
@@ -1801,7 +1951,8 @@ class StashAPI
      * @return boolean T if the connection to the vault succeeds, F otherwise
      * @throws Exception for errors in sendRequest()
      */
-    public function checkVaultConnection(&$retCode, &$errMsg) {
+    public function checkVaultConnection(&$retCode, &$errMsg)
+    {
         $this->url = $this->BASE_API_URL . "api2/auth/testloopback";
         if (!$this->validateParams('none')) {
             throw new InvalidArgumentException("Invalid Input Parameters");
@@ -1823,8 +1974,8 @@ class StashAPI
     /**
      * Function checks the provided username and reports if its taken or not
      *
-     * @param array $srcIdentifier - an associative array containing the source identifier, the values of which user account to check
-     * @return array, the result / output of the operation
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which user account to check
+     * @return array the result / output of the operation
      * @throws InvalidArgumentException if the input parameters are not valid
      * @throws Exception if sendRequest() fails
      */
@@ -1845,9 +1996,9 @@ class StashAPI
     /**
      * Function sets the access permissions for a specified folder
      *
-     * @param array $srcIdentifier - an associative array containing the permission values to set
-     * @param integer $retCode - OUTPUT, contains the return code from the operation
-     * @param array $permIds - OUTPUT, contains the integer IDs of the folder permission entries that were created or updated
+     * @param array $srcIdentifier an associative array containing the permission values to set
+     * @param integer $retCode OUTPUT, contains the return code from the operation
+     * @param array $permIds OUTPUT, contains the integer IDs of the folder permission entries that were created or updated
      * @return array the result / output of the operation
      * @throws InvalidArgumentException if the input parameters are not valid
      * @throws Exception if sendRequest() fails
@@ -1897,17 +2048,159 @@ class StashAPI
     }
 
     /**
+     * Function gets the list of versions for a specified file
+     * @param array $srcIdentifier an associative array containing the source and version parameters
+     * @param integer $retCode OUTPUT, contains the return code from the operation
+     * @return array the result / output of the operation
+     * @throws InvalidArgumentException if the input parameters are not valid
+     * @throws Exception if sendRequest() fails
+     */
+    public function listVersions($srcIdentifier, &$retCode)
+    {
+        $this->params = $srcIdentifier;
+        $this->url = $this->BASE_API_URL . "api2/file/listversions";
+        if (!$this->validateParams('listversions')) {
+            throw new InvalidArgumentException("Invalid Input Parameters");
+        }
+        $res = $this->sendRequest();
+        $this->params = array();
+
+        $tVal = json_decode($res, true);
+        $retCode = (empty($tVal['code']) ? -1 : $tVal['code']);
+
+        return $tVal;
+    }
+
+    /**
+     * Function reads (gets) a specific version of a file
+     * @param array $srcIdentifier an associative array containing the source and version parameters
+     * @param string $fileName the file path and name to write the file to in the local filesystem
+     * @param integer $retCode OUTPUT, the return code returned by the server in the response
+     * @return array an associative array containing the response from the server
+     * @throws Exception for missing output file directory
+     */
+    public function readVersion($srcIdentifier, $fileName, &$retCode)
+    {    // Read
+        $retCode = 0;
+
+        $dirName = dirname($fileName);
+        if (! file_exists($dirName)) { throw new Exception("Incorrect Output File Path or Path Does Not Exist"); }
+
+        $this->params = $srcIdentifier;
+        $this->url = $this->BASE_API_URL . "api2/file/readversion";
+        if (!$this->validateParams('readversion')) {
+            throw new InvalidArgumentException("Invalid Input Parameters");
+        }
+        $res = $this->sendDownloadRequest($fileName);
+        $this->params = array();
+        if ($res == "1") {
+            $retCode = 200;
+            return array("code" => 200, "message" => "OK", "fileName" => $fileName);        // Simulate a 200 OK if command succeeds
+        } else {
+            // Something else went wrong with the request
+            // Try to decode the response
+            try {
+                @unlink($fileName);
+                $tArr = json_decode($res, true);
+                if ($tArr == null) {
+                    throw new Exception("Unable to download file - " . $res);
+                }
+                $retCode = (isset($tArr['code']) ? $tArr['code'] : 0);
+                $retVal = $tArr;
+            } catch (Exception $e) {
+                $retCode = -1;
+                $retVal = array('code' => -1, 'message' => $e->getMessage());
+            }
+            return $retVal;
+        }
+    }
+
+    /**
+     * Function restores a specific version of te a file to the current / master file
+     * @param array $srcIdentifier an associative array containing the source and version parameters
+     * @param integer $retCode OUTPUT, contains the return code from the operation
+     * @return array the result / output of the operation
+     * @throws InvalidArgumentException if the input parameters are not valid
+     * @throws Exception if sendRequest() fails
+     */
+    public function restoreVersion($srcIdentifier, &$retCode)
+    {
+        $this->params = $srcIdentifier;
+        $this->url = $this->BASE_API_URL . "api2/file/restoreversion";
+        if (!$this->validateParams('restoreversion')) {
+            throw new InvalidArgumentException("Invalid Input Parameters");
+        }
+        $res = $this->sendRequest();
+        $this->params = array();
+
+        $tVal = json_decode($res, true);
+        $retCode = (empty($tVal['code']) ? -1 : $tVal['code']);
+
+        return $tVal;
+    }
+
+    /**
+     * Function deletes the specified version for a specified file
+     * @param array $srcIdentifier an associative array containing the source and version parameters
+     * @param integer $retCode OUTPUT, contains the return code from the operation
+     * @return array the result / output of the operation
+     * @throws InvalidArgumentException if the input parameters are not valid
+     * @throws Exception if sendRequest() fails
+     */
+    public function deleteVersion($srcIdentifier, &$retCode)
+    {
+        $this->params = $srcIdentifier;
+        $this->url = $this->BASE_API_URL . "api2/file/deleteversion";
+        if (!$this->validateParams('deleteversion')) {
+            throw new InvalidArgumentException("Invalid Input Parameters");
+        }
+        $res = $this->sendRequest();
+        $this->params = array();
+
+        $tVal = json_decode($res, true);
+        $retCode = (empty($tVal['code']) ? -1 : $tVal['code']);
+
+        return $tVal;
+    }
+
+    /**
+     * Function gets the parameters sent by the client and returned/echo'd by the server
+     * @param array $srcIdentifier an associative array containing the parameters to send/echo
+     * @param integer $retCode OUTPUT, contains the return code from the operation
+     * @return array the result / output of the operation
+     * @throws InvalidArgumentException if the input parameters are not valid
+     * @throws Exception if sendRequest() fails
+     */
+    public function testLoopback($srcIdentifier, &$retCode)
+    {
+        $this->params = $srcIdentifier;
+        $this->url = $this->BASE_API_URL . "api2/file/testloopback";
+        if (!$this->validateParams('none')) {
+            throw new InvalidArgumentException("Invalid Input Parameters");
+        }
+        $res = $this->sendRequest();
+        $this->params = array();
+
+        $tVal = json_decode($res, true);
+        $retCode = (empty($tVal['code']) ? -1 : $tVal['code']);
+
+        return $tVal;
+    }
+
+    /**
      * Function stores a file using WebErase credentials and WebErase Rules
      * @param string $fileNameIn the full path and name of the local file to store
      * @param array $srcIdentifier an associative array containing the token_key, fileKey, folderId parameters
      * @param integer $retCode OUTPUT, contains the return code from the operation
      * @param integer $fileId OUTPUT, contains the UserFile object ID of the newly stored file
      * @param integer $fileAliasId OUTPUT, contains the UserFileAlias object ID of the newly stored file
+     * @param integer $otc OUTPUT, the one time code to access this file, if one time codes are enabled
      * @return array the result / output of the operation
      * @throws Exception for errors in SendFileRequest()
      * @note requires srcIdentifier to have token, folderId, fileName, and fileKey parameters defined
      */
-    public function webEraseStore($fileNameIn, $srcIdentifier, &$retCode, &$fileId, &$fileAliasId) {
+    public function webEraseStore($fileNameIn, $srcIdentifier, &$retCode, &$fileId, &$fileAliasId, &$otc)
+    {
         // Requires token_key, destFolderId, fileKey, projectId, overwriteFile, overwriteFileId
         if (!file_exists($fileNameIn)) {
             throw new InvalidArgumentException("Incorrect Input File Path or File Does Not Exist");
@@ -1927,6 +2220,7 @@ class StashAPI
         if ($retCode == 200) {
             $fileId = (isset($retVal['fileId']) ? $retVal['fileId'] : 0);
             $fileAliasId = (isset($retVal['fileAliasId']) ? $retVal['fileAliasId'] : 0);
+            $otc = (isset($retVal['otc']) ? $retVal['otc'] : 0);
         }
 
         return $retVal;
@@ -1942,7 +2236,8 @@ class StashAPI
      * @throws Exception for errors in sendRequest()
      * @note this function only requires the token_key, fileKey, api_id for retrieving a file
      */
-    private function webEraseDownload($srcIdentifier, $localFileName, $polling, &$retCode) {
+    private function webEraseDownload($srcIdentifier, $localFileName, $polling, &$retCode)
+    {
         // Requires token, api_id, fileKey
         $this->params = $srcIdentifier;
         if ($polling) {
@@ -1957,8 +2252,15 @@ class StashAPI
         $res = $this->sendDownloadRequest($localFileName);
         $this->params = array();
 
-        $tVal = json_decode($res, true);
-        $retCode = (empty($tVal['code']) ? -1 : $tVal['code']);
+        if ($res == "1") {
+            // Simulate a 200 OK if command succeeds
+            $tVal['code'] = "200";
+            $tVal['message'] = "OK";
+            $tVal['fileName'] = $localFileName;
+        } else {
+            $tVal = json_decode($res, true);
+            $retCode = (empty($tVal['code']) ? -1 : $tVal['code']);
+        }
         return $tVal;
     }
 
@@ -1971,7 +2273,8 @@ class StashAPI
      * @throws Exception for errors in sendRequest()
      * @note this function only requires the token_key, fileKey, api_id for retrieving a file
      */
-    public function webEraseRetrieve($srcIdentifier, $localFileName, &$retCode) {
+    public function webEraseRetrieve($srcIdentifier, $localFileName, &$retCode)
+    {
         $retCode = 0;
         return $this->webEraseDownload($srcIdentifier, $localFileName, false, $retCode);
     }
@@ -1986,7 +2289,8 @@ class StashAPI
      * @note this function only requires the token_key, fileKey, api_id for retrieving a file
      * @note calling polling API does not trigger a transaction validation notification - it only check for approval or deny; calling webEraseRetrieve() will trigger a new set of notifications
      */
-    public function webErasePolling($srcIdentifier, $localFileName, &$retCode) {
+    public function webErasePolling($srcIdentifier, $localFileName, &$retCode)
+    {
         $retCode = 0;
         return $this->webEraseDownload($srcIdentifier, $localFileName, true, $retCode);
     }
@@ -2002,7 +2306,8 @@ class StashAPI
      * @throws Exception for errors in SendFileRequest()
      * @note requires srcIdentifier to have token, folderId, fileName, and fileKey parameters defined
      */
-    public function webEraseUpdate($fileNameIn, $srcIdentifier, &$retCode, &$fileId, &$fileAliasId) {
+    public function webEraseUpdate($fileNameIn, $srcIdentifier, &$retCode, &$fileId, &$fileAliasId)
+    {
         // Requires token_key, destFolderId, fileKey, projectId, overwriteFile, overwriteFileId
         if (!file_exists($fileNameIn)) {
             throw new InvalidArgumentException("Incorrect Input File Path or File Does Not Exist");
@@ -2036,7 +2341,8 @@ class StashAPI
      * @throws Exception for errors in sendRequest()
      * @note Only the api_id parameter is needed for this request
      */
-    public function webEraseToken($srcIdentifier, &$retCode, &$token) {
+    public function webEraseToken($srcIdentifier, &$retCode, &$token)
+    {
         // Parameters needed: api_id
         $this->params = $srcIdentifier;
         $this->url = $this->BASE_API_URL . "api2/weberase/token";
@@ -2061,7 +2367,8 @@ class StashAPI
      * @throws Exception for errors in sendRequest()
      * @note the one time code is sent with the result of a store() or only once with this function regardless of number of times called
      */
-    public function webEraseOneTimeCode($srcIdentifier, &$retCode, &$otc) {
+    public function webEraseOneTimeCode($srcIdentifier, &$retCode, &$otc)
+    {
         $this->params = $srcIdentifier;
         $this->url = $this->BASE_API_URL . "api2/weberase/onetimecode";
         if (!$this->validateParams('weberaseotc')) {
@@ -2084,7 +2391,8 @@ class StashAPI
      * @note this function requires an api_id and token key to delete the file
      * @throws Exception for errors in sendRequest()
      */
-    public function webEraseDelete($srcIdentifier, &$retCode) {
+    public function webEraseDelete($srcIdentifier, &$retCode)
+    {
         $this->params = $srcIdentifier;
         $this->url = $this->BASE_API_URL . "api2/weberase/delete";
         if (!$this->validateParams('weberasedelete')) {
@@ -2106,7 +2414,8 @@ class StashAPI
      * @throws Exception for errors in sendRequest()
      * @note Only the api_id parameter is needed for this request
      */
-    public function webEraseProjectList($srcIdentifier, &$retCode) {
+    public function webEraseProjectList($srcIdentifier, &$retCode)
+    {
         $this->params = $srcIdentifier;
         $this->url = $this->BASE_API_URL . "api2/weberase/projectlist";
         if (!$this->validateParams('none')) {
@@ -2126,10 +2435,11 @@ class StashAPI
      * @param string $stringIn the string to parse
      * @return array the converted array for use as source or destination identifier
      */
-    public function convertStringToIdentArray($stringIn) {
+    public function convertStringToIdentArray($stringIn)
+    {
         $finalArray = array();
         $tArray = explode(",", $stringIn);
-        foreach ( $tArray as $val) {
+        foreach ($tArray as $val) {
             if (strpos($val, "|") !== false) {
                 $tmp = explode("=", $val);
                 $tmp2 = explode("|", $tmp[1]);

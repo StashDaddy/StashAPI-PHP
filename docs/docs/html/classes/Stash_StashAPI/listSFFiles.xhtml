@@ -65,7 +65,7 @@
             <a href="#throws">Throws</a>
           </li>
           <li>
-            <a href="../../source/src/Stash/STASHAPI.php.xhtml#line1230">Source</a>
+            <a href="../../source/src/Stash/STASHAPI.php.xhtml#line1343">Source</a>
           </li>
         </ul>
       </nav>
@@ -80,7 +80,7 @@
         $srcIdentifier,
             integer&amp;
         $retCode,
-            <a title="Stash\array/string" href="../../classes/Stash_array/string.xhtml">array/string</a>&amp;
+            array&amp;
         $fileNames )
             </code>
         </div>
@@ -89,15 +89,15 @@
           <dt><code>$srcIdentifier</code>
                 —
                 array</dt>
-          <dd>- an associative array containing the source identifier, the values of which folder to list the files for in the Vault</dd>
+          <dd>an associative array containing the source identifier, the values of which folder to list the files for in the Vault</dd>
           <dt><code>$retCode</code>
                 —
                 integer</dt>
-          <dd>- OUTPUT, contains the return code from the operation</dd>
+          <dd>OUTPUT, contains the return code from the operation</dd>
           <dt><code>$fileNames</code>
                 —
-                object</dt>
-          <dd>- OUTPUT, contains the names of the files returned by the request<br/><br/><br/>      </dd>
+                array</dt>
+          <dd>OUTPUT, array of strings, contains the names of the files returned by the request</dd>
         </dl>
         <h2 id="return">Returns</h2>
         <dl class="styled">

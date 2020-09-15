@@ -56,7 +56,7 @@ class STASHAPITest extends Unit
      * The function is run once, before all tests in the suite are run
      * @throws Exception
      */
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         if (!file_exists(codecept_data_dir("creds.ini"))) {
             throw new Exception("Required file: creds.ini missing from _data directory");
@@ -66,7 +66,7 @@ class STASHAPITest extends Unit
     /**
      * This function is run once, after all tests in the suite are run
      */
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         if (file_exists(codecept_data_dir(self::testFile)))
             @unlink(codecept_data_dir(self::testFile));
@@ -315,10 +315,10 @@ class STASHAPITest extends Unit
     /**
      * @param STASHAPI $apiIn the API object to test
      * @depends testAPIValidConstructor
-     * @expectedException InvalidArgumentException
      */
     public function testEncryptInvalidKey($apiIn)
     {
+        $this->expectException(InvalidArgumentException::class);
         $pw = "testpw!";
         $apiIn->setPw("1234567890");
         $this->assertEquals("1234567890", $apiIn->getPw());
@@ -329,10 +329,10 @@ class STASHAPITest extends Unit
      * @param STASHAPI $apiIn
      * @throws Exception
      * @depends testAPIValidConstructor
-     * @expectedException InvalidArgumentException
      */
     public function testDecryptInvalidKey($apiIn)
     {
+        $this->expectException(InvalidArgumentException::class);
         $testString = "testpw!";
         $apiIn->setPw($this->apipw);
         $apiIn->encryptString($testString, true);
@@ -345,10 +345,10 @@ class STASHAPITest extends Unit
      * @param STASHAPI $apiIn
      * @throws Exception
      * @depends testAPIValidConstructor
-     * @expectedException UnexpectedValueException
      */
     public function testDecryptInvalidDataIn($apiIn)
     {
+        $this->expectException(UnexpectedValueException::class);
         $testString = "testpw!";
         $apiIn->setPw($this->apipw);
         $this->assertEquals($this->apipw, $apiIn->getPw());
@@ -357,7 +357,7 @@ class STASHAPITest extends Unit
     }
 
     /**
-     * @throws Exception
+     * @throws Exception for errors in setId
      */
     public function testAPISend()
     {
@@ -370,15 +370,16 @@ class STASHAPITest extends Unit
         $api->params['outputType'] = 1;
 
         $response = $api->sendRequest();
-        $this->assertContains("testapifunctional.txt", $response);
+        $this->assertStringContainsString("testapifunctional.txt", $response);
     }
 
     /**
      * @throws Exception
-     * @expectedException UnexpectedValueException
      */
     public function testAPIFileSendEmptyURL()
     {
+        $this->expectException(UnexpectedValueException::class);
+
         $api = new STASHAPI(false);
         $api->url = "";
         $api->setId($this->apiid);
@@ -389,10 +390,11 @@ class STASHAPITest extends Unit
 
     /**
      * @throws Exception
-     * @expectedException InvalidArgumentException
      */
     public function testAPIFileSendEmptyFilename()
     {
+        $this->expectException(InvalidArgumentException::class);
+
         $api = new STASHAPI(false);
         $api->url = $this->baseUrl . "api2/file/write";
         $api->setId($this->apiid);
@@ -403,10 +405,11 @@ class STASHAPITest extends Unit
 
     /**
      * @throws Exception
-     * @expectedException InvalidArgumentException
      */
     public function testAPIFileSendFileNotExist()
     {
+        $this->expectException(InvalidArgumentException::class);
+
         $api = new STASHAPI(false);
         $api->url = $this->baseUrl . "api2/file/write";
         $api->setId($this->apiid);

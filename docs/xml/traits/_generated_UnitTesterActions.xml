@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<trait xmlns="http://xml.phpdox.net/src" full="_generated\UnitTesterActions" namespace="_generated" name="UnitTesterActions" abstract="false" final="false" start="8" end="827">
-  <file path="L:/Projects/Stash/StashApi-php-Release/docs/../tests/_support/_generated" file="UnitTesterActions.php" realpath="L:/Projects/Stash/StashApi-php-Release/tests/_support/_generated/UnitTesterActions.php" size="27510" time="2019-06-13T22:01:17+00:00" unixtime="1560463277" sha1="20561aa0d0dfd847d49e6dd1c8605dde053495e4" relative="tests/_support/_generated/UnitTesterActions.php"/>
+<trait xmlns="http://xml.phpdox.net/src" full="_generated\UnitTesterActions" namespace="_generated" name="UnitTesterActions" abstract="false" final="false" start="8" end="2050">
+  <file path="L:/Projects/Stash/StashApi-php-Dev/docs/../tests/_support/_generated" file="UnitTesterActions.php" realpath="L:/Projects/Stash/StashApi-php-Dev/tests/_support/_generated/UnitTesterActions.php" size="73431" time="2020-09-14T18:29:51+00:00" unixtime="1600108191" sha1="52ed214951da29495501948a7a9c80eb6d1799f4" relative="tests/_support/_generated/UnitTesterActions.php"/>
   <method name="getScenario" start="13" end="13" abstract="true" final="false" static="false" visibility="protected">
     <docblock>
       <description/>
@@ -9,7 +9,7 @@
       </return>
     </docblock>
   </method>
-  <method name="expectException" start="45" end="47" abstract="false" final="false" static="false" visibility="public">
+  <method name="expectException" start="46" end="48" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Handles and checks exception called inside callback function.
 Either exception class name or exception instance should be provided.
@@ -32,14 +32,19 @@ $I-&gt;expectException(new MyException("Don't do bad things"), function() {
     $this-&gt;doSomethingBad();
 });
 ```</description>
-      <param description="or \Exception" variable="$exception" type="string"/>
-      <param variable="$callback"/>
+      <deprecated value="Use expectThrowable() instead"/>
+      <param type="object" variable="$exception">
+        <type full="_generated\Exception|string" namespace="_generated" name="Exception|string"/>
+      </param>
+      <param type="object" variable="$callback">
+        <type full="_generated\callable" namespace="_generated" name="callable"/>
+      </param>
       <see value="\Codeception\Module\Asserts::expectException()"/>
     </docblock>
     <parameter name="exception" byreference="false" type="{unknown}"/>
     <parameter name="callback" byreference="false" type="{unknown}"/>
   </method>
-  <method name="expectThrowable" start="79" end="81" abstract="false" final="false" static="false" visibility="public">
+  <method name="expectThrowable" start="80" end="82" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Handles and checks throwables (Exceptions/Errors) called inside the callback function.
 Either throwable class name or throwable instance should be provided.
@@ -62,593 +67,1569 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     $this-&gt;doSomethingBad();
 });
 ```</description>
-      <param description="or \Throwable" variable="$throwable" type="string"/>
-      <param variable="$callback"/>
+      <param type="object" variable="$throwable">
+        <type full="_generated\Throwable|string" namespace="_generated" name="Throwable|string"/>
+      </param>
+      <param type="object" variable="$callback">
+        <type full="_generated\callable" namespace="_generated" name="callable"/>
+      </param>
       <see value="\Codeception\Module\Asserts::expectThrowable()"/>
     </docblock>
     <parameter name="throwable" byreference="false" type="{unknown}"/>
     <parameter name="callback" byreference="false" type="{unknown}"/>
   </method>
-  <method name="assertEquals" start="95" end="97" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertFileNotExists" start="94" end="96" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that two variables are equal.</description>
-      <param variable="$expected"/>
-      <param variable="$actual"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a file does not exist.</description>
+      <param type="string" variable="$filename"/>
       <param type="string" variable="$message"/>
-      <param type="float" variable="$delta"/>
-      <see value="\Codeception\Module\Asserts::assertEquals()"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertFileNotExists()"/>
     </docblock>
-    <parameter name="expected" byreference="false" type="{unknown}"/>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="filename" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
-    <parameter name="delta" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertNotEquals" start="111" end="113" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertGreaterOrEquals" start="109" end="111" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that two variables are not equal</description>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a value is greater than or equal to another value.</description>
       <param variable="$expected"/>
       <param variable="$actual"/>
       <param type="string" variable="$message"/>
-      <param type="float" variable="$delta"/>
-      <see value="\Codeception\Module\Asserts::assertNotEquals()"/>
-    </docblock>
-    <parameter name="expected" byreference="false" type="{unknown}"/>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
-    <parameter name="delta" byreference="false" type="{unknown}" default="NULL"/>
-  </method>
-  <method name="assertSame" start="126" end="128" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that two variables are same</description>
-      <param variable="$expected"/>
-      <param variable="$actual"/>
-      <param type="string" variable="$message"/>
-      <see value="\Codeception\Module\Asserts::assertSame()"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertGreaterOrEquals()"/>
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertNotSame" start="141" end="143" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsEmpty" start="123" end="125" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that two variables are not same</description>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is empty.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsEmpty()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertLessOrEquals" start="138" end="140" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a value is smaller than or equal to another value.</description>
       <param variable="$expected"/>
       <param variable="$actual"/>
       <param type="string" variable="$message"/>
-      <see value="\Codeception\Module\Asserts::assertNotSame()"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertLessOrEquals()"/>
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertGreaterThan" start="156" end="158" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertNotRegExp" start="153" end="155" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that actual is greater than expected</description>
-      <param variable="$expected"/>
-      <param variable="$actual"/>
-      <param type="string" variable="$message"/>
-      <see value="\Codeception\Module\Asserts::assertGreaterThan()"/>
-    </docblock>
-    <parameter name="expected" byreference="false" type="{unknown}"/>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
-  </method>
-  <method name="assertGreaterThanOrEqual" start="171" end="173" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that actual is greater or equal than expected</description>
-      <param variable="$expected"/>
-      <param variable="$actual"/>
-      <param type="string" variable="$message"/>
-      <see value="\Codeception\Module\Asserts::assertGreaterThanOrEqual()"/>
-    </docblock>
-    <parameter name="expected" byreference="false" type="{unknown}"/>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
-  </method>
-  <method name="assertLessThan" start="186" end="188" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that actual is less than expected</description>
-      <param variable="$expected"/>
-      <param variable="$actual"/>
-      <param type="string" variable="$message"/>
-      <see value="\Codeception\Module\Asserts::assertLessThan()"/>
-    </docblock>
-    <parameter name="expected" byreference="false" type="{unknown}"/>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
-  </method>
-  <method name="assertLessThanOrEqual" start="201" end="203" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that actual is less or equal than expected</description>
-      <param variable="$expected"/>
-      <param variable="$actual"/>
-      <param type="string" variable="$message"/>
-      <see value="\Codeception\Module\Asserts::assertLessThanOrEqual()"/>
-    </docblock>
-    <parameter name="expected" byreference="false" type="{unknown}"/>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
-  </method>
-  <method name="assertContains" start="216" end="218" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that haystack contains needle</description>
-      <param variable="$needle"/>
-      <param variable="$haystack"/>
-      <param type="string" variable="$message"/>
-      <see value="\Codeception\Module\Asserts::assertContains()"/>
-    </docblock>
-    <parameter name="needle" byreference="false" type="{unknown}"/>
-    <parameter name="haystack" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
-  </method>
-  <method name="assertNotContains" start="231" end="233" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that haystack doesn't contain needle.</description>
-      <param variable="$needle"/>
-      <param variable="$haystack"/>
-      <param type="string" variable="$message"/>
-      <see value="\Codeception\Module\Asserts::assertNotContains()"/>
-    </docblock>
-    <parameter name="needle" byreference="false" type="{unknown}"/>
-    <parameter name="haystack" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
-  </method>
-  <method name="assertRegExp" start="246" end="248" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that string match with pattern</description>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string does not match a given regular expression.</description>
       <param type="string" variable="$pattern"/>
       <param type="string" variable="$string"/>
       <param type="string" variable="$message"/>
-      <see value="\Codeception\Module\Asserts::assertRegExp()"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertNotRegExp()"/>
     </docblock>
     <parameter name="pattern" byreference="false" type="{unknown}"/>
     <parameter name="string" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertNotRegExp" start="261" end="263" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertRegExp" start="168" end="170" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that string not match with pattern</description>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string matches a given regular expression.</description>
       <param type="string" variable="$pattern"/>
       <param type="string" variable="$string"/>
       <param type="string" variable="$message"/>
-      <see value="\Codeception\Module\Asserts::assertNotRegExp()"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertRegExp()"/>
     </docblock>
     <parameter name="pattern" byreference="false" type="{unknown}"/>
     <parameter name="string" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertStringStartsWith" start="276" end="278" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertThatItsNot" start="183" end="185" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that a string starts with the given prefix.</description>
-      <param type="string" variable="$prefix"/>
-      <param type="string" variable="$string"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Evaluates a PHPUnit\Framework\Constraint matcher object.</description>
+      <param variable="$value"/>
+      <param type="object" variable="$constraint">
+        <type full="_generated\Constraint" namespace="_generated" name="Constraint"/>
+      </param>
       <param type="string" variable="$message"/>
-      <see value="\Codeception\Module\Asserts::assertStringStartsWith()"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertThatItsNot()"/>
     </docblock>
-    <parameter name="prefix" byreference="false" type="{unknown}"/>
-    <parameter name="string" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+    <parameter name="constraint" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertStringStartsNotWith" start="291" end="293" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertArrayHasKey" start="198" end="200" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that a string doesn't start with the given prefix.</description>
-      <param type="string" variable="$prefix"/>
-      <param type="string" variable="$string"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that an array has a specified key.</description>
+      <param type="object" variable="$key">
+        <type full="_generated\int|string" namespace="_generated" name="int|string"/>
+      </param>
+      <param type="object" variable="$array">
+        <type full="_generated\array|ArrayAccess" namespace="_generated" name="array|ArrayAccess"/>
+      </param>
       <param type="string" variable="$message"/>
-      <see value="\Codeception\Module\Asserts::assertStringStartsNotWith()"/>
-    </docblock>
-    <parameter name="prefix" byreference="false" type="{unknown}"/>
-    <parameter name="string" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
-  </method>
-  <method name="assertEmpty" start="305" end="307" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that variable is empty.</description>
-      <param variable="$actual"/>
-      <param type="string" variable="$message"/>
-      <see value="\Codeception\Module\Asserts::assertEmpty()"/>
-    </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
-  </method>
-  <method name="assertNotEmpty" start="319" end="321" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that variable is not empty.</description>
-      <param variable="$actual"/>
-      <param type="string" variable="$message"/>
-      <see value="\Codeception\Module\Asserts::assertNotEmpty()"/>
-    </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
-  </method>
-  <method name="assertNull" start="333" end="335" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that variable is NULL</description>
-      <param variable="$actual"/>
-      <param type="string" variable="$message"/>
-      <see value="\Codeception\Module\Asserts::assertNull()"/>
-    </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
-  </method>
-  <method name="assertNotNull" start="347" end="349" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that variable is not NULL</description>
-      <param variable="$actual"/>
-      <param type="string" variable="$message"/>
-      <see value="\Codeception\Module\Asserts::assertNotNull()"/>
-    </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
-  </method>
-  <method name="assertTrue" start="361" end="363" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that condition is positive.</description>
-      <param variable="$condition"/>
-      <param type="string" variable="$message"/>
-      <see value="\Codeception\Module\Asserts::assertTrue()"/>
-    </docblock>
-    <parameter name="condition" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
-  </method>
-  <method name="assertNotTrue" start="375" end="377" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the condition is NOT true (everything but true)</description>
-      <param variable="$condition"/>
-      <param type="string" variable="$message"/>
-      <see value="\Codeception\Module\Asserts::assertNotTrue()"/>
-    </docblock>
-    <parameter name="condition" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
-  </method>
-  <method name="assertFalse" start="389" end="391" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that condition is negative.</description>
-      <param variable="$condition"/>
-      <param type="string" variable="$message"/>
-      <see value="\Codeception\Module\Asserts::assertFalse()"/>
-    </docblock>
-    <parameter name="condition" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
-  </method>
-  <method name="assertNotFalse" start="403" end="405" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks that the condition is NOT false (everything but false)</description>
-      <param variable="$condition"/>
-      <param type="string" variable="$message"/>
-      <see value="\Codeception\Module\Asserts::assertNotFalse()"/>
-    </docblock>
-    <parameter name="condition" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
-  </method>
-  <method name="assertFileExists" start="417" end="419" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks if file exists</description>
-      <param type="string" variable="$filename"/>
-      <param type="string" variable="$message"/>
-      <see value="\Codeception\Module\Asserts::assertFileExists()"/>
-    </docblock>
-    <parameter name="filename" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
-  </method>
-  <method name="assertFileNotExists" start="431" end="433" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Checks if file doesn't exist</description>
-      <param type="string" variable="$filename"/>
-      <param type="string" variable="$message"/>
-      <see value="\Codeception\Module\Asserts::assertFileNotExists()"/>
-    </docblock>
-    <parameter name="filename" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
-  </method>
-  <method name="assertGreaterOrEquals" start="444" end="446" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <param variable="$expected"/>
-      <param variable="$actual"/>
-      <param variable="$description"/>
-      <see value="\Codeception\Module\Asserts::assertGreaterOrEquals()"/>
-    </docblock>
-    <parameter name="expected" byreference="false" type="{unknown}"/>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="description" byreference="false" type="{unknown}" default="NULL"/>
-  </method>
-  <method name="assertLessOrEquals" start="457" end="459" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <param variable="$expected"/>
-      <param variable="$actual"/>
-      <param variable="$description"/>
-      <see value="\Codeception\Module\Asserts::assertLessOrEquals()"/>
-    </docblock>
-    <parameter name="expected" byreference="false" type="{unknown}"/>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="description" byreference="false" type="{unknown}" default="NULL"/>
-  </method>
-  <method name="assertIsEmpty" start="469" end="471" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <param variable="$actual"/>
-      <param variable="$description"/>
-      <see value="\Codeception\Module\Asserts::assertIsEmpty()"/>
-    </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="description" byreference="false" type="{unknown}" default="NULL"/>
-  </method>
-  <method name="assertArrayHasKey" start="482" end="484" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <param variable="$key"/>
-      <param variable="$actual"/>
-      <param variable="$description"/>
-      <see value="\Codeception\Module\Asserts::assertArrayHasKey()"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertArrayHasKey()"/>
     </docblock>
     <parameter name="key" byreference="false" type="{unknown}"/>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="description" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="array" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertArrayNotHasKey" start="495" end="497" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertArrayNotHasKey" start="213" end="215" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <param variable="$key"/>
-      <param variable="$actual"/>
-      <param variable="$description"/>
-      <see value="\Codeception\Module\Asserts::assertArrayNotHasKey()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that an array does not have a specified key.</description>
+      <param type="object" variable="$key">
+        <type full="_generated\int|string" namespace="_generated" name="int|string"/>
+      </param>
+      <param type="object" variable="$array">
+        <type full="_generated\array|ArrayAccess" namespace="_generated" name="array|ArrayAccess"/>
+      </param>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertArrayNotHasKey()"/>
     </docblock>
     <parameter name="key" byreference="false" type="{unknown}"/>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="description" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="array" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertCount" start="508" end="510" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertClassHasAttribute" start="228" end="230" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <param variable="$expectedCount"/>
-      <param variable="$actual"/>
-      <param variable="$description"/>
-      <see value="\Codeception\Module\Asserts::assertCount()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a class has a specified attribute.</description>
+      <param type="string" variable="$attributeName"/>
+      <param type="string" variable="$className"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertClassHasAttribute()"/>
     </docblock>
-    <parameter name="expectedCount" byreference="false" type="{unknown}"/>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="description" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="attributeName" byreference="false" type="{unknown}"/>
+    <parameter name="className" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertInstanceOf" start="521" end="523" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertClassHasStaticAttribute" start="243" end="245" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <param variable="$class"/>
-      <param variable="$actual"/>
-      <param variable="$description"/>
-      <see value="\Codeception\Module\Asserts::assertInstanceOf()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a class has a specified static attribute.</description>
+      <param type="string" variable="$attributeName"/>
+      <param type="string" variable="$className"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertClassHasStaticAttribute()"/>
     </docblock>
-    <parameter name="class" byreference="false" type="{unknown}"/>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="description" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="attributeName" byreference="false" type="{unknown}"/>
+    <parameter name="className" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertNotInstanceOf" start="534" end="536" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertClassNotHasAttribute" start="258" end="260" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <param variable="$class"/>
-      <param variable="$actual"/>
-      <param variable="$description"/>
-      <see value="\Codeception\Module\Asserts::assertNotInstanceOf()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a class does not have a specified attribute.</description>
+      <param type="string" variable="$attributeName"/>
+      <param type="string" variable="$className"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertClassNotHasAttribute()"/>
     </docblock>
-    <parameter name="class" byreference="false" type="{unknown}"/>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="description" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="attributeName" byreference="false" type="{unknown}"/>
+    <parameter name="className" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertInternalType" start="547" end="549" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertClassNotHasStaticAttribute" start="273" end="275" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a class does not have a specified static attribute.</description>
+      <param type="string" variable="$attributeName"/>
+      <param type="string" variable="$className"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertClassNotHasStaticAttribute()"/>
+    </docblock>
+    <parameter name="attributeName" byreference="false" type="{unknown}"/>
+    <parameter name="className" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertContains" start="288" end="290" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a haystack contains a needle.</description>
+      <param variable="$needle"/>
+      <param variable="$haystack"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertContains()"/>
+    </docblock>
+    <parameter name="needle" byreference="false" type="{unknown}"/>
+    <parameter name="haystack" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertContainsEquals" start="301" end="303" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <param variable="$type"/>
-      <param variable="$actual"/>
-      <param variable="$description"/>
-      <see value="\Codeception\Module\Asserts::assertInternalType()"/>
+      <param variable="$needle"/>
+      <param variable="$haystack"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertContainsEquals()"/>
+    </docblock>
+    <parameter name="needle" byreference="false" type="{unknown}"/>
+    <parameter name="haystack" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertContainsOnly" start="317" end="319" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a haystack contains only values of a given type.</description>
+      <param type="string" variable="$type"/>
+      <param variable="$haystack"/>
+      <param type="object" variable="$isNativeType">
+        <type full="_generated\bool|null" namespace="_generated" name="bool|null"/>
+      </param>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertContainsOnly()"/>
     </docblock>
     <parameter name="type" byreference="false" type="{unknown}"/>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="description" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="haystack" byreference="false" type="{unknown}"/>
+    <parameter name="isNativeType" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="fail" start="560" end="562" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertContainsOnlyInstancesOf" start="332" end="334" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Fails the test with message.</description>
-      <param variable="$message"/>
-      <see value="\Codeception\Module\Asserts::fail()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a haystack contains only instances of a given class name.</description>
+      <param type="string" variable="$className"/>
+      <param variable="$haystack"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertContainsOnlyInstancesOf()"/>
     </docblock>
-    <parameter name="message" byreference="false" type="{unknown}"/>
+    <parameter name="className" byreference="false" type="{unknown}"/>
+    <parameter name="haystack" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertStringContainsString" start="571" end="573" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertCount" start="347" end="349" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertStringContainsString()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts the number of elements of an array, Countable or Traversable.</description>
+      <param type="int" variable="$expectedCount"/>
+      <param type="object" variable="$haystack">
+        <type full="_generated\Countable|iterable" namespace="_generated" name="Countable|iterable"/>
+      </param>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertCount()"/>
+    </docblock>
+    <parameter name="expectedCount" byreference="false" type="{unknown}"/>
+    <parameter name="haystack" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertDirectoryDoesNotExist" start="361" end="363" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a directory does not exist.</description>
+      <param type="string" variable="$directory"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertDirectoryDoesNotExist()"/>
+    </docblock>
+    <parameter name="directory" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertDirectoryExists" start="375" end="377" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a directory exists.</description>
+      <param type="string" variable="$directory"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertDirectoryExists()"/>
+    </docblock>
+    <parameter name="directory" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertDirectoryIsNotReadable" start="389" end="391" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a directory exists and is not readable.</description>
+      <param type="string" variable="$directory"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertDirectoryIsNotReadable()"/>
+    </docblock>
+    <parameter name="directory" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertDirectoryIsNotWritable" start="403" end="405" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a directory exists and is not writable.</description>
+      <param type="string" variable="$directory"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertDirectoryIsNotWritable()"/>
+    </docblock>
+    <parameter name="directory" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertDirectoryIsReadable" start="417" end="419" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a directory exists and is readable.</description>
+      <param type="string" variable="$directory"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertDirectoryIsReadable()"/>
+    </docblock>
+    <parameter name="directory" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertDirectoryIsWritable" start="431" end="433" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a directory exists and is writable.</description>
+      <param type="string" variable="$directory"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertDirectoryIsWritable()"/>
+    </docblock>
+    <parameter name="directory" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertDoesNotMatchRegularExpression" start="446" end="448" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string does not match a given regular expression.</description>
+      <param type="string" variable="$pattern"/>
+      <param type="string" variable="$string"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertDoesNotMatchRegularExpression()"/>
+    </docblock>
+    <parameter name="pattern" byreference="false" type="{unknown}"/>
+    <parameter name="string" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertEmpty" start="460" end="462" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is empty.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertEmpty()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertEquals" start="475" end="477" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two variables are equal.</description>
+      <param variable="$expected"/>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertEquals()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertEqualsCanonicalizing" start="490" end="492" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two variables are equal (canonicalizing).</description>
+      <param variable="$expected"/>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertEqualsCanonicalizing()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertEqualsIgnoringCase" start="505" end="507" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two variables are equal (ignoring case).</description>
+      <param variable="$expected"/>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertEqualsIgnoringCase()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertEqualsWithDelta" start="521" end="523" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two variables are equal (with delta).</description>
+      <param variable="$expected"/>
+      <param variable="$actual"/>
+      <param type="float" variable="$delta"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertEqualsWithDelta()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="delta" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertFalse" start="535" end="537" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a condition is false.</description>
+      <param variable="$condition"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertFalse()"/>
+    </docblock>
+    <parameter name="condition" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertFileDoesNotExist" start="549" end="551" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a file does not exist.</description>
+      <param type="string" variable="$filename"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertFileDoesNotExist()"/>
+    </docblock>
+    <parameter name="filename" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertFileEquals" start="564" end="566" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of one file is equal to the contents of another file.</description>
+      <param type="string" variable="$expected"/>
+      <param type="string" variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertFileEquals()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertFileEqualsCanonicalizing" start="579" end="581" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of one file is equal to the contents of another file (canonicalizing).</description>
+      <param variable="$expected"/>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertFileEqualsCanonicalizing()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertFileEqualsIgnoringCase" start="594" end="596" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of one file is equal to the contents of another file (ignoring case).</description>
+      <param variable="$expected"/>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertFileEqualsIgnoringCase()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertFileExists" start="608" end="610" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a file exists.</description>
+      <param type="string" variable="$filename"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertFileExists()"/>
+    </docblock>
+    <parameter name="filename" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertFileIsNotReadable" start="622" end="624" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a file exists and is not readable.</description>
+      <param type="string" variable="$file"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertFileIsNotReadable()"/>
+    </docblock>
+    <parameter name="file" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertFileIsNotWritable" start="636" end="638" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a file exists and is not writable.</description>
+      <param type="string" variable="$file"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertFileIsNotWritable()"/>
+    </docblock>
+    <parameter name="file" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertFileIsReadable" start="650" end="652" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a file exists and is readable.</description>
+      <param type="string" variable="$file"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertFileIsReadable()"/>
+    </docblock>
+    <parameter name="file" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertFileIsWritable" start="664" end="666" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a file exists and is writable.</description>
+      <param type="string" variable="$file"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertFileIsWritable()"/>
+    </docblock>
+    <parameter name="file" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertFileNotEquals" start="679" end="681" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of one file is not equal to the contents of another file.</description>
+      <param variable="$expected"/>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertFileNotEquals()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertFileNotEqualsCanonicalizing" start="694" end="696" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of one file is not equal to the contents of another file (canonicalizing).</description>
+      <param variable="$expected"/>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertFileNotEqualsCanonicalizing()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertFileNotEqualsIgnoringCase" start="709" end="711" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of one file is not equal to the contents of another file (ignoring case).</description>
+      <param variable="$expected"/>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertFileNotEqualsIgnoringCase()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertFinite" start="723" end="725" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is finite.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertFinite()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertGreaterThan" start="738" end="740" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a value is greater than another value.</description>
+      <param variable="$expected"/>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertGreaterThan()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertGreaterThanOrEqual" start="753" end="755" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a value is greater than or equal to another value.</description>
+      <param variable="$expected"/>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertGreaterThanOrEqual()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertInfinite" start="767" end="769" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is infinite.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertInfinite()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertInstanceOf" start="782" end="784" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of a given type.</description>
+      <param variable="$expected"/>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertInstanceOf()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsArray" start="796" end="798" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type array.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsArray()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsBool" start="810" end="812" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type bool.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsBool()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsCallable" start="824" end="826" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type callable.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsCallable()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsClosedResource" start="838" end="840" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type resource and is closed.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsClosedResource()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsFloat" start="852" end="854" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type float.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsFloat()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsInt" start="866" end="868" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type int.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsInt()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsIterable" start="880" end="882" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type iterable.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsIterable()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsNotArray" start="894" end="896" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type array.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsNotArray()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsNotBool" start="908" end="910" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type bool.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsNotBool()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsNotCallable" start="922" end="924" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type callable.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsNotCallable()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsNotClosedResource" start="936" end="938" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type resource.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsNotClosedResource()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsNotFloat" start="950" end="952" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type float.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsNotFloat()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsNotInt" start="964" end="966" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type int.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsNotInt()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsNotIterable" start="978" end="980" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type iterable.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsNotIterable()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsNotNumeric" start="992" end="994" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type numeric.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsNotNumeric()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsNotObject" start="1006" end="1008" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type object.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsNotObject()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsNotReadable" start="1020" end="1022" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a file/dir exists and is not readable.</description>
+      <param type="string" variable="$filename"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsNotReadable()"/>
+    </docblock>
+    <parameter name="filename" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsNotResource" start="1034" end="1036" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type resource.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsNotResource()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsNotScalar" start="1048" end="1050" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type scalar.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsNotScalar()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsNotString" start="1062" end="1064" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type string.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsNotString()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsNotWritable" start="1076" end="1078" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a file/dir exists and is not writable.</description>
+      <param variable="$filename"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsNotWritable()"/>
+    </docblock>
+    <parameter name="filename" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsNumeric" start="1090" end="1092" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type numeric.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsNumeric()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsObject" start="1104" end="1106" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type object.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsObject()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsReadable" start="1118" end="1120" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a file/dir is readable.</description>
+      <param variable="$filename"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsReadable()"/>
+    </docblock>
+    <parameter name="filename" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsResource" start="1132" end="1134" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type resource.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsResource()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsScalar" start="1146" end="1148" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type scalar.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsScalar()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsString" start="1160" end="1162" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type string.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsString()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertIsWritable" start="1174" end="1176" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a file/dir exists and is writable.</description>
+      <param variable="$filename"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertIsWritable()"/>
+    </docblock>
+    <parameter name="filename" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertJson" start="1188" end="1190" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string is a valid JSON string.</description>
+      <param type="string" variable="$actualJson"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertJson()"/>
+    </docblock>
+    <parameter name="actualJson" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertJsonFileEqualsJsonFile" start="1203" end="1205" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two JSON files are equal.</description>
+      <param type="string" variable="$expectedFile"/>
+      <param type="string" variable="$actualFile"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertJsonFileEqualsJsonFile()"/>
+    </docblock>
+    <parameter name="expectedFile" byreference="false" type="{unknown}"/>
+    <parameter name="actualFile" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertJsonFileNotEqualsJsonFile" start="1218" end="1220" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two JSON files are not equal.</description>
+      <param type="string" variable="$expectedFile"/>
+      <param type="string" variable="$actualFile"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertJsonFileNotEqualsJsonFile()"/>
+    </docblock>
+    <parameter name="expectedFile" byreference="false" type="{unknown}"/>
+    <parameter name="actualFile" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertJsonStringEqualsJsonFile" start="1233" end="1235" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the generated JSON encoded object and the content of the given file are equal.</description>
+      <param type="string" variable="$expectedFile"/>
+      <param type="string" variable="$actualJson"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertJsonStringEqualsJsonFile()"/>
+    </docblock>
+    <parameter name="expectedFile" byreference="false" type="{unknown}"/>
+    <parameter name="actualJson" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertJsonStringEqualsJsonString" start="1248" end="1250" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two given JSON encoded objects or arrays are equal.</description>
+      <param type="string" variable="$expectedJson"/>
+      <param type="string" variable="$actualJson"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertJsonStringEqualsJsonString()"/>
+    </docblock>
+    <parameter name="expectedJson" byreference="false" type="{unknown}"/>
+    <parameter name="actualJson" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertJsonStringNotEqualsJsonFile" start="1263" end="1265" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the generated JSON encoded object and the content of the given file are not equal.</description>
+      <param type="string" variable="$expectedFile"/>
+      <param type="string" variable="$actualJson"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertJsonStringNotEqualsJsonFile()"/>
+    </docblock>
+    <parameter name="expectedFile" byreference="false" type="{unknown}"/>
+    <parameter name="actualJson" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertJsonStringNotEqualsJsonString" start="1278" end="1280" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two given JSON encoded objects or arrays are not equal.</description>
+      <param type="string" variable="$expectedJson"/>
+      <param type="string" variable="$actualJson"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertJsonStringNotEqualsJsonString()"/>
+    </docblock>
+    <parameter name="expectedJson" byreference="false" type="{unknown}"/>
+    <parameter name="actualJson" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertLessThan" start="1293" end="1295" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a value is smaller than another value.</description>
+      <param variable="$expected"/>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertLessThan()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertLessThanOrEqual" start="1308" end="1310" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a value is smaller than or equal to another value.</description>
+      <param variable="$expected"/>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertLessThanOrEqual()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertMatchesRegularExpression" start="1323" end="1325" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string matches a given regular expression.</description>
+      <param type="string" variable="$pattern"/>
+      <param type="string" variable="$string"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertMatchesRegularExpression()"/>
+    </docblock>
+    <parameter name="pattern" byreference="false" type="{unknown}"/>
+    <parameter name="string" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertNan" start="1337" end="1339" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is nan.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertNan()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertNotContains" start="1352" end="1354" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a haystack does not contain a needle.</description>
+      <param variable="$needle"/>
+      <param variable="$haystack"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertNotContains()"/>
     </docblock>
     <parameter name="needle" byreference="false" type="{unknown}"/>
     <parameter name="haystack" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertStringNotContainsString" start="582" end="584" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertNotContainsEquals" start="1363" end="1365" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertStringNotContainsString()"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertNotContainsEquals()"/>
     </docblock>
     <parameter name="needle" byreference="false" type="{unknown}"/>
     <parameter name="haystack" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertStringContainsStringIgnoringCase" start="593" end="595" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertNotContainsOnly" start="1379" end="1381" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a haystack does not contain only values of a given type.</description>
+      <param type="string" variable="$type"/>
+      <param variable="$haystack"/>
+      <param type="object" variable="$isNativeType">
+        <type full="_generated\bool|null" namespace="_generated" name="bool|null"/>
+      </param>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertNotContainsOnly()"/>
+    </docblock>
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <parameter name="haystack" byreference="false" type="{unknown}"/>
+    <parameter name="isNativeType" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertNotCount" start="1394" end="1396" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts the number of elements of an array, Countable or Traversable.</description>
+      <param type="int" variable="$expectedCount"/>
+      <param type="object" variable="$haystack">
+        <type full="_generated\Countable|iterable" namespace="_generated" name="Countable|iterable"/>
+      </param>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertNotCount()"/>
+    </docblock>
+    <parameter name="expectedCount" byreference="false" type="{unknown}"/>
+    <parameter name="haystack" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertNotEmpty" start="1408" end="1410" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not empty.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertNotEmpty()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertNotEquals" start="1423" end="1425" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two variables are not equal.</description>
+      <param variable="$expected"/>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertNotEquals()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertNotEqualsCanonicalizing" start="1438" end="1440" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two variables are not equal (canonicalizing).</description>
+      <param variable="$expected"/>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertNotEqualsCanonicalizing()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertNotEqualsIgnoringCase" start="1453" end="1455" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two variables are not equal (ignoring case).</description>
+      <param variable="$expected"/>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertNotEqualsIgnoringCase()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertNotEqualsWithDelta" start="1469" end="1471" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two variables are not equal (with delta).</description>
+      <param variable="$expected"/>
+      <param variable="$actual"/>
+      <param type="float" variable="$delta"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertNotEqualsWithDelta()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="delta" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertNotFalse" start="1483" end="1485" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a condition is not false.</description>
+      <param variable="$condition"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertNotFalse()"/>
+    </docblock>
+    <parameter name="condition" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertNotInstanceOf" start="1498" end="1500" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of a given type.</description>
+      <param variable="$expected"/>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertNotInstanceOf()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertNotNull" start="1512" end="1514" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not null.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertNotNull()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertNotSame" start="1527" end="1529" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two variables do not have the same type and value.</description>
+      <param variable="$expected"/>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertNotSame()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertNotSameSize" start="1542" end="1544" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Assert that the size of two arrays (or `Countable` or `Traversable` objects) is not the same.</description>
+      <param type="object" variable="$expected">
+        <type full="_generated\Countable|iterable" namespace="_generated" name="Countable|iterable"/>
+      </param>
+      <param type="object" variable="$actual">
+        <type full="_generated\Countable|iterable" namespace="_generated" name="Countable|iterable"/>
+      </param>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertNotSameSize()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertNotTrue" start="1556" end="1558" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a condition is not true.</description>
+      <param variable="$condition"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertNotTrue()"/>
+    </docblock>
+    <parameter name="condition" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertNull" start="1570" end="1572" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is null.</description>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertNull()"/>
+    </docblock>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertObjectHasAttribute" start="1585" end="1587" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that an object has a specified attribute.</description>
+      <param type="string" variable="$attributeName"/>
+      <param type="object" variable="$object"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertObjectHasAttribute()"/>
+    </docblock>
+    <parameter name="attributeName" byreference="false" type="{unknown}"/>
+    <parameter name="object" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertObjectNotHasAttribute" start="1600" end="1602" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that an object does not have a specified attribute.</description>
+      <param type="string" variable="$attributeName"/>
+      <param type="object" variable="$object"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertObjectNotHasAttribute()"/>
+    </docblock>
+    <parameter name="attributeName" byreference="false" type="{unknown}"/>
+    <parameter name="object" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertSame" start="1615" end="1617" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two variables have the same type and value.</description>
+      <param variable="$expected"/>
+      <param variable="$actual"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertSame()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertSameSize" start="1630" end="1632" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Assert that the size of two arrays (or `Countable` or `Traversable` objects) is the same.</description>
+      <param type="object" variable="$expected">
+        <type full="_generated\Countable|iterable" namespace="_generated" name="Countable|iterable"/>
+      </param>
+      <param type="object" variable="$actual">
+        <type full="_generated\Countable|iterable" namespace="_generated" name="Countable|iterable"/>
+      </param>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertSameSize()"/>
+    </docblock>
+    <parameter name="expected" byreference="false" type="{unknown}"/>
+    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertStringContainsString" start="1643" end="1645" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertStringContainsStringIgnoringCase()"/>
+      <param type="string" variable="$needle"/>
+      <param type="string" variable="$haystack"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertStringContainsString()"/>
     </docblock>
     <parameter name="needle" byreference="false" type="{unknown}"/>
     <parameter name="haystack" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertStringNotContainsStringIgnoringCase" start="604" end="606" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringContainsStringIgnoringCase" start="1654" end="1656" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertStringNotContainsStringIgnoringCase()"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertStringContainsStringIgnoringCase()"/>
     </docblock>
     <parameter name="needle" byreference="false" type="{unknown}"/>
     <parameter name="haystack" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertIsArray" start="615" end="617" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringEndsNotWith" start="1669" end="1671" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertIsArray()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string ends not with a given suffix.</description>
+      <param type="string" variable="$suffix"/>
+      <param type="string" variable="$string"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertStringEndsNotWith()"/>
     </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="suffix" byreference="false" type="{unknown}"/>
+    <parameter name="string" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertIsBool" start="626" end="628" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringEndsWith" start="1684" end="1686" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertIsBool()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string ends with a given suffix.</description>
+      <param type="string" variable="$suffix"/>
+      <param type="string" variable="$string"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertStringEndsWith()"/>
     </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="suffix" byreference="false" type="{unknown}"/>
+    <parameter name="string" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertIsFloat" start="637" end="639" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringEqualsFile" start="1699" end="1701" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertIsFloat()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of a string is equal to the contents of a file.</description>
+      <param type="string" variable="$expectedFile"/>
+      <param type="string" variable="$actualString"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertStringEqualsFile()"/>
     </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="expectedFile" byreference="false" type="{unknown}"/>
+    <parameter name="actualString" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertIsInt" start="648" end="650" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringEqualsFileCanonicalizing" start="1714" end="1716" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertIsInt()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of a string is equal to the contents of a file (canonicalizing).</description>
+      <param type="string" variable="$expectedFile"/>
+      <param type="string" variable="$actualString"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertStringEqualsFileCanonicalizing()"/>
     </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="expectedFile" byreference="false" type="{unknown}"/>
+    <parameter name="actualString" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertIsNumeric" start="659" end="661" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringEqualsFileIgnoringCase" start="1729" end="1731" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertIsNumeric()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of a string is equal to the contents of a file (ignoring case).</description>
+      <param type="string" variable="$expectedFile"/>
+      <param type="string" variable="$actualString"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertStringEqualsFileIgnoringCase()"/>
     </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="expectedFile" byreference="false" type="{unknown}"/>
+    <parameter name="actualString" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertIsObject" start="670" end="672" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringMatchesFormat" start="1744" end="1746" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertIsObject()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string matches a given format string.</description>
+      <param type="string" variable="$format"/>
+      <param type="string" variable="$string"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertStringMatchesFormat()"/>
     </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="format" byreference="false" type="{unknown}"/>
+    <parameter name="string" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertIsResource" start="681" end="683" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringMatchesFormatFile" start="1759" end="1761" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertIsResource()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string matches a given format file.</description>
+      <param type="string" variable="$formatFile"/>
+      <param type="string" variable="$string"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertStringMatchesFormatFile()"/>
     </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="formatFile" byreference="false" type="{unknown}"/>
+    <parameter name="string" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertIsString" start="692" end="694" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringNotContainsString" start="1772" end="1774" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertIsString()"/>
+      <param type="string" variable="$needle"/>
+      <param type="string" variable="$haystack"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertStringNotContainsString()"/>
     </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="needle" byreference="false" type="{unknown}"/>
+    <parameter name="haystack" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertIsScalar" start="703" end="705" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringNotContainsStringIgnoringCase" start="1785" end="1787" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertIsScalar()"/>
+      <param type="string" variable="$needle"/>
+      <param type="string" variable="$haystack"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertStringNotContainsStringIgnoringCase()"/>
     </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="needle" byreference="false" type="{unknown}"/>
+    <parameter name="haystack" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertIsCallable" start="714" end="716" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringNotEqualsFile" start="1800" end="1802" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertIsCallable()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of a string is not equal to the contents of a file.</description>
+      <param type="string" variable="$expectedFile"/>
+      <param type="string" variable="$actualString"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertStringNotEqualsFile()"/>
     </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="expectedFile" byreference="false" type="{unknown}"/>
+    <parameter name="actualString" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertIsNotArray" start="725" end="727" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringNotEqualsFileCanonicalizing" start="1814" end="1816" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertIsNotArray()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of a string is not equal to the contents of a file (canonicalizing).</description>
+      <param type="string" variable="$expectedFile"/>
+      <param type="string" variable="$actualString"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertStringNotEqualsFileCanonicalizing()"/>
     </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="expectedFile" byreference="false" type="{unknown}"/>
+    <parameter name="actualString" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertIsNotBool" start="736" end="738" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringNotEqualsFileIgnoringCase" start="1829" end="1831" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertIsNotBool()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of a string is not equal to the contents of a file (ignoring case).</description>
+      <param type="string" variable="$expectedFile"/>
+      <param type="string" variable="$actualString"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertStringNotEqualsFileIgnoringCase()"/>
     </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="expectedFile" byreference="false" type="{unknown}"/>
+    <parameter name="actualString" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertIsNotFloat" start="747" end="749" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringNotMatchesFormat" start="1844" end="1846" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertIsNotFloat()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string does not match a given format string.</description>
+      <param type="string" variable="$format"/>
+      <param type="string" variable="$string"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertStringNotMatchesFormat()"/>
     </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="format" byreference="false" type="{unknown}"/>
+    <parameter name="string" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertIsNotInt" start="758" end="760" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringNotMatchesFormatFile" start="1859" end="1861" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertIsNotInt()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string does not match a given format string.</description>
+      <param type="string" variable="$formatFile"/>
+      <param type="string" variable="$string"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertStringNotMatchesFormatFile()"/>
     </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="formatFile" byreference="false" type="{unknown}"/>
+    <parameter name="string" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertIsNotNumeric" start="769" end="771" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringStartsNotWith" start="1874" end="1876" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertIsNotNumeric()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string starts not with a given prefix.</description>
+      <param type="string" variable="$prefix"/>
+      <param type="string" variable="$string"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertStringStartsNotWith()"/>
     </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="prefix" byreference="false" type="{unknown}"/>
+    <parameter name="string" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertIsNotObject" start="780" end="782" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringStartsWith" start="1889" end="1891" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertIsNotObject()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string starts with a given prefix.</description>
+      <param type="string" variable="$prefix"/>
+      <param type="string" variable="$string"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertStringStartsWith()"/>
     </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="prefix" byreference="false" type="{unknown}"/>
+    <parameter name="string" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertIsNotResource" start="791" end="793" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertThat" start="1904" end="1906" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertIsNotResource()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Evaluates a PHPUnit\Framework\Constraint matcher object.</description>
+      <param variable="$value"/>
+      <param type="object" variable="$constraint">
+        <type full="_generated\Constraint" namespace="_generated" name="Constraint"/>
+      </param>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertThat()"/>
     </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+    <parameter name="constraint" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertIsNotString" start="802" end="804" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertTrue" start="1918" end="1920" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertIsNotString()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a condition is true.</description>
+      <param variable="$condition"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertTrue()"/>
     </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="condition" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertIsNotScalar" start="813" end="815" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertXmlFileEqualsXmlFile" start="1933" end="1935" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertIsNotScalar()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two XML files are equal.</description>
+      <param type="string" variable="$expectedFile"/>
+      <param type="string" variable="$actualFile"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertXmlFileEqualsXmlFile()"/>
     </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="expectedFile" byreference="false" type="{unknown}"/>
+    <parameter name="actualFile" byreference="false" type="{unknown}"/>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
-  <method name="assertIsNotCallable" start="824" end="826" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertXmlFileNotEqualsXmlFile" start="1948" end="1950" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
-      <see value="\Codeception\Module\Asserts::assertIsNotCallable()"/>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two XML files are not equal.</description>
+      <param type="string" variable="$expectedFile"/>
+      <param type="string" variable="$actualFile"/>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertXmlFileNotEqualsXmlFile()"/>
     </docblock>
-    <parameter name="actual" byreference="false" type="{unknown}"/>
+    <parameter name="expectedFile" byreference="false" type="{unknown}"/>
+    <parameter name="actualFile" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertXmlStringEqualsXmlFile" start="1963" end="1965" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two XML documents are equal.</description>
+      <param type="string" variable="$expectedFile"/>
+      <param type="object" variable="$actualXml">
+        <type full="_generated\DOMDocument|string" namespace="_generated" name="DOMDocument|string"/>
+      </param>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertXmlStringEqualsXmlFile()"/>
+    </docblock>
+    <parameter name="expectedFile" byreference="false" type="{unknown}"/>
+    <parameter name="actualXml" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertXmlStringEqualsXmlString" start="1978" end="1980" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two XML documents are equal.</description>
+      <param type="object" variable="$expectedXml">
+        <type full="_generated\DOMDocument|string" namespace="_generated" name="DOMDocument|string"/>
+      </param>
+      <param type="object" variable="$actualXml">
+        <type full="_generated\DOMDocument|string" namespace="_generated" name="DOMDocument|string"/>
+      </param>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertXmlStringEqualsXmlString()"/>
+    </docblock>
+    <parameter name="expectedXml" byreference="false" type="{unknown}"/>
+    <parameter name="actualXml" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertXmlStringNotEqualsXmlFile" start="1993" end="1995" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two XML documents are not equal.</description>
+      <param type="string" variable="$expectedFile"/>
+      <param type="object" variable="$actualXml">
+        <type full="_generated\DOMDocument|string" namespace="_generated" name="DOMDocument|string"/>
+      </param>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertXmlStringNotEqualsXmlFile()"/>
+    </docblock>
+    <parameter name="expectedFile" byreference="false" type="{unknown}"/>
+    <parameter name="actualXml" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="assertXmlStringNotEqualsXmlString" start="2008" end="2010" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two XML documents are not equal.</description>
+      <param type="object" variable="$expectedXml">
+        <type full="_generated\DOMDocument|string" namespace="_generated" name="DOMDocument|string"/>
+      </param>
+      <param type="object" variable="$actualXml">
+        <type full="_generated\DOMDocument|string" namespace="_generated" name="DOMDocument|string"/>
+      </param>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::assertXmlStringNotEqualsXmlString()"/>
+    </docblock>
+    <parameter name="expectedXml" byreference="false" type="{unknown}"/>
+    <parameter name="actualXml" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="fail" start="2021" end="2023" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Fails a test with the given message.</description>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::fail()"/>
+    </docblock>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="markTestIncomplete" start="2034" end="2036" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Mark the test as incomplete.</description>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::markTestIncomplete()"/>
+    </docblock>
+    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="markTestSkipped" start="2047" end="2049" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Mark the test as skipped.</description>
+      <param type="string" variable="$message"/>
+      <see value="\Codeception\Module\AbstractAsserts::markTestSkipped()"/>
+    </docblock>
     <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
   </method>
   <users>
