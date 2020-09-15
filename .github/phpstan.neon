@@ -1,0 +1,16 @@
+# Configuration file for phpstan - see github action in (.github/workflows)
+
+parameters:
+	level: 2
+	paths:
+	    - ../src
+	scanDirectories:
+	    - ../vendor
+	#scanFiles:
+	#    - ../vendor/autoload.php
+	#excludes_analyse:
+	#    - ../views
+	#    - ../modules/admin/views
+includes:
+    # These errors spawn from vendor related code (e.g. authorize.net, or Yii components like $ad)
+    #- phpstan-baseline-L2.neon

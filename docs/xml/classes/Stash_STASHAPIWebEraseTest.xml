@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class xmlns="http://xml.phpdox.net/src" full="Stash\STASHAPIWebEraseTest" namespace="Stash" name="STASHAPIWebEraseTest" abstract="false" final="false" start="16" end="374">
-  <file path="L:/Projects/Stash/StashApi-php-Release/docs/../tests/unit" file="STASHAPIWebEraseTest.php" realpath="L:/Projects/Stash/StashApi-php-Release/tests/unit/STASHAPIWebEraseTest.php" size="15263" time="2020-04-17T22:46:47+00:00" unixtime="1587163607" sha1="1ba5ad59f7a00611977b327ce19abdb40450d22a" relative="tests/unit/STASHAPIWebEraseTest.php"/>
+  <file path="L:/Projects/Stash/StashApi-php-Dev/docs/../tests/unit" file="STASHAPIWebEraseTest.php" realpath="L:/Projects/Stash/StashApi-php-Dev/tests/unit/STASHAPIWebEraseTest.php" size="15323" time="2020-09-14T18:51:52+00:00" unixtime="1600109512" sha1="59e05c83bf6c332d7748dee26003491c49125968" relative="tests/unit/STASHAPIWebEraseTest.php"/>
   <docblock>
     <description compact="Class STASHAPIWebEraseTest Runs scenario based testing for the WebErase functionality"/>
     <package value="Stash"/>
@@ -63,11 +63,13 @@
         <type full="Exception" namespace="" name="Exception"/>
       </throws>
     </docblock>
+    <return type="void" nullable="false"/>
   </method>
   <method name="tearDownAfterClass" start="116" end="125" abstract="false" final="false" static="true" visibility="public">
     <docblock>
       <description compact="This function is run once, after all tests in the suite are run"/>
     </docblock>
+    <return type="void" nullable="false"/>
   </method>
   <method name="_setAPIContext" start="134" end="150" abstract="false" final="false" static="false" visibility="public">
     <docblock>

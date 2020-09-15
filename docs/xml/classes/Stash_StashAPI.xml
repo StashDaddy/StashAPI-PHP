@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="Stash\StashAPI" namespace="Stash" name="StashAPI" abstract="false" final="false" start="28" end="2151">
-  <file path="L:/Projects/Stash/StashApi-php-Release/docs/../src/Stash" file="STASHAPI.php" realpath="L:/Projects/Stash/StashApi-php-Release/src/Stash/STASHAPI.php" size="95643" time="2020-05-01T14:45:05+00:00" unixtime="1588344305" sha1="df7bb9ce9cce5d5537ddc286316e2f2007797061" relative="src/Stash/STASHAPI.php"/>
+<class xmlns="http://xml.phpdox.net/src" full="Stash\StashAPI" namespace="Stash" name="StashAPI" abstract="false" final="false" start="30" end="2461">
+  <file path="L:/Projects/Stash/StashApi-php-Dev/docs/../src/Stash" file="STASHAPI.php" realpath="L:/Projects/Stash/StashApi-php-Dev/src/Stash/STASHAPI.php" size="108954" time="2020-09-15T15:58:42+00:00" unixtime="1600185522" sha1="3192106488d62cd426c62126ebced98be342a8e9" relative="src/Stash/STASHAPI.php"/>
   <constant type="string" name="STASHAPI_VERSION" value="&quot;1.0&quot;"/>
   <constant type="integer" name="STASHAPI_ID_LENGTH" value="32"/>
   <constant type="integer" name="STASHAPI_PW_LENGTH" value="32"/>
@@ -9,16 +9,16 @@
   <constant type="string" name="BASE_VAULT_FOLDER" value="&quot;My Home&quot;"/>
   <constant type="string" name="BASE_URL" value="&quot;https://www.stashbusiness.com/&quot;"/>
   <constant type="string" name="ENC_ALG" value="'aes-256-cbc'"/>
-  <member name="api_id" visibility="private" static="false" line="39"/>
-  <member name="api_pw" visibility="private" static="false" line="40"/>
-  <member name="api_signature" visibility="public" static="false" line="41"/>
-  <member name="api_version" visibility="public" static="false" line="42"/>
-  <member name="api_timestamp" visibility="private" static="false" line="43"/>
-  <member name="verbosity" visibility="private" static="false" line="44"/>
-  <member name="url" visibility="public" static="false" line="46"/>
-  <member name="params" visibility="public" static="false" line="47"/>
-  <member name="BASE_API_URL" visibility="public" static="false" line="49"/>
-  <constructor name="__construct" start="59" end="73" abstract="false" final="false" static="false" visibility="public">
+  <member name="api_id" visibility="private" static="false" line="41"/>
+  <member name="api_pw" visibility="private" static="false" line="42"/>
+  <member name="api_signature" visibility="public" static="false" line="43"/>
+  <member name="api_version" visibility="public" static="false" line="44"/>
+  <member name="api_timestamp" visibility="private" static="false" line="45"/>
+  <member name="verbosity" visibility="private" static="false" line="46"/>
+  <member name="url" visibility="public" static="false" line="48"/>
+  <member name="params" visibility="public" static="false" line="49"/>
+  <member name="BASE_API_URL" visibility="public" static="false" line="51"/>
+  <constructor name="__construct" start="61" end="75" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="STASHAPI Constructor"/>
       <param description="the API ID" type="object" variable="$apiId">
@@ -27,40 +27,38 @@
       <param description="the API PW" type="object" variable="$apiPw">
         <type full="Stash\String" namespace="Stash" name="String"/>
       </param>
-      <param description="- the base url (e.g. 127.0.0.1, or https://www.stashbusiness.com) if different from the default" type="string" variable="$urlIn"/>
-      <param description="verbosity T to generate log messages from STASHAPI functions" type="object">
-        <type full="Stash\Boolean" namespace="Stash" name="Boolean"/>
-      </param>
+      <param description="the base url (e.g. 127.0.0.1, or https://www.stashbusiness.com) if different from the default" type="string" variable="$urlIn"/>
+      <param description="T to generate log messages from STASHAPI functions" type="boolean" variable="$verbosity"/>
     </docblock>
     <parameter name="apiId" byreference="false" type="string" default="&quot;&quot;"/>
     <parameter name="apiPw" byreference="false" type="string" default="&quot;&quot;"/>
     <parameter name="urlIn" byreference="false" type="string" default="&quot;&quot;"/>
     <parameter name="verbosity" byreference="false" type="boolean" default="false"/>
   </constructor>
-  <method name="getConstants" start="80" end="84" abstract="false" final="false" static="true" visibility="public">
+  <method name="getConstants" start="82" end="86" abstract="false" final="false" static="true" visibility="public">
     <docblock>
       <description compact="Returns the constants in the class"/>
-      <throws description="if failed to get constants" type="object">
-        <type full="ReflectionException" namespace="" name="ReflectionException"/>
-      </throws>
       <return type="object">
         <type full="Stash\array|NULL" namespace="Stash" name="array|NULL"/>
       </return>
+      <throws description="if failed to get constants" type="object">
+        <type full="ReflectionException" namespace="" name="ReflectionException"/>
+      </throws>
     </docblock>
   </method>
-  <method name="__toString" start="91" end="94" abstract="false" final="false" static="false" visibility="public">
+  <method name="__toString" start="93" end="96" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Returns a string representation of this object consisting of the API version"/>
       <return type="string"/>
     </docblock>
   </method>
-  <method name="getVersion" start="101" end="104" abstract="false" final="false" static="false" visibility="public">
+  <method name="getVersion" start="103" end="106" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Returns the version for this API"/>
       <return type="string"/>
     </docblock>
   </method>
-  <method name="getVerbosity" start="110" end="113" abstract="false" final="false" static="false" visibility="public">
+  <method name="getVerbosity" start="112" end="115" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Gets the verbosity setting for the STASHAPI instance"/>
       <return description="T if verbosity enabled and set in constructor, otherwise F" type="object">
@@ -68,36 +66,34 @@
       </return>
     </docblock>
   </method>
-  <method name="getApiId" start="119" end="122" abstract="false" final="false" static="false" visibility="public">
+  <method name="getApiId" start="121" end="124" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Gets the API ID for the STASHAPI instance"/>
       <return description="the API ID" type="string"/>
     </docblock>
   </method>
-  <method name="isValid" start="130" end="176" abstract="false" final="false" static="true" visibility="public">
+  <method name="isValid" start="132" end="192" abstract="false" final="false" static="true" visibility="public">
     <docblock>
       <description compact="Checks the parameter and value for sanity and compliance with rules"/>
-      <param description="the parameter name =&gt; value" type="array"/>
-      <return description="T if all the parameters are deemed valid" type="object">
-        <type full="Stash\Boolean" namespace="Stash" name="Boolean"/>
-      </return>
+      <param description="the parameter name =&gt; value" type="array" variable="$dataIn"/>
+      <return description="T if all the parameters are deemed valid" type="boolean"/>
     </docblock>
     <parameter name="dataIn" byreference="false" type="array"/>
   </method>
-  <method name="setId" start="185" end="194" abstract="false" final="false" static="false" visibility="public">
+  <method name="setId" start="201" end="210" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="api_id setter"/>
-      <param description="your api_id" type="string"/>
+      <param description="your api_id" type="string" variable="$idIn"/>
+      <return type="object">
+        <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
+      </return>
       <throws description="if idIn is invalid or does not match syntax requirements" type="object">
         <type full="Exception" namespace="" name="Exception"/>
       </throws>
-      <return type="object">
-        <type full="Stash\Object/STASHAPI" namespace="Stash" name="Object/STASHAPI"/>
-      </return>
     </docblock>
     <parameter name="idIn" byreference="false" type="{unknown}"/>
   </method>
-  <method name="getId" start="200" end="203" abstract="false" final="false" static="false" visibility="public">
+  <method name="getId" start="216" end="219" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="api_id getter"/>
       <return description="the API_ID for this instance" type="object">
@@ -105,41 +101,37 @@
       </return>
     </docblock>
   </method>
-  <method name="setPw" start="211" end="216" abstract="false" final="false" static="false" visibility="public">
+  <method name="setPw" start="227" end="232" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="api_pw setter"/>
-      <param description="your api_pw" type="string"/>
+      <param description="your api_pw" type="string" variable="$pwIn"/>
       <return type="object">
-        <type full="Stash\Object/STASHAPI" namespace="Stash" name="Object/STASHAPI"/>
+        <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
       </return>
     </docblock>
     <parameter name="pwIn" byreference="false" type="{unknown}"/>
   </method>
-  <method name="getPw" start="222" end="225" abstract="false" final="false" static="false" visibility="public">
+  <method name="getPw" start="238" end="241" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="api_pw getter"/>
-      <return description="the API_PW for this instance" type="object">
-        <type full="Stash\String" namespace="Stash" name="String"/>
-      </return>
+      <return description="the API_PW for this instance" type="string"/>
     </docblock>
   </method>
-  <method name="setTimestamp" start="232" end="237" abstract="false" final="false" static="false" visibility="public">
+  <method name="setTimestamp" start="248" end="253" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="api_timestamp setter"/>
       <return type="object">
-        <type full="Stash\Object/STASHAPI" namespace="Stash" name="Object/STASHAPI"/>
+        <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
       </return>
     </docblock>
   </method>
-  <method name="getTimestamp" start="243" end="246" abstract="false" final="false" static="false" visibility="public">
+  <method name="getTimestamp" start="259" end="262" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="api_timestamp getter"/>
-      <return description="the API_timestamp for this instance" type="object">
-        <type full="Stash\Integer" namespace="Stash" name="Integer"/>
-      </return>
+      <return description="the API_timestamp for this instance" type="integer"/>
     </docblock>
   </method>
-  <method name="setSignature" start="261" end="276" abstract="false" final="false" static="false" visibility="public">
+  <method name="setSignature" start="277" end="292" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="api_signature setter - signs the request with the current data in the STASHAPI request instance">Uses the following parameters as part of the sig calculation (these are all contained in the $dataIn array as key=&gt;value pairs)
 - self::params() array containing the request parameters (could be 0 or more key=&gt;value pairs)
@@ -148,96 +140,70 @@
 - ['api_id'] contains the ID string for the API user
 - ['api_timestamp'] contains the epoch / integer timestamp for when the request was created</description>
       <param description="- an array of key/value pairs containing the data to sign" type="array" variable="$dataIn"/>
+      <return description="T if the function succeeds" type="boolean"/>
       <throws description="for invalid inputs" type="object">
         <type full="Exception" namespace="" name="Exception"/>
       </throws>
-      <return description="T if the function succeeds" type="object">
-        <type full="Stash\Boolean" namespace="Stash" name="Boolean"/>
-      </return>
     </docblock>
     <parameter name="dataIn" byreference="false" type="array"/>
   </method>
-  <method name="getSignature" start="282" end="285" abstract="false" final="false" static="false" visibility="public">
+  <method name="getSignature" start="298" end="301" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="api_signature getter"/>
-      <return description="the API_signature for this instance" type="object">
-        <type full="Stash\String" namespace="Stash" name="String"/>
-      </return>
+      <return description="the API_signature for this instance" type="string"/>
     </docblock>
   </method>
-  <method name="encryptString" start="293" end="313" abstract="false" final="false" static="false" visibility="public">
+  <method name="encryptString" start="309" end="329" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function encrypts a string with your API_PW"/>
-      <param description="the string to encrypt" type="object">
-        <type full="Stash\String" namespace="Stash" name="String"/>
-      </param>
-      <param description="T if the function should return hexbits instead of raw" type="object">
-        <type full="Stash\Bool" namespace="Stash" name="Bool"/>
-      </param>
-      <return description="the encrypted string" type="object">
-        <type full="Stash\String" namespace="Stash" name="String"/>
-      </return>
+      <param description="the string to encrypt" type="string" variable="$strIn"/>
+      <param description="T if the function should return hexbits instead of raw" type="boolean" variable="$returnHexBits"/>
+      <return description="the encrypted string" type="string"/>
     </docblock>
     <parameter name="strIn" byreference="false" type="{unknown}"/>
     <parameter name="returnHexBits" byreference="false" type="{unknown}"/>
   </method>
-  <method name="decryptString" start="321" end="344" abstract="false" final="false" static="false" visibility="public">
+  <method name="decryptString" start="337" end="360" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function decrypts a string with your API_PW"/>
-      <param description="the string to decrypt" type="object">
-        <type full="Stash\String" namespace="Stash" name="String"/>
-      </param>
-      <param description="T if the input string is hexbits and should be converted back to binary before decryption" type="object">
-        <type full="Stash\Bool" namespace="Stash" name="Bool"/>
-      </param>
-      <return description="the decrypted string" type="object">
-        <type full="Stash\String" namespace="Stash" name="String"/>
-      </return>
+      <param description="the string to decrypt" type="string" variable="$strIn"/>
+      <param description="T if the input string is hexbits and should be converted back to binary before decryption" type="boolean" variable="$inHexBits"/>
+      <return description="the decrypted string" type="string"/>
     </docblock>
     <parameter name="strIn" byreference="false" type="{unknown}"/>
     <parameter name="inHexBits" byreference="false" type="{unknown}"/>
   </method>
-  <method name="sendRequest" start="351" end="402" abstract="false" final="false" static="false" visibility="public">
+  <method name="sendRequest" start="367" end="418" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function builds and sends an API request"/>
+      <return description="the result from the curl operation" type="string"/>
       <throws description="for invalid URLs" type="object">
         <type full="Exception" namespace="" name="Exception"/>
       </throws>
-      <return description="the result from the curl operation" type="object">
-        <type full="Stash\String" namespace="Stash" name="String"/>
-      </return>
     </docblock>
     <inline>
-      <comment value="Sign request" line="364"/>
-      <comment value="Define the CURL_IGNORE_SSL_ERRORS constant if you want to skip SSL verification (not recommended)" line="381"/>
-      <comment value="Return response instead of printing." line="387"/>
-      <comment value="Send request." line="389"/>
+      <comment value="Sign request" line="380"/>
+      <comment value="Define the CURL_IGNORE_SSL_ERRORS constant if you want to skip SSL verification (not recommended)" line="397"/>
+      <comment value="Return response instead of printing." line="403"/>
+      <comment value="Send request." line="405"/>
     </inline>
   </method>
-  <method name="sendDownloadRequest" start="412" end="490" abstract="false" final="false" static="false" visibility="public">
+  <method name="sendDownloadRequest" start="428" end="506" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function builds and sends an API download request The result will be stored in a file, specified by $fileNameIn"/>
-      <param description="the filename to save the downloaded data to" type="object">
-        <type full="Stash\String" namespace="Stash" name="String"/>
-      </param>
-      <return description="the result from the curl operation" type="object">
-        <type full="Stash\String" namespace="Stash" name="String"/>
-      </return>
+      <param description="the filename to save the downloaded data to" type="string" variable="$fileNameIn"/>
+      <return description="the result from the curl operation" type="string"/>
       <throws description="if $this-&gt;url is invalid" type="object">
         <type full="UnexpectedValueException" namespace="" name="UnexpectedValueException"/>
       </throws>
     </docblock>
     <parameter name="fileNameIn" byreference="false" type="{unknown}"/>
   </method>
-  <method name="sendFileRequest" start="503" end="552" abstract="false" final="false" static="false" visibility="public">
+  <method name="sendFileRequest" start="519" end="568" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function builds and sends an API request to upload a file">The input parameters for this function must include a FILE</description>
-      <param description="the full path and name of the file to upload" type="object">
-        <type full="Stash\String" namespace="Stash" name="String"/>
-      </param>
-      <return description="the result from the curl operation" type="object">
-        <type full="Stash\String" namespace="Stash" name="String"/>
-      </return>
+      <param description="the full path and name of the file to upload" type="string" variable="$fileNameIn"/>
+      <return description="the result from the curl operation" type="string"/>
       <throws description="if setSignature fails" type="object">
         <type full="Exception" namespace="" name="Exception"/>
       </throws>
@@ -250,61 +216,76 @@
     </docblock>
     <parameter name="fileNameIn" byreference="false" type="{unknown}"/>
     <inline>
-      <comment value="Sign request" line="515"/>
-      <comment value="Define the CURL_IGNORE_SSL_ERRORS constant if you want to skip SSL verification (not recommended)" line="525"/>
-      <comment value="$fields['file'] = '@' . $fileNameIn;" line="531"/>
-      <comment value="Send request." line="538"/>
+      <comment value="Sign request" line="531"/>
+      <comment value="Define the CURL_IGNORE_SSL_ERRORS constant if you want to skip SSL verification (not recommended)" line="541"/>
+      <comment value="$fields['file'] = '@' . $fileNameIn;" line="547"/>
+      <comment value="Send request." line="554"/>
     </inline>
   </method>
-  <method name="validateSourceParams" start="565" end="587" abstract="false" final="false" static="false" visibility="private">
+  <method name="sendFileRequestChunked" start="578" end="583" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Function builds and sends an API request to upload a file in chunks"/>
+      <param description="the full path and name of the file to upload" type="string" variable="$fileNameIn"/>
+      <param description="placeholder, not used, for status updates callback" type="object" variable="$objIn"/>
+      <param description="placeholder, not used, for transfer cancellation" type="object" variable="$cancelIn"/>
+      <return description="the result from the curl operation" type="string"/>
+      <note value="This function is not implemented and only exists for compatibility with the .Net version of the API"/>
+    </docblock>
+    <parameter name="fileNameIn" byreference="false" type="{unknown}"/>
+    <parameter name="objIn" byreference="false" type="{unknown}"/>
+    <parameter name="cancelIn" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="validateSourceParams" start="596" end="618" abstract="false" final="false" static="false" visibility="private">
     <docblock>
       <description compact="Function validates the source identifier parameters">Source identifier can contain fileId, fileName, folderNames, folderId
 To be valid, a fileId OR (fileName AND (folderId OR folderNames)) must be given
 If folderOnly is T, then fileId and fileName need not be specified</description>
-      <param description="- T if the validation should be for the source folder only" type="boolean" variable="$folderOnly"/>
-      <param description="- T if the validation should allow for folderId and/or fileId to be zero and/or the folderId to be -1 (all folders)" type="boolean" variable="$allowZeroIds"/>
-      <return description="T if the parameters are valid" type="object">
-        <type full="Stash\Boolean" namespace="Stash" name="Boolean"/>
-      </return>
+      <param description="T if the validation should be for the source folder only" type="boolean" variable="$folderOnly"/>
+      <param description="T if the validation should allow for folderId and/or fileId to be zero and/or the folderId to be -1 (all folders)" type="boolean" variable="$allowZeroIds"/>
+      <return description="T if the parameters are valid" type="boolean"/>
     </docblock>
     <parameter name="folderOnly" byreference="false" type="{unknown}"/>
     <parameter name="allowZeroIds" byreference="false" type="boolean" default="false"/>
   </method>
-  <method name="validateDestParams" start="600" end="618" abstract="false" final="false" static="false" visibility="private">
+  <method name="validateDestParams" start="631" end="649" abstract="false" final="false" static="false" visibility="private">
     <docblock>
       <description compact="Function validates the destination identifier parameters">To be valid, destFileName AND (destFolderId OR destFolderNames) must be given
 If folderOnly is T, then destFileName need not be given
 If nameOnly is T, then destFolderId and destFolderNames need not be given (but folderOnly must be false)</description>
-      <param description="T if the validation should be for the destination folder only" type="object">
-        <type full="Stash\Boolean" namespace="Stash" name="Boolean"/>
-      </param>
-      <param description="T if the validate should be for the destination name only, if specified, folderOnly must be false" type="object">
-        <type full="Stash\Boolean" namespace="Stash" name="Boolean"/>
-      </param>
-      <return description="T if the parameters are valid" type="object">
-        <type full="Stash\Boolean" namespace="Stash" name="Boolean"/>
-      </return>
+      <param description="T if the validation should be for the destination folder only" type="boolean" variable="$folderOnly"/>
+      <param description="T if the validate should be for the destination name only, if specified, folderOnly must be false" type="boolean" variable="$nameOnly"/>
+      <return description="T if the parameters are valid" type="boolean"/>
     </docblock>
     <parameter name="folderOnly" byreference="false" type="{unknown}"/>
     <parameter name="nameOnly" byreference="false" type="{unknown}"/>
   </method>
-  <method name="validateOutputParams" start="626" end="630" abstract="false" final="false" static="false" visibility="private">
+  <method name="validateOutputParams" start="657" end="661" abstract="false" final="false" static="false" visibility="private">
     <docblock>
       <description compact="Function validates the output type parameters">Source identifier must contain outputType equal to one of the APIRequest::API_OUTPUT_TYPE_X constants</description>
-      <return description="T if the parameters are valid" type="object">
-        <type full="Stash\Boolean" namespace="Stash" name="Boolean"/>
-      </return>
+      <return description="T if the parameters are valid" type="boolean"/>
     </docblock>
   </method>
-  <method name="validateSearchParams" start="639" end="647" abstract="false" final="false" static="false" visibility="private">
+  <method name="validateSearchParams" start="671" end="679" abstract="false" final="false" static="false" visibility="private">
     <docblock>
       <description compact="Function validates the search parameters">Source identifier may contain search and searchPartialMatch values unless $requireTerms is T, then search MUST be specified</description>
-      <param description="- T if the check should error if terms are not specified" type="boolean" variable="$requireTerms"/>
-      <return description="T if the parameters are valid" type="boolean"/>
+      <param description="T if the check should error if terms are not specified" type="boolean" variable="$requireTerms"/>
+      <return description="T if the parameters are valid, otherwise exception is thrown" type="boolean"/>
+      <throws description="if the parameters do not validate" type="object">
+        <type full="InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
     </docblock>
     <parameter name="requireTerms" byreference="false" type="{unknown}"/>
   </method>
-  <method name="validateSmartFolderId" start="656" end="662" abstract="false" final="false" static="false" visibility="private">
+  <method name="validateVersionParams" start="686" end="692" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Function validates the version parameter"/>
+      <return description="T if the parameters are valid" type="boolean"/>
+      <throws description="if the parameters do not validate" type="object">
+        <type full="InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+    </docblock>
+  </method>
+  <method name="validateSmartFolderId" start="701" end="707" abstract="false" final="false" static="false" visibility="private">
     <docblock>
       <description compact="Function validates the smart folder ID parameter">Source identifier must contain sfId</description>
       <return description="T if the parameters are valid" type="boolean"/>
@@ -313,7 +294,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
       </throws>
     </docblock>
   </method>
-  <method name="validateOverwriteParams" start="669" end="683" abstract="false" final="false" static="false" visibility="public">
+  <method name="validateOverwriteParams" start="714" end="730" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function validates the overwriteFile parameter and corresponding overwriteFileId parameter, which is required if overwriteFile is specified"/>
       <return description="T if the parameters are valid" type="boolean"/>
@@ -322,106 +303,96 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
       </throws>
     </docblock>
   </method>
-  <method name="validateCredParams" start="696" end="723" abstract="false" final="false" static="false" visibility="private">
+  <method name="validateCredParams" start="743" end="770" abstract="false" final="false" static="false" visibility="private">
     <docblock>
       <description compact="Function validates the check cred parameters">Source identifier can contain fileKey, accountUsername, apiid, apipw</description>
-      <param description="T if the validation should check fileKey" type="object" variable="$checkFileKey">
-        <type full="Stash\Boolean" namespace="Stash" name="Boolean"/>
-      </param>
-      <param description="T if the validation should check accountUsername" type="object" variable="$checkUsername">
-        <type full="Stash\Boolean" namespace="Stash" name="Boolean"/>
-      </param>
-      <param description="T if the validation should check apiid" type="object" variable="$checkApiId">
-        <type full="Stash\Boolean" namespace="Stash" name="Boolean"/>
-      </param>
-      <param description="T if the validation should check apipw" type="object" variable="$checkApiPw">
-        <type full="Stash\Boolean" namespace="Stash" name="Boolean"/>
-      </param>
-      <return description="T if the parameters are valid" type="object">
-        <type full="Stash\Boolean" namespace="Stash" name="Boolean"/>
-      </return>
+      <param description="T if the validation should check fileKey" type="boolean" variable="$checkFileKey"/>
+      <param description="T if the validation should check accountUsername" type="boolean" variable="$checkUsername"/>
+      <param description="T if the validation should check apiid" type="boolean" variable="$checkApiId"/>
+      <param description="T if the validation should check apipw" type="boolean" variable="$checkApiPw"/>
+      <return description="T if the parameters are valid" type="boolean"/>
     </docblock>
     <parameter name="checkFileKey" byreference="false" type="{unknown}"/>
     <parameter name="checkUsername" byreference="false" type="{unknown}"/>
     <parameter name="checkApiId" byreference="false" type="{unknown}"/>
     <parameter name="checkApiPw" byreference="false" type="{unknown}"/>
   </method>
-  <method name="validateSetPermParams" start="731" end="737" abstract="false" final="false" static="false" visibility="private">
+  <method name="validateSetPermParams" start="778" end="784" abstract="false" final="false" static="false" visibility="private">
     <docblock>
       <description compact="Function validates the set permissions parameters">Source identifier must contain permJson</description>
       <return description="T if the parameters are valid" type="boolean"/>
     </docblock>
   </method>
-  <method name="validateCheckPermParams" start="745" end="761" abstract="false" final="false" static="false" visibility="private">
+  <method name="validateCheckPermParams" start="792" end="808" abstract="false" final="false" static="false" visibility="private">
     <docblock>
       <description compact="Function validates the check permissions parameters">Source identifier must contain objectUserId, objectId, objectIdType, requestedAccess</description>
       <return description="T if the parameters are valid" type="boolean"/>
     </docblock>
   </method>
-  <method name="ValidateWebEraseParams" start="768" end="775" abstract="false" final="false" static="false" visibility="private">
+  <method name="ValidateWebEraseParams" start="816" end="829" abstract="false" final="false" static="false" visibility="private">
     <docblock>
-      <description compact="Function validates the WebErase parameters Source identifier must contain api_id only"/>
+      <description compact="Function validates the WebErase parameters Source identifier must contain token_key and fileKey values"/>
+      <param description="T if the function should validate only the token_key, otherwise, will also look at fileKey" type="boolean" variable="$tokenOnly"/>
+      <return description="T if the parameters are valid" type="boolean"/>
+    </docblock>
+    <parameter name="tokenOnly" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="ValidateWebEraseStoreParams" start="836" end="851" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Function validates the WebEraseStore function parameters Source identifier must contain token_key, fileKey, and destFolderId values"/>
       <return description="T if the parameters are valid" type="boolean"/>
     </docblock>
   </method>
-  <method name="validateSourceTags" start="781" end="792" abstract="false" final="false" static="false" visibility="public">
+  <method name="validateSourceTags" start="857" end="868" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function validates the tag(s) parameters"/>
       <param description="if True, will only for presence of 'tag' parameters, otherwise checks for presence of 'tags' parameter" type="boolean" variable="$singleTag"/>
     </docblock>
     <parameter name="singleTag" byreference="false" type="{unknown}"/>
   </method>
-  <method name="validateParams" start="801" end="918" abstract="false" final="false" static="false" visibility="public">
+  <method name="validateParams" start="877" end="1002" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function validates the input parameters before they are passed to the API endpoint"/>
-      <param description="the operation to check the parameters for" type="object">
-        <type full="Stash\String" namespace="Stash" name="String"/>
-      </param>
-      <return description="T if the params are validated, F otherwise" type="object">
-        <type full="Stash\Boolean" namespace="Stash" name="Boolean"/>
-      </return>
+      <param description="the operation to check the parameters for" type="string" variable="$opIn"/>
+      <return description="T if the params are validated, F otherwise" type="boolean"/>
       <throws description="if the fileKey parameter is not included in the request" type="object">
         <type full="InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
       </throws>
     </docblock>
     <parameter name="opIn" byreference="false" type="{unknown}"/>
   </method>
-  <method name="mb_basename" start="926" end="933" abstract="false" final="false" static="false" visibility="public">
+  <method name="mb_basename" start="1010" end="1018" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Returns the file name for a given path (multi-byte string aware)"/>
-      <param variable="$path"/>
-      <return type="string"/>
+      <param description="the path and file name" type="string" variable="$path"/>
+      <return description="the file name for a given path" type="string"/>
       <see value="https://www.php.net/manual/en/function.basename.php#121405"/>
     </docblock>
     <parameter name="path" byreference="false" type="{unknown}"/>
   </method>
-  <method name="getFile" start="946" end="976" abstract="false" final="false" static="false" visibility="public">
+  <method name="getFile" start="1032" end="1062" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function reads a file from the STASH Vault"/>
-      <param description="an Associative Array containing the source identifier, values which describe the file to read in the Vault" type="array"/>
-      <param description="the file path and name to write the file to in the local filesystem" type="object">
-        <type full="Stash\String" namespace="Stash" name="String"/>
-      </param>
-      <param description="OUTPUT the return code returned by the server in the response" type="object">
-        <type full="Stash\Integer" namespace="Stash" name="Integer"/>
-      </param>
+      <param description="an Associative Array containing the source identifier, values which describe the file to read in the Vault" type="array" variable="$srcIdentifier"/>
+      <param description="the file path and name to write the file to in the local filesystem" type="string" variable="$fileName"/>
+      <param description="OUTPUT, the return code returned by the server in the response" type="integer" variable="$retCode"/>
       <return description="an associative array containing the response from the server" type="array"/>
     </docblock>
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="fileName" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <inline>
-      <comment value="Read" line="947"/>
+      <comment value="Read" line="1033"/>
     </inline>
   </method>
-  <method name="putFile" start="990" end="1046" abstract="false" final="false" static="false" visibility="public">
+  <method name="putFile" start="1076" end="1137" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function writes a file to a STASH Vault"/>
-      <param description="- the file name and path to upload to STASH vault" type="string" variable="$fileNameIn"/>
-      <param description="- an associative array containing the source identifier, the values of where to write the file in the Vault" type="array" variable="$srcIdentifier"/>
-      <param description="- the return code in the response" type="integer" variable="$retCode"/>
-      <param description="- the unique File ID (UserFile) for the newly created file" type="integer" variable="$fileId"/>
-      <param description="- the unique File ID (UserFileAlias) for the newly created file" type="integer" variable="$fileAliasId"/>
+      <param description="the file name and path to upload to STASH vault" type="string" variable="$fileNameIn"/>
+      <param description="an associative array containing the source identifier, the values of where to write the file in the Vault" type="array" variable="$srcIdentifier"/>
+      <param description="the return code in the response" type="integer" variable="$retCode"/>
+      <param description="the unique File ID (UserFile) for the newly created file" type="integer" variable="$fileId"/>
+      <param description="the unique File ID (UserFileAlias) for the newly created file" type="integer" variable="$fileAliasId"/>
       <return description="the result / output of the write operation" type="array"/>
       <throws description="if the input parameters are not valid" type="object">
         <type full="InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
@@ -436,16 +407,43 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="fileId" byreference="true" type="{unknown}"/>
     <parameter name="fileAliasId" byreference="true" type="{unknown}"/>
     <inline>
-      <comment value="Check if file exists on the server before uploading it and error if it does (unless overwrite specified)" line="1009"/>
+      <comment value="Check if file exists on the server before uploading it and error if it does (unless overwrite specified)" line="1100"/>
     </inline>
   </method>
-  <method name="copyFile" start="1059" end="1072" abstract="false" final="false" static="false" visibility="public">
+  <method name="putFileChunked" start="1154" end="1159" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Function writes a file to a STASH Vault in chunks"/>
+      <param description="the file name and path to upload to STASH vault" type="string" variable="$fileNameIn"/>
+      <param description="an associative array containing the source identifier, the values of where to write the file in the Vault" type="array" variable="$srcIdentifier"/>
+      <param description="placeholder, not used, for status updates callback" type="object" variable="$objIn"/>
+      <param description="placeholder, not used, for transfer cancellation" type="object" variable="$cancelIn"/>
+      <param description="OUTPUT, the return code in the response" type="integer" variable="$retCode"/>
+      <param description="OUTPUT, the unique File ID (UserFile) for the newly created file" type="integer" variable="$fileId"/>
+      <param description="OUTPUT, the unique File ID (UserFileAlias) for the newly created file" type="integer" variable="$fileAliasId"/>
+      <return description="the result / output of the write operation" type="array"/>
+      <throws description="if the input parameters are not valid" type="object">
+        <type full="InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+      <throws description="if sendFileRequest fails" type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+      <note value="This function is not implemented and only exists for compatibility with the .Net version of the API"/>
+    </docblock>
+    <parameter name="fileNameIn" byreference="false" type="{unknown}"/>
+    <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
+    <parameter name="objIn" byreference="false" type="{unknown}"/>
+    <parameter name="cancelIn" byreference="false" type="{unknown}"/>
+    <parameter name="retCode" byreference="true" type="{unknown}"/>
+    <parameter name="fileId" byreference="true" type="{unknown}"/>
+    <parameter name="fileAliasId" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="copyFile" start="1172" end="1185" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function copies a file in the Vault, creating an entirely new copy, including new files in the storage location(s)"/>
-      <param description="- an associative array containing the source identifier, the values of where to read the file in the Vault" type="array" variable="$srcIdentifier"/>
-      <param description="- an associative array containing the destination identifier, the values of where to write the file in the Vault" type="array" variable="$dstIdentifier"/>
-      <param description="- an integer containing the return code from the request" type="integer" variable="$retCode"/>
-      <param description="- an integer containing the unique identifier (UserFileAlias) for the file" type="integer" variable="$fileAliasId"/>
+      <param description="an associative array containing the source identifier, the values of where to read the file in the Vault" type="array" variable="$srcIdentifier"/>
+      <param description="an associative array containing the destination identifier, the values of where to write the file in the Vault" type="array" variable="$dstIdentifier"/>
+      <param description="an integer containing the return code from the request" type="integer" variable="$retCode"/>
+      <param description="an integer containing the unique identifier (UserFileAlias) for the file" type="integer" variable="$fileAliasId"/>
       <return description="the result / output of the operation" type="array"/>
       <throws description="if the input parameters are not valid" type="object">
         <type full="InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
@@ -459,12 +457,12 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="fileAliasId" byreference="true" type="{unknown}"/>
   </method>
-  <method name="renameFile" start="1084" end="1097" abstract="false" final="false" static="false" visibility="public">
+  <method name="renameFile" start="1197" end="1210" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function renames a file in the Vault"/>
-      <param description="- an associative array containing the source identifier, the values of where to read the file in the Vault" type="array" variable="$srcIdentifier"/>
-      <param description="- associative array containing the destination identifier, the values of the new filename" type="array" variable="$dstIdentifier"/>
-      <param description="- an integer containing the return code from the request" type="integer" variable="$retCode"/>
+      <param description="an associative array containing the source identifier, the values of where to read the file in the Vault" type="array" variable="$srcIdentifier"/>
+      <param description="associative array containing the destination identifier, the values of the new filename" type="array" variable="$dstIdentifier"/>
+      <param description="an integer containing the return code from the request" type="integer" variable="$retCode"/>
       <return description="the result / output of the operation" type="array"/>
       <throws description="if the input parameters are invalid" type="object">
         <type full="InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
@@ -477,12 +475,12 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="dstIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
   </method>
-  <method name="moveFile" start="1109" end="1123" abstract="false" final="false" static="false" visibility="public">
+  <method name="moveFile" start="1222" end="1236" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function moves a file in the Vault, it does not change the files in the storage location(s)"/>
-      <param description="- an associative array containing the source identifier, the values of where to read the file in the Vault" type="array" variable="$srcIdentifier"/>
-      <param description="- an associative array containing the destination identifier, the values of where to write the file in the Vault" type="array" variable="$dstIdentifier"/>
-      <param description="- an integer containing the return code from the request" type="integer" variable="$retCode"/>
+      <param description="an associative array containing the source identifier, the values of where to read the file in the Vault" type="array" variable="$srcIdentifier"/>
+      <param description="an associative array containing the destination identifier, the values of where to write the file in the Vault" type="array" variable="$dstIdentifier"/>
+      <param description="an integer containing the return code from the request" type="integer" variable="$retCode"/>
       <return description="the result / output of the operation" type="array"/>
       <throws description="if sendRequest() fails" type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -495,14 +493,14 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="dstIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <inline>
-      <comment value="Move" line="1110"/>
+      <comment value="Move" line="1223"/>
     </inline>
   </method>
-  <method name="deleteFile" start="1134" end="1148" abstract="false" final="false" static="false" visibility="public">
+  <method name="deleteFile" start="1247" end="1261" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function deletes a file in the Vault"/>
-      <param description="- an associative array containing the source identifier, the values of which file to delete in the Vault" type="array" variable="$srcIdentifier"/>
-      <param description="- an integer containing the return code from the request" type="integer" variable="$retCode"/>
+      <param description="an associative array containing the source identifier, the values of which file to delete in the Vault" type="array" variable="$srcIdentifier"/>
+      <param description="an integer containing the return code from the request" type="integer" variable="$retCode"/>
       <return description="the result / output of the operation" type="array"/>
       <throws description="if sendRequest() fails" type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -514,14 +512,14 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <inline>
-      <comment value="Delete" line="1135"/>
+      <comment value="Delete" line="1248"/>
     </inline>
   </method>
-  <method name="listAll" start="1158" end="1172" abstract="false" final="false" static="false" visibility="public">
+  <method name="listAll" start="1271" end="1285" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function lists all files in the user's vault, or in a specified folder in the vault"/>
-      <param description="- an associative array containing the source identifier, the values of which folder to list" type="array" variable="$srcIdentifier"/>
-      <param description="- an integer containing the return code from the request" type="integer" variable="$retCode"/>
+      <param description="an associative array containing the source identifier, the values of which folder to list" type="array" variable="$srcIdentifier"/>
+      <param description="an integer containing the return code from the request" type="integer" variable="$retCode"/>
       <return description="the result / output of the operation" type="array"/>
       <throws description="if sendRequest() fails" type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -533,12 +531,12 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
   </method>
-  <method name="listFiles" start="1184" end="1218" abstract="false" final="false" static="false" visibility="public">
+  <method name="listFiles" start="1297" end="1331" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function lists all the files in the Vault or in a specified folder in the vault"/>
-      <param description="- an associative array containing the source identifier, the values of which folder to list the files for in the Vault" type="array" variable="$srcIdentifier"/>
-      <param description="- contains the return code from the operation" type="integer" variable="$retCode"/>
-      <param description="- contains the names of the files returned by the request" type="array" variable="$fileNames"/>
+      <param description="an associative array containing the source identifier, the values of which folder to list the files for in the Vault" type="array" variable="$srcIdentifier"/>
+      <param description="contains the return code from the operation" type="integer" variable="$retCode"/>
+      <param description="contains the names of the files returned by the request" type="array" variable="$fileNames"/>
       <return description="the result / output of the operation" type="array"/>
       <throws description="if sendRequest() fails" type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -551,17 +549,15 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="fileNames" byreference="true" type="{unknown}"/>
     <inline>
-      <comment value="List Files" line="1185"/>
+      <comment value="List Files" line="1298"/>
     </inline>
   </method>
-  <method name="listSFFiles" start="1230" end="1246" abstract="false" final="false" static="false" visibility="public">
+  <method name="listSFFiles" start="1343" end="1359" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function lists all the files in a specified SmartFolder"/>
-      <param description="- an associative array containing the source identifier, the values of which folder to list the files for in the Vault" type="array" variable="$srcIdentifier"/>
-      <param description="- OUTPUT, contains the return code from the operation" type="integer" variable="$retCode"/>
-      <param description="- OUTPUT, contains the names of the files returned by the request" type="object" variable="$fileNames">
-        <type full="Stash\array/string" namespace="Stash" name="array/string"/>
-      </param>
+      <param description="an associative array containing the source identifier, the values of which folder to list the files for in the Vault" type="array" variable="$srcIdentifier"/>
+      <param description="OUTPUT, contains the return code from the operation" type="integer" variable="$retCode"/>
+      <param description="OUTPUT, array of strings, contains the names of the files returned by the request" type="array" variable="$fileNames"/>
       <return description="the result / output of the operation" type="array"/>
       <throws description="if sendRequest() fails" type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -574,15 +570,15 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="fileNames" byreference="true" type="{unknown}"/>
     <inline>
-      <comment value="List Files" line="1231"/>
+      <comment value="List Files" line="1344"/>
     </inline>
   </method>
-  <method name="listFolders" start="1257" end="1290" abstract="false" final="false" static="false" visibility="public">
+  <method name="listFolders" start="1370" end="1403" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function lists all the folders in the Vault or for the specified folder"/>
-      <param description="- an associative array containing the source identifier, the values of which folder to list in the Vault" type="array" variable="$srcIdentifier"/>
-      <param description="- contains the return code from the operation" type="integer" variable="$retCode"/>
-      <param description="- contains the names of the folders returned by the request" type="array" variable="$folderNames"/>
+      <param description="an associative array containing the source identifier, the values of which folder to list in the Vault" type="array" variable="$srcIdentifier"/>
+      <param description="contains the return code from the operation" type="integer" variable="$retCode"/>
+      <param description="contains the names of the folders returned by the request" type="array" variable="$folderNames"/>
       <return description="the result / output of the operation" type="array"/>
       <throws description="if sendRequest() fails" type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -595,13 +591,13 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="folderNames" byreference="true" type="{unknown}"/>
     <inline>
-      <comment value="List all folders" line="1258"/>
+      <comment value="List all folders" line="1371"/>
     </inline>
   </method>
-  <method name="getFolderId" start="1299" end="1312" abstract="false" final="false" static="false" visibility="public">
+  <method name="getFolderId" start="1412" end="1425" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function returns the Folder ID of the specified directory, or 0 if not found"/>
-      <param description="an associative array containing the source identifier, the values of which folder to find the ID for" type="array"/>
+      <param description="an associative array containing the source identifier, the values of which folder to find the ID for" type="array" variable="$srcIdentifier"/>
       <return description="the result / output of the operation" type="array"/>
       <throws description="if sendRequest() fails" type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -612,10 +608,10 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     </docblock>
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
     <inline>
-      <comment value="Get the Internal Folder ID for the specified directory" line="1300"/>
+      <comment value="Get the Internal Folder ID for the specified directory" line="1413"/>
     </inline>
   </method>
-  <method name="setFileLock" start="1323" end="1344" abstract="false" final="false" static="false" visibility="public">
+  <method name="setFileLock" start="1436" end="1457" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function sets a lock on a file in the vault"/>
       <param description="an associative array containing the source identifier, the values of which file to set the lock on" type="array" variable="$srcIdentifier"/>
@@ -633,7 +629,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="fileAliasId" byreference="true" type="{unknown}"/>
   </method>
-  <method name="getFileLock" start="1355" end="1376" abstract="false" final="false" static="false" visibility="public">
+  <method name="getFileLock" start="1468" end="1489" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function gets the lock status on a file in the vault"/>
       <param description="an associative array containing the source identifier, the values of which file to get the lock status of" type="array" variable="$srcIdentifier"/>
@@ -651,7 +647,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="fileLock" byreference="true" type="{unknown}"/>
   </method>
-  <method name="clearFileLock" start="1387" end="1408" abstract="false" final="false" static="false" visibility="public">
+  <method name="clearFileLock" start="1500" end="1521" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function clears the lock on a file in the vault"/>
       <param description="an associative array containing the source identifier, the values of which file to clear the lock on" type="array" variable="$srcIdentifier"/>
@@ -669,7 +665,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="fileAliasId" byreference="true" type="{unknown}"/>
   </method>
-  <method name="getTags" start="1419" end="1440" abstract="false" final="false" static="false" visibility="public">
+  <method name="getTags" start="1532" end="1553" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function gets the Tags for a file in the vault"/>
       <param description="an associative array containing the source identifier, the values of which file to get the Tags on" type="array" variable="$srcIdentifier"/>
@@ -687,7 +683,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="fileTags" byreference="true" type="{unknown}"/>
   </method>
-  <method name="setTags" start="1451" end="1472" abstract="false" final="false" static="false" visibility="public">
+  <method name="setTags" start="1564" end="1585" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function sets the Tags for a file in the vault"/>
       <param description="an associative array containing the source identifier, the values of which file to set the Tags on" type="array" variable="$srcIdentifier"/>
@@ -705,7 +701,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="fileAliasId" byreference="true" type="{unknown}"/>
   </method>
-  <method name="addTag" start="1483" end="1504" abstract="false" final="false" static="false" visibility="public">
+  <method name="addTag" start="1596" end="1617" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function adds the specified Tag to a file in the vault"/>
       <param description="an associative array containing the source identifier, the values of which file to set the Tag on" type="array" variable="$srcIdentifier"/>
@@ -723,7 +719,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="fileAliasId" byreference="true" type="{unknown}"/>
   </method>
-  <method name="deleteTag" start="1515" end="1536" abstract="false" final="false" static="false" visibility="public">
+  <method name="deleteTag" start="1628" end="1649" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function deletes the specified Tag from a file in the vault"/>
       <param description="an associative array containing the source identifier, the values of which file to delete the Tag from" type="array" variable="$srcIdentifier"/>
@@ -741,12 +737,12 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="fileAliasId" byreference="true" type="{unknown}"/>
   </method>
-  <method name="createDirectory" start="1547" end="1568" abstract="false" final="false" static="false" visibility="public">
+  <method name="createDirectory" start="1660" end="1681" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function recursively creates a folder in the vault"/>
-      <param description="an associative array containing the source identifier, the values of which folder to create" type="array"/>
-      <param description="- OUTPUT, the return code from the API call" type="integer" variable="$retCode"/>
-      <param description="- OUTPUT, the user_folder.id of the newly created directory" type="integer" variable="$dirId"/>
+      <param description="an associative array containing the source identifier, the values of which folder to create" type="array" variable="$srcIdentifier"/>
+      <param description="OUTPUT, the return code from the API call" type="integer" variable="$retCode"/>
+      <param description="OUTPUT, the user_folder.id of the newly created directory" type="integer" variable="$dirId"/>
       <return description="the result / output of the operation" type="array"/>
       <throws description="if sendRequest() fails" type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -759,12 +755,12 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="dirId" byreference="true" type="{unknown}"/>
   </method>
-  <method name="renameDirectory" start="1580" end="1595" abstract="false" final="false" static="false" visibility="public">
+  <method name="renameDirectory" start="1693" end="1708" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function renames a folder in the vault"/>
-      <param description="- an associative array containing the source identifier, the values of which folder to rename" type="array" variable="$srcIdentifier"/>
-      <param description="- an associative array containing the destination identifier, the values to rename the folder" type="array" variable="$dstIdentifier"/>
-      <param description="- OUTPUT - the return code from the API call" type="integer" variable="$retCode"/>
+      <param description="an associative array containing the source identifier, the values of which folder to rename" type="array" variable="$srcIdentifier"/>
+      <param description="an associative array containing the destination identifier, the values to rename the folder" type="array" variable="$dstIdentifier"/>
+      <param description="OUTPUT - the return code from the API call" type="integer" variable="$retCode"/>
       <return description="the result / output of the operation" type="array"/>
       <throws description="if sendRequest() fails" type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -777,12 +773,12 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="dstIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
   </method>
-  <method name="moveDirectory" start="1606" end="1621" abstract="false" final="false" static="false" visibility="public">
+  <method name="moveDirectory" start="1719" end="1734" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function moves a folder in the vault"/>
-      <param description="- an associative array containing the source identifier, the values of which folder to move" type="array" variable="$srcIdentifier"/>
-      <param description="- an associative array containing the destination identifier, the values to move the folder" type="array" variable="$dstIdentifier"/>
-      <param description="- the return code from the request" type="string" variable="$retCode"/>
+      <param description="an associative array containing the source identifier, the values of which folder to move" type="array" variable="$srcIdentifier"/>
+      <param description="an associative array containing the destination identifier, the values to move the folder" type="array" variable="$dstIdentifier"/>
+      <param description="the return code from the request" type="string" variable="$retCode"/>
       <return description="the result / output of the operation" type="array"/>
       <throws description="if sendRequest() fails" type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -795,13 +791,13 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="dstIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
   </method>
-  <method name="copyDirectory" start="1633" end="1654" abstract="false" final="false" static="false" visibility="public">
+  <method name="copyDirectory" start="1746" end="1767" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function copies a folder in the vault"/>
-      <param description="- an associative array containing the source identifier, the values of which folder to copy" type="array" variable="$srcIdentifier"/>
-      <param description="- an associative array containing the destination identifier, the values of the folder to copy" type="array" variable="$dstIdentifier"/>
-      <param description="- the return code from the request" type="string" variable="$retCode"/>
-      <param description="- the unique identifier for the newly created folder" type="integer" variable="$dirId"/>
+      <param description="an associative array containing the source identifier, the values of which folder to copy" type="array" variable="$srcIdentifier"/>
+      <param description="an associative array containing the destination identifier, the values of the folder to copy" type="array" variable="$dstIdentifier"/>
+      <param description="the return code from the request" type="string" variable="$retCode"/>
+      <param description="the unique identifier for the newly created folder" type="integer" variable="$dirId"/>
       <return description="the result / output of the operation" type="array"/>
       <throws description="if sendRequest() fails" type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -815,11 +811,11 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="dirId" byreference="true" type="{unknown}"/>
   </method>
-  <method name="deleteDirectory" start="1664" end="1677" abstract="false" final="false" static="false" visibility="public">
+  <method name="deleteDirectory" start="1777" end="1790" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function recursively deletes a folder in the vault"/>
-      <param description="- an associative array containing the source identifier, the values of which folder to delete" type="array" variable="$srcIdentifier"/>
-      <param description="- the return code from the request" type="integer" variable="$retCode"/>
+      <param description="an associative array containing the source identifier, the values of which folder to delete" type="array" variable="$srcIdentifier"/>
+      <param description="the return code from the request" type="integer" variable="$retCode"/>
       <return description="the result / output of the operation" type="array"/>
       <throws description="if sendRequest() fails" type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -831,10 +827,10 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
   </method>
-  <method name="getFileInfo" start="1687" end="1701" abstract="false" final="false" static="false" visibility="public">
+  <method name="getFileInfo" start="1800" end="1814" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function gets the file information for the specified file in the Vault"/>
-      <param description="- an associative array containing the source identifier, the values of which file to get the information for" type="array" variable="$srcIdentifier"/>
+      <param description="an associative array containing the source identifier, the values of which file to get the information for" type="array" variable="$srcIdentifier"/>
       <param description="OUTPUT, the return code from the function" type="integer" variable="$retCode"/>
       <return description="the result / output of the operation" type="array"/>
       <throws description="if sendRequest() fails" type="object">
@@ -847,10 +843,10 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
   </method>
-  <method name="getFolderInfo" start="1711" end="1725" abstract="false" final="false" static="false" visibility="public">
+  <method name="getFolderInfo" start="1824" end="1838" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function gets the folder information for the specified folder in the Vault"/>
-      <param description="- an associative array containing the source identifier, the values of which file to get the information for" type="array" variable="$srcIdentifier"/>
+      <param description="an associative array containing the source identifier, the values of which file to get the information for" type="array" variable="$srcIdentifier"/>
       <param description="OUTPUT, the return code from the function" type="integer" variable="$retCode"/>
       <return description="the result / output of the operation" type="array"/>
       <throws description="if sendRequest() fails" type="object">
@@ -863,10 +859,10 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
   </method>
-  <method name="getSyncInfo" start="1734" end="1750" abstract="false" final="false" static="false" visibility="public">
+  <method name="getSyncInfo" start="1847" end="1863" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function gets sync info (path, type, hash, timestamp) for all sub-elements in specified folder"/>
-      <param description="- an associative array containing the source identifier, the values of which file to get the information for" type="array" variable="$srcIdentifier"/>
+      <param description="an associative array containing the source identifier, the values of which file to get the information for" type="array" variable="$srcIdentifier"/>
       <return description="the result / output of the operation" type="array"/>
       <throws description="if sendRequest() fails" type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -877,10 +873,10 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     </docblock>
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
   </method>
-  <method name="getVaultInfo" start="1759" end="1772" abstract="false" final="false" static="false" visibility="public">
+  <method name="getVaultInfo" start="1872" end="1885" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function gets information on the user's vault"/>
-      <param description="- an integer containing the return code from the request" type="integer" variable="$retCode"/>
+      <param description="an integer containing the return code from the request" type="integer" variable="$retCode"/>
       <return description="the result / output of the operation" type="array"/>
       <throws description="if sendRequest() fails" type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -891,13 +887,15 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     </docblock>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <inline>
-      <comment value="No parameter validation necessary" line="1763"/>
+      <comment value="No parameter validation necessary" line="1876"/>
     </inline>
   </method>
-  <method name="checkCreds" start="1783" end="1795" abstract="false" final="false" static="false" visibility="public">
+  <method name="checkCreds" start="1898" end="1915" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function checks the provided credentials to make sure the API ID, API PW, username, and account password match a valid account This function generates a failed login if the credentials are not valid for the given user account."/>
-      <param description="- an associative array containing the source identifier, the values of which credentials to check" type="array" variable="$srcIdentifier"/>
+      <param description="an associative array containing the source identifier, the values of which credentials to check" type="array" variable="$srcIdentifier"/>
+      <param description="OUTPUT, the return code from the operation" type="integer" variable="$retCode"/>
+      <param description="OUTPUT, the error message, if one occurred" type="string" variable="$errMsg"/>
       <return description="the result / output of the operation" type="array"/>
       <throws description="if the input parameters are not valid" type="object">
         <type full="InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
@@ -907,8 +905,28 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
       </throws>
     </docblock>
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
+    <parameter name="retCode" byreference="true" type="{unknown}"/>
+    <parameter name="errMsg" byreference="true" type="{unknown}"/>
   </method>
-  <method name="checkVaultConnection" start="1804" end="1821" abstract="false" final="false" static="false" visibility="public">
+  <method name="checkCredsAD" start="1928" end="1945" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Function checks the provided credentials to make sure the API ID, API PW, username, and account password match a valid account This function generates a failed login if the credentials are not valid for the given user account."/>
+      <param description="an associative array containing the source identifier, the values of which credentials to check" type="array" variable="$srcIdentifier"/>
+      <param description="OUTPUT, the return code from the operation" type="integer" variable="$retCode"/>
+      <param description="OUTPUT, the error message, if one occurred" type="string" variable="$errMsg"/>
+      <return description="the result / output of the operation" type="array"/>
+      <throws description="if the input parameters are not valid" type="object">
+        <type full="InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+      <throws description="if sendRequest() fails" type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
+    <parameter name="retCode" byreference="true" type="{unknown}"/>
+    <parameter name="errMsg" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="checkVaultConnection" start="1954" end="1972" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function checks the connection to the Vault with the current API settings"/>
       <param description="the return code from the operation" type="integer" variable="$retCode"/>
@@ -921,10 +939,10 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="errMsg" byreference="true" type="{unknown}"/>
   </method>
-  <method name="isValidUser" start="1831" end="1843" abstract="false" final="false" static="false" visibility="public">
+  <method name="isValidUser" start="1982" end="1994" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function checks the provided username and reports if its taken or not"/>
-      <param description="- an associative array containing the source identifier, the values of which user account to check" type="array" variable="$srcIdentifier"/>
+      <param description="an associative array containing the source identifier, the values of which user account to check" type="array" variable="$srcIdentifier"/>
       <return description="the result / output of the operation" type="array"/>
       <throws description="if the input parameters are not valid" type="object">
         <type full="InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
@@ -935,12 +953,12 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     </docblock>
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
   </method>
-  <method name="setPermissions" start="1855" end="1870" abstract="false" final="false" static="false" visibility="public">
+  <method name="setPermissions" start="2006" end="2021" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function sets the access permissions for a specified folder"/>
-      <param description="- an associative array containing the permission values to set" type="array" variable="$srcIdentifier"/>
-      <param description="- OUTPUT, contains the return code from the operation" type="integer" variable="$retCode"/>
-      <param description="- OUTPUT, contains the integer IDs of the folder permission entries that were created or updated" type="array" variable="$permIds"/>
+      <param description="an associative array containing the permission values to set" type="array" variable="$srcIdentifier"/>
+      <param description="OUTPUT, contains the return code from the operation" type="integer" variable="$retCode"/>
+      <param description="OUTPUT, contains the integer IDs of the folder permission entries that were created or updated" type="array" variable="$permIds"/>
       <return description="the result / output of the operation" type="array"/>
       <throws description="if the input parameters are not valid" type="object">
         <type full="InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
@@ -953,7 +971,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="permIds" byreference="true" type="{unknown}"/>
   </method>
-  <method name="checkPermissions" start="1882" end="1897" abstract="false" final="false" static="false" visibility="public">
+  <method name="checkPermissions" start="2033" end="2048" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function checks the access permissions for a specified folder and requested access level"/>
       <param description="an associative array containing the objectId, objectIdType, and requestedAccess parameters" type="array" variable="$srcIdentifier"/>
@@ -971,7 +989,89 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="result" byreference="true" type="{unknown}"/>
   </method>
-  <method name="webEraseStore" start="1910" end="1933" abstract="false" final="false" static="false" visibility="public">
+  <method name="listVersions" start="2058" end="2072" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Function gets the list of versions for a specified file"/>
+      <param description="an associative array containing the source and version parameters" type="array" variable="$srcIdentifier"/>
+      <param description="OUTPUT, contains the return code from the operation" type="integer" variable="$retCode"/>
+      <return description="the result / output of the operation" type="array"/>
+      <throws description="if the input parameters are not valid" type="object">
+        <type full="InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+      <throws description="if sendRequest() fails" type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
+    <parameter name="retCode" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="readVersion" start="2082" end="2116" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Function reads (gets) a specific version of a file"/>
+      <param description="an associative array containing the source and version parameters" type="array" variable="$srcIdentifier"/>
+      <param description="the file path and name to write the file to in the local filesystem" type="string" variable="$fileName"/>
+      <param description="OUTPUT, the return code returned by the server in the response" type="integer" variable="$retCode"/>
+      <return description="an associative array containing the response from the server" type="array"/>
+      <throws description="for missing output file directory" type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
+    <parameter name="fileName" byreference="false" type="{unknown}"/>
+    <parameter name="retCode" byreference="true" type="{unknown}"/>
+    <inline>
+      <comment value="Read" line="2083"/>
+    </inline>
+  </method>
+  <method name="restoreVersion" start="2126" end="2140" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Function restores a specific version of te a file to the current / master file"/>
+      <param description="an associative array containing the source and version parameters" type="array" variable="$srcIdentifier"/>
+      <param description="OUTPUT, contains the return code from the operation" type="integer" variable="$retCode"/>
+      <return description="the result / output of the operation" type="array"/>
+      <throws description="if the input parameters are not valid" type="object">
+        <type full="InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+      <throws description="if sendRequest() fails" type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
+    <parameter name="retCode" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="deleteVersion" start="2150" end="2164" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Function deletes the specified version for a specified file"/>
+      <param description="an associative array containing the source and version parameters" type="array" variable="$srcIdentifier"/>
+      <param description="OUTPUT, contains the return code from the operation" type="integer" variable="$retCode"/>
+      <return description="the result / output of the operation" type="array"/>
+      <throws description="if the input parameters are not valid" type="object">
+        <type full="InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+      <throws description="if sendRequest() fails" type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
+    <parameter name="retCode" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="testLoopback" start="2174" end="2188" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Function gets the parameters sent by the client and returned/echo'd by the server"/>
+      <param description="an associative array containing the parameters to send/echo" type="array" variable="$srcIdentifier"/>
+      <param description="OUTPUT, contains the return code from the operation" type="integer" variable="$retCode"/>
+      <return description="the result / output of the operation" type="array"/>
+      <throws description="if the input parameters are not valid" type="object">
+        <type full="InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
+      <throws description="if sendRequest() fails" type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
+    </docblock>
+    <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
+    <parameter name="retCode" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="webEraseStore" start="2202" end="2227" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function stores a file using WebErase credentials and WebErase Rules"/>
       <param description="the full path and name of the local file to store" type="string" variable="$fileNameIn"/>
@@ -979,6 +1079,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
       <param description="OUTPUT, contains the return code from the operation" type="integer" variable="$retCode"/>
       <param description="OUTPUT, contains the UserFile object ID of the newly stored file" type="integer" variable="$fileId"/>
       <param description="OUTPUT, contains the UserFileAlias object ID of the newly stored file" type="integer" variable="$fileAliasId"/>
+      <param description="OUTPUT, the one time code to access this file, if one time codes are enabled" type="integer" variable="$otc"/>
       <return description="the result / output of the operation" type="array"/>
       <throws description="for errors in SendFileRequest()" type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -990,11 +1091,12 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="fileId" byreference="true" type="{unknown}"/>
     <parameter name="fileAliasId" byreference="true" type="{unknown}"/>
+    <parameter name="otc" byreference="true" type="{unknown}"/>
     <inline>
-      <comment value="Requires token_key, destFolderId, fileKey, projectId, overwriteFile, overwriteFileId" line="1911"/>
+      <comment value="Requires token_key, destFolderId, fileKey, projectId, overwriteFile, overwriteFileId" line="2204"/>
     </inline>
   </method>
-  <method name="webEraseDownload" start="1945" end="1963" abstract="false" final="false" static="false" visibility="private">
+  <method name="webEraseDownload" start="2239" end="2265" abstract="false" final="false" static="false" visibility="private">
     <docblock>
       <description compact="Function retrieves a file using WebErase credentials and WebErase Rules"/>
       <param description="an associative array containing the parameters needed for the API call" type="array" variable="$srcIdentifier"/>
@@ -1012,11 +1114,11 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="polling" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <inline>
-      <comment value="Requires token, api_id, fileKey" line="1946"/>
-      <comment value="Params are validated the same for retrieve and polling" line="1953"/>
+      <comment value="Requires token, api_id, fileKey" line="2241"/>
+      <comment value="Params are validated the same for retrieve and polling" line="2248"/>
     </inline>
   </method>
-  <method name="webEraseRetrieve" start="1974" end="1977" abstract="false" final="false" static="false" visibility="public">
+  <method name="webEraseRetrieve" start="2276" end="2280" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function retrieves a file using WebErase credentials and WebErase Rules"/>
       <param description="an associative array containing the parameters needed for the API call" type="array" variable="$srcIdentifier"/>
@@ -1032,7 +1134,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="localFileName" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
   </method>
-  <method name="webErasePolling" start="1989" end="1992" abstract="false" final="false" static="false" visibility="public">
+  <method name="webErasePolling" start="2292" end="2296" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function retrieves a file that's waiting for transaction validation approval"/>
       <param description="an associative array containing the parameters needed for the API call" type="array" variable="$srcIdentifier"/>
@@ -1049,7 +1151,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="localFileName" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
   </method>
-  <method name="webEraseUpdate" start="2005" end="2028" abstract="false" final="false" static="false" visibility="public">
+  <method name="webEraseUpdate" start="2309" end="2333" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function updates an existing file using WebErase credentials and WebErase Rules"/>
       <param description="the full path and name of the local file to update" type="string" variable="$fileNameIn"/>
@@ -1069,10 +1171,10 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="fileId" byreference="true" type="{unknown}"/>
     <parameter name="fileAliasId" byreference="true" type="{unknown}"/>
     <inline>
-      <comment value="Requires token_key, destFolderId, fileKey, projectId, overwriteFile, overwriteFileId" line="2006"/>
+      <comment value="Requires token_key, destFolderId, fileKey, projectId, overwriteFile, overwriteFileId" line="2311"/>
     </inline>
   </method>
-  <method name="webEraseToken" start="2039" end="2053" abstract="false" final="false" static="false" visibility="public">
+  <method name="webEraseToken" start="2344" end="2359" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function gets a new token to use with WebErase credentials"/>
       <param description="an associative array containing the parameters needed for the API call" type="array" variable="$srcIdentifier"/>
@@ -1088,10 +1190,10 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="token" byreference="true" type="{unknown}"/>
     <inline>
-      <comment value="Parameters needed: api_id" line="2040"/>
+      <comment value="Parameters needed: api_id" line="2346"/>
     </inline>
   </method>
-  <method name="webEraseOneTimeCode" start="2064" end="2077" abstract="false" final="false" static="false" visibility="public">
+  <method name="webEraseOneTimeCode" start="2370" end="2384" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function gets the one time code for a given token"/>
       <param description="an associative array containing the parameters needed for the API call" type="array" variable="$srcIdentifier"/>
@@ -1107,7 +1209,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="retCode" byreference="true" type="{unknown}"/>
     <parameter name="otc" byreference="true" type="{unknown}"/>
   </method>
-  <method name="webEraseDelete" start="2087" end="2099" abstract="false" final="false" static="false" visibility="public">
+  <method name="webEraseDelete" start="2394" end="2407" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function deletes a file using WebErase credentials and WebErase Rules"/>
       <param description="an associative array containing the parameters needed for the API call" type="array" variable="$srcIdentifier"/>
@@ -1121,7 +1223,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
   </method>
-  <method name="webEraseProjectList" start="2109" end="2121" abstract="false" final="false" static="false" visibility="public">
+  <method name="webEraseProjectList" start="2417" end="2430" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function gets a new token to use with WebErase credentials"/>
       <param description="an associative array containing the parameters needed for the API call" type="array" variable="$srcIdentifier"/>
@@ -1135,7 +1237,7 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
     <parameter name="srcIdentifier" byreference="false" type="{unknown}"/>
     <parameter name="retCode" byreference="true" type="{unknown}"/>
   </method>
-  <method name="convertStringToIdentArray" start="2129" end="2150" abstract="false" final="false" static="false" visibility="public">
+  <method name="convertStringToIdentArray" start="2438" end="2460" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Function converts a string of key=value pairs, separated by commas and returns a source or destination identifier compatible array This function handles | characters to separate directory names"/>
       <param description="the string to parse" type="string" variable="$stringIn"/>

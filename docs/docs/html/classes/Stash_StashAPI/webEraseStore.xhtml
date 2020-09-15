@@ -65,7 +65,7 @@
             <a href="#throws">Throws</a>
           </li>
           <li>
-            <a href="../../source/src/Stash/STASHAPI.php.xhtml#line1910">Source</a>
+            <a href="../../source/src/Stash/STASHAPI.php.xhtml#line2202">Source</a>
           </li>
         </ul>
       </nav>
@@ -85,7 +85,9 @@
             integer&amp;
         $fileId,
             integer&amp;
-        $fileAliasId )
+        $fileAliasId,
+            integer&amp;
+        $otc )
             </code>
         </div>
         <h2 id="parameterlist">Parameters</h2>
@@ -110,6 +112,10 @@
                 —
                 integer</dt>
           <dd>OUTPUT, contains the UserFileAlias object ID of the newly stored file</dd>
+          <dt><code>$otc</code>
+                —
+                integer</dt>
+          <dd>OUTPUT, the one time code to access this file, if one time codes are enabled</dd>
         </dl>
         <h2 id="return">Returns</h2>
         <dl class="styled">

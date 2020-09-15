@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Stash\StashAPI::putFileChunked</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../../classes.xhtml">Classes</a>
+        </li>
+        <li>
+          <a href="../../traits.xhtml">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.xhtml#Stash">Stash</a>
+          </li>
+          <li class="separator">
+            <a title="Stash\StashAPI" href="../../classes/Stash_StashAPI.xhtml">StashAPI</a>
+          </li>
+          <li class="separator">putFileChunked</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#parameter">Parameter</a>
+          </li>
+          <li>
+            <a href="#return">Return</a>
+          </li>
+          <li>
+            <a href="#throws">Throws</a>
+          </li>
+          <li>
+            <a href="../../source/src/Stash/STASHAPI.php.xhtml#line1154">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1><small>Stash\StashAPI::</small>putFileChunked</h1>
+        <h4>Function writes a file to a STASH Vault in chunks</h4>
+        <p/>
+        <ul/>
+        <h2 id="signature">Signature</h2>
+        <div class="styled synopsis">
+          <code>public function putFileChunked(string
+        $fileNameIn,
+            array
+        $srcIdentifier,
+            <a title="" href="../../classes/.xhtml"/>
+        $objIn,
+            <a title="" href="../../classes/.xhtml"/>
+        $cancelIn,
+            integer&amp;
+        $retCode,
+            integer&amp;
+        $fileId,
+            integer&amp;
+        $fileAliasId )
+            </code>
+        </div>
+        <h2 id="parameterlist">Parameters</h2>
+        <dl class="styled">
+          <dt><code>$fileNameIn</code>
+                —
+                string</dt>
+          <dd>the file name and path to upload to STASH vault</dd>
+          <dt><code>$srcIdentifier</code>
+                —
+                array</dt>
+          <dd>an associative array containing the source identifier, the values of where to write the file in the Vault</dd>
+          <dt><code>$objIn</code>
+                —
+                object</dt>
+          <dd>placeholder, not used, for status updates callback</dd>
+          <dt><code>$cancelIn</code>
+                —
+                object</dt>
+          <dd>placeholder, not used, for transfer cancellation</dd>
+          <dt><code>$retCode</code>
+                —
+                integer</dt>
+          <dd>OUTPUT, the return code in the response</dd>
+          <dt><code>$fileId</code>
+                —
+                integer</dt>
+          <dd>OUTPUT, the unique File ID (UserFile) for the newly created file</dd>
+          <dt><code>$fileAliasId</code>
+                —
+                integer</dt>
+          <dd>OUTPUT, the unique File ID (UserFileAlias) for the newly created file</dd>
+        </dl>
+        <h2 id="return">Returns</h2>
+        <dl class="styled">
+          <dt>array</dt>
+          <dd>the result / output of the write operation</dd>
+        </dl>
+        <h2 id="throws">Errors/Exceptions</h2>
+        <dl class="styled">
+          <dt>
+            <code>
+              <a title="InvalidArgumentException" href="../../classes/InvalidArgumentException.xhtml">InvalidArgumentException</a>
+            </code>
+          </dt>
+          <dd>if the input parameters are not valid</dd>
+          <dt>
+            <code>
+              <a title="Exception" href="../../classes/Exception.xhtml">Exception</a>
+            </code>
+          </dt>
+          <dd>if sendFileRequest fails</dd>
+        </dl>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

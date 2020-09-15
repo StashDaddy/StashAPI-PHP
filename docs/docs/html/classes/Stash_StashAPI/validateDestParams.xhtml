@@ -62,7 +62,7 @@
             <a href="#return">Return</a>
           </li>
           <li>
-            <a href="../../source/src/Stash/STASHAPI.php.xhtml#line600">Source</a>
+            <a href="../../source/src/Stash/STASHAPI.php.xhtml#line631">Source</a>
           </li>
         </ul>
       </nav>
@@ -75,9 +75,9 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
         <ul/>
         <h2 id="signature">Signature</h2>
         <div class="styled synopsis">
-          <code>private function validateDestParams(
+          <code>private function validateDestParams(boolean
         $folderOnly,
-            
+            boolean
         $nameOnly )
             </code>
         </div>
@@ -85,18 +85,17 @@ If nameOnly is T, then destFolderId and destFolderNames need not be given (but f
         <dl class="styled">
           <dt><code>$folderOnly</code>
                 —
-                </dt>
-          <dd/>
+                boolean</dt>
+          <dd>T if the validation should be for the destination folder only</dd>
           <dt><code>$nameOnly</code>
                 —
-                </dt>
-          <dd/>
+                boolean</dt>
+          <dd>T if the validate should be for the destination name only, if specified, folderOnly must be false</dd>
         </dl>
         <h2 id="return">Returns</h2>
         <dl class="styled">
-          <dt>Boolean</dt>
-          <dd>T if the parameters are valid<br/>
-        </dd>
+          <dt>boolean</dt>
+          <dd>T if the parameters are valid</dd>
         </dl>
       </section>
     </div>

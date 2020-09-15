@@ -2,18 +2,20 @@
 
 namespace Stash;
 
+use Codeception\Test\Unit;
 use Stash\StashAPI as STASHAPI;
 use \Exception as Exception;
+use UnitTester;
 
 /**
  * Class STASHAPIScenarioTest
  * Runs scenario based testing for each of the API functions
  * @package Stash
  */
-class STASHAPIScenarioTest extends \Codeception\Test\Unit
+class STASHAPIScenarioTest extends Unit
 {
     /**
-     * @var \UnitTester
+     * @var UnitTester
      */
     protected $tester;
     const testFile = "tmpfile_stashapitest.txt";        // Test file to use for uploads/write - will be deleted upon completion of all tests (see tearDownAfterClass())
@@ -26,6 +28,7 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
     private $accountPw;
     private $folderPath;
     private $folderId;
+    private $doCleanup;
 
     /**
      * This function is run before each individual test
@@ -41,34 +44,53 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
         $this->accountPw = $configArray['filekey'];
         $this->folderId = $configArray['folderid'];
         $this->folderPath = $configArray['folderpath'];
+        $this->doCleanup = false;
         unset($configArray);
     }
 
     /**
      * This function is run after each individual test
+     * @throws Exception for errors in deleteFiles()
      */
     protected function _after()
     {
-
+        if ($this->doCleanup) {
+            // If the doCleanup flag is set,
+            // Get list of files in the Vault - look for the testFile and delete it if found
+            $api = new STASHAPI($this->apiid, $this->apipw, $this->baseUrl, false);
+            $src = array('folderId' => 0, 'outputType' => 4);
+            $res = $api->listFiles($src, $retCode, $fileNames);
+            foreach ($res['files'] as $file) {
+                $fileId = 0;
+                if ($file['name'] == self::testFile) {
+                    $fileId = $file['id'];
+                }
+                if ($fileId > 0) {
+                    $retCode = 0;
+                    $src = array('fileId' => $fileId);
+                    $api->deleteFile($src, $retCode);
+                }
+            }
+        }
     }
 
     /**
      * The function is run once, before all tests in the suite are run
-     * @throws \Exception
+     * @throws Exception
      */
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
-        define("CURL_IGNORE_SSL_ERRORS", true);
-
+        //define("CURL_IGNORE_SSL_ERRORS", true);
         if (!file_exists(codecept_data_dir("creds.ini"))) {
             throw new Exception("Required file: creds.ini missing from _data directory");
         }
+
     }
 
     /**
      * This function is run once, after all tests in the suite are run
      */
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         if (file_exists(codecept_data_dir(self::testFile)))
             @unlink(codecept_data_dir(self::testFile));
@@ -82,7 +104,7 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
     /**
      * Tests if the StashAPI constructor produces a valid constructor with given inputs
      * @return STASHAPI
-     * @throws \Exception
+     * @throws Exception
      */
     public function testAPIValidConstructor()
     {
@@ -100,73 +122,77 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
     /**
      * @depends testAPIValidConstructor
      * @param STASHAPI $apiIn
-     * @throws \Exception
+     * @throws Exception
      */
     public function testAPIListAll($apiIn)
     {
+        $this->testPutFile(false, array("My Home", "Documents"));
+
         $apiIn->url = $this->baseUrl . "api2/file/listall";
         $apiIn->params = array("folderId" => $this->folderId, "outputType" => 1);
         $response = $apiIn->sendRequest();
-        $this->assertContains("testapifunctional.txt", $response);
+        $this->assertStringContainsString(self::testFile, $response);
     }
 
     /**
      * Tests getting folder list containing root folder
      * @depends testAPIValidConstructor
      * @param STASHAPI $apiIn
-     * @throws \Exception
+     * @throws Exception
      */
     public function testAPIListFoldersRoot($apiIn)
     {
         $apiIn->url = $this->baseUrl . "api2/file/listfolders";
         $apiIn->params = array("folderId" => 0, "outputType" => 1);
         $response = $apiIn->sendRequest();
-        $this->assertContains("My Home", $response);
+        $this->assertStringContainsString("My Home", $response);
     }
 
     /**
      * Tests getting folder list containing all folders
      * @depends testAPIValidConstructor
      * @param STASHAPI $apiIn
-     * @throws \Exception
+     * @throws Exception
      */
     public function testAPIListFoldersAll($apiIn)
     {
         $apiIn->url = $this->baseUrl . "api2/file/listfolders";
         $apiIn->params = array("folderId" => -1, "outputType" => 1);
         $response = $apiIn->sendRequest();
-        $this->assertContains("My Home", $response);
-        $this->assertContains("Documents", $response);
+        $this->assertStringContainsString("My Home", $response);
+        $this->assertStringContainsString("Documents", $response);
     }
 
     /**
      * Tests getting folder list containing sub folders
      * @depends testAPIValidConstructor
      * @param STASHAPI $apiIn
-     * @throws \Exception
+     * @throws Exception
      */
     public function testAPIListFoldersSub($apiIn)
     {
         $apiIn->url = $this->baseUrl . "api2/file/listfolders";
         $apiIn->params = array("folderId" => $this->folderId, "outputType" => 1);
         $response = $apiIn->sendRequest();
-        $this->assertContains("Pictures", $response);
-        $this->assertContains("Documents", $response);
+        $this->assertStringContainsString("WebErase", $response);
+        $this->assertStringContainsString("Documents", $response);
     }
 
     /**
      * Tests the read() / getFile() function
-     * @throws \Exception
+     * @throws Exception
      */
     public function testAPIFileReadByFileFolderNames()
     {
+        $this->testPutFile(false, array("My Home", "Documents"));
+
         $api = new STASHAPI(false);
         $api->url = $this->baseUrl . "api2/file/read";
         $api->setId($this->apiid);
         $api->setPw($this->apipw);
-        $api->params = array('fileKey' => $api->encryptString($this->accountPw, true), 'fileName' => 'testapifunctional.txt', 'folderNames' => ["My Home"]);
+        $api->params = array('fileKey' => $api->encryptString($this->accountPw, true), 'fileName' => self::testFile, 'folderNames' => ["My Home", "Documents"]);
         $response = $api->sendRequest();
-        $this->assertContains("Test Small Single Slice File", $response);
+        $this->assertStringContainsString("This is a test file for putFile", $response);
     }
 
     /**
@@ -186,9 +212,9 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
         $api->params = array('fileKey' => $api->encryptString($this->accountPw, true), 'destFileName' => $destFileName, 'destFolderId' => $this->folderId);
         $response = $api->sendFileRequest(codecept_data_dir(self::testFile));
 
-        $this->assertContains("OK", $response);
-        $this->assertContains("200", $response);
-        $this->assertContains("fileAliasId", $response);
+        $this->assertStringContainsString("OK", $response);
+        $this->assertStringContainsString("200", $response);
+        $this->assertStringContainsString("fileAliasId", $response);
 
         $tVal = json_decode($response, true);
         $fileAliasId = $tVal['fileAliasId'];
@@ -196,13 +222,13 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
         $api->url = $this->baseUrl . "api2/file/listfiles";
         $api->params = array("folderNames" => ["My Home"], "outputType" => 1);
         $response = $api->sendRequest();
-        $this->assertContains($destFileName, $response);
+        $this->assertStringContainsString($destFileName, $response);
 
         $api->url = $this->baseUrl . "api2/file/delete";
         $api->params = array('fileId' => $fileAliasId);
         $response = $api->sendRequest();
-        $this->assertContains("OK", $response);
-        $this->assertContains("200", $response);
+        $this->assertStringContainsString("OK", $response);
+        $this->assertStringContainsString("200", $response);
     }
 
     /**
@@ -223,9 +249,9 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
         $api->params = array('fileKey' => $api->encryptString($this->accountPw, true), 'destFileName' => $destFileName, 'destFolderNames' => ["My Home", "Documents"]);
         $response = $api->sendFileRequest(codecept_data_dir(self::testFile));
 
-        $this->assertContains("OK", $response);
-        $this->assertContains("200", $response);
-        $this->assertContains("fileAliasId", $response);
+        $this->assertStringContainsString("OK", $response);
+        $this->assertStringContainsString("200", $response);
+        $this->assertStringContainsString("fileAliasId", $response);
 
         $tVal = json_decode($response, true);
         $fileAliasId = $tVal['fileAliasId'];
@@ -233,29 +259,35 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
         $api->url = $this->baseUrl . "api2/file/listfiles";
         $api->params = array("folderNames" => ["My Home", "Documents"], "outputType" => 1);
         $response = $api->sendRequest();
-        $this->assertContains($destFileName, $response);
+        $this->assertStringContainsString($destFileName, $response);
 
         $api->url = $this->baseUrl . "api2/file/delete";
         $api->params = array('fileId' => $fileAliasId);
         $response = $api->sendRequest();
-        $this->assertContains("OK", $response);
-        $this->assertContains("200", $response);
+        $this->assertStringContainsString("OK", $response);
+        $this->assertStringContainsString("200", $response);
     }
 
     /**
      * Tests the putFile() function
-     * @param boolean $cleanup if T, will run the cleanup commands to remove the file uploaded to the vault and source file in the file system
+     * @param boolean $cleanup if T will run the cleanup commands to remove the file uploaded to the vault and source file in the file system
+     * @param array $destFolderNames array of strings indicating which folder to upload the file to
      * @throws Exception
+     * @note if $cleanup is F, this function will set the doCleanup flag to indicate a file exists and must be deleted
      */
-    public function testPutFile($cleanup = true) {
+    public function testPutFile($cleanup, $destFolderNames) {
         $api = new STASHAPI($this->apiid, $this->apipw, $this->baseUrl, false);
 
+        if (! is_array($destFolderNames) || count($destFolderNames) < 1) {
+            $destFolderNames = array("My Home", "Documents");
+        }
+
         // Delete the test file if it exists
-        $src = array('folderNames'=>array("My Home", "Documents"), 'fileName' => basename(self::testFile));
+        $src = array('folderNames'=>$destFolderNames, 'fileName' => basename(self::testFile));
         $api->deleteFile($src, $retCode);
 
         file_put_contents(codecept_data_dir(self::testFile), "This is a test file for putFile()");
-        $src = array('fileKey'=>$api->encryptString($this->accountPw,true), 'destFolderNames'=>array("My Home", "Documents"));
+        $src = array('fileKey'=>$api->encryptString($this->accountPw,true), 'destFolderNames'=>$destFolderNames);
         $retCode = 0; $fileId = 0; $fileAliasId = 0;
         $res = $api->putFile(codecept_data_dir(self::testFile), $src, $retCode, $fileId, $fileAliasId);
 
@@ -279,6 +311,8 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
 
             $this->assertEquals("200", $retCode);
             $this->assertTrue(is_array($res));
+        } else {
+            $this->doCleanup = true;
         }
     }
 
@@ -287,7 +321,7 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
      * @throws Exception
      */
     public function testGetFile() {
-        $this->testPutFile(false);
+        $this->testPutFile(false, array("My Home", "Documents"));
 
         $api = new STASHAPI($this->apiid, $this->apipw, $this->baseUrl, false);
         $src = array('fileKey'=>$api->encryptString($this->accountPw,true), 'folderNames'=>array("My Home", "Documents"), 'fileName' => self::testFile);
@@ -315,7 +349,7 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
      * @throws Exception
      */
     public function testCopyFile() {
-        $this->testPutFile(false);
+        $this->testPutFile(false, array("My Home", "Documents"));
 
         $api = new STASHAPI($this->apiid, $this->apipw, $this->baseUrl, false);
 
@@ -325,7 +359,7 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
         $api->deleteFile($src, $retCode);
 
         // Copy File
-        $src = array('folderNames'=>array("My Home", "Documents"), 'fileName' => self::testFile);
+        $src = array('folderNames'=>array("My Home", "Documents"), 'fileName' => self::testFile, 'fileKey'=>$api->encryptString($this->accountPw,true));
         $dst = array('destFolderNames'=>array("My Home", "Documents"), 'destFileName' => "copyOfFile.txt");
         $retCode = 0; $fileAliasId = 0;
         $res = $api->copyFile($src, $dst,$retCode, $fileAliasId);
@@ -370,7 +404,7 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
      * @throws Exception
      */
     public function testRenameFile() {
-        $this->testPutFile(false);
+        $this->testPutFile(false, array("My Home", "Documents"));
 
         $api = new STASHAPI($this->apiid, $this->apipw, $this->baseUrl, false);
 
@@ -416,7 +450,7 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
      * @throws Exception
      */
     public function testMoveFile() {
-        $this->testPutFile(false);
+        $this->testPutFile(false, array("My Home", "Documents"));
 
         $api = new STASHAPI($this->apiid, $this->apipw, $this->baseUrl, false);
 
@@ -463,15 +497,15 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
      */
     public function testDeleteFile() {
         // Overlap with testPutFile()
-        $this->testPutFile(true);
+        $this->testPutFile(true, array("My Home", "Documents"));
     }
 
     /**
-     * Tests the listAll() function
+     * Tests the listAll() function with Folder Names
      * @throws Exception
      */
     public function testListAll() {
-        $this->testPutFile(false);
+        $this->testPutFile(false, array("My Home", "Documents"));
 
         $api = new STASHAPI($this->apiid, $this->apipw, $this->baseUrl, false);
         $src = array('folderNames'=>array("My Home", "Documents"),'outputType' => 0);
@@ -550,11 +584,74 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
     }
 
     /**
+     * Tests the listAll() function with Folder Id = 0 (root folder)
+     * @throws Exception
+     */
+    public function testListAllRootFolder() {
+        $this->testPutFile(false, array("My Home"));
+
+        $api = new STASHAPI($this->apiid, $this->apipw, $this->baseUrl, false);
+        $src = array('folderId'=>0,'outputType' => 0);
+        $res = $api->listAll($src, $retCode);
+
+        $this->assertEquals("200", $retCode);
+        $this->assertTrue(is_array($res));
+        $this->assertTrue(isset($res['code']));
+        $this->assertTrue(isset($res['message']));
+        $this->assertTrue(isset($res['all']));
+        $this->assertTrue(is_array($res['all']));
+        $this->assertTrue(count($res['all']) > 0);
+        $this->assertTrue(isset($res['all'][0]['text']));
+        $this->assertTrue(isset($res['all'][0]['data']));
+
+        // Check directory properties
+        $this->assertTrue(isset($res['all'][0]['text']));
+        $this->assertTrue($res['all'][0]['text'] != "");
+        $this->assertTrue(count($res['all'][0]['data']) > 0);
+        $this->assertTrue(isset($res['all'][0]['data']['bytes']));
+        $this->assertEquals("0", $res['all'][0]['data']['bytes']);
+        $this->assertTrue(isset($res['all'][0]['data']['size']));
+        $this->assertEquals("0B", $res['all'][0]['data']['size']);
+        $this->assertTrue(isset($res['all'][0]['data']['type']));
+        $this->assertEquals("folder", $res['all'][0]['data']['type']);
+        $this->assertTrue(isset($res['all'][0]['data']['date']));
+        $this->assertTrue(isset($res['all'][0]['data']['by']));
+        $this->assertTrue(isset($res['all'][0]['data']['parent_id']));
+        $this->assertTrue($res['all'][0]['data']['parent_id'] >= 0);
+        $this->assertTrue(isset($res['all'][0]['data']['numChildren']));
+        $this->assertTrue($res['all'][0]['data']['numChildren'] >= 0);
+        $this->assertTrue(isset($res['all'][0]['id']));
+        $this->assertTrue($res['all'][0]['id'] > 0);
+        $this->assertTrue(isset($res['all'][0]['state']));
+        $this->assertTrue(is_array($res['all'][0]['state']));
+        $this->assertTrue(count($res['all'][0]['state']) > 0);
+        $this->assertTrue(isset($res['all'][0]['state']['opened']));
+        $this->assertTrue(isset($res['all'][0]['icon']));
+        $this->assertTrue($res['all'][0]['icon'] != "");
+
+        unlink(codecept_data_dir(self::testFile));
+        $retCode = 0;
+
+        $fileId = 0;
+        foreach ($res['all'] as $item)
+        {
+            if ($item['text'] == self::testFile) { $fileId = $item['id']; }
+        }
+
+        if ($fileId != 0) {
+            $src = array('fileId' => $fileId);
+            $res = $api->deleteFile($src, $retCode);
+            $this->assertEquals("200", $retCode);
+            $this->assertTrue(is_array($res));
+        }
+    }
+
+    /**
      * Tests the listFiles() function
      * @throws Exception
      */
     public function testListFiles() {
-        $this->testPutFile(false);
+        $this->testPutFile(false, array("My Home", "Documents"));
 
         $api = new STASHAPI($this->apiid, $this->apipw, $this->baseUrl, false);
         $src = array('folderNames'=>array("My Home", "Documents"),'outputType' => 0);
@@ -721,10 +818,6 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
             $this->assertTrue(isset($model['id']));
             $this->assertTrue($model['id'] > 0);
             $this->assertTrue(isset($model['parent']));
-            $this->assertTrue(isset($model['state']));
-            $this->assertTrue(is_array($model['state']));
-            $this->assertTrue(count($model['state']) > 0);
-            $this->assertTrue(isset($model['state']['opened']));
             $this->assertTrue(isset($model['icon']));
             $this->assertTrue($model['icon'] != "");
             if ($model['text'] == self::testFile) {
@@ -757,6 +850,7 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
      */
     public function testListSFFiles() {
         // ToDo need to create a smart folder first, then run listSFFiles
+        //$this->markTestIncomplete("Not Implemented");
     }
 
     /**
@@ -787,8 +881,8 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
         $this->assertEquals("200", $retCode);
         $this->assertTrue(is_array($folderNames));
         $this->assertTrue(count($folderNames) > 0);
+        $this->assertTrue(in_array("WebErase", $folderNames));
         $this->assertTrue(in_array("Documents", $folderNames));
-        $this->assertTrue(in_array("Pictures", $folderNames));
         $this->assertTrue(is_array($res));
         $this->assertTrue(isset($res['code']));
         $this->assertTrue(isset($res['message']));
@@ -796,7 +890,7 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
         $this->assertTrue(is_array($res['folders']));
         $this->assertTrue(count($res['folders']) > 0);
         $this->assertTrue(in_array("Documents", $res['folders']));
-        $this->assertTrue(in_array("Pictures", $res['folders']));
+        $this->assertTrue(in_array("WebErase", $res['folders']));
 
         // Check outputType = 2 (folder and path as arrays)
         $src = array('folderNames'=>array("My Home"),'outputType' => 2);
@@ -835,7 +929,7 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
         $this->assertTrue(is_array($folderNames));
         $this->assertTrue(count($folderNames) > 0);
         $this->assertTrue(in_array("My Home/Documents", $res['folders']));
-        $this->assertTrue(in_array("My Home/Pictures", $res['folders']));
+        $this->assertTrue(in_array("My Home/WebErase", $res['folders']));
         $this->assertTrue(is_array($res));
         $this->assertTrue(isset($res['code']));
         $this->assertTrue(isset($res['message']));
@@ -843,7 +937,7 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
         $this->assertTrue(is_array($res['folders']));
         $this->assertTrue(count($res['folders']) > 0);
         $this->assertTrue(in_array("My Home/Documents", $res['folders']));
-        $this->assertTrue(in_array("My Home/Pictures", $res['folders']));
+        $this->assertTrue(in_array("My Home/WebErase", $res['folders']));
 
         // Check outputType = 4 (model JSON)
         $src = array('folderNames'=>array("My Home"),'outputType' => 4);
@@ -852,7 +946,7 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
         $this->assertTrue(is_array($folderNames));
         $this->assertTrue(count($folderNames) > 0);
         $this->assertTrue(in_array("Documents", $folderNames));
-        $this->assertTrue(in_array("Pictures", $folderNames));
+        $this->assertTrue(in_array("WebErase", $folderNames));
         $this->assertTrue(is_array($res));
         $this->assertTrue(isset($res['code']));
         $this->assertTrue(isset($res['message']));
@@ -887,7 +981,7 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
         $this->assertTrue(is_array($folderNames));
         $this->assertTrue(count($folderNames) > 0);
         $this->assertTrue(in_array("Documents", $folderNames));
-        $this->assertTrue(in_array("Pictures", $folderNames));
+        $this->assertTrue(in_array("WebErase", $folderNames));
         $this->assertTrue(is_array($res));
         $this->assertTrue(isset($res['code']));
         $this->assertTrue(isset($res['message']));
@@ -913,7 +1007,7 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
         $this->assertTrue(is_array($folderNames));
         $this->assertTrue(count($folderNames) > 0);
         $this->assertTrue(in_array("Documents", $folderNames));
-        $this->assertTrue(in_array("Pictures", $folderNames));
+        $this->assertTrue(in_array("WebErase", $folderNames));
         $this->assertTrue(is_array($res));
         $this->assertTrue(isset($res['code']));
         $this->assertTrue(isset($res['message']));
@@ -956,7 +1050,7 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
     /**
      * Tests the createDirectory() function
      * @param bool $cleanup T to remove the directory that was created, F to leave it
-     * @throws \Exception
+     * @throws Exception
      */
     public function testCreateDirectory($cleanup = true) {
         $api = new STASHAPI($this->apiid, $this->apipw, $this->baseUrl, false);
@@ -1124,7 +1218,7 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
         $this->assertTrue(isset($res['message']));
         $this->assertEquals("OK", $res['message']);
         $this->assertTrue(isset($res['folderId']));
-        $this->assertEquals("66844", $res['folderId']);
+        $this->assertEquals("100", $res['folderId']);
     }
 
     /**
@@ -1132,7 +1226,7 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
      * @throws Exception
      */
     public function testGetFileInfo() {
-        $this->testPutFile(false);
+        $this->testPutFile(false, array("My Home", "Documents"));
 
         $api = new STASHAPI($this->apiid, $this->apipw, $this->baseUrl, false);
         $src = array('folderNames'=>array("My Home", "Documents"), 'fileName' => self::testFile);
@@ -1259,16 +1353,20 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
         $api = new STASHAPI($this->apiid, $this->apipw, $this->baseUrl, false);
 
         $src = array("fileKey" => $api->encryptString($this->accountPw . "BADPW", true), "accountUsername" => $this->accountUsername);
-        $res = $api->checkCreds($src);
+        $retCode = 0; $errMsg = "";
+        $res = $api->checkCreds($src, $retCode, $errMsg);
         $this->assertTrue(isset($res['code']));
         $this->assertEquals("401", $res['code']);
+        $this->assertEquals(401, $retCode);
         $this->assertTrue(isset($res['message']));
         $this->assertEquals("Unauthorized", $res['message']);
 
         $src = array("fileKey" => $api->encryptString($this->accountPw, true), "accountUsername" => $this->accountUsername);
-        $res = $api->checkCreds($src);
+        $retCode = 0; $errMsg = "";
+        $res = $api->checkCreds($src, $retCode, $errMsg);
         $this->assertTrue(isset($res['code']));
         $this->assertEquals("200", $res['code']);
+        $this->assertEquals(200, $retCode);
         $this->assertTrue(isset($res['message']));
         $this->assertEquals("OK", $res['message']);
     }
@@ -1365,6 +1463,24 @@ class STASHAPIScenarioTest extends \Codeception\Test\Unit
         $this->assertTrue(isset($res['result']));
         $this->assertTrue($res['result']);
 
+    }
+
+    /**
+     * Tests the WebErase token() function
+     * @throws Exception
+     */
+    public function testWebEraseToken() {
+        $api = new STASHAPI($this->apiid, $this->apipw, $this->baseUrl, false);
+
+        // Get Folder ID for Documents Directory
+        //$src = array('folderNames' => array("My Home", "Documents"));
+        $src = array();
+        $retCode = 0; $result = false;
+        $res = $api->webEraseToken($src, $retCode, $result);
+        $this->assertEquals("200", $res['code']);
+        $this->assertTrue(isset($res['token']));
+        $this->assertTrue(strlen($res['token']) > 1);
+        //$token = $res['token'];
     }
 }
 

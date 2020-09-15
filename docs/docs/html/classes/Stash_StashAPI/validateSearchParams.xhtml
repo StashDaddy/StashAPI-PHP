@@ -62,7 +62,10 @@
             <a href="#return">Return</a>
           </li>
           <li>
-            <a href="../../source/src/Stash/STASHAPI.php.xhtml#line639">Source</a>
+            <a href="#throws">Throws</a>
+          </li>
+          <li>
+            <a href="../../source/src/Stash/STASHAPI.php.xhtml#line671">Source</a>
           </li>
         </ul>
       </nav>
@@ -82,12 +85,21 @@
           <dt><code>$requireTerms</code>
                 —
                 boolean</dt>
-          <dd>- T if the check should error if terms are not specified</dd>
+          <dd>T if the check should error if terms are not specified</dd>
         </dl>
         <h2 id="return">Returns</h2>
         <dl class="styled">
           <dt>boolean</dt>
-          <dd>T if the parameters are valid</dd>
+          <dd>T if the parameters are valid, otherwise exception is thrown</dd>
+        </dl>
+        <h2 id="throws">Errors/Exceptions</h2>
+        <dl class="styled">
+          <dt>
+            <code>
+              <a title="InvalidArgumentException" href="../../classes/InvalidArgumentException.xhtml">InvalidArgumentException</a>
+            </code>
+          </dt>
+          <dd>if the parameters do not validate</dd>
         </dl>
       </section>
     </div>
