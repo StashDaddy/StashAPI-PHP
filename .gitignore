@@ -14,3 +14,5 @@ autoload.php
 .idea
 /docs/docs/html/source/src/Stash/apitest.php.xhtml
 /docs/xml/tokens/src/Stash/apitest.php.xml
+/tests/_data/tmpfile_stashapitest.out.txt
+/tests/_data/tmpfile_stashapitest.txt

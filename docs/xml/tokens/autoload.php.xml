@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <source xmlns="http://xml.phpdox.net/token">
-  <file xmlns="http://xml.phpdox.net/src" path="L:/Projects/Stash/StashApi-php-Dev/docs/.." file="autoload.php" realpath="L:/Projects/Stash/StashApi-php-Dev/autoload.php" size="992" time="2018-06-26T22:44:19+00:00" unixtime="1530053059" sha1="6d821eca724b9dd5b4504adecbf3e6ecd96622c9" relative="autoload.php"/>
+  <file xmlns="http://xml.phpdox.net/src" path="L:/Projects/Stash/StashApi-php-Release/docs/.." file="autoload.php" realpath="L:/Projects/Stash/StashApi-php-Release/autoload.php" size="992" time="2018-06-26T22:44:19+00:00" unixtime="1530053059" sha1="6d821eca724b9dd5b4504adecbf3e6ecd96622c9" relative="autoload.php"/>
   <line no="1">
     <token name="T_OPEN_TAG">&lt;?php</token>
   </line>

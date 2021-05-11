@@ -2,12 +2,12 @@
 <phploc>
   <directories>1</directories>
   <files>3</files>
-  <loc>2602</loc>
+  <loc>2605</loc>
   <lloc>814</lloc>
   <llocClasses>774</llocClasses>
   <llocFunctions>10</llocFunctions>
   <llocGlobal>30</llocGlobal>
-  <cloc>854</cloc>
+  <cloc>856</cloc>
   <ccn>391</ccn>
   <ccnMethods>387</ccnMethods>
   <interfaces>0</interfaces>
@@ -53,5 +53,5 @@
   <methodLlocAvg>8.9058823529412</methodLlocAvg>
   <methodLlocMax>69</methodLlocMax>
   <namespaces>1</namespaces>
-  <ncloc>1748</ncloc>
+  <ncloc>1749</ncloc>
 </phploc>
