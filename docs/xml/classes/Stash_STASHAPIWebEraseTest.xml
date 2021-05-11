@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class xmlns="http://xml.phpdox.net/src" full="Stash\STASHAPIWebEraseTest" namespace="Stash" name="STASHAPIWebEraseTest" abstract="false" final="false" start="16" end="374">
-  <file path="L:/Projects/Stash/StashApi-php-Dev/docs/../tests/unit" file="STASHAPIWebEraseTest.php" realpath="L:/Projects/Stash/StashApi-php-Dev/tests/unit/STASHAPIWebEraseTest.php" size="15323" time="2020-09-14T18:51:52+00:00" unixtime="1600109512" sha1="59e05c83bf6c332d7748dee26003491c49125968" relative="tests/unit/STASHAPIWebEraseTest.php"/>
+  <file path="L:/Projects/Stash/StashApi-php-Release/docs/../tests/unit" file="STASHAPIWebEraseTest.php" realpath="L:/Projects/Stash/StashApi-php-Release/tests/unit/STASHAPIWebEraseTest.php" size="15323" time="2020-09-14T18:51:52+00:00" unixtime="1600109512" sha1="59e05c83bf6c332d7748dee26003491c49125968" relative="tests/unit/STASHAPIWebEraseTest.php"/>
   <docblock>
     <description compact="Class STASHAPIWebEraseTest Runs scenario based testing for the WebErase functionality"/>
     <package value="Stash"/>

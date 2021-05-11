@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class xmlns="http://xml.phpdox.net/src" full="Stash\STASHAPITest" namespace="Stash" name="STASHAPITest" abstract="false" final="false" start="18" end="430">
-  <file path="L:/Projects/Stash/StashApi-php-Dev/docs/../tests/unit" file="STASHAPITest.php" realpath="L:/Projects/Stash/StashApi-php-Dev/tests/unit/STASHAPITest.php" size="15686" time="2020-09-14T18:34:56+00:00" unixtime="1600108496" sha1="8fb13c6ac4e549fa6004bb0254208b4b5a5997e0" relative="tests/unit/STASHAPITest.php"/>
+  <file path="L:/Projects/Stash/StashApi-php-Release/docs/../tests/unit" file="STASHAPITest.php" realpath="L:/Projects/Stash/StashApi-php-Release/tests/unit/STASHAPITest.php" size="15686" time="2020-09-14T18:34:56+00:00" unixtime="1600108496" sha1="8fb13c6ac4e549fa6004bb0254208b4b5a5997e0" relative="tests/unit/STASHAPITest.php"/>
   <docblock>
     <description compact="Class STASHAPITest Runs unit testing on the functions in the API"/>
     <package value="Stash"/>
