@@ -1909,10 +1909,10 @@ class StashAPI
         $this->params = array();
 
         $results = json_decode($res, true);
-        $retCode = (empty($tVal['code']) ? -1 : $tVal['code']);
+        $retCode = (empty($results['code']) ? -1 : $results['code']);
         $errMsg = "";
         if ($retCode != 200) {
-            $errMsg = (empty($tVal['error']['extendedErrorMessage']) ? "Unknown Error" : $tVal['error']['extendedErrorMessage']);
+            $errMsg = (empty($results['error']['extendedErrorMessage']) ? "Unknown Error" : $results['error']['extendedErrorMessage']);
         }
         return $results;
     }
@@ -1939,10 +1939,10 @@ class StashAPI
         $this->params = array();
 
         $results = json_decode($res, true);
-        $retCode = (empty($tVal['code']) ? -1 : $tVal['code']);
+        $retCode = (empty($results['code']) ? -1 : $results['code']);
         $errMsg = "";
         if ($retCode != 200) {
-            $errMsg = (empty($tVal['error']['extendedErrorMessage']) ? "Unknown Error" : $tVal['error']['extendedErrorMessage']);
+            $errMsg = (empty($results['error']['extendedErrorMessage']) ? "Unknown Error" : $results['error']['extendedErrorMessage']);
         }
         return $results;
     }
