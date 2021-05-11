@@ -284,7 +284,10 @@ class StashAPI
         if (!isset($dataIn['api_timestamp']) || $dataIn['api_timestamp'] == "") throw new Exception("Input array missing api_timestamp for signature calculation");
         if (isset($dataIn['api_signature'])) unset($dataIn['api_signature']);
 
-        $strToSign = http_build_query($dataIn);
+        // Must UNESCAPE the slashes so the json_encode here matches encoded json on other platforms
+        $strToSign = json_encode($dataIn, JSON_UNESCAPED_SLASHES);
+        //$strToSign = http_build_query($dataIn);
+
         $sig = hash_hmac('sha256', $strToSign, $this->getPw());
 
         $this->api_signature = $sig;
