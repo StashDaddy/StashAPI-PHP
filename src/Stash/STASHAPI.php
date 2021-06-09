@@ -639,15 +639,17 @@ class StashAPI
 
         if ($folderOnly) {
             if (isset($this->params['destFolderId']) && $this->params['destFolderId'] > 0) return true;
+            if (isset($this->params['destFilePath']) && $this->params['destFilePath'] != "") return true;
             if (isset($this->params['destFolderNames']) && is_array($this->params['destFolderNames']) && count($this->params['destFolderNames']) > 0) return true;
             throw new InvalidArgumentException("Destination Parameters Invalid - destFolderId or destFolderNames MUST be specified");
         } else {
+            if (isset($this->params['destFilePath']) && $this->params['destFilePath'] != "") return true;
             if (isset($this->params['destFileName']) && $this->params['destFileName'] != "") {
                 if ($nameOnly === true) return true;
                 if (isset($this->params['destFolderId']) && $this->params['destFolderId'] > 0) return true;
                 if (isset($this->params['destFolderNames']) && is_array($this->params['destFolderNames']) && count($this->params['destFolderNames']) > 0) return true;
             }
-            throw new InvalidArgumentException("Destination Parameters Invalid - destFileName plus either destFolderId or destFolderNames MUST be specified");
+            throw new InvalidArgumentException("Destination Parameters Invalid - destFileName plus either destFolderId or destFolderNames, or destFilepath, MUST be specified");
         }
     }
 
@@ -890,7 +892,6 @@ class StashAPI
                 if ($this->params['fileKey'] == "") throw new InvalidArgumentException("Invalid fileKey Parameter");
             } elseif ($opIn === 'write') {
                 $this->validateDestParams(true, false);
-                $this->validateOverwriteParams();
                 if ($this->params['fileKey'] == "") throw new InvalidArgumentException("Invalid fileKey Parameter");
             } elseif ($opIn === 'copy') {
                 $this->validateSourceParams(false, false);
@@ -1081,8 +1082,8 @@ class StashAPI
         $retCode = 0;
         $fileId = 0;
         $fileAliasId = 0;
-        $overwriteFile = false;
-        $owFileId = 0;
+//        $overwriteFile = false;
+//        $owFileId = 0;
 
         if (!file_exists($fileNameIn)) {
             throw new InvalidArgumentException("Incorrect Input File Path or File Does Not Exist");
@@ -1093,34 +1094,34 @@ class StashAPI
             throw new InvalidArgumentException("Invalid Input Parameters");
         }
 
-        if (!empty($srcIdentifier['overwriteFile'])) {
-            $overwriteFile = $srcIdentifier['overwriteFile'] == "1";
-            if ($overwriteFile) {
-                $owFileId = (int)$srcIdentifier['overwriteFileId'];
-            }
-        }
+//        if (!empty($srcIdentifier['overwriteFile'])) {
+//            $overwriteFile = $srcIdentifier['overwriteFile'] == "1";
+//            if ($overwriteFile) {
+//                $owFileId = (int)$srcIdentifier['overwriteFileId'];
+//            }
+//        }
 
-        // Check if file exists on the server before uploading it and error if it does (unless overwrite specified)
-        $fileInfoIdentifier = array("fileName" => self::mb_basename($fileNameIn));
-        if ($overwriteFile) {
-            $fileInfoIdentifier['fileId'] = $owFileId;
-        } else {
-            //$fileInfoIdentifier['fileName'] = $fileNameIn;
-            if (!empty($srcIdentifier['destFolderNames'])) {
-                $fileInfoIdentifier['folderNames'] = $srcIdentifier['destFolderNames'];
-            }
-            if (!empty($srcIdentifier['destFolderId'])) {
-                $fileInfoIdentifier['folderId'] = $srcIdentifier['folderId'];
-            }
-        }
-
-        $this->getFileInfo($fileInfoIdentifier, $retCode);
-        if ($overwriteFile && $retCode == 404) {        // File doesn't exist, but overwrite requested
-            throw new Exception("Unable to Upload File, Overwrite Requested, but File Does Not Exist");
-        } else if (!$overwriteFile && $retCode != 404) {       // File exists, but overwrite not requested
-            // File exists, or some error occurred
-            throw new Exception("Unable to Upload File, File with Same Name Already Exists in Destination Folder and Overwrite Not Requested");
-        }
+//        // Check if file exists on the server before uploading it and error if it does (unless overwrite specified)
+//        $fileInfoIdentifier = array("fileName" => self::mb_basename($fileNameIn));
+//        if ($overwriteFile) {
+//            $fileInfoIdentifier['fileId'] = $owFileId;
+//        } else {
+//            //$fileInfoIdentifier['fileName'] = $fileNameIn;
+//            if (!empty($srcIdentifier['destFolderNames'])) {
+//                $fileInfoIdentifier['folderNames'] = $srcIdentifier['destFolderNames'];
+//            }
+//            if (!empty($srcIdentifier['destFolderId'])) {
+//                $fileInfoIdentifier['folderId'] = $srcIdentifier['folderId'];
+//            }
+//        }
+//
+//        $this->getFileInfo($fileInfoIdentifier, $retCode);
+//        if ($overwriteFile && $retCode == 404) {        // File doesn't exist, but overwrite requested
+//            throw new Exception("Unable to Upload File, Overwrite Requested, but File Does Not Exist");
+//        } else if (!$overwriteFile && $retCode != 404) {       // File exists, but overwrite not requested
+//            // File exists, or some error occurred
+//            throw new Exception("Unable to Upload File, File with Same Name Already Exists in Destination Folder and Overwrite Not Requested");
+//        }
 
         $this->params = $srcIdentifier;
         $this->url = $this->BASE_API_URL . "api2/file/write";

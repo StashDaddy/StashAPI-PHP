@@ -370,7 +370,7 @@ class STASHAPITest extends Unit
         $api->params['outputType'] = 1;
 
         $response = $api->sendRequest();
-        $this->assertStringContainsString("testapifunctional.txt", $response);
+        $this->assertStringContainsString("tmpfile_stashapitest-donotdelete.txt", $response);
     }
 
     /**
