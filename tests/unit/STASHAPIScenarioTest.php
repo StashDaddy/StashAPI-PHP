@@ -1247,6 +1247,24 @@ class STASHAPIScenarioTest extends Unit
         $this->assertTrue(isset($res['fileInfo']['fileTimestamp']));
         $this->assertTrue($res['fileInfo']['fileTimestamp'] > 0);
 
+        // Test filePath
+        $src = array('filePath'=>"My Home/Documents/" . self::testFile);
+        $retCode = 0;
+        $res = $api->getFileInfo($src, $retCode);
+        $this->assertEquals("200", $retCode);
+        $this->assertTrue(isset($res['code']));
+        $this->assertEquals("200", $res['code']);
+        $this->assertTrue(isset($res['message']));
+        $this->assertEquals("OK", $res['message']);
+        $this->assertTrue(isset($res['fileInfo']));
+        $this->assertTrue(isset($res['fileInfo']['fileAliasId']));
+        $this->assertTrue(isset($res['fileInfo']['fileName']));
+        $this->assertEquals(self::testFile, $res['fileInfo']['fileName']);
+        $this->assertTrue(isset($res['fileInfo']['fileSize']));
+        $this->assertTrue($res['fileInfo']['fileSize'] > 0);
+        $this->assertTrue(isset($res['fileInfo']['fileTimestamp']));
+        $this->assertTrue($res['fileInfo']['fileTimestamp'] > 0);
+
         // Cleanup
         unlink(codecept_data_dir(self::testFile));
 
