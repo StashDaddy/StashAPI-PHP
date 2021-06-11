@@ -187,6 +187,12 @@ class STASHAPITest extends Unit
         $this->assertTrue($api->validateParams('none'));
         $this->assertFalse($api->validateParams('listfilesdir'));       // listfilesdir is not a support op
 
+        // Test filePath
+        $api->params = array('filePath' => 'My Home/Documents');
+        $this->assertTrue($api->validateParams('getfileinfo'));
+        $api->params = array('filePath' => '');
+        $this->assertFalse($api->validateParams('getfileinfo'));
+
         // Test invalid filekey input
         $api->params = array('fileId' => '1', 'fileName' => 'testfile.txt', 'folderId' => '1', 'folderNames' => array("Dir1", "Dir2"),
             'destFileName' => 'destname.txt', 'destFolderId' => 1, 'destFolderNames' => array("DestDir1", "DestDir2"));

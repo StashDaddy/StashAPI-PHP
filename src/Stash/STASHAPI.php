@@ -605,7 +605,8 @@ class StashAPI
                 if (isset($this->params['folderId']) && (int)$this->params['folderId'] > 0) return true;
             }
             if (isset($this->params['folderNames']) && is_array($this->params['folderNames']) && count($this->params['folderNames']) > 0) return true;
-            throw new InvalidArgumentException("Source Parameters Invalid - folderId or folderNames MUST be specified");
+            if (isset($this->params['filePath']) && ! empty($this->params['filePath'])) return true;
+            throw new InvalidArgumentException("Source Parameters Invalid - folderId or folderNames or filePath MUST be specified");
         } else {
             if ($allowZeroIds) {
                 if (isset($this->params['fileId']) && (int)$this->params['fileId'] >= 0) return true;
@@ -616,7 +617,8 @@ class StashAPI
                 if (isset($this->params['folderId']) && (int)$this->params['folderId'] > 0) return true;
                 if (isset($this->params['folderNames']) && is_array($this->params['folderNames']) && count($this->params['folderNames']) > 0) return true;
             }
-            throw new InvalidArgumentException("Source Parameters Invalid - fileId or fileName plus either folderId or folderNames MUST be specified");
+            if (isset($this->params['filePath']) && ! empty($this->params['filePath'])) return true;
+            throw new InvalidArgumentException("Source Parameters Invalid - fileId or fileName plus either folderId or folderNames, or filePath MUST be specified");
         }
     }
 
@@ -705,7 +707,7 @@ class StashAPI
      */
     private function validateSmartFolderId()
     {
-        if (empty($this->params['sfId']) || $this->params['sfId'] <= 0) {
+        if (empty($this->params['sfId']) || (int)$this->params['sfId'] <= 0) {
             throw new InvalidArgumentException("Invalid SmartFolder ID");
         }
         return true;
