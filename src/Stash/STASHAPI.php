@@ -1002,7 +1002,7 @@ class StashAPI
             $retVal = true;
         } catch (Exception $e) {
             $retVal = false;
-            echo "ERROR - STASHAPI.php::ValidateParams() - Error - " . $e->getMessage() . PHP_EOL;
+            echo "Error - " . $e->getMessage() . PHP_EOL;
         }
         return $retVal;
     }
