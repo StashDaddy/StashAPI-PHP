@@ -26,10 +26,7 @@
     "ext-curl": "*"
   },
   "require-dev": {
-    "theseer/phpdox": "0.12.0",
-    "phploc/phploc": "5.0",
-    "phpstan/phpstan": "0.12.34",
     "codeception/codeception": "^4.1",
-    "codeception/module-asserts": "^1.2"
+    "codeception/module-asserts": "^2.0"
   }
 }

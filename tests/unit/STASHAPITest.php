@@ -4,7 +4,7 @@ namespace Stash;
 
 use Codeception\Test\Unit;
 use InvalidArgumentException;
-use Stash\StashAPI as STASHAPI;
+use Stash\STASHAPI as STASHAPI;
 use \Exception as Exception;
 use UnexpectedValueException;
 use UnitTester;
@@ -391,7 +391,7 @@ class STASHAPITest extends Unit
         $api->setId($this->apiid);
         $api->setPw($this->apipw);
         $api->params = array();
-        $api->sendFileRequest("blah");
+        $api->sendFileRequest("blah", 30);
     }
 
     /**
@@ -406,7 +406,7 @@ class STASHAPITest extends Unit
         $api->setId($this->apiid);
         $api->setPw($this->apipw);
         $api->params = array();
-        $api->sendFileRequest("");
+        $api->sendFileRequest("", 30);
     }
 
     /**
@@ -421,7 +421,7 @@ class STASHAPITest extends Unit
         $api->setId($this->apiid);
         $api->setPw($this->apipw);
         $api->params = array();
-        $api->sendFileRequest("/tmp/aaaaaaaaaaaaaaaaa.stashapitest.txt");
+        $api->sendFileRequest("/tmp/aaaaaaaaaaaaaaaaa.stashapitest.txt", 30);
     }
 
     /*
