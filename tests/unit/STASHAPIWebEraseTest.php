@@ -4,7 +4,7 @@ namespace Stash;
 
 use Codeception\Test\Unit;
 use InvalidArgumentException;
-use Stash\StashAPI as STASHAPI;
+use Stash\STASHAPI as STASHAPI;
 use \Exception as Exception;
 use UnitTester;
 

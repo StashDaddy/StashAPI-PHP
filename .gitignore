@@ -16,3 +16,5 @@ autoload.php
 /docs/xml/tokens/src/Stash/apitest.php.xml
 /tests/_data/tmpfile_stashapitest.out.txt
 /tests/_data/tmpfile_stashapitest.txt
+/docs/phploc.phar
+/docs/phpdox-0.12.0.phar
