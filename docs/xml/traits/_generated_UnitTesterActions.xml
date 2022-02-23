@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<trait xmlns="http://xml.phpdox.net/src" full="_generated\UnitTesterActions" namespace="_generated" name="UnitTesterActions" abstract="false" final="false" start="8" end="2050">
-  <file path="L:/Projects/Stash/StashApi-php-Release/docs/../tests/_support/_generated" file="UnitTesterActions.php" realpath="L:/Projects/Stash/StashApi-php-Release/tests/_support/_generated/UnitTesterActions.php" size="73431" time="2020-09-14T18:29:51+00:00" unixtime="1600108191" sha1="52ed214951da29495501948a7a9c80eb6d1799f4" relative="tests/_support/_generated/UnitTesterActions.php"/>
+<trait xmlns="http://xml.phpdox.net/src" full="_generated\UnitTesterActions" namespace="_generated" name="UnitTesterActions" abstract="false" final="false" start="8" end="2014">
+  <file path="L:/Projects/Stash/StashApi-php-Release/docs/../tests/_support/_generated" file="UnitTesterActions.php" realpath="L:/Projects/Stash/StashApi-php-Release/tests/_support/_generated/UnitTesterActions.php" size="71893" time="2022-02-22T17:46:02+00:00" unixtime="1645551962" sha1="3a20ee8cf8de2bbb4f3f48538be945ed51e76d55" relative="tests/_support/_generated/UnitTesterActions.php"/>
   <method name="getScenario" start="13" end="13" abstract="true" final="false" static="false" visibility="protected">
     <docblock>
       <description/>
@@ -9,42 +9,7 @@
       </return>
     </docblock>
   </method>
-  <method name="expectException" start="46" end="48" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="[!] Method is generated. Documentation taken from corresponding module.">Handles and checks exception called inside callback function.
-Either exception class name or exception instance should be provided.
-
-```php
-&lt;?php
-$I-&gt;expectException(MyException::class, function() {
-    $this-&gt;doSomethingBad();
-});
-
-$I-&gt;expectException(new MyException(), function() {
-    $this-&gt;doSomethingBad();
-});
-```
-If you want to check message or exception code, you can pass them with exception instance:
-```php
-&lt;?php
-// will check that exception MyException is thrown with "Don't do bad things" message
-$I-&gt;expectException(new MyException("Don't do bad things"), function() {
-    $this-&gt;doSomethingBad();
-});
-```</description>
-      <deprecated value="Use expectThrowable() instead"/>
-      <param type="object" variable="$exception">
-        <type full="_generated\Exception|string" namespace="_generated" name="Exception|string"/>
-      </param>
-      <param type="object" variable="$callback">
-        <type full="_generated\callable" namespace="_generated" name="callable"/>
-      </param>
-      <see value="\Codeception\Module\Asserts::expectException()"/>
-    </docblock>
-    <parameter name="exception" byreference="false" type="{unknown}"/>
-    <parameter name="callback" byreference="false" type="{unknown}"/>
-  </method>
-  <method name="expectThrowable" start="80" end="82" abstract="false" final="false" static="false" visibility="public">
+  <method name="expectThrowable" start="44" end="46" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Handles and checks throwables (Exceptions/Errors) called inside the callback function.
 Either throwable class name or throwable instance should be provided.
@@ -70,15 +35,13 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <param type="object" variable="$throwable">
         <type full="_generated\Throwable|string" namespace="_generated" name="Throwable|string"/>
       </param>
-      <param type="object" variable="$callback">
-        <type full="_generated\callable" namespace="_generated" name="callable"/>
-      </param>
       <see value="\Codeception\Module\Asserts::expectThrowable()"/>
     </docblock>
+    <return type="void" nullable="false"/>
     <parameter name="throwable" byreference="false" type="{unknown}"/>
-    <parameter name="callback" byreference="false" type="{unknown}"/>
+    <parameter name="callback" byreference="false" type="callable"/>
   </method>
-  <method name="assertFileNotExists" start="94" end="96" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertFileNotExists" start="58" end="60" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a file does not exist.</description>
       <param type="string" variable="$filename"/>
@@ -86,9 +49,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertFileNotExists()"/>
     </docblock>
     <parameter name="filename" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertGreaterOrEquals" start="109" end="111" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertGreaterOrEquals" start="73" end="75" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a value is greater than or equal to another value.</description>
       <param variable="$expected"/>
@@ -98,9 +61,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsEmpty" start="123" end="125" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsEmpty" start="87" end="89" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is empty.</description>
       <param variable="$actual"/>
@@ -108,9 +71,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsEmpty()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertLessOrEquals" start="138" end="140" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertLessOrEquals" start="102" end="104" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a value is smaller than or equal to another value.</description>
       <param variable="$expected"/>
@@ -120,9 +83,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertNotRegExp" start="153" end="155" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertNotRegExp" start="117" end="119" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string does not match a given regular expression.</description>
       <param type="string" variable="$pattern"/>
@@ -132,9 +95,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="pattern" byreference="false" type="{unknown}"/>
     <parameter name="string" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertRegExp" start="168" end="170" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertRegExp" start="132" end="134" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string matches a given regular expression.</description>
       <param type="string" variable="$pattern"/>
@@ -144,9 +107,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="pattern" byreference="false" type="{unknown}"/>
     <parameter name="string" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertThatItsNot" start="183" end="185" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertThatItsNot" start="147" end="149" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Evaluates a PHPUnit\Framework\Constraint matcher object.</description>
       <param variable="$value"/>
@@ -158,9 +121,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="value" byreference="false" type="{unknown}"/>
     <parameter name="constraint" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertArrayHasKey" start="198" end="200" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertArrayHasKey" start="162" end="164" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that an array has a specified key.</description>
       <param type="object" variable="$key">
@@ -174,9 +137,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="key" byreference="false" type="{unknown}"/>
     <parameter name="array" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertArrayNotHasKey" start="213" end="215" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertArrayNotHasKey" start="177" end="179" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that an array does not have a specified key.</description>
       <param type="object" variable="$key">
@@ -190,9 +153,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="key" byreference="false" type="{unknown}"/>
     <parameter name="array" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertClassHasAttribute" start="228" end="230" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertClassHasAttribute" start="192" end="194" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a class has a specified attribute.</description>
       <param type="string" variable="$attributeName"/>
@@ -202,9 +165,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="attributeName" byreference="false" type="{unknown}"/>
     <parameter name="className" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertClassHasStaticAttribute" start="243" end="245" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertClassHasStaticAttribute" start="207" end="209" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a class has a specified static attribute.</description>
       <param type="string" variable="$attributeName"/>
@@ -214,9 +177,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="attributeName" byreference="false" type="{unknown}"/>
     <parameter name="className" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertClassNotHasAttribute" start="258" end="260" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertClassNotHasAttribute" start="222" end="224" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a class does not have a specified attribute.</description>
       <param type="string" variable="$attributeName"/>
@@ -226,9 +189,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="attributeName" byreference="false" type="{unknown}"/>
     <parameter name="className" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertClassNotHasStaticAttribute" start="273" end="275" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertClassNotHasStaticAttribute" start="237" end="239" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a class does not have a specified static attribute.</description>
       <param type="string" variable="$attributeName"/>
@@ -238,9 +201,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="attributeName" byreference="false" type="{unknown}"/>
     <parameter name="className" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertContains" start="288" end="290" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertContains" start="252" end="254" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a haystack contains a needle.</description>
       <param variable="$needle"/>
@@ -250,9 +213,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="needle" byreference="false" type="{unknown}"/>
     <parameter name="haystack" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertContainsEquals" start="301" end="303" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertContainsEquals" start="265" end="267" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
       <param variable="$needle"/>
@@ -262,9 +225,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="needle" byreference="false" type="{unknown}"/>
     <parameter name="haystack" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertContainsOnly" start="317" end="319" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertContainsOnly" start="281" end="283" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a haystack contains only values of a given type.</description>
       <param type="string" variable="$type"/>
@@ -278,9 +241,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     <parameter name="type" byreference="false" type="{unknown}"/>
     <parameter name="haystack" byreference="false" type="{unknown}"/>
     <parameter name="isNativeType" byreference="false" type="{unknown}" default="NULL"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertContainsOnlyInstancesOf" start="332" end="334" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertContainsOnlyInstancesOf" start="296" end="298" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a haystack contains only instances of a given class name.</description>
       <param type="string" variable="$className"/>
@@ -290,9 +253,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="className" byreference="false" type="{unknown}"/>
     <parameter name="haystack" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertCount" start="347" end="349" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertCount" start="311" end="313" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts the number of elements of an array, Countable or Traversable.</description>
       <param type="int" variable="$expectedCount"/>
@@ -304,9 +267,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expectedCount" byreference="false" type="{unknown}"/>
     <parameter name="haystack" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertDirectoryDoesNotExist" start="361" end="363" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertDirectoryDoesNotExist" start="325" end="327" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a directory does not exist.</description>
       <param type="string" variable="$directory"/>
@@ -314,9 +277,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertDirectoryDoesNotExist()"/>
     </docblock>
     <parameter name="directory" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertDirectoryExists" start="375" end="377" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertDirectoryExists" start="339" end="341" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a directory exists.</description>
       <param type="string" variable="$directory"/>
@@ -324,9 +287,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertDirectoryExists()"/>
     </docblock>
     <parameter name="directory" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertDirectoryIsNotReadable" start="389" end="391" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertDirectoryIsNotReadable" start="353" end="355" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a directory exists and is not readable.</description>
       <param type="string" variable="$directory"/>
@@ -334,9 +297,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertDirectoryIsNotReadable()"/>
     </docblock>
     <parameter name="directory" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertDirectoryIsNotWritable" start="403" end="405" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertDirectoryIsNotWritable" start="367" end="369" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a directory exists and is not writable.</description>
       <param type="string" variable="$directory"/>
@@ -344,9 +307,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertDirectoryIsNotWritable()"/>
     </docblock>
     <parameter name="directory" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertDirectoryIsReadable" start="417" end="419" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertDirectoryIsReadable" start="381" end="383" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a directory exists and is readable.</description>
       <param type="string" variable="$directory"/>
@@ -354,9 +317,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertDirectoryIsReadable()"/>
     </docblock>
     <parameter name="directory" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertDirectoryIsWritable" start="431" end="433" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertDirectoryIsWritable" start="395" end="397" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a directory exists and is writable.</description>
       <param type="string" variable="$directory"/>
@@ -364,9 +327,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertDirectoryIsWritable()"/>
     </docblock>
     <parameter name="directory" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertDoesNotMatchRegularExpression" start="446" end="448" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertDoesNotMatchRegularExpression" start="410" end="412" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string does not match a given regular expression.</description>
       <param type="string" variable="$pattern"/>
@@ -376,9 +339,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="pattern" byreference="false" type="{unknown}"/>
     <parameter name="string" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertEmpty" start="460" end="462" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertEmpty" start="424" end="426" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is empty.</description>
       <param variable="$actual"/>
@@ -386,9 +349,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertEmpty()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertEquals" start="475" end="477" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertEquals" start="439" end="441" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two variables are equal.</description>
       <param variable="$expected"/>
@@ -398,9 +361,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertEqualsCanonicalizing" start="490" end="492" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertEqualsCanonicalizing" start="454" end="456" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two variables are equal (canonicalizing).</description>
       <param variable="$expected"/>
@@ -410,9 +373,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertEqualsIgnoringCase" start="505" end="507" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertEqualsIgnoringCase" start="469" end="471" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two variables are equal (ignoring case).</description>
       <param variable="$expected"/>
@@ -422,9 +385,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertEqualsWithDelta" start="521" end="523" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertEqualsWithDelta" start="485" end="487" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two variables are equal (with delta).</description>
       <param variable="$expected"/>
@@ -436,9 +399,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
     <parameter name="delta" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertFalse" start="535" end="537" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertFalse" start="499" end="501" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a condition is false.</description>
       <param variable="$condition"/>
@@ -446,9 +409,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertFalse()"/>
     </docblock>
     <parameter name="condition" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertFileDoesNotExist" start="549" end="551" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertFileDoesNotExist" start="513" end="515" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a file does not exist.</description>
       <param type="string" variable="$filename"/>
@@ -456,9 +419,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertFileDoesNotExist()"/>
     </docblock>
     <parameter name="filename" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertFileEquals" start="564" end="566" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertFileEquals" start="528" end="530" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of one file is equal to the contents of another file.</description>
       <param type="string" variable="$expected"/>
@@ -468,9 +431,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertFileEqualsCanonicalizing" start="579" end="581" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertFileEqualsCanonicalizing" start="543" end="545" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of one file is equal to the contents of another file (canonicalizing).</description>
       <param variable="$expected"/>
@@ -480,9 +443,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertFileEqualsIgnoringCase" start="594" end="596" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertFileEqualsIgnoringCase" start="558" end="560" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of one file is equal to the contents of another file (ignoring case).</description>
       <param variable="$expected"/>
@@ -492,9 +455,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertFileExists" start="608" end="610" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertFileExists" start="572" end="574" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a file exists.</description>
       <param type="string" variable="$filename"/>
@@ -502,9 +465,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertFileExists()"/>
     </docblock>
     <parameter name="filename" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertFileIsNotReadable" start="622" end="624" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertFileIsNotReadable" start="586" end="588" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a file exists and is not readable.</description>
       <param type="string" variable="$file"/>
@@ -512,9 +475,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertFileIsNotReadable()"/>
     </docblock>
     <parameter name="file" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertFileIsNotWritable" start="636" end="638" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertFileIsNotWritable" start="600" end="602" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a file exists and is not writable.</description>
       <param type="string" variable="$file"/>
@@ -522,9 +485,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertFileIsNotWritable()"/>
     </docblock>
     <parameter name="file" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertFileIsReadable" start="650" end="652" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertFileIsReadable" start="614" end="616" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a file exists and is readable.</description>
       <param type="string" variable="$file"/>
@@ -532,9 +495,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertFileIsReadable()"/>
     </docblock>
     <parameter name="file" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertFileIsWritable" start="664" end="666" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertFileIsWritable" start="628" end="630" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a file exists and is writable.</description>
       <param type="string" variable="$file"/>
@@ -542,9 +505,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertFileIsWritable()"/>
     </docblock>
     <parameter name="file" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertFileNotEquals" start="679" end="681" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertFileNotEquals" start="643" end="645" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of one file is not equal to the contents of another file.</description>
       <param variable="$expected"/>
@@ -554,9 +517,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertFileNotEqualsCanonicalizing" start="694" end="696" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertFileNotEqualsCanonicalizing" start="658" end="660" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of one file is not equal to the contents of another file (canonicalizing).</description>
       <param variable="$expected"/>
@@ -566,9 +529,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertFileNotEqualsIgnoringCase" start="709" end="711" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertFileNotEqualsIgnoringCase" start="673" end="675" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of one file is not equal to the contents of another file (ignoring case).</description>
       <param variable="$expected"/>
@@ -578,9 +541,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertFinite" start="723" end="725" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertFinite" start="687" end="689" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is finite.</description>
       <param variable="$actual"/>
@@ -588,9 +551,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertFinite()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertGreaterThan" start="738" end="740" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertGreaterThan" start="702" end="704" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a value is greater than another value.</description>
       <param variable="$expected"/>
@@ -600,9 +563,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertGreaterThanOrEqual" start="753" end="755" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertGreaterThanOrEqual" start="717" end="719" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a value is greater than or equal to another value.</description>
       <param variable="$expected"/>
@@ -612,9 +575,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertInfinite" start="767" end="769" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertInfinite" start="731" end="733" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is infinite.</description>
       <param variable="$actual"/>
@@ -622,9 +585,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertInfinite()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertInstanceOf" start="782" end="784" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertInstanceOf" start="746" end="748" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of a given type.</description>
       <param variable="$expected"/>
@@ -634,9 +597,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsArray" start="796" end="798" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsArray" start="760" end="762" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type array.</description>
       <param variable="$actual"/>
@@ -644,9 +607,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsArray()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsBool" start="810" end="812" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsBool" start="774" end="776" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type bool.</description>
       <param variable="$actual"/>
@@ -654,9 +617,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsBool()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsCallable" start="824" end="826" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsCallable" start="788" end="790" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type callable.</description>
       <param variable="$actual"/>
@@ -664,9 +627,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsCallable()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsClosedResource" start="838" end="840" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsClosedResource" start="802" end="804" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type resource and is closed.</description>
       <param variable="$actual"/>
@@ -674,9 +637,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsClosedResource()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsFloat" start="852" end="854" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsFloat" start="816" end="818" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type float.</description>
       <param variable="$actual"/>
@@ -684,9 +647,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsFloat()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsInt" start="866" end="868" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsInt" start="830" end="832" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type int.</description>
       <param variable="$actual"/>
@@ -694,9 +657,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsInt()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsIterable" start="880" end="882" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsIterable" start="844" end="846" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type iterable.</description>
       <param variable="$actual"/>
@@ -704,9 +667,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsIterable()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsNotArray" start="894" end="896" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsNotArray" start="858" end="860" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type array.</description>
       <param variable="$actual"/>
@@ -714,9 +677,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsNotArray()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsNotBool" start="908" end="910" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsNotBool" start="872" end="874" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type bool.</description>
       <param variable="$actual"/>
@@ -724,9 +687,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsNotBool()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsNotCallable" start="922" end="924" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsNotCallable" start="886" end="888" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type callable.</description>
       <param variable="$actual"/>
@@ -734,9 +697,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsNotCallable()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsNotClosedResource" start="936" end="938" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsNotClosedResource" start="900" end="902" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type resource.</description>
       <param variable="$actual"/>
@@ -744,9 +707,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsNotClosedResource()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsNotFloat" start="950" end="952" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsNotFloat" start="914" end="916" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type float.</description>
       <param variable="$actual"/>
@@ -754,9 +717,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsNotFloat()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsNotInt" start="964" end="966" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsNotInt" start="928" end="930" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type int.</description>
       <param variable="$actual"/>
@@ -764,9 +727,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsNotInt()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsNotIterable" start="978" end="980" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsNotIterable" start="942" end="944" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type iterable.</description>
       <param variable="$actual"/>
@@ -774,9 +737,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsNotIterable()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsNotNumeric" start="992" end="994" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsNotNumeric" start="956" end="958" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type numeric.</description>
       <param variable="$actual"/>
@@ -784,9 +747,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsNotNumeric()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsNotObject" start="1006" end="1008" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsNotObject" start="970" end="972" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type object.</description>
       <param variable="$actual"/>
@@ -794,9 +757,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsNotObject()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsNotReadable" start="1020" end="1022" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsNotReadable" start="984" end="986" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a file/dir exists and is not readable.</description>
       <param type="string" variable="$filename"/>
@@ -804,9 +767,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsNotReadable()"/>
     </docblock>
     <parameter name="filename" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsNotResource" start="1034" end="1036" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsNotResource" start="998" end="1000" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type resource.</description>
       <param variable="$actual"/>
@@ -814,9 +777,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsNotResource()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsNotScalar" start="1048" end="1050" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsNotScalar" start="1012" end="1014" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type scalar.</description>
       <param variable="$actual"/>
@@ -824,9 +787,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsNotScalar()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsNotString" start="1062" end="1064" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsNotString" start="1026" end="1028" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of type string.</description>
       <param variable="$actual"/>
@@ -834,9 +797,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsNotString()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsNotWritable" start="1076" end="1078" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsNotWritable" start="1040" end="1042" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a file/dir exists and is not writable.</description>
       <param variable="$filename"/>
@@ -844,9 +807,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsNotWritable()"/>
     </docblock>
     <parameter name="filename" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsNumeric" start="1090" end="1092" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsNumeric" start="1054" end="1056" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type numeric.</description>
       <param variable="$actual"/>
@@ -854,9 +817,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsNumeric()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsObject" start="1104" end="1106" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsObject" start="1068" end="1070" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type object.</description>
       <param variable="$actual"/>
@@ -864,9 +827,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsObject()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsReadable" start="1118" end="1120" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsReadable" start="1082" end="1084" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a file/dir is readable.</description>
       <param variable="$filename"/>
@@ -874,9 +837,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsReadable()"/>
     </docblock>
     <parameter name="filename" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsResource" start="1132" end="1134" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsResource" start="1096" end="1098" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type resource.</description>
       <param variable="$actual"/>
@@ -884,9 +847,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsResource()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsScalar" start="1146" end="1148" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsScalar" start="1110" end="1112" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type scalar.</description>
       <param variable="$actual"/>
@@ -894,9 +857,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsScalar()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsString" start="1160" end="1162" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsString" start="1124" end="1126" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is of type string.</description>
       <param variable="$actual"/>
@@ -904,9 +867,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsString()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertIsWritable" start="1174" end="1176" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertIsWritable" start="1138" end="1140" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a file/dir exists and is writable.</description>
       <param variable="$filename"/>
@@ -914,9 +877,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertIsWritable()"/>
     </docblock>
     <parameter name="filename" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertJson" start="1188" end="1190" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertJson" start="1152" end="1154" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string is a valid JSON string.</description>
       <param type="string" variable="$actualJson"/>
@@ -924,9 +887,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertJson()"/>
     </docblock>
     <parameter name="actualJson" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertJsonFileEqualsJsonFile" start="1203" end="1205" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertJsonFileEqualsJsonFile" start="1167" end="1169" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two JSON files are equal.</description>
       <param type="string" variable="$expectedFile"/>
@@ -936,9 +899,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expectedFile" byreference="false" type="{unknown}"/>
     <parameter name="actualFile" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertJsonFileNotEqualsJsonFile" start="1218" end="1220" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertJsonFileNotEqualsJsonFile" start="1182" end="1184" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two JSON files are not equal.</description>
       <param type="string" variable="$expectedFile"/>
@@ -948,9 +911,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expectedFile" byreference="false" type="{unknown}"/>
     <parameter name="actualFile" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertJsonStringEqualsJsonFile" start="1233" end="1235" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertJsonStringEqualsJsonFile" start="1197" end="1199" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the generated JSON encoded object and the content of the given file are equal.</description>
       <param type="string" variable="$expectedFile"/>
@@ -960,9 +923,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expectedFile" byreference="false" type="{unknown}"/>
     <parameter name="actualJson" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertJsonStringEqualsJsonString" start="1248" end="1250" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertJsonStringEqualsJsonString" start="1212" end="1214" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two given JSON encoded objects or arrays are equal.</description>
       <param type="string" variable="$expectedJson"/>
@@ -972,9 +935,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expectedJson" byreference="false" type="{unknown}"/>
     <parameter name="actualJson" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertJsonStringNotEqualsJsonFile" start="1263" end="1265" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertJsonStringNotEqualsJsonFile" start="1227" end="1229" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the generated JSON encoded object and the content of the given file are not equal.</description>
       <param type="string" variable="$expectedFile"/>
@@ -984,9 +947,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expectedFile" byreference="false" type="{unknown}"/>
     <parameter name="actualJson" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertJsonStringNotEqualsJsonString" start="1278" end="1280" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertJsonStringNotEqualsJsonString" start="1242" end="1244" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two given JSON encoded objects or arrays are not equal.</description>
       <param type="string" variable="$expectedJson"/>
@@ -996,9 +959,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expectedJson" byreference="false" type="{unknown}"/>
     <parameter name="actualJson" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertLessThan" start="1293" end="1295" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertLessThan" start="1257" end="1259" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a value is smaller than another value.</description>
       <param variable="$expected"/>
@@ -1008,9 +971,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertLessThanOrEqual" start="1308" end="1310" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertLessThanOrEqual" start="1272" end="1274" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a value is smaller than or equal to another value.</description>
       <param variable="$expected"/>
@@ -1020,9 +983,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertMatchesRegularExpression" start="1323" end="1325" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertMatchesRegularExpression" start="1287" end="1289" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string matches a given regular expression.</description>
       <param type="string" variable="$pattern"/>
@@ -1032,9 +995,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="pattern" byreference="false" type="{unknown}"/>
     <parameter name="string" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertNan" start="1337" end="1339" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertNan" start="1301" end="1303" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is nan.</description>
       <param variable="$actual"/>
@@ -1042,9 +1005,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertNan()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertNotContains" start="1352" end="1354" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertNotContains" start="1316" end="1318" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a haystack does not contain a needle.</description>
       <param variable="$needle"/>
@@ -1054,18 +1017,18 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="needle" byreference="false" type="{unknown}"/>
     <parameter name="haystack" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertNotContainsEquals" start="1363" end="1365" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertNotContainsEquals" start="1327" end="1329" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
       <see value="\Codeception\Module\AbstractAsserts::assertNotContainsEquals()"/>
     </docblock>
     <parameter name="needle" byreference="false" type="{unknown}"/>
     <parameter name="haystack" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertNotContainsOnly" start="1379" end="1381" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertNotContainsOnly" start="1343" end="1345" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a haystack does not contain only values of a given type.</description>
       <param type="string" variable="$type"/>
@@ -1079,9 +1042,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     <parameter name="type" byreference="false" type="{unknown}"/>
     <parameter name="haystack" byreference="false" type="{unknown}"/>
     <parameter name="isNativeType" byreference="false" type="{unknown}" default="NULL"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertNotCount" start="1394" end="1396" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertNotCount" start="1358" end="1360" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts the number of elements of an array, Countable or Traversable.</description>
       <param type="int" variable="$expectedCount"/>
@@ -1093,9 +1056,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expectedCount" byreference="false" type="{unknown}"/>
     <parameter name="haystack" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertNotEmpty" start="1408" end="1410" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertNotEmpty" start="1372" end="1374" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not empty.</description>
       <param variable="$actual"/>
@@ -1103,9 +1066,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertNotEmpty()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertNotEquals" start="1423" end="1425" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertNotEquals" start="1387" end="1389" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two variables are not equal.</description>
       <param variable="$expected"/>
@@ -1115,9 +1078,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertNotEqualsCanonicalizing" start="1438" end="1440" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertNotEqualsCanonicalizing" start="1402" end="1404" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two variables are not equal (canonicalizing).</description>
       <param variable="$expected"/>
@@ -1127,9 +1090,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertNotEqualsIgnoringCase" start="1453" end="1455" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertNotEqualsIgnoringCase" start="1417" end="1419" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two variables are not equal (ignoring case).</description>
       <param variable="$expected"/>
@@ -1139,9 +1102,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertNotEqualsWithDelta" start="1469" end="1471" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertNotEqualsWithDelta" start="1433" end="1435" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two variables are not equal (with delta).</description>
       <param variable="$expected"/>
@@ -1153,9 +1116,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
     <parameter name="delta" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertNotFalse" start="1483" end="1485" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertNotFalse" start="1447" end="1449" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a condition is not false.</description>
       <param variable="$condition"/>
@@ -1163,9 +1126,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertNotFalse()"/>
     </docblock>
     <parameter name="condition" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertNotInstanceOf" start="1498" end="1500" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertNotInstanceOf" start="1462" end="1464" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not of a given type.</description>
       <param variable="$expected"/>
@@ -1175,9 +1138,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertNotNull" start="1512" end="1514" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertNotNull" start="1476" end="1478" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is not null.</description>
       <param variable="$actual"/>
@@ -1185,9 +1148,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertNotNull()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertNotSame" start="1527" end="1529" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertNotSame" start="1491" end="1493" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two variables do not have the same type and value.</description>
       <param variable="$expected"/>
@@ -1197,9 +1160,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertNotSameSize" start="1542" end="1544" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertNotSameSize" start="1506" end="1508" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Assert that the size of two arrays (or `Countable` or `Traversable` objects) is not the same.</description>
       <param type="object" variable="$expected">
@@ -1213,9 +1176,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertNotTrue" start="1556" end="1558" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertNotTrue" start="1520" end="1522" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a condition is not true.</description>
       <param variable="$condition"/>
@@ -1223,9 +1186,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertNotTrue()"/>
     </docblock>
     <parameter name="condition" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertNull" start="1570" end="1572" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertNull" start="1534" end="1536" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a variable is null.</description>
       <param variable="$actual"/>
@@ -1233,9 +1196,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertNull()"/>
     </docblock>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertObjectHasAttribute" start="1585" end="1587" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertObjectHasAttribute" start="1549" end="1551" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that an object has a specified attribute.</description>
       <param type="string" variable="$attributeName"/>
@@ -1245,9 +1208,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="attributeName" byreference="false" type="{unknown}"/>
     <parameter name="object" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertObjectNotHasAttribute" start="1600" end="1602" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertObjectNotHasAttribute" start="1564" end="1566" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that an object does not have a specified attribute.</description>
       <param type="string" variable="$attributeName"/>
@@ -1257,9 +1220,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="attributeName" byreference="false" type="{unknown}"/>
     <parameter name="object" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertSame" start="1615" end="1617" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertSame" start="1579" end="1581" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two variables have the same type and value.</description>
       <param variable="$expected"/>
@@ -1269,9 +1232,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertSameSize" start="1630" end="1632" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertSameSize" start="1594" end="1596" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Assert that the size of two arrays (or `Countable` or `Traversable` objects) is the same.</description>
       <param type="object" variable="$expected">
@@ -1285,9 +1248,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expected" byreference="false" type="{unknown}"/>
     <parameter name="actual" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertStringContainsString" start="1643" end="1645" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringContainsString" start="1607" end="1609" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
       <param type="string" variable="$needle"/>
@@ -1297,18 +1260,18 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="needle" byreference="false" type="{unknown}"/>
     <parameter name="haystack" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertStringContainsStringIgnoringCase" start="1654" end="1656" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringContainsStringIgnoringCase" start="1618" end="1620" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
       <see value="\Codeception\Module\AbstractAsserts::assertStringContainsStringIgnoringCase()"/>
     </docblock>
     <parameter name="needle" byreference="false" type="{unknown}"/>
     <parameter name="haystack" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertStringEndsNotWith" start="1669" end="1671" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringEndsNotWith" start="1633" end="1635" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string ends not with a given suffix.</description>
       <param type="string" variable="$suffix"/>
@@ -1318,9 +1281,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="suffix" byreference="false" type="{unknown}"/>
     <parameter name="string" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertStringEndsWith" start="1684" end="1686" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringEndsWith" start="1648" end="1650" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string ends with a given suffix.</description>
       <param type="string" variable="$suffix"/>
@@ -1330,9 +1293,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="suffix" byreference="false" type="{unknown}"/>
     <parameter name="string" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertStringEqualsFile" start="1699" end="1701" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringEqualsFile" start="1663" end="1665" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of a string is equal to the contents of a file.</description>
       <param type="string" variable="$expectedFile"/>
@@ -1342,9 +1305,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expectedFile" byreference="false" type="{unknown}"/>
     <parameter name="actualString" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertStringEqualsFileCanonicalizing" start="1714" end="1716" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringEqualsFileCanonicalizing" start="1678" end="1680" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of a string is equal to the contents of a file (canonicalizing).</description>
       <param type="string" variable="$expectedFile"/>
@@ -1354,9 +1317,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expectedFile" byreference="false" type="{unknown}"/>
     <parameter name="actualString" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertStringEqualsFileIgnoringCase" start="1729" end="1731" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringEqualsFileIgnoringCase" start="1693" end="1695" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of a string is equal to the contents of a file (ignoring case).</description>
       <param type="string" variable="$expectedFile"/>
@@ -1366,9 +1329,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expectedFile" byreference="false" type="{unknown}"/>
     <parameter name="actualString" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertStringMatchesFormat" start="1744" end="1746" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringMatchesFormat" start="1708" end="1710" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string matches a given format string.</description>
       <param type="string" variable="$format"/>
@@ -1378,9 +1341,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="format" byreference="false" type="{unknown}"/>
     <parameter name="string" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertStringMatchesFormatFile" start="1759" end="1761" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringMatchesFormatFile" start="1723" end="1725" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string matches a given format file.</description>
       <param type="string" variable="$formatFile"/>
@@ -1390,9 +1353,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="formatFile" byreference="false" type="{unknown}"/>
     <parameter name="string" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertStringNotContainsString" start="1772" end="1774" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringNotContainsString" start="1736" end="1738" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
       <param type="string" variable="$needle"/>
@@ -1402,9 +1365,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="needle" byreference="false" type="{unknown}"/>
     <parameter name="haystack" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertStringNotContainsStringIgnoringCase" start="1785" end="1787" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringNotContainsStringIgnoringCase" start="1749" end="1751" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module."/>
       <param type="string" variable="$needle"/>
@@ -1414,9 +1377,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="needle" byreference="false" type="{unknown}"/>
     <parameter name="haystack" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertStringNotEqualsFile" start="1800" end="1802" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringNotEqualsFile" start="1764" end="1766" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of a string is not equal to the contents of a file.</description>
       <param type="string" variable="$expectedFile"/>
@@ -1426,9 +1389,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expectedFile" byreference="false" type="{unknown}"/>
     <parameter name="actualString" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertStringNotEqualsFileCanonicalizing" start="1814" end="1816" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringNotEqualsFileCanonicalizing" start="1778" end="1780" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of a string is not equal to the contents of a file (canonicalizing).</description>
       <param type="string" variable="$expectedFile"/>
@@ -1438,9 +1401,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expectedFile" byreference="false" type="{unknown}"/>
     <parameter name="actualString" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertStringNotEqualsFileIgnoringCase" start="1829" end="1831" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringNotEqualsFileIgnoringCase" start="1793" end="1795" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that the contents of a string is not equal to the contents of a file (ignoring case).</description>
       <param type="string" variable="$expectedFile"/>
@@ -1450,9 +1413,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expectedFile" byreference="false" type="{unknown}"/>
     <parameter name="actualString" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertStringNotMatchesFormat" start="1844" end="1846" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringNotMatchesFormat" start="1808" end="1810" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string does not match a given format string.</description>
       <param type="string" variable="$format"/>
@@ -1462,9 +1425,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="format" byreference="false" type="{unknown}"/>
     <parameter name="string" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertStringNotMatchesFormatFile" start="1859" end="1861" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringNotMatchesFormatFile" start="1823" end="1825" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string does not match a given format string.</description>
       <param type="string" variable="$formatFile"/>
@@ -1474,9 +1437,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="formatFile" byreference="false" type="{unknown}"/>
     <parameter name="string" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertStringStartsNotWith" start="1874" end="1876" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringStartsNotWith" start="1838" end="1840" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string starts not with a given prefix.</description>
       <param type="string" variable="$prefix"/>
@@ -1486,9 +1449,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="prefix" byreference="false" type="{unknown}"/>
     <parameter name="string" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertStringStartsWith" start="1889" end="1891" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertStringStartsWith" start="1853" end="1855" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a string starts with a given prefix.</description>
       <param type="string" variable="$prefix"/>
@@ -1498,9 +1461,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="prefix" byreference="false" type="{unknown}"/>
     <parameter name="string" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertThat" start="1904" end="1906" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertThat" start="1868" end="1870" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Evaluates a PHPUnit\Framework\Constraint matcher object.</description>
       <param variable="$value"/>
@@ -1512,9 +1475,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="value" byreference="false" type="{unknown}"/>
     <parameter name="constraint" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertTrue" start="1918" end="1920" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertTrue" start="1882" end="1884" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that a condition is true.</description>
       <param variable="$condition"/>
@@ -1522,9 +1485,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
       <see value="\Codeception\Module\AbstractAsserts::assertTrue()"/>
     </docblock>
     <parameter name="condition" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertXmlFileEqualsXmlFile" start="1933" end="1935" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertXmlFileEqualsXmlFile" start="1897" end="1899" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two XML files are equal.</description>
       <param type="string" variable="$expectedFile"/>
@@ -1534,9 +1497,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expectedFile" byreference="false" type="{unknown}"/>
     <parameter name="actualFile" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertXmlFileNotEqualsXmlFile" start="1948" end="1950" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertXmlFileNotEqualsXmlFile" start="1912" end="1914" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two XML files are not equal.</description>
       <param type="string" variable="$expectedFile"/>
@@ -1546,9 +1509,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expectedFile" byreference="false" type="{unknown}"/>
     <parameter name="actualFile" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertXmlStringEqualsXmlFile" start="1963" end="1965" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertXmlStringEqualsXmlFile" start="1927" end="1929" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two XML documents are equal.</description>
       <param type="string" variable="$expectedFile"/>
@@ -1560,9 +1523,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expectedFile" byreference="false" type="{unknown}"/>
     <parameter name="actualXml" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertXmlStringEqualsXmlString" start="1978" end="1980" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertXmlStringEqualsXmlString" start="1942" end="1944" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two XML documents are equal.</description>
       <param type="object" variable="$expectedXml">
@@ -1576,9 +1539,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expectedXml" byreference="false" type="{unknown}"/>
     <parameter name="actualXml" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertXmlStringNotEqualsXmlFile" start="1993" end="1995" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertXmlStringNotEqualsXmlFile" start="1957" end="1959" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two XML documents are not equal.</description>
       <param type="string" variable="$expectedFile"/>
@@ -1590,9 +1553,9 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expectedFile" byreference="false" type="{unknown}"/>
     <parameter name="actualXml" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="assertXmlStringNotEqualsXmlString" start="2008" end="2010" abstract="false" final="false" static="false" visibility="public">
+  <method name="assertXmlStringNotEqualsXmlString" start="1972" end="1974" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Asserts that two XML documents are not equal.</description>
       <param type="object" variable="$expectedXml">
@@ -1606,31 +1569,31 @@ $I-&gt;expectThrowable(new MyError("Don't do bad things"), function() {
     </docblock>
     <parameter name="expectedXml" byreference="false" type="{unknown}"/>
     <parameter name="actualXml" byreference="false" type="{unknown}"/>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="fail" start="2021" end="2023" abstract="false" final="false" static="false" visibility="public">
+  <method name="fail" start="1985" end="1987" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Fails a test with the given message.</description>
       <param type="string" variable="$message"/>
       <see value="\Codeception\Module\AbstractAsserts::fail()"/>
     </docblock>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="markTestIncomplete" start="2034" end="2036" abstract="false" final="false" static="false" visibility="public">
+  <method name="markTestIncomplete" start="1998" end="2000" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Mark the test as incomplete.</description>
       <param type="string" variable="$message"/>
       <see value="\Codeception\Module\AbstractAsserts::markTestIncomplete()"/>
     </docblock>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
-  <method name="markTestSkipped" start="2047" end="2049" abstract="false" final="false" static="false" visibility="public">
+  <method name="markTestSkipped" start="2011" end="2013" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="[!] Method is generated. Documentation taken from corresponding module.">Mark the test as skipped.</description>
       <param type="string" variable="$message"/>
       <see value="\Codeception\Module\AbstractAsserts::markTestSkipped()"/>
     </docblock>
-    <parameter name="message" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="message" byreference="false" type="string" default="&quot;&quot;"/>
   </method>
   <users>
     <class full="UnitTester" namespace="" name="UnitTester"/>

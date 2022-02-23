@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class xmlns="http://xml.phpdox.net/src" full="Stash\STASHAPIWebEraseTest" namespace="Stash" name="STASHAPIWebEraseTest" abstract="false" final="false" start="16" end="374">
-  <file path="L:/Projects/Stash/StashApi-php-Release/docs/../tests/unit" file="STASHAPIWebEraseTest.php" realpath="L:/Projects/Stash/StashApi-php-Release/tests/unit/STASHAPIWebEraseTest.php" size="15323" time="2020-09-14T18:51:52+00:00" unixtime="1600109512" sha1="59e05c83bf6c332d7748dee26003491c49125968" relative="tests/unit/STASHAPIWebEraseTest.php"/>
+  <file path="L:/Projects/Stash/StashApi-php-Release/docs/../tests/unit" file="STASHAPIWebEraseTest.php" realpath="L:/Projects/Stash/StashApi-php-Release/tests/unit/STASHAPIWebEraseTest.php" size="15323" time="2022-02-22T16:50:37+00:00" unixtime="1645548637" sha1="514035371b05a8af38d2e5a004a22059d9b35632" relative="tests/unit/STASHAPIWebEraseTest.php"/>
   <docblock>
     <description compact="Class STASHAPIWebEraseTest Runs scenario based testing for the WebErase functionality"/>
     <package value="Stash"/>
@@ -75,7 +75,7 @@
     <docblock>
       <description compact="Helper function to set the API context prior to an API call"/>
       <param description="the API object to set context for" type="object" variable="$apiIn">
-        <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
+        <type full="Stash\STASHAPI" namespace="Stash" name="STASHAPI"/>
       </param>
       <param description="one of the API_CONTEXT_X constants" type="integer" variable="$contextIn"/>
       <throws description="for invalid $contextIn values" type="object">
@@ -93,7 +93,7 @@
       <description compact="Function builds and sends an API request with changeable timestamp and signatures"/>
       <note value="DO NOT USE outside of unit testing - this is only for testing invalid timestamp and signature handling"/>
       <param description="the API object for generating valid values/parameters" type="object" variable="$api">
-        <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
+        <type full="Stash\STASHAPI" namespace="Stash" name="STASHAPI"/>
       </param>
       <param description="the timestamp to use for this request, otherwise 0 to use valid timestamp" type="integer" variable="$timeStampIn"/>
       <param description="the 32 character signature to use for this request, otherwise empty string" type="string" variable="$signatureIn"/>
@@ -118,7 +118,7 @@
     <docblock>
       <description compact="Tests if the StashAPI constructor produces a valid constructor with given inputs"/>
       <return type="object">
-        <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
+        <type full="Stash\STASHAPI" namespace="Stash" name="STASHAPI"/>
       </return>
       <throws type="object">
         <type full="Exception" namespace="" name="Exception"/>

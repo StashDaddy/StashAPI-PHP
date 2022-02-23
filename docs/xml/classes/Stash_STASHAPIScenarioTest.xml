@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="Stash\STASHAPIScenarioTest" namespace="Stash" name="STASHAPIScenarioTest" abstract="false" final="false" start="15" end="1485">
-  <file path="L:/Projects/Stash/StashApi-php-Release/docs/../tests/unit" file="STASHAPIScenarioTest.php" realpath="L:/Projects/Stash/StashApi-php-Release/tests/unit/STASHAPIScenarioTest.php" size="65395" time="2020-09-15T16:01:57+00:00" unixtime="1600185717" sha1="5f8d0056f462172466eaf524e6386e7db87424b5" relative="tests/unit/STASHAPIScenarioTest.php"/>
+<class xmlns="http://xml.phpdox.net/src" full="Stash\STASHAPIScenarioTest" namespace="Stash" name="STASHAPIScenarioTest" abstract="false" final="false" start="15" end="1541">
+  <file path="L:/Projects/Stash/StashApi-php-Release/docs/../tests/unit" file="STASHAPIScenarioTest.php" realpath="L:/Projects/Stash/StashApi-php-Release/tests/unit/STASHAPIScenarioTest.php" size="67332" time="2022-02-23T01:46:31+00:00" unixtime="1645580791" sha1="4f7fc629a58722ab22015ba29e4841cc355e3654" relative="tests/unit/STASHAPIScenarioTest.php"/>
   <docblock>
     <description compact="Class STASHAPIScenarioTest Runs scenario based testing for each of the API functions"/>
     <package value="Stash"/>
@@ -60,7 +60,7 @@
     <docblock>
       <description compact="Tests if the StashAPI constructor produces a valid constructor with given inputs"/>
       <return type="object">
-        <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
+        <type full="Stash\STASHAPI" namespace="Stash" name="STASHAPI"/>
       </return>
       <throws type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -75,7 +75,7 @@
       <description/>
       <depends value="testAPIValidConstructor"/>
       <param type="object" variable="$apiIn">
-        <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
+        <type full="Stash\STASHAPI" namespace="Stash" name="STASHAPI"/>
       </param>
       <throws type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -88,7 +88,7 @@
       <description compact="Tests getting folder list containing root folder"/>
       <depends value="testAPIValidConstructor"/>
       <param type="object" variable="$apiIn">
-        <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
+        <type full="Stash\STASHAPI" namespace="Stash" name="STASHAPI"/>
       </param>
       <throws type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -101,7 +101,7 @@
       <description compact="Tests getting folder list containing all folders"/>
       <depends value="testAPIValidConstructor"/>
       <param type="object" variable="$apiIn">
-        <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
+        <type full="Stash\STASHAPI" namespace="Stash" name="STASHAPI"/>
       </param>
       <throws type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -114,7 +114,7 @@
       <description compact="Tests getting folder list containing sub folders"/>
       <depends value="testAPIValidConstructor"/>
       <param type="object" variable="$apiIn">
-        <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
+        <type full="Stash\STASHAPI" namespace="Stash" name="STASHAPI"/>
       </param>
       <throws type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -152,7 +152,7 @@
       <comment value="Create temp file to test upload/write" line="247"/>
     </inline>
   </method>
-  <method name="testPutFile" start="278" end="317" abstract="false" final="false" static="false" visibility="public">
+  <method name="testPutFile" start="278" end="320" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the putFile() function"/>
       <param description="if T will run the cleanup commands to remove the file uploaded to the vault and source file in the file system" type="boolean" variable="$cleanup"/>
@@ -162,14 +162,14 @@
       </throws>
       <note value="if $cleanup is F, this function will set the doCleanup flag to indicate a file exists and must be deleted"/>
     </docblock>
-    <parameter name="cleanup" byreference="false" type="{unknown}"/>
-    <parameter name="destFolderNames" byreference="false" type="{unknown}"/>
+    <parameter name="cleanup" byreference="false" type="boolean" default="true"/>
+    <parameter name="destFolderNames" byreference="false" type="array" default=""/>
     <inline>
-      <comment value="Delete the test file if it exists" line="285"/>
-      <comment value="Cleanup" line="305"/>
+      <comment value="Delete the test file if it exists" line="286"/>
+      <comment value="Cleanup" line="308"/>
     </inline>
   </method>
-  <method name="testGetFile" start="323" end="345" abstract="false" final="false" static="false" visibility="public">
+  <method name="testGetFile" start="326" end="349" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the getFile() function"/>
       <throws type="object">
@@ -177,10 +177,10 @@
       </throws>
     </docblock>
     <inline>
-      <comment value="Cleanup" line="336"/>
+      <comment value="Cleanup" line="340"/>
     </inline>
   </method>
-  <method name="testCopyFile" start="351" end="400" abstract="false" final="false" static="false" visibility="public">
+  <method name="testCopyFile" start="355" end="406" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the copyFile() function"/>
       <throws type="object">
@@ -188,13 +188,13 @@
       </throws>
     </docblock>
     <inline>
-      <comment value="Delete destination file" line="356"/>
-      <comment value="Copy File" line="361"/>
-      <comment value="$src = array('fileKey'=&gt;$api-&gt;encryptString($this-&gt;accountPw,true), 'folderNames'=&gt;array(&quot;My Home&quot;, &quot;Documents&quot;), 'fileName' =&gt; &quot;copyOfFile.txt&quot;);" line="375"/>
-      <comment value="Cleanup" line="385"/>
+      <comment value="Delete destination file" line="361"/>
+      <comment value="Copy File" line="366"/>
+      <comment value="$src = array('fileKey'=&gt;$api-&gt;encryptString($this-&gt;accountPw,true), 'folderNames'=&gt;array(&quot;My Home&quot;, &quot;Documents&quot;), 'fileName' =&gt; &quot;copyOfFile.txt&quot;);" line="381"/>
+      <comment value="Cleanup" line="391"/>
     </inline>
   </method>
-  <method name="testRenameFile" start="406" end="446" abstract="false" final="false" static="false" visibility="public">
+  <method name="testRenameFile" start="412" end="453" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the renameFile() function"/>
       <throws type="object">
@@ -202,12 +202,12 @@
       </throws>
     </docblock>
     <inline>
-      <comment value="Delete destination file" line="411"/>
-      <comment value="Rename File" line="415"/>
-      <comment value="Cleanup" line="437"/>
+      <comment value="Delete destination file" line="418"/>
+      <comment value="Rename File" line="422"/>
+      <comment value="Cleanup" line="444"/>
     </inline>
   </method>
-  <method name="testMoveFile" start="452" end="492" abstract="false" final="false" static="false" visibility="public">
+  <method name="testMoveFile" start="459" end="500" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the moveFile() function"/>
       <throws type="object">
@@ -215,12 +215,12 @@
       </throws>
     </docblock>
     <inline>
-      <comment value="Delete destination file" line="457"/>
-      <comment value="Move File" line="461"/>
-      <comment value="Cleanup" line="483"/>
+      <comment value="Delete destination file" line="465"/>
+      <comment value="Move File" line="469"/>
+      <comment value="Cleanup" line="491"/>
     </inline>
   </method>
-  <method name="testDeleteFile" start="498" end="501" abstract="false" final="false" static="false" visibility="public">
+  <method name="testDeleteFile" start="506" end="510" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the delete file function (overlaps with testPutFile)"/>
       <throws type="object">
@@ -228,10 +228,10 @@
       </throws>
     </docblock>
     <inline>
-      <comment value="Overlap with testPutFile()" line="499"/>
+      <comment value="Overlap with testPutFile()" line="508"/>
     </inline>
   </method>
-  <method name="testListAll" start="507" end="584" abstract="false" final="false" static="false" visibility="public">
+  <method name="testListAll" start="516" end="594" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the listAll() function with Folder Names"/>
       <throws type="object">
@@ -239,11 +239,11 @@
       </throws>
     </docblock>
     <inline>
-      <comment value="Check directory properties" line="524"/>
-      <comment value="Check file properties" line="549"/>
+      <comment value="Check directory properties" line="534"/>
+      <comment value="Check file properties" line="559"/>
     </inline>
   </method>
-  <method name="testListAllRootFolder" start="590" end="647" abstract="false" final="false" static="false" visibility="public">
+  <method name="testListAllRootFolder" start="600" end="659" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the listAll() function with Folder Id = 0 (root folder)"/>
       <throws type="object">
@@ -251,10 +251,10 @@
       </throws>
     </docblock>
     <inline>
-      <comment value="Check directory properties" line="607"/>
+      <comment value="Check directory properties" line="618"/>
     </inline>
   </method>
-  <method name="testListFiles" start="653" end="846" abstract="false" final="false" static="false" visibility="public">
+  <method name="testListFiles" start="665" end="859" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the listFiles() function"/>
       <throws type="object">
@@ -262,26 +262,26 @@
       </throws>
     </docblock>
     <inline>
-      <comment value="Check outputType = 0 (no output)" line="660"/>
-      <comment value="Check outputType = 1 (file names only)" line="673"/>
-      <comment value="Check outputType = 2 (file and path as arrays)" line="688"/>
-      <comment value="Check outputType = 3 (file and path as string)" line="718"/>
-      <comment value="Check outputType = 4 (model JSON)" line="733"/>
-      <comment value="Check outputType = 5 (GhostFiles format)" line="767"/>
-      <comment value="Check outputType = 6 (NodeNameId Format)" line="793"/>
-      <comment value="Cleanup" line="838"/>
+      <comment value="Check outputType = 0 (no output)" line="673"/>
+      <comment value="Check outputType = 1 (file names only)" line="686"/>
+      <comment value="Check outputType = 2 (file and path as arrays)" line="701"/>
+      <comment value="Check outputType = 3 (file and path as string)" line="731"/>
+      <comment value="Check outputType = 4 (model JSON)" line="746"/>
+      <comment value="Check outputType = 5 (GhostFiles format)" line="780"/>
+      <comment value="Check outputType = 6 (NodeNameId Format)" line="806"/>
+      <comment value="Cleanup" line="851"/>
     </inline>
   </method>
-  <method name="testListSFFiles" start="851" end="854" abstract="false" final="false" static="false" visibility="public">
+  <method name="testListSFFiles" start="864" end="868" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the listSFFiles() function"/>
     </docblock>
     <inline>
-      <todo value="need to create a smart folder first, then run listSFFiles" line="852"/>
-      <comment value="$this-&gt;markTestIncomplete(&quot;Not Implemented&quot;);" line="853"/>
+      <todo value="need to create a smart folder first, then run listSFFiles" line="866"/>
+      <comment value="$this-&gt;markTestIncomplete(&quot;Not Implemented&quot;);" line="867"/>
     </inline>
   </method>
-  <method name="testListFolders" start="860" end="1048" abstract="false" final="false" static="false" visibility="public">
+  <method name="testListFolders" start="874" end="1066" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the listFolders() function"/>
       <throws type="object">
@@ -289,16 +289,17 @@
       </throws>
     </docblock>
     <inline>
-      <comment value="Check outputType = 0 (no output)" line="865"/>
-      <comment value="Check outputType = 1 (folder names only)" line="878"/>
-      <comment value="Check outputType = 2 (folder and path as arrays)" line="895"/>
-      <comment value="Check outputType = 3 (file and path as string)" line="925"/>
-      <comment value="Check outputType = 4 (model JSON)" line="942"/>
-      <comment value="Check outputType = 5 (GhostFiles format)" line="977"/>
-      <comment value="Check outputType = 6 (NodeNameId format)" line="1003"/>
+      <comment value="Check outputType = 0 (no output)" line="880"/>
+      <comment value="Check outputType = 1 (folder names only)" line="893"/>
+      <comment value="Check outputType = 2 (folder and path as arrays)" line="910"/>
+      <comment value="error_log(&quot;Folders: &quot; . print_r($res['folders'], true));" line="918"/>
+      <comment value="Check outputType = 3 (file and path as string)" line="943"/>
+      <comment value="Check outputType = 4 (model JSON)" line="960"/>
+      <comment value="Check outputType = 5 (GhostFiles format)" line="995"/>
+      <comment value="Check outputType = 6 (NodeNameId format)" line="1021"/>
     </inline>
   </method>
-  <method name="testCreateDirectory" start="1055" end="1082" abstract="false" final="false" static="false" visibility="public">
+  <method name="testCreateDirectory" start="1073" end="1101" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the createDirectory() function"/>
       <param description="T to remove the directory that was created, F to leave it" type="object" variable="$cleanup">
@@ -310,7 +311,7 @@
     </docblock>
     <parameter name="cleanup" byreference="false" type="boolean" default="true"/>
   </method>
-  <method name="testRenameDirectory" start="1088" end="1111" abstract="false" final="false" static="false" visibility="public">
+  <method name="testRenameDirectory" start="1107" end="1131" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the renameDirectory() function"/>
       <throws type="object">
@@ -318,10 +319,10 @@
       </throws>
     </docblock>
     <inline>
-      <comment value="Cleanup" line="1107"/>
+      <comment value="Cleanup" line="1127"/>
     </inline>
   </method>
-  <method name="testMoveDirectory" start="1117" end="1148" abstract="false" final="false" static="false" visibility="public">
+  <method name="testMoveDirectory" start="1137" end="1170" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the moveDirectory() function"/>
       <throws type="object">
@@ -329,10 +330,11 @@
       </throws>
     </docblock>
     <inline>
-      <comment value="Cleanup" line="1143"/>
+      <comment value="$this-&gt;assertEquals(200, $retCode, &quot;Delete Directory: &quot; . json_encode($res));" line="1144"/>
+      <comment value="Cleanup" line="1165"/>
     </inline>
   </method>
-  <method name="testCopyDirectory" start="1154" end="1195" abstract="false" final="false" static="false" visibility="public">
+  <method name="testCopyDirectory" start="1176" end="1218" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the copyDirectory() function"/>
       <throws type="object">
@@ -340,21 +342,19 @@
       </throws>
     </docblock>
     <inline>
-      <comment value="Cleanup" line="1190"/>
+      <comment value="Cleanup" line="1213"/>
     </inline>
   </method>
-  <method name="testDeleteDirectory" start="1202" end="1205" abstract="false" final="false" static="false" visibility="public">
+  <method name="testDeleteDirectory" start="1225" end="1229" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="Tests the deleteDirectory() function Overlaps with testCreateDirectory, @see testCreateDirectory"/>
-      <throws type="object">
-        <type full="Exception" namespace="" name="Exception"/>
-      </throws>
+      <description compact="Tests the deleteDirectory() function Overlaps with testCreateDirectory, @throws Exception"/>
+      <see value="testCreateDirectory"/>
     </docblock>
     <inline>
-      <comment value="Overlaps with testCreateDirectory()" line="1203"/>
+      <comment value="Overlaps with testCreateDirectory()" line="1227"/>
     </inline>
   </method>
-  <method name="testGetFolderId" start="1211" end="1222" abstract="false" final="false" static="false" visibility="public">
+  <method name="testGetFolderId" start="1235" end="1247" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the getFolderId() function"/>
       <throws type="object">
@@ -362,7 +362,7 @@
       </throws>
     </docblock>
   </method>
-  <method name="testGetFileInfo" start="1228" end="1258" abstract="false" final="false" static="false" visibility="public">
+  <method name="testGetFileInfo" start="1253" end="1302" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the getFileInfo() function"/>
       <throws type="object">
@@ -370,10 +370,11 @@
       </throws>
     </docblock>
     <inline>
-      <comment value="Cleanup" line="1250"/>
+      <comment value="Test filePath" line="1276"/>
+      <comment value="Cleanup" line="1294"/>
     </inline>
   </method>
-  <method name="testGetFolderInfo" start="1264" end="1290" abstract="false" final="false" static="false" visibility="public">
+  <method name="testGetFolderInfo" start="1308" end="1335" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the getFolderInfo() function"/>
       <throws type="object">
@@ -381,7 +382,7 @@
       </throws>
     </docblock>
   </method>
-  <method name="testGetSyncInfo" start="1296" end="1316" abstract="false" final="false" static="false" visibility="public">
+  <method name="testGetSyncInfo" start="1341" end="1362" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests getSyncInfo() function"/>
       <throws type="object">
@@ -389,7 +390,7 @@
       </throws>
     </docblock>
   </method>
-  <method name="testGetVaultInfo" start="1322" end="1346" abstract="false" final="false" static="false" visibility="public">
+  <method name="testGetVaultInfo" start="1368" end="1393" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the getVaultInfo() function"/>
       <throws type="object">
@@ -397,7 +398,7 @@
       </throws>
     </docblock>
   </method>
-  <method name="testCheckCreds" start="1352" end="1372" abstract="false" final="false" static="false" visibility="public">
+  <method name="testCheckCreds" start="1399" end="1422" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the checkCreds() function"/>
       <throws type="object">
@@ -405,7 +406,7 @@
       </throws>
     </docblock>
   </method>
-  <method name="testCheckVaultConnection" start="1378" end="1385" abstract="false" final="false" static="false" visibility="public">
+  <method name="testCheckVaultConnection" start="1428" end="1436" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the checkVaultConnection() function"/>
       <throws type="object">
@@ -413,7 +414,7 @@
       </throws>
     </docblock>
   </method>
-  <method name="testIsValidUser" start="1391" end="1407" abstract="false" final="false" static="false" visibility="public">
+  <method name="testIsValidUser" start="1442" end="1459" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the isValidUser() function"/>
       <throws type="object">
@@ -421,7 +422,7 @@
       </throws>
     </docblock>
   </method>
-  <method name="testSetPermissions" start="1413" end="1437" abstract="false" final="false" static="false" visibility="public">
+  <method name="testSetPermissions" start="1465" end="1490" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the setPermissions() function"/>
       <throws type="object">
@@ -429,12 +430,12 @@
       </throws>
     </docblock>
     <inline>
-      <comment value="Get Folder ID for Documents Directory" line="1416"/>
-      <comment value="Build permission array for user 92 (which doesn't exist)" line="1424"/>
-      <comment value="Extend function to test with Pro account here" line="1435"/>
+      <comment value="Get Folder ID for Documents Directory" line="1469"/>
+      <comment value="Build permission array for user 92 (which doesn't exist)" line="1477"/>
+      <comment value="Extend function to test with Pro account here" line="1488"/>
     </inline>
   </method>
-  <method name="testCheckPermissions" start="1443" end="1466" abstract="false" final="false" static="false" visibility="public">
+  <method name="testCheckPermissions" start="1496" end="1520" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the checkPermissions() function"/>
       <throws type="object">
@@ -442,10 +443,10 @@
       </throws>
     </docblock>
     <inline>
-      <comment value="Get Folder ID for Documents Directory" line="1446"/>
+      <comment value="Get Folder ID for Documents Directory" line="1500"/>
     </inline>
   </method>
-  <method name="testWebEraseToken" start="1472" end="1484" abstract="false" final="false" static="false" visibility="public">
+  <method name="testWebEraseToken" start="1526" end="1540" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests the WebErase token() function"/>
       <throws type="object">
@@ -453,9 +454,9 @@
       </throws>
     </docblock>
     <inline>
-      <comment value="Get Folder ID for Documents Directory" line="1475"/>
-      <comment value="$src = array('folderNames' =&gt; array(&quot;My Home&quot;, &quot;Documents&quot;));" line="1476"/>
-      <comment value="$token = $res['token'];" line="1483"/>
+      <comment value="Get Folder ID for Documents Directory" line="1530"/>
+      <comment value="$src = array('folderNames' =&gt; array(&quot;My Home&quot;, &quot;Documents&quot;));" line="1531"/>
+      <comment value="$token = $res['token'];" line="1539"/>
     </inline>
   </method>
 </class>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="Stash\STASHAPITest" namespace="Stash" name="STASHAPITest" abstract="false" final="false" start="18" end="430">
-  <file path="L:/Projects/Stash/StashApi-php-Release/docs/../tests/unit" file="STASHAPITest.php" realpath="L:/Projects/Stash/StashApi-php-Release/tests/unit/STASHAPITest.php" size="15686" time="2020-09-14T18:34:56+00:00" unixtime="1600108496" sha1="8fb13c6ac4e549fa6004bb0254208b4b5a5997e0" relative="tests/unit/STASHAPITest.php"/>
+<class xmlns="http://xml.phpdox.net/src" full="Stash\STASHAPITest" namespace="Stash" name="STASHAPITest" abstract="false" final="false" start="18" end="436">
+  <file path="L:/Projects/Stash/StashApi-php-Release/docs/../tests/unit" file="STASHAPITest.php" realpath="L:/Projects/Stash/StashApi-php-Release/tests/unit/STASHAPITest.php" size="15987" time="2022-02-23T01:48:29+00:00" unixtime="1645580909" sha1="418bbcdd8a67d11a8b1e22465f24b0200425f19b" relative="tests/unit/STASHAPITest.php"/>
   <docblock>
     <description compact="Class STASHAPITest Runs unit testing on the functions in the API"/>
     <package value="Stash"/>
@@ -50,7 +50,7 @@
     <docblock>
       <description compact="Checks the main constructor"/>
       <return type="object">
-        <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
+        <type full="Stash\STASHAPI" namespace="Stash" name="STASHAPI"/>
       </return>
       <throws type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -61,7 +61,7 @@
     <docblock>
       <description/>
       <param description="the API object to test" type="object" variable="$api">
-        <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
+        <type full="Stash\STASHAPI" namespace="Stash" name="STASHAPI"/>
       </param>
       <depends value="testAPIValidConstructor"/>
     </docblock>
@@ -79,33 +79,34 @@
       <comment value="Invalid Params" line="164"/>
     </inline>
   </method>
-  <method name="testAPIParamValidation" start="175" end="228" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPIParamValidation" start="175" end="234" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <param description="the API object to test" type="object" variable="$api">
-        <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
+        <type full="Stash\STASHAPI" namespace="Stash" name="STASHAPI"/>
       </param>
       <depends value="testAPIValidConstructor"/>
     </docblock>
     <parameter name="api" byreference="false" type="{unknown}"/>
     <inline>
       <comment value="listfilesdir is not a support op" line="188"/>
-      <comment value="Test invalid filekey input" line="190"/>
-      <comment value="Test remaining invalid inputs with move or copy as both operations consider all source and destination parameters" line="195"/>
-      <comment value="Missing All Source parameters" line="196"/>
-      <comment value="Missing All Destination parameters" line="200"/>
-      <comment value="Missing Source File params" line="204"/>
-      <comment value="Missing Source Folder params with FileId" line="209"/>
-      <comment value="Missing Source Folder params without FileId" line="214"/>
-      <comment value="Missing Dest File params" line="219"/>
-      <comment value="Missing Dest Folder params" line="224"/>
+      <comment value="Test filePath" line="190"/>
+      <comment value="Test invalid filekey input" line="196"/>
+      <comment value="Test remaining invalid inputs with move or copy as both operations consider all source and destination parameters" line="201"/>
+      <comment value="Missing All Source parameters" line="202"/>
+      <comment value="Missing All Destination parameters" line="206"/>
+      <comment value="Missing Source File params" line="210"/>
+      <comment value="Missing Source Folder params with FileId" line="215"/>
+      <comment value="Missing Source Folder params without FileId" line="220"/>
+      <comment value="Missing Dest File params" line="225"/>
+      <comment value="Missing Dest Folder params" line="230"/>
     </inline>
   </method>
-  <method name="testAPISignature" start="236" end="246" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPISignature" start="242" end="252" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests calculating and setting a valid signature for the request"/>
       <param description="the API object to test" type="object" variable="$api">
-        <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
+        <type full="Stash\STASHAPI" namespace="Stash" name="STASHAPI"/>
       </param>
       <throws type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -114,17 +115,17 @@
     </docblock>
     <parameter name="api" byreference="false" type="{unknown}"/>
   </method>
-  <method name="testEncryptDecryptString" start="253" end="259" abstract="false" final="false" static="false" visibility="public">
+  <method name="testEncryptDecryptString" start="259" end="265" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests encrypting / decrypting strings"/>
       <param type="object" variable="$apiIn">
-        <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
+        <type full="Stash\STASHAPI" namespace="Stash" name="STASHAPI"/>
       </param>
       <depends value="testAPIValidConstructor"/>
     </docblock>
     <parameter name="apiIn" byreference="false" type="{unknown}"/>
   </method>
-  <method name="testEncryptEmptyKey" start="265" end="272" abstract="false" final="false" static="false" visibility="public">
+  <method name="testEncryptEmptyKey" start="271" end="278" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests encrypting a string with an empty key"/>
       <throws type="object">
@@ -132,7 +133,7 @@
       </throws>
     </docblock>
   </method>
-  <method name="testEncryptEmptyString" start="278" end="285" abstract="false" final="false" static="false" visibility="public">
+  <method name="testEncryptEmptyString" start="284" end="291" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests encrypting an empty string"/>
       <throws type="object">
@@ -140,7 +141,7 @@
       </throws>
     </docblock>
   </method>
-  <method name="testDecryptEmptyKey" start="291" end="300" abstract="false" final="false" static="false" visibility="public">
+  <method name="testDecryptEmptyKey" start="297" end="306" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Test decrypting with an empty key"/>
       <throws type="object">
@@ -148,7 +149,7 @@
       </throws>
     </docblock>
   </method>
-  <method name="testDecryptEmptyString" start="306" end="313" abstract="false" final="false" static="false" visibility="public">
+  <method name="testDecryptEmptyString" start="312" end="319" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Tests decrypting an empty string"/>
       <throws type="object">
@@ -156,21 +157,21 @@
       </throws>
     </docblock>
   </method>
-  <method name="testEncryptInvalidKey" start="319" end="326" abstract="false" final="false" static="false" visibility="public">
+  <method name="testEncryptInvalidKey" start="325" end="332" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <param description="the API object to test" type="object" variable="$apiIn">
-        <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
+        <type full="Stash\STASHAPI" namespace="Stash" name="STASHAPI"/>
       </param>
       <depends value="testAPIValidConstructor"/>
     </docblock>
     <parameter name="apiIn" byreference="false" type="{unknown}"/>
   </method>
-  <method name="testDecryptInvalidKey" start="333" end="342" abstract="false" final="false" static="false" visibility="public">
+  <method name="testDecryptInvalidKey" start="339" end="348" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <param type="object" variable="$apiIn">
-        <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
+        <type full="Stash\STASHAPI" namespace="Stash" name="STASHAPI"/>
       </param>
       <throws type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -179,11 +180,11 @@
     </docblock>
     <parameter name="apiIn" byreference="false" type="{unknown}"/>
   </method>
-  <method name="testDecryptInvalidDataIn" start="349" end="357" abstract="false" final="false" static="false" visibility="public">
+  <method name="testDecryptInvalidDataIn" start="355" end="363" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <param type="object" variable="$apiIn">
-        <type full="Stash\StashAPI" namespace="Stash" name="StashAPI"/>
+        <type full="Stash\STASHAPI" namespace="Stash" name="STASHAPI"/>
       </param>
       <throws type="object">
         <type full="Exception" namespace="" name="Exception"/>
@@ -192,10 +193,10 @@
     </docblock>
     <parameter name="apiIn" byreference="false" type="{unknown}"/>
     <inline>
-      <comment value="Only ask to decrypt 10 characters of data to force detection of too little data in input" line="356"/>
+      <comment value="Only ask to decrypt 10 characters of data to force detection of too little data in input" line="362"/>
     </inline>
   </method>
-  <method name="testAPISend" start="362" end="374" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPISend" start="368" end="380" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <throws description="for errors in setId" type="object">
@@ -203,7 +204,7 @@
       </throws>
     </docblock>
   </method>
-  <method name="testAPIFileSendEmptyURL" start="379" end="389" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPIFileSendEmptyURL" start="385" end="395" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <throws type="object">
@@ -211,7 +212,7 @@
       </throws>
     </docblock>
   </method>
-  <method name="testAPIFileSendEmptyFilename" start="394" end="404" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPIFileSendEmptyFilename" start="400" end="410" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <throws type="object">
@@ -219,7 +220,7 @@
       </throws>
     </docblock>
   </method>
-  <method name="testAPIFileSendFileNotExist" start="409" end="419" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAPIFileSendFileNotExist" start="415" end="425" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description/>
       <throws type="object">

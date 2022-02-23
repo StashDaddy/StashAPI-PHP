@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <source xmlns="http://xml.phpdox.net/token">
-  <file xmlns="http://xml.phpdox.net/src" path="L:/Projects/Stash/StashApi-php-Release/docs/../tests/unit" file="STASHAPIWebEraseTest.php" realpath="L:/Projects/Stash/StashApi-php-Release/tests/unit/STASHAPIWebEraseTest.php" size="15323" time="2020-09-14T18:51:52+00:00" unixtime="1600109512" sha1="59e05c83bf6c332d7748dee26003491c49125968" relative="tests/unit/STASHAPIWebEraseTest.php"/>
+  <file xmlns="http://xml.phpdox.net/src" path="L:/Projects/Stash/StashApi-php-Release/docs/../tests/unit" file="STASHAPIWebEraseTest.php" realpath="L:/Projects/Stash/StashApi-php-Release/tests/unit/STASHAPIWebEraseTest.php" size="15323" time="2022-02-22T16:50:37+00:00" unixtime="1645548637" sha1="514035371b05a8af38d2e5a004a22059d9b35632" relative="tests/unit/STASHAPIWebEraseTest.php"/>
   <line no="1">
     <token name="T_OPEN_TAG">&lt;?php</token>
   </line>
@@ -33,7 +33,7 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_STRING">Stash</token>
     <token name="T_NS_SEPARATOR">\</token>
-    <token name="T_STRING">StashAPI</token>
+    <token name="T_STRING">STASHAPI</token>
     <token name="T_WHITESPACE"> </token>
     <token name="T_AS">as</token>
     <token name="T_WHITESPACE"> </token>
