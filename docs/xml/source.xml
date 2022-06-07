@@ -5,7 +5,7 @@
     <dir name="src">
       <dir name="Stash">
         <file name="apitest.php" size="4855" time="2022-02-22T17:08:24+00:00" unixtime="1645549704" sha1="37c08ad9dab85f95f77032aaf9405c603fb7a7f8" xml="tokens/src/Stash/apitest.php.xml"/>
-        <file name="STASHAPI.php" size="111000" time="2022-02-22T16:59:32+00:00" unixtime="1645549172" sha1="9f55d689016246760d60a285f5b5bfc612baede7" xml="tokens/src/Stash/STASHAPI.php.xml"/>
+        <file name="STASHAPI.php" size="112317" time="2022-06-07T22:00:36+00:00" unixtime="1654639236" sha1="876ab4cacf0d87f6af358fd0555d7a2a3ccf8343" xml="tokens/src/Stash/STASHAPI.php.xml"/>
       </dir>
     </dir>
     <dir name="tests">
