@@ -2,7 +2,7 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <title>phpDox - Stash\STASHAPI::renameDirectory</title>
+    <title>phpDox - Stash\STASHAPI::getUserId</title>
     <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   </head>
@@ -44,7 +44,7 @@
           <li class="separator">
             <a title="Stash\STASHAPI" href="../../classes/Stash_STASHAPI.xhtml">STASHAPI</a>
           </li>
-          <li class="separator">renameDirectory</li>
+          <li class="separator">getUserId</li>
         </ul>
       </div>
       <nav class="box">
@@ -65,23 +65,23 @@
             <a href="#throws">Throws</a>
           </li>
           <li>
-            <a href="../../source/src/Stash/STASHAPI.php.xhtml#line1709">Source</a>
+            <a href="../../source/src/Stash/STASHAPI.php.xhtml#line2022">Source</a>
           </li>
         </ul>
       </nav>
       <section>
-        <h1><small>Stash\STASHAPI::</small>renameDirectory</h1>
-        <h4>Function renames a folder in the vault</h4>
+        <h1><small>Stash\STASHAPI::</small>getUserId</h1>
+        <h4>Function returns the ID of the user making the request</h4>
         <p/>
         <ul/>
         <h2 id="signature">Signature</h2>
         <div class="styled synopsis">
-          <code>public function renameDirectory(array
+          <code>public function getUserId(array
         $srcIdentifier,
-            array
-        $dstIdentifier,
             integer&amp;
-        $retCode )
+        $retCode,
+            integer&amp;
+        $userId )
             </code>
         </div>
         <h2 id="parameterlist">Parameters</h2>
@@ -89,15 +89,15 @@
           <dt><code>$srcIdentifier</code>
                 —
                 array</dt>
-          <dd>an associative array containing the source identifier, the values of which folder to rename</dd>
-          <dt><code>$dstIdentifier</code>
-                —
-                array</dt>
-          <dd>an associative array containing the destination identifier, the values to rename the folder</dd>
+          <dd>an associative array containing the source identifier, the values of which user account to check</dd>
           <dt><code>$retCode</code>
                 —
                 integer</dt>
-          <dd>OUTPUT - the return code from the API call</dd>
+          <dd>OUTPUT, contains the return code from the operation</dd>
+          <dt><code>$userId</code>
+                —
+                integer</dt>
+          <dd>OUTPUT, contains the User ID for the specified account</dd>
         </dl>
         <h2 id="return">Returns</h2>
         <dl class="styled">
@@ -108,16 +108,16 @@
         <dl class="styled">
           <dt>
             <code>
+              <a title="InvalidArgumentException" href="../../classes/InvalidArgumentException.xhtml">InvalidArgumentException</a>
+            </code>
+          </dt>
+          <dd>if the input parameters are not valid</dd>
+          <dt>
+            <code>
               <a title="Exception" href="../../classes/Exception.xhtml">Exception</a>
             </code>
           </dt>
           <dd>if sendRequest() fails</dd>
-          <dt>
-            <code>
-              <a title="InvalidArgumentException" href="../../classes/InvalidArgumentException.xhtml">InvalidArgumentException</a>
-            </code>
-          </dt>
-          <dd>if the input parameters are invalid</dd>
         </dl>
       </section>
     </div>

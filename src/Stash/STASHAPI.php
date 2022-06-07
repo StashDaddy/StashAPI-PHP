@@ -2030,8 +2030,8 @@ class STASHAPI
         $this->params = array();
 
         $results = json_decode($res, true);
-        $retCode = (empty($tVal['code']) ? -1 : $tVal['code']);
-        $userId = (empty($tVal['userId']) ? -1 : $tVal['userId']);
+        $retCode = (empty($results['code']) ? -1 : $results['code']);
+        $userId = (empty($results['userId']) ? -1 : $results['userId']);
 
         return $results;
     }
