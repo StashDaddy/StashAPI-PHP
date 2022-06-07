@@ -968,7 +968,7 @@ class STASHAPI
             } elseif ($opIn === 'isvaliduser') {
                 $this->validateCredParams(false, true, false, false);
             } elseif ($opIn == 'getuserid') {
-                $this->validateCredParams(false, true, true, false);
+                $this->validateCredParams(false, true, false, false);
             } elseif ($opIn == 'setperms') {
                 $this->validateSetPermParams();
             } elseif ($opIn == 'checkperms') {
