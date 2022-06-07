@@ -967,6 +967,8 @@ class STASHAPI
                 $this->validateCredParams(true, true, false, false);
             } elseif ($opIn === 'isvaliduser') {
                 $this->validateCredParams(false, true, false, false);
+            } elseif ($opIn == 'getuserid') {
+                $this->validateCredParams(false, true, true, false);
             } elseif ($opIn == 'setperms') {
                 $this->validateSetPermParams();
             } elseif ($opIn == 'checkperms') {
@@ -2004,6 +2006,33 @@ class STASHAPI
         $this->params = array();
 
         $results = json_decode($res, true);
+        return $results;
+    }
+
+/**
+     * Function returns the ID of the user making the request
+     *
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of which user account to check
+     * @param integer $retCode OUTPUT, contains the return code from the operation
+     * @param integer $userId OUTPUT, contains the User ID for the specified account
+     * @return array the result / output of the operation
+     * @throws InvalidArgumentException if the input parameters are not valid
+     * @throws Exception if sendRequest() fails
+     */
+    public function getUserId($srcIdentifier, &$retCode, &$userId)
+    {
+        $this->params = $srcIdentifier;
+        $this->url = $this->BASE_API_URL . "api2/auth/getuserid";
+        if (!$this->validateParams('getuserid')) {
+            throw new InvalidArgumentException("Invalid Input Parameters");
+        }
+        $res = $this->sendRequest();
+        $this->params = array();
+
+        $results = json_decode($res, true);
+        $retCode = (empty($tVal['code']) ? -1 : $tVal['code']);
+        $userId = (empty($tVal['userId']) ? -1 : $tVal['userId']);
+
         return $results;
     }
 
