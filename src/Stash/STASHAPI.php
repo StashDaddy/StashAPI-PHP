@@ -28,6 +28,7 @@ use UnexpectedValueException;
 
 class STASHAPI
 {
+    const FILE_VERSION = "1.3.6";           // File version
     const STASHAPI_VERSION = "1.0";        // API Version
     const STASHAPI_ID_LENGTH = 32;        // API_ID string length
     const STASHAPI_PW_LENGTH = 32;        // API_PW string length (minimum)
@@ -52,8 +53,8 @@ class STASHAPI
     /**
      * STASHAPI Constructor
      *
-     * @param String $apiId the API ID
-     * @param String $apiPw the API PW
+     * @param string $apiId the API ID
+     * @param string $apiPw the API PW
      * @param string $urlIn the base url (e.g. 127.0.0.1, or https://www.stashbusiness.com) if different from the default
      * @param boolean $verbosity T to generate log messages from STASHAPI functions
      */
@@ -241,7 +242,7 @@ class STASHAPI
     public function setTimestamp()
     {
         if ($this->verbosity) echo "- setTimestamp - " . time() . "\n\r";
-        $this->api_timestamp = (int)time();
+        $this->api_timestamp = time();
         return $this;
     }
 
@@ -279,11 +280,14 @@ class STASHAPI
 
         // Must UNESCAPE the slashes so the json_encode here matches encoded json on other platforms
         $strToSign = json_encode($dataIn, JSON_UNESCAPED_SLASHES);
-        //$strToSign = http_build_query($dataIn);
 
         $sig = hash_hmac('sha256', $strToSign, $this->getPw());
 
         $this->api_signature = $sig;
+
+        if ($this->verbosity) {
+            echo " - setSignature - strToSign: " . $strToSign . " sig: " . $this->api_signature;
+        }
         return true;
     }
 
@@ -522,12 +526,13 @@ class STASHAPI
 
         if ($this->url == "") throw new UnexpectedValueException("Invalid URL");
         if ($fileNameIn == "" || (!file_exists($fileNameIn))) throw new InvalidArgumentException("A Filename Must be Specified or File Does Not Exist");
-
+        $guidFile = uniqid("STASHFILE_", true);
         $apiParams['url'] = $this->url;
         $apiParams['api_version'] = $this->getVersion();
         $apiParams['api_id'] = $this->getId();
         $this->setTimestamp();
         $apiParams['api_timestamp'] = $this->getTimestamp();
+        $apiParams['file_guid'] = $guidFile;
         $this->setSignature(array_merge($apiParams, $this->params));        // Sign request
         $apiParams['api_signature'] = $this->getSignature();
 
@@ -983,9 +988,9 @@ class STASHAPI
             } elseif ($opIn == 'deleteversion') {
                 $this->validateSourceParams(false, false);
                 $this->validateVersionParams();
-            } elseif ($opIn == 'weberasetoken') {
+            } /** @noinspection PhpStatementHasEmptyBodyInspection */ elseif ($opIn == 'weberasetoken') {
                 // Intentionally blank
-            } elseif ($opIn == 'weberaseprojectlist') {
+            } /** @noinspection PhpStatementHasEmptyBodyInspection */ elseif ($opIn == 'weberaseprojectlist') {
                 // Intentionally blank
             } elseif ($opIn == 'weberasestore') {
                 $this->ValidateWebEraseStoreParams();
@@ -1044,6 +1049,8 @@ class STASHAPI
     public function getFile($srcIdentifier, $fileName, $timeOut, &$retCode)
     {    // Read
         $retCode = 0;
+        if (empty($fileName)) { throw new InvalidArgumentException("An Output File Name Must be Specified"); }
+
         $this->params = $srcIdentifier;
         $this->url = $this->BASE_API_URL . "api2/file/read";
         if (!$this->validateParams('read')) {
@@ -1063,7 +1070,7 @@ class STASHAPI
                 if ($tArr == null) {
                     throw new Exception("Unable to download file - " . $res);
                 }
-                $retCode = (isset($tArr['code']) ? $tArr['code'] : 0);
+                $retCode = ($tArr['code'] ?? 0);
                 $retVal = $tArr;
             } catch (Exception $e) {
                 $retCode = -1;
@@ -2126,6 +2133,7 @@ class STASHAPI
     public function readVersion($srcIdentifier, $fileName, $timeOut, &$retCode)
     {    // Read
         $retCode = 0;
+        if (empty($fileName)) { throw new InvalidArgumentException("An Output File Name Must be Specified"); }
 
         $dirName = dirname($fileName);
         if (!file_exists($dirName)) {
