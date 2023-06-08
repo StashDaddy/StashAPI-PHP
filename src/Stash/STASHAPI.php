@@ -28,7 +28,7 @@ use UnexpectedValueException;
 
 class STASHAPI
 {
-    const FILE_VERSION = "1.3.6";           // File version
+    const FILE_VERSION = "1.3.7";           // File version
     const STASHAPI_VERSION = "1.0";        // API Version
     const STASHAPI_ID_LENGTH = 32;        // API_ID string length
     const STASHAPI_PW_LENGTH = 32;        // API_PW string length (minimum)
@@ -49,6 +49,10 @@ class STASHAPI
     public $params;                // Associative array of parameters to send with the request
 
     public $BASE_API_URL;        // The BASE URL to use for the request
+
+    public $apiSubsystem = "";
+    public $apiOperation = "";
+    public const NoIdOperations = ["getapicreds", "getsecret"];     // These requests don't need an API ID
 
     /**
      * STASHAPI Constructor
@@ -279,8 +283,7 @@ class STASHAPI
         if (isset($dataIn['api_signature'])) unset($dataIn['api_signature']);
 
         // Must UNESCAPE the slashes so the json_encode here matches encoded json on other platforms
-        $strToSign = json_encode($dataIn, JSON_UNESCAPED_SLASHES);
-
+        $strToSign = json_encode($dataIn, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
         $sig = hash_hmac('sha256', $strToSign, $this->getPw());
 
         $this->api_signature = $sig;
@@ -301,25 +304,38 @@ class STASHAPI
     }
 
     /**
-     * Function encrypts a string with your API_PW
+     * Function encrypts a string with the specified key, or if empty, your API_PW
      * @param string $strIn the string to encrypt
      * @param boolean $returnHexBits T if the function should return hexbits instead of raw
      * @return string the encrypted string
      */
-    public function encryptString($strIn, $returnHexBits)
+    public function encryptString($strIn, $keyIn, $returnHexBits)
     {
         if ($strIn == "") return "";
         if ($this->api_pw == "") return "";
+        // If both keyIn and api_pw are empty/null, return empty string - this usually occurs during getApiCreds
+        // where the keyIn hasn't been calculated yet and the api_pw is not required
+        if ($keyIn == "" && empty($this->api_pw)) { return ""; }
 
-        if (strlen($this->api_pw) < 32) {
-            throw new InvalidArgumentException("API_PW must be at least 32 characters");
+        if (strlen($this->api_pw) != self::STASHAPI_PW_LENGTH && empty($keyIn)) {
+            throw new InvalidArgumentException("API_PW must be " . self::STASHAPI_PW_LENGTH . " characters in length");
+        }
+        if (empty($this->api_pw) && strlen($keyIn) != self::STASHAPI_PW_LENGTH) {
+            throw new InvalidArgumentException("keyIn must be " . self::STASHAPI_PW_LENGTH . " characters in length");
         }
 
         $ivsize = openssl_cipher_iv_length(self::ENC_ALG);
         $iv = openssl_random_pseudo_bytes($ivsize);
 
         $rawoption = defined('OPENSSL_RAW_DATA') ? OPENSSL_RAW_DATA : true;
-        $ct = openssl_encrypt($strIn, self::ENC_ALG, substr($this->api_pw, 0, 32), $rawoption, $iv);
+
+        if (! empty($keyIn)) {
+            $key = $keyIn;
+        } else {
+            $key = substr($this->api_pw, 0, self::STASHAPI_PW_LENGTH);
+        }
+
+        $ct = openssl_encrypt($strIn, self::ENC_ALG, $keyIn, $rawoption, $iv);
 
         if ($returnHexBits) {
             return bin2hex($iv . $ct);
@@ -339,8 +355,8 @@ class STASHAPI
         if ($strIn == "") return "";
         if ($this->api_pw == "") return "";
 
-        if (strlen($this->api_pw) < 32) {
-            throw new InvalidArgumentException("API_PW must be at least 32 characters");
+        if (strlen($this->api_pw) < self::STASHAPI_PW_LENGTH) {
+            throw new InvalidArgumentException("API_PW must be at least " . self::STASHAPI_PW_LENGTH . " characters");
         }
 
         if ($inHexBits) {
@@ -356,7 +372,7 @@ class STASHAPI
         $iv = substr($strIn, 0, $ivsize);
         $ct = substr($strIn, $ivsize, strlen($strIn) - $ivsize);
 
-        return openssl_decrypt($ct, self::ENC_ALG, substr($this->api_pw, 0, 32), $rawoption, $iv);
+        return openssl_decrypt($ct, self::ENC_ALG, substr($this->api_pw, 0, self::STASHAPI_PW_LENGTH), $rawoption, $iv);
     }
 
     /**
@@ -897,6 +913,16 @@ class STASHAPI
                 throw new InvalidArgumentException("Parameters Can't Be Null");
             }
 
+            // Set the subsystem and operation if the URL contains them
+            if ($this->url != "") {
+                // Parse url to get the subsystem and operation
+                $listUrl = explode("/", $this->url);
+                if (is_array($listUrl) && count($listUrl) == 6) {
+                    $this->apiSubsystem = $listUrl[4] ?? "";
+                    $this->apiOperation = $listUrl[5] ?? "";
+                }
+            }
+
             if ($opIn === 'read') {
                 $this->validateSourceParams(false, false);
                 if ($this->params['fileKey'] == "") throw new InvalidArgumentException("Invalid fileKey Parameter");
@@ -974,6 +1000,16 @@ class STASHAPI
                 $this->validateCredParams(false, true, false, false);
             } elseif ($opIn == 'getuserid') {
                 $this->validateCredParams(false, true, false, false);
+            } else if ($opIn == 'getsecret') {
+                $this->api_id = "01010101010101010101010101010101";       // Set to nonsense ID, an ID is not needed for this request
+                $this->api_pw = $this->api_id;       // Set to 'known' string, it will be used to sign the request only
+                $this->validateCredParams(false, true, false, false);
+                if (empty($this->params['pubkey'])) { throw new InvalidArgumentException("Invalid pubkey Parameter"); }
+            } else if ($opIn == 'getapicreds') {
+                $this->api_id = "01010101010101010101010101010101";       // Set to nonsense ID, an ID is not needed for this request
+                $this->api_pw = $this->api_id;       // Set to 'known' string, it will be used to sign the request only
+                $this->validateCredParams(true, true, false, false);
+                if (empty($this->params['id'])) { throw new InvalidArgumentException("Invalid id Parameter"); }
             } elseif ($opIn == 'setperms') {
                 $this->validateSetPermParams();
             } elseif ($opIn == 'checkperms') {
@@ -2044,6 +2080,61 @@ class STASHAPI
     }
 
     /**
+     * Gets a secret via Diffie-Hellman key agreement to use in encrypting values sent to the server
+     * @param array $srcIdentifier the input values (e.g. accountUsername) for the request
+     * @param int $retCode output, the return code from the API call
+     * @param string $dhId output, the ID used to identify the DH key agreement params on the server
+     * @param string $serverPubKey output, the server's public key to be used for the DH key agreement calculation on the client
+     * @return string a JSON encoded string containing 'id' and 'pubkey' to use in API requests
+     * @throws InvalidArgumentException|Exception for errors in input parameters and in sendRequest()
+     */
+    public function getSecret($srcIdentifier, &$retCode, &$dhId, &$serverPubKey)
+    {
+        $dhId = ""; $serverPubKey = ""; $retCode = 0;
+
+        $this->params = $srcIdentifier;
+        $this->url = $this->BASE_API_URL . "api2/auth/getsecret";
+        if (! $this->validateParams("getsecret")) { throw new InvalidArgumentException("Invalid Input Parameters"); }
+
+        $res = $this->sendRequest();
+        $this->params = array();
+
+        $results = json_decode($res, true);
+        $retCode = (empty($results['code']) ? -1 : $results['code']);
+
+        if ($retCode == 200) {
+            $dhId = $results['secret']['id'] ?? "";
+            $serverPubKey = $results['secret']['pubkey'] ?? "";
+        }
+        return $results;
+    }
+
+
+    /**
+     * Gets a user's API credentials (API_ID and API_PW)
+     * @param array $srcIdentifier the input values (e.g. accountUsername) for the request
+     * @param int $retCode output, the return code from the API call
+     * @return string a JSON encoded string containing 'api_id' and 'api_pw' to use in API requests
+     * @throws InvalidArgumentException|Exception for errors in input parameters and in sendRequest()
+     */
+    public function getApiCreds($srcIdentifier, &$retCode)
+    {
+        $retCode = 0;
+
+        $this->params = $srcIdentifier;
+        $this->url = $this->BASE_API_URL . "api2/auth/getapicreds";
+        if (! $this->validateParams("getapicreds")) { throw new InvalidArgumentException("Invalid Input Parameters"); }
+
+        $res = $this->sendRequest();
+        $this->params = array();
+
+        $results = json_decode($res, true);
+        $retCode = (empty($results['code']) ? -1 : $results['code']);
+
+        return $results;
+    }
+
+    /**
      * Function sets the access permissions for a specified folder
      *
      * @param array $srcIdentifier an associative array containing the permission values to set
@@ -2507,7 +2598,7 @@ class STASHAPI
                 if ($tmp[0] == "folderNames" || $tmp[0] == "destFolderNames") {
                     $finalArray[$tmp[0]] = array($tmp[1]);
                 } elseif ($tmp[0] == "fileKey") {
-                    $finalArray[$tmp[0]] = $this->encryptString($tmp[1], true);
+                    $finalArray[$tmp[0]] = $this->encryptString($tmp[1], "", true);
                 } else {
                     $finalArray[$tmp[0]] = $tmp[1];
                 }
