@@ -284,7 +284,6 @@ class STASHAPI
 
         // Must UNESCAPE the slashes so the json_encode here matches encoded json on other platforms
         $strToSign = json_encode($dataIn, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-
         $sig = hash_hmac('sha256', $strToSign, $this->getPw());
 
         $this->api_signature = $sig;
