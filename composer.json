@@ -23,7 +23,8 @@
   "require":{
     "ext-json": "*",
     "ext-openssl": "*",
-    "ext-curl": "*"
+    "ext-curl": "*",
+    "ext-fileinfo": "*"
   },
   "require-dev": {
     "codeception/codeception": "^4.1",
