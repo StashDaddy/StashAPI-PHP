@@ -5,7 +5,7 @@ parameters:
 	paths:
 	    - ../src/Stash/STASHAPI.php
 	scanDirectories:
-	    - ../src/Stash/vendor
+	    - ../vendor
 	#scanFiles:
 	#    - ../vendor/autoload.php
 	#excludes_analyse:
