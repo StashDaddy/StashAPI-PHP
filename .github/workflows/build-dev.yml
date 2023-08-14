@@ -39,16 +39,15 @@ jobs:
       - name: PHP Modules
         run: php -m
 
-      - name: Locations
+      - name: Composer installation
         run: |
+          composer -d ../src/Stash install
           echo "pwd"
           pwd
           echo "dir"
           ls -lart
           echo "dir.."
           ls -lart ../
-          echo "dir../.."
-          ls -lart ../...
           
 
       # Static Analyzer
