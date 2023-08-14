@@ -315,6 +315,7 @@ class STASHAPI
     /**
      * Function encrypts a string with the specified key, or if empty, your API_PW
      * @param string $strIn the string to encrypt
+     * @param string $keyIn the key to use if not the API_PW value
      * @param boolean $returnHexBits T if the function should return hexbits instead of raw
      * @return string the encrypted string
      */
@@ -344,7 +345,7 @@ class STASHAPI
             $key = substr($this->api_pw, 0, self::STASHAPI_PW_LENGTH);
         }
 
-        $ct = openssl_encrypt($strIn, self::ENC_ALG, $keyIn, $rawoption, $iv);
+        $ct = openssl_encrypt($strIn, self::ENC_ALG, $key, $rawoption, $iv);
 
         if ($returnHexBits) {
             return bin2hex($iv . $ct);

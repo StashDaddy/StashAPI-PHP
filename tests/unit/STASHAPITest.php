@@ -259,7 +259,7 @@ class STASHAPITest extends Unit
     public function testEncryptDecryptString($apiIn)
     {
         $testString = "testpw!";
-        $enc = $apiIn->encryptString($testString, true);
+        $enc = $apiIn->encryptString($testString, "", true);
         $dec = $apiIn->decryptString($enc, true);
         $this->assertEquals($testString, $dec);
     }
@@ -274,7 +274,7 @@ class STASHAPITest extends Unit
         $api->setPw("");
         $api->setId("AAAAAAAAAAAAAAAAAAAABBBBBBBBBBBB");
 
-        $this->assertEquals("", $api->encryptString("testpw!", true));
+        $this->assertEquals("", $api->encryptString("testpw!", "", true));
     }
 
     /**
@@ -287,7 +287,7 @@ class STASHAPITest extends Unit
         $api->setPw("AAAAAAAAAAAAAAAAAAAABBBBBBBBBBBB");
         $api->setId("AAAAAAAAAAAAAAAAAAAABBBBBBBBBBBB");
 
-        $this->assertEquals("", $api->encryptString("", true));
+        $this->assertEquals("", $api->encryptString("", "", true));
     }
 
     /**
@@ -300,7 +300,7 @@ class STASHAPITest extends Unit
         $api->setPw("AAAAAAAAAAAAAAAAAAAABBBBBBBBBBBB");
         $api->setId("AAAAAAAAAAAAAAAAAAAABBBBBBBBBBBB");
 
-        $ct = $api->encryptString("testpw!", true);
+        $ct = $api->encryptString("testpw!", "", true);
         $api->setPw("");
         $this->assertEquals("", $api->decryptString($ct, true));
     }
@@ -328,7 +328,7 @@ class STASHAPITest extends Unit
         $pw = "testpw!";
         $apiIn->setPw("1234567890");
         $this->assertEquals("1234567890", $apiIn->getPw());
-        $apiIn->encryptString($pw, true);
+        $apiIn->encryptString($pw, "", true);
     }
 
     /**
@@ -341,7 +341,7 @@ class STASHAPITest extends Unit
         $this->expectException(InvalidArgumentException::class);
         $testString = "testpw!";
         $apiIn->setPw($this->apipw);
-        $apiIn->encryptString($testString, true);
+        $apiIn->encryptString($testString, "", true);
         $apiIn->setPw("1234567890");
         $this->assertEquals("1234567890", $apiIn->getPw());
         $apiIn->decryptString($testString, true);
@@ -358,7 +358,7 @@ class STASHAPITest extends Unit
         $testString = "testpw!";
         $apiIn->setPw($this->apipw);
         $this->assertEquals($this->apipw, $apiIn->getPw());
-        $enc = $apiIn->encryptString($testString, true);
+        $enc = $apiIn->encryptString($testString, "", true);
         $apiIn->decryptString(substr($enc, 0, 10), true);    // Only ask to decrypt 10 characters of data to force detection of too little data in input
     }
 

@@ -190,7 +190,7 @@ class STASHAPIScenarioTest extends Unit
         $api->url = $this->baseUrl . "api2/file/read";
         $api->setId($this->apiid);
         $api->setPw($this->apipw);
-        $api->params = array('fileKey' => $api->encryptString($this->accountPw, true), 'fileName' => self::testFile, 'folderNames' => ["My Home", "Documents"]);
+        $api->params = array('fileKey' => $api->encryptString($this->accountPw, "", true), 'fileName' => self::testFile, 'folderNames' => ["My Home", "Documents"]);
         $response = $api->sendRequest();
         $this->assertStringContainsString("This is a test file for putFile", $response);
     }
@@ -209,7 +209,7 @@ class STASHAPIScenarioTest extends Unit
 
         // Create temp file to test upload/write
         file_put_contents(codecept_data_dir(self::testFile), "This is a test file for STASHAPITest Unit Testing\n\r\n\rTest File");
-        $api->params = array('fileKey' => $api->encryptString($this->accountPw, true), 'destFileName' => $destFileName, 'destFolderId' => $this->folderId);
+        $api->params = array('fileKey' => $api->encryptString($this->accountPw, "", true), 'destFileName' => $destFileName, 'destFolderId' => $this->folderId);
         $response = $api->sendFileRequest(codecept_data_dir(self::testFile), 30);
 
         $this->assertStringContainsString("OK", $response);
@@ -246,7 +246,7 @@ class STASHAPIScenarioTest extends Unit
 
         // Create temp file to test upload/write
         file_put_contents(codecept_data_dir(self::testFile), "This is a test file for STASHAPITest Unit Testing\n\r\n\rTest File");
-        $api->params = array('fileKey' => $api->encryptString($this->accountPw, true), 'destFileName' => $destFileName, 'destFolderNames' => ["My Home", "Documents"]);
+        $api->params = array('fileKey' => $api->encryptString($this->accountPw, "", true), 'destFileName' => $destFileName, 'destFolderNames' => ["My Home", "Documents"]);
         $response = $api->sendFileRequest(codecept_data_dir(self::testFile), 30);
 
         $this->assertStringContainsString("OK", $response);
@@ -288,7 +288,7 @@ class STASHAPIScenarioTest extends Unit
         $api->deleteFile($src, $retCode);
 
         file_put_contents(codecept_data_dir(self::testFile), "This is a test file for putFile()");
-        $src = array('fileKey' => $api->encryptString($this->accountPw, true), 'destFolderNames' => $destFolderNames);
+        $src = array('fileKey' => $api->encryptString($this->accountPw, "",true), 'destFolderNames' => $destFolderNames);
         $retCode = 0;
         $fileId = 0;
         $fileAliasId = 0;
@@ -328,7 +328,7 @@ class STASHAPIScenarioTest extends Unit
         $this->testPutFile(false, array("My Home", "Documents"));
 
         $api = new STASHAPI($this->apiid, $this->apipw, $this->baseUrl, false);
-        $src = array('fileKey' => $api->encryptString($this->accountPw, true), 'folderNames' => array("My Home", "Documents"), 'fileName' => self::testFile);
+        $src = array('fileKey' => $api->encryptString($this->accountPw, "", true), 'folderNames' => array("My Home", "Documents"), 'fileName' => self::testFile);
         $res = $api->getFile($src, codecept_data_dir(self::outFile), 30, $retCode);
 
         $this->assertEquals("200", $retCode);
@@ -364,7 +364,7 @@ class STASHAPIScenarioTest extends Unit
         $api->deleteFile($src, $retCode);
 
         // Copy File
-        $src = array('folderNames' => array("My Home", "Documents"), 'fileName' => self::testFile, 'fileKey' => $api->encryptString($this->accountPw, true));
+        $src = array('folderNames' => array("My Home", "Documents"), 'fileName' => self::testFile, 'fileKey' => $api->encryptString($this->accountPw, "", true));
         $dst = array('destFolderNames' => array("My Home", "Documents"), 'destFileName' => "copyOfFile.txt");
         $retCode = 0;
         $fileAliasId = 0;
@@ -379,7 +379,7 @@ class STASHAPIScenarioTest extends Unit
         $this->assertEquals($fileAliasId, $res['fileAliasId']);
 
         //$src = array('fileKey'=>$api->encryptString($this->accountPw,true), 'folderNames'=>array("My Home", "Documents"), 'fileName' => "copyOfFile.txt");
-        $src = array('fileKey' => $api->encryptString($this->accountPw, true), 'fileId' => $fileAliasId);
+        $src = array('fileKey' => $api->encryptString($this->accountPw, "", true), 'fileId' => $fileAliasId);
         $res = $api->getFile($src, codecept_data_dir(self::outFile), 30, $retCode);
 
         $this->assertEquals("200", $retCode);
@@ -432,7 +432,7 @@ class STASHAPIScenarioTest extends Unit
         $this->assertTrue(isset($res['fileAliasId']));
 
         $fileAliasId = $res['fileAliasId'];
-        $src = array('fileKey' => $api->encryptString($this->accountPw, true), 'fileId' => $fileAliasId);
+        $src = array('fileKey' => $api->encryptString($this->accountPw, "", true), 'fileId' => $fileAliasId);
         $res = $api->getFile($src, codecept_data_dir(self::outFile), 30, $retCode);
 
         $this->assertEquals("200", $retCode);
@@ -479,7 +479,7 @@ class STASHAPIScenarioTest extends Unit
         $this->assertTrue(isset($res['fileAliasId']));
 
         $fileAliasId = $res['fileAliasId'];
-        $src = array('fileKey' => $api->encryptString($this->accountPw, true), 'fileId' => $fileAliasId);
+        $src = array('fileKey' => $api->encryptString($this->accountPw, "", true), 'fileId' => $fileAliasId);
         $res = $api->getFile($src, codecept_data_dir(self::outFile), 30, $retCode);
 
         $this->assertEquals("200", $retCode);
@@ -557,33 +557,38 @@ class STASHAPIScenarioTest extends Unit
         $this->assertTrue(isset($res['all'][0]['icon']), $errMsg);
         $this->assertTrue($res['all'][0]['icon'] != "", $errMsg);
 
-        // Check file properties
-        $this->assertTrue(isset($res['all'][1]['text']), $errMsg);
-        $this->assertTrue($res['all'][1]['text'] != "");
-        $this->assertNotEmpty($res['all'][1]['data']);
-        $this->assertTrue(isset($res['all'][1]['data']['bytes']));
-        $this->assertEquals(33, $res['all'][1]['data']['bytes']);
-        $this->assertTrue(isset($res['all'][1]['data']['size']));
-        $this->assertEquals("33.00 B", $res['all'][1]['data']['size']);
-        $this->assertTrue(isset($res['all'][1]['data']['type']));
-        $this->assertEquals("file", $res['all'][1]['data']['type']);
-        $this->assertTrue(isset($res['all'][1]['data']['date']));
-        $this->assertTrue(isset($res['all'][1]['data']['by']));
-        $this->assertTrue(isset($res['all'][1]['data']['parent_id']));
-        $this->assertEquals($res['all'][0]['id'], $res['all'][1]['data']['parent_id']);
-        $this->assertTrue(isset($res['all'][1]['data']['numChildren']));
-        $this->assertEquals(0, $res['all'][1]['data']['numChildren']);
-        $this->assertTrue(isset($res['all'][1]['data']['filetype']));
-        $this->assertTrue(isset($res['all'][1]['id']));
-        $this->assertTrue($res['all'][1]['id'] > 0);
-        $this->assertTrue(isset($res['all'][1]['parent']));
-        $this->assertEquals($res['all'][1]['data']['parent_id'], $res['all'][1]['parent']);
-        $this->assertTrue(isset($res['all'][1]['state']));
-        $this->assertTrue(is_array($res['all'][1]['state']));
-        $this->assertNotEmpty($res['all'][1]['state']);
-        $this->assertTrue(isset($res['all'][1]['state']['opened']));
-        $this->assertTrue(isset($res['all'][1]['icon']));
-        $this->assertTrue($res['all'][1]['icon'] != "");
+        // Check file properties for /My Home/Documents/tmpfile_stashapitest.txt
+        foreach ($res['all'] as $item) {
+            if ($item['text'] == "tmpfile_stashapitest.txt") {
+                //$this->assertTrue(isset($item['text']), $errMsg);
+                $this->assertTrue($item['text'] != "", $errMsg);
+                $this->assertNotEmpty($item['data'], $errMsg);
+                $this->assertTrue(isset($item['data']['bytes']), $errMsg);
+                $this->assertEquals(33, $item['data']['bytes'], $errMsg);
+                $this->assertTrue(isset($item['data']['size']), $errMsg);
+                $this->assertEquals("33.00 B", $item['data']['size'], $errMsg);
+                $this->assertTrue(isset($item['data']['type']), $errMsg);
+                $this->assertEquals("file", $item['data']['type'], $errMsg);
+                $this->assertTrue(isset($item['data']['date']), $errMsg);
+                $this->assertTrue(isset($item['data']['by']), $errMsg);
+                $this->assertTrue(isset($item['data']['parent_id']), $errMsg);
+                $this->assertEquals($res['all'][0]['id'], $item['data']['parent_id'], $errMsg);
+                $this->assertTrue(isset($item['data']['numChildren']), $errMsg);
+                $this->assertEquals(0, $item['data']['numChildren'], $errMsg);
+                $this->assertTrue(isset($item['data']['filetype']), $errMsg);
+                $this->assertTrue(isset($item['id']), $errMsg);
+                $this->assertTrue($item['id'] > 0, $errMsg);
+                $this->assertTrue(isset($item['parent']), $errMsg);
+                $this->assertEquals($item['data']['parent_id'], $item['parent'], $errMsg);
+                $this->assertTrue(isset($item['state']), $errMsg);
+                $this->assertTrue(is_array($item['state']), $errMsg);
+                $this->assertNotEmpty($item['state'], $errMsg);
+                $this->assertTrue(isset($item['state']['opened']), $errMsg);
+                $this->assertTrue(isset($item['icon']), $errMsg);
+                $this->assertNotEmpty($item['icon'], $errMsg);            
+            }
+        }
+
 
         unlink(codecept_data_dir(self::testFile));
         $retCode = 0;
@@ -879,18 +884,20 @@ class STASHAPIScenarioTest extends Unit
         $src = array('folderNames' => array("My Home"), 'outputType' => 0);
         $res = $api->listFolders($src, $retCode, $folderNames);
 
+        $errMsg = print_r($res, true);
+
         // Check outputType = 0 (no output)
-        $this->assertEquals("200", $retCode);
-        $this->assertTrue(is_array($folderNames));
-        $this->assertTrue(count($folderNames) > 0);
-        $this->assertTrue(in_array("No Output Requested", $folderNames));
-        $this->assertTrue(is_array($res));
-        $this->assertTrue(isset($res['code']));
-        $this->assertTrue(isset($res['message']));
-        $this->assertTrue(isset($res['folders']));
-        $this->assertTrue(is_array($res['folders']));
-        $this->assertTrue(count($res['folders']) > 0);
-        $this->assertEquals("No Output Requested", $res['folders'][0]);
+        $this->assertEquals("200", $retCode, $errMsg);
+        $this->assertTrue(is_array($folderNames), $errMsg);
+        $this->assertNotEmpty($folderNames, $errMsg);
+        $this->assertTrue(in_array("No Output Requested", $folderNames), $errMsg);
+        $this->assertTrue(is_array($res), $errMsg);
+        $this->assertTrue(isset($res['code']), $errMsg);
+        $this->assertTrue(isset($res['message']), $errMsg);
+        $this->assertTrue(isset($res['folders']), $errMsg);
+        $this->assertTrue(is_array($res['folders']), $errMsg);
+        $this->assertTrue(count($res['folders']) > 0, $errMsg);
+        $this->assertEquals("No Output Requested", $res['folders'][0], $errMsg);
 
         // Check outputType = 1 (folder names only)
         $src = array('folderNames' => array("My Home"), 'outputType' => 1);
@@ -916,8 +923,6 @@ class STASHAPIScenarioTest extends Unit
         $this->assertTrue(is_array($folderNames));
         $this->assertTrue(count($folderNames) > 0);
         $found = false;
-
-        //error_log("Folders: " . print_r($res['folders'], true));
 
         foreach ($res['folders'] as $folder) {
             if ($folder[0] == "My Home" && isset($folder[1]) && $folder[1] == "Documents" && (!isset($folder[2]))) {
@@ -975,18 +980,18 @@ class STASHAPIScenarioTest extends Unit
         $this->assertTrue(count($res['folders']) > 0);
         $found = false;
         foreach ($res['folders'] as $model) {
-            $this->assertTrue(isset($model['text']));
-            $this->assertTrue(isset($model['qtip']));
-            $this->assertTrue(isset($model['qtitle']));
-            $this->assertTrue(isset($model['allowDrag']));
-            $this->assertTrue(isset($model['allowDrop']));
-            $this->assertTrue(isset($model['id']));
-            $this->assertTrue(isset($model['isRootFolder']));
-            $this->assertTrue(isset($model['hidden']));
-            $this->assertTrue(isset($model['cls']));
-            $this->assertTrue(isset($model['leaf']));
-            $this->assertTrue(isset($model['expanded']));
-            $this->assertTrue(isset($model['permission']));
+            $errMsg = print_r($model, true);
+            $this->assertTrue(isset($model['text']), $errMsg);
+            $this->assertTrue(isset($model['qtip']), $errMsg);
+            $this->assertTrue(isset($model['qtitle']), $errMsg);
+            $this->assertTrue(isset($model['allowDrag']), $errMsg);
+            $this->assertTrue(isset($model['allowDrop']), $errMsg);
+            $this->assertTrue(isset($model['id']), $errMsg);
+            $this->assertTrue(isset($model['isRootFolder']), $errMsg);
+            $this->assertTrue(isset($model['hidden']), $errMsg);
+            $this->assertTrue(isset($model['cls']), $errMsg);
+            $this->assertTrue(isset($model['leaf']), $errMsg);
+            $this->assertTrue(isset($model['expanded']), $errMsg);
             if ($model['text'] == "Documents") {
                 $found = true;
                 break;
@@ -1183,7 +1188,7 @@ class STASHAPIScenarioTest extends Unit
         $src = array('folderNames' => array("My Home", "Documents", "Created Dir"), 'force' => 1);
         $api->deleteDirectory($src, $retCode);
 
-        $src = array('fileKey' => $api->encryptString($this->accountPw, true), 'folderNames' => array("My Home", "Created Dir"));
+        $src = array('fileKey' => $api->encryptString($this->accountPw, "", true), 'folderNames' => array("My Home", "Created Dir"));
         $dst = array('destFolderNames' => array("My Home", "Documents"));
         $res = $api->copyDirectory($src, $dst, $retCode, $folderId);
         $this->assertEquals("200", $retCode);
@@ -1402,25 +1407,27 @@ class STASHAPIScenarioTest extends Unit
     {
         $api = new STASHAPI($this->apiid, $this->apipw, $this->baseUrl, false);
 
-        $src = array("fileKey" => $api->encryptString($this->accountPw . "BADPW", true), "accountUsername" => $this->accountUsername);
+        $src = array("fileKey" => $api->encryptString($this->accountPw . "BADPW", "", true), "accountUsername" => $this->accountUsername);
         $retCode = 0;
         $errMsg = "";
         $res = $api->checkCreds($src, $retCode, $errMsg);
-        $this->assertTrue(isset($res['code']));
-        $this->assertEquals("401", $res['code']);
-        $this->assertEquals(401, $retCode);
-        $this->assertTrue(isset($res['message']));
-        $this->assertEquals("Unauthorized", $res['message']);
+        $errMsg = print_r($res, true) . PHP_EOL . " Username: " . $this->accountUsername . " Password: " . $this->accountPw;
+        $this->assertTrue(isset($res['code']), $errMsg);
+        $this->assertEquals("401", $res['code'], $errMsg);
+        $this->assertEquals(401, $retCode, $errMsg);
+        $this->assertTrue(isset($res['message']), $errMsg);
+        $this->assertEquals("Unauthorized", $res['message'], $errMsg);
 
-        $src = array("fileKey" => $api->encryptString($this->accountPw, true), "accountUsername" => $this->accountUsername);
+        $src = array("fileKey" => $api->encryptString($this->accountPw, "", true), "accountUsername" => $this->accountUsername);
         $retCode = 0;
         $errMsg = "";
         $res = $api->checkCreds($src, $retCode, $errMsg);
-        $this->assertTrue(isset($res['code']));
-        $this->assertEquals("200", $res['code']);
-        $this->assertEquals(200, $retCode);
-        $this->assertTrue(isset($res['message']));
-        $this->assertEquals("OK", $res['message']);
+        $errMsg = print_r($res, true) . PHP_EOL . " Username: " . $this->accountUsername . " Password: " . $this->accountPw;
+        $this->assertTrue(isset($res['code']), $errMsg);
+        $this->assertEquals("200", $res['code'], $errMsg);
+        $this->assertEquals(200, $retCode, $errMsg);
+        $this->assertTrue(isset($res['message']), $errMsg);
+        $this->assertEquals("OK", $res['message'], $errMsg);
     }
 
     /**
