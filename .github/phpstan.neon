@@ -3,9 +3,9 @@
 parameters:
 	level: 2
 	paths:
-	    - ../src
-	#scanDirectories:
-	#    - ../vendor
+	    - ../src/Stash/STASHAPI.php
+	scanDirectories:
+	    - ../src/Stash/vendor
 	#scanFiles:
 	#    - ../vendor/autoload.php
 	#excludes_analyse:

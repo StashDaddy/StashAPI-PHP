@@ -16,19 +16,28 @@
  * @property array $params - the parameters to pass to the API request (e.g. folderId, folderNames, etc)
  * @property string $BASE_API_URL - the base URL to use for the request
  * @see https://www.stashbusiness.com/helpcenter/users for the API reference
+ *
+ * Note, curl, phpinfo extensions must be enabled - see your php.ini file or the OS-specific documentation
  */
 
 namespace Stash;
 
+require_once("./vendor/autoload.php");  // Composer Requirements
+
 use CURLFile;
 use Exception;
+use finfo;
+use GuzzleHttp\Exception\GuzzleException;
 use InvalidArgumentException;
 use ReflectionClass;
 use UnexpectedValueException;
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Psr7\Utils;
 
 class STASHAPI
 {
-    const FILE_VERSION = "1.3.7";           // File version
+    const FILE_VERSION = "1.3.8";           // File version
     const STASHAPI_VERSION = "1.0";        // API Version
     const STASHAPI_ID_LENGTH = 32;        // API_ID string length
     const STASHAPI_PW_LENGTH = 32;        // API_PW string length (minimum)
@@ -306,6 +315,7 @@ class STASHAPI
     /**
      * Function encrypts a string with the specified key, or if empty, your API_PW
      * @param string $strIn the string to encrypt
+     * @param string $keyIn the key to use if not the API_PW value
      * @param boolean $returnHexBits T if the function should return hexbits instead of raw
      * @return string the encrypted string
      */
@@ -335,7 +345,7 @@ class STASHAPI
             $key = substr($this->api_pw, 0, self::STASHAPI_PW_LENGTH);
         }
 
-        $ct = openssl_encrypt($strIn, self::ENC_ALG, $keyIn, $rawoption, $iv);
+        $ct = openssl_encrypt($strIn, self::ENC_ALG, $key, $rawoption, $iv);
 
         if ($returnHexBits) {
             return bin2hex($iv . $ct);
@@ -929,6 +939,9 @@ class STASHAPI
             } elseif ($opIn === 'write') {
                 $this->validateDestParams(true, false);
                 if ($this->params['fileKey'] == "") throw new InvalidArgumentException("Invalid fileKey Parameter");
+            } elseif ($opIn === 'writestream') {
+                $this->validateDestParams(true, false);
+                if ($this->params['fileKey'] == "") throw new InvalidArgumentException("Invalid fileKey Parameter");
             } elseif ($opIn === 'copy') {
                 $this->validateSourceParams(false, false);
                 $this->validateDestParams(false, false);
@@ -1183,6 +1196,72 @@ class STASHAPI
     }
 
     /**
+     * Function writes a file to a STASH Vault using the streaming API
+     * @param string $fileNameIn the file name and path to upload to STASH vault
+     * @param array $srcIdentifier an associative array containing the source identifier, the values of where to write the file in the Vault
+     * @param integer $timeOut the timeout, in seconds, for the request
+     * @param integer $retCode output, the return code in the response
+     * @param integer $fileId output, the unique File ID (UserFile) for the newly created file
+     * @param integer $fileAliasId output, the unique File ID (UserFileAlias) for the newly created file
+     * @return array the result / output of the write operation
+     * @throws InvalidArgumentException if the input parameters are not valid
+     * @throws GuzzleException for errors in sending the request
+     * @throws Exception for errors in setSignature()
+     */
+    public function putFileStream(string $fileNameIn, array $srcIdentifier, int $timeOut, int &$retCode, int &$fileId, int &$fileAliasId) : array
+    {
+        $retCode = 0;
+        $fileId = 0;
+        $fileAliasId = 0;
+
+        if (!file_exists($fileNameIn)) {
+            throw new InvalidArgumentException("Incorrect Input File Path or File Does Not Exist");
+        }
+
+        $this->params = $srcIdentifier;
+        $this->url = $this->BASE_API_URL . "api2/file/writestream";
+        if (!$this->validateParams('writestream')) {
+            throw new InvalidArgumentException("Invalid Input Parameters");
+        }
+
+        $errMsg = "";
+        $client = new Client();
+        $sha256hash = hash_file("sha256", $fileNameIn);
+        $mimeType = self::GetMIMEType($fileNameIn);
+        $body = Utils::tryFopen($fileNameIn, 'r');
+
+        $apiParams['url'] = $this->url;
+        $apiParams['api_version'] = $this->getVersion();
+        $apiParams['api_id'] = $this->getId();
+        $this->setTimestamp();
+        $apiParams['api_timestamp'] = $this->getTimestamp();
+        $this->setSignature(array_merge($apiParams, $this->params));        // Sign request
+        $apiParams['api_signature'] = $this->getSignature();
+
+        $headers = ['x-stash-api-id' => $this->getId(),
+                    'x-stash-api-signature' => $this->getSignature(),
+                    'x-stash-api-timestamp' => $this->getTimestamp(),
+                    'x-stash-api-version' => $this->getVersion(),
+                    'x-stash-api-params' => json_encode($this->params),
+                    'x-stash-size' => filesize($fileNameIn),
+                    'x-stash-filename' => basename($fileNameIn),
+                    'x-stash-sha256hash' => $sha256hash,
+                    'content-type' => $mimeType,
+        ];
+
+        $response = $client->request("POST", $this->url, ['body' => $body, 'headers' => $headers]);
+        $this->params = array();
+        $retVal = json_decode($response->getBody(), true);
+        $retCode = $retVal['code'] ?? 0;
+        if ($retCode == 200) {
+            $fileId = $retVal['fileId'] ?? 0;
+            $fileAliasId = $retVal['fileAliasId'] ?? 0;
+        }
+
+        return $retVal;
+    }
+
+    /**
      * Function writes a file to a STASH Vault
      *
      * @param string $fileNameIn the file name and path to upload to STASH vault
@@ -1208,7 +1287,7 @@ class STASHAPI
         $this->params = array();
 
         $retVal = json_decode($res, true);
-        $retCode = (isset($retVal['code']) ? $retVal['code'] : 0);
+        $retCode = $retVal['code'] ?? 0;
 
         if ($retCode != 200) {
             static::GetError($res, $code, $msg, $extMsg);
@@ -2620,6 +2699,20 @@ class STASHAPI
         }
         if (! empty($res['extendedErrorMessage'])) {
             $extMsg = $res['extendedErrorMessage'];
+        }
+    }
+
+    public static function GetMIMEType(string $fileNameIn) : string
+    {
+        try {
+            $fInfo = new finfo(FILEINFO_MIME); // return mime type ala mimetype extension
+            $mimeType = $fInfo->file($fileNameIn);
+            if (strpos($mimeType, ";") !== false) {
+                $mimeType = explode(";", $mimeType)[0];
+            }
+            return $mimeType;
+        } catch (Exception $e) {
+            return "";
         }
     }
 }
