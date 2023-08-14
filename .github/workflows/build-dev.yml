@@ -39,6 +39,18 @@ jobs:
       - name: PHP Modules
         run: php -m
 
+      - name: Locations
+        run: |
+          echo "pwd"
+          pwd
+          echo "dir"
+          ls -lart
+          echo "dir.."
+          ls -lart ../
+          echo "dir../.."
+          ls -lart ../...
+          
+
       # Static Analyzer
       - name: PHPStan Version  # https://github.com/phpstan/phpstan, https://phpstan.org/user-guide/
         if: ${{ always() }}
