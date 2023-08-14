@@ -3,6 +3,7 @@
 namespace Stash;
 
 use Codeception\Test\Unit;
+use GuzzleHttp\Exception\GuzzleException;
 use Stash\STASHAPI as STASHAPI;
 use \Exception as Exception;
 use UnitTester;
@@ -304,6 +305,60 @@ class STASHAPIScenarioTest extends Unit
         $this->assertTrue(isset($res['fileAliasId']));
         $this->assertEquals($fileId, $res['fileId']);
         $this->assertEquals($fileAliasId, $res['fileAliasId']);
+
+        // Cleanup
+        if ($cleanup) {
+            unlink(codecept_data_dir(self::testFile));
+            $retCode = 0;
+            $src = array('fileId' => $fileAliasId, 'force' => 1);
+            $res = $api->deleteFile($src, $retCode);
+
+            $this->assertEquals("200", $retCode);
+            $this->assertTrue(is_array($res));
+        } else {
+            $this->doCleanup = true;
+        }
+    }
+
+    /**
+     * Tests the putFileStream() function
+     * @param boolean $cleanup if T will run the cleanup commands to remove the file uploaded to the vault and source file in the file system
+     * @param array $destFolderNames array of strings indicating which folder to upload the file to
+     * @throws Exception
+     * @throws GuzzleException for errors in putFileStream()
+     * @note if $cleanup is F, this function will set the doCleanup flag to indicate a file exists and must be deleted
+     */
+    public function testPutFileStream(bool $cleanup = true, array $destFolderNames = array("My Home", "Documents")) : void
+    {
+        $api = new STASHAPI($this->apiid, $this->apipw, $this->baseUrl, false);
+
+        if (!is_array($destFolderNames) || count($destFolderNames) < 1) {
+            $destFolderNames = array("My Home", "Documents");
+        }
+
+        // Delete the test file if it exists
+        $src = array('folderNames' => $destFolderNames, 'fileName' => basename(self::testFile), 'force' => 1);
+        $api->deleteFile($src, $retCode);
+
+        file_put_contents(codecept_data_dir(self::testFile), "This is a test file for putFileStreams()");
+        $src = array('fileKey' => $api->encryptString($this->accountPw, "",true), 'destFolderNames' => $destFolderNames);
+        $retCode = 0;
+        $fileId = 0;
+        $fileAliasId = 0;
+        $res = $api->putFileStream(codecept_data_dir(self::testFile), $src, 30, $retCode, $fileId, $fileAliasId);
+        $errMsg = print_r($res, true);
+        $this->assertEquals("200", $retCode, $errMsg);
+        $this->assertTrue($fileId > 0, $errMsg);
+        $this->assertTrue($fileAliasId > 0, $errMsg);
+        $this->assertIsArray($res, $errMsg);
+        $this->assertTrue(isset($res['code']), $errMsg);
+        $this->assertTrue(isset($res['message']), $errMsg);
+        $this->assertTrue(isset($res['fileId']), $errMsg);
+        $this->assertGreaterThan(0, $res['fileId'], $errMsg);
+        $this->assertTrue(isset($res['fileAliasId']), $errMsg);
+        $this->assertGreaterThan(0, $res['fileAliasId'], $errMsg);
+        $this->assertEquals($fileId, $res['fileId'], $errMsg);
+        $this->assertEquals($fileAliasId, $res['fileAliasId'], $errMsg);
 
         // Cleanup
         if ($cleanup) {

@@ -1200,9 +1200,9 @@ class STASHAPI
      * @param string $fileNameIn the file name and path to upload to STASH vault
      * @param array $srcIdentifier an associative array containing the source identifier, the values of where to write the file in the Vault
      * @param integer $timeOut the timeout, in seconds, for the request
-     * @param integer $retCode the return code in the response
-     * @param integer $fileId the unique File ID (UserFile) for the newly created file
-     * @param integer $fileAliasId the unique File ID (UserFileAlias) for the newly created file
+     * @param integer $retCode output, the return code in the response
+     * @param integer $fileId output, the unique File ID (UserFile) for the newly created file
+     * @param integer $fileAliasId output, the unique File ID (UserFileAlias) for the newly created file
      * @return array the result / output of the write operation
      * @throws InvalidArgumentException if the input parameters are not valid
      * @throws GuzzleException for errors in sending the request
