@@ -34,7 +34,7 @@ use GuzzleHttp\Psr7\Utils;
 
 class STASHAPI
 {
-    const FILE_VERSION = "1.3.8";           // File version
+    const FILE_VERSION = "1.3.9";           // File version
     const STASHAPI_VERSION = "1.0";        // API Version
     const STASHAPI_ID_LENGTH = 32;        // API_ID string length
     const STASHAPI_PW_LENGTH = 32;        // API_PW string length (minimum)
