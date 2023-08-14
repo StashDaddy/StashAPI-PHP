@@ -1,0 +1,6 @@
+{
+    "require": {
+      "ext-fileinfo": "*",
+      "guzzlehttp/guzzle": "*"
+    }
+}
