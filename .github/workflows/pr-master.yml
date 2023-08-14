@@ -41,7 +41,7 @@ jobs:
 
       - name: Composer installation
         run: |
-          composer -d ./src/Stash install
+          composer install
 
       # Static Analyzer
       - name: PHPStan Version  # https://github.com/phpstan/phpstan, https://phpstan.org/user-guide/

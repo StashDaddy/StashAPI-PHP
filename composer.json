@@ -24,7 +24,8 @@
     "ext-json": "*",
     "ext-openssl": "*",
     "ext-curl": "*",
-    "ext-fileinfo": "*"
+    "ext-fileinfo": "*",
+    "guzzlehttp/guzzle": "*"
   },
   "require-dev": {
     "codeception/codeception": "^4.1",

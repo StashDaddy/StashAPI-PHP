@@ -18,3 +18,5 @@ autoload.php
 /tests/_data/tmpfile_stashapitest.txt
 /docs/phploc.phar
 /docs/phpdox-0.12.0.phar
+/apitest.php
+/test.txt

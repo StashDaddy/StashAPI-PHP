@@ -22,8 +22,6 @@
 
 namespace Stash;
 
-require_once("./vendor/autoload.php");  // Composer Requirements
-
 use CURLFile;
 use Exception;
 use finfo;
@@ -32,7 +30,6 @@ use InvalidArgumentException;
 use ReflectionClass;
 use UnexpectedValueException;
 use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Utils;
 
 class STASHAPI
