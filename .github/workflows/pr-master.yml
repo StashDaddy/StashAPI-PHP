@@ -1,4 +1,4 @@
-# Github test action during pull requests to the master branch
+# GitHub test action during pull requests to the master branch
 # YML workflow reference: https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions
 name: Master PR
 on:
@@ -41,7 +41,7 @@ jobs:
 
       - name: Composer installation
         run: |
-          composer -d ./src/Stash install
+          composer install
 
       # Static Analyzer
       - name: PHPStan Version  # https://github.com/phpstan/phpstan, https://phpstan.org/user-guide/
@@ -51,7 +51,7 @@ jobs:
       - name: PHPStan  # https://github.com/phpstan/phpstan, https://phpstan.org/user-guide/
         if: ${{ always() }}
         #run: phpstan analyse . --error-format=checkstyle | cs2pr # Use this in a pull-request run only
-        #run: phpstan analyse -l 0 . --error-format=table # use loosest checks (8 is strictest)
+        #run: phpstan analyse -l 0 . --error-format=table # use the loosest checks (8 is strictest)
         run: phpstan analyse -c .github/phpstan.neon --error-format=table
         # To Consider: https://github.com/proget-hq/phpstan-yii2
 
