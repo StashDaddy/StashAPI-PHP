@@ -26,6 +26,7 @@ use CURLFile;
 use Exception;
 use finfo;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Psr7\Utils;
 use InvalidArgumentException;
 use ReflectionClass;
 use UnexpectedValueException;
